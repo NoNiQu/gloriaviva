@@ -1,9 +1,4 @@
 import type { Route } from "./+types/home";
-import { HomeHero } from "~/components/home/HomeHero";
-import { ProximosCultos } from "~/components/home/ProximosCultos";
-import { GloriasNoDescansan } from "~/components/home/GloriasNoDescansan";
-import { GloriasToledo } from "~/components/home/GloriasToledo";
-import { Agradecimientos } from "~/components/home/Agradecimiento";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -13,32 +8,45 @@ export function meta({}: Route.MetaArgs) {
     {
       name: "description",
       content:
-        "Guía independiente y no oficial de las cofradías, hermandades y devociones de gloria de Toledo.",
+        "Gloria Viva, guía independiente y no oficial de las cofradías, hermandades y devociones de gloria de Toledo. Web en construcción.",
     },
   ];
 }
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen">
-      <HomeHero />
+    <main className="min-h-svh bg-black text-white">
+      <section className="mx-auto flex min-h-svh max-w-360 flex-col items-center justify-center px-6 py-14 text-center md:px-10 md:py-18 lg:px-20 lg:py-20">
+        <div className="flex flex-col items-center">
+          <h1>
+            <img
+              src="/logoWeb.png"
+              alt="Gloria Viva — Glorias de Toledo"
+              className="h-auto w-64 object-contain sm:w-72 md:w-80 lg:w-96"
+            />
+          </h1>
 
-      <ProximosCultos />
-
-      <GloriasToledo />
-
-      <Agradecimientos />
-
-      <section
-        aria-label="Gloria Viva"
-        className="bg-black px-6 pb-16 pt-10 text-white md:px-10 md:pb-20 lg:px-30 lg:pb-24"
-      >
-        <div className="mx-auto max-w-360 border-t border-white/15 pt-14 md:pt-18">
-          <p className="mx-auto max-w-5xl text-center text-[2.6rem] font-normal leading-[1.02] tracking-[-0.03em] md:text-6xl md:leading-[0.98]">
-            Entre barrios y devociones,
-            <br />
-            Toledo mantiene su gloria viva.
+          <p className="mt-10 text-xs font-semibold uppercase tracking-[0.24em] text-white/70 md:mt-12 md:text-sm">
+            Esta web está en construcción
           </p>
+        </div>
+
+        <div className="mt-28 flex flex-col items-center md:mt-32 lg:mt-36">
+          <p className="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-white/55">
+            Volver a Entre Silencios
+          </p>
+
+          <a
+            href="https://entresilencios.vercel.app/"
+            aria-label="Volver a Entre Silencios"
+            className="group inline-flex focus-visible:outline-2 focus-visible:outline-offset-6 focus-visible:outline-white"
+          >
+            <img
+              src="/Logo_WEB.png"
+              alt="Entre Silencios — Semana Santa Toledo"
+              className="h-auto w-64 object-contain opacity-80 transition-opacity duration-300 group-hover:opacity-100 md:w-100"
+            />
+          </a>
         </div>
       </section>
     </main>

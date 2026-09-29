@@ -5,7 +5,6 @@ import type { NavigationLink } from "~/types/navigation";
 const navigation = [
   { label: "Cofradías", to: "/cofradias" },
   { label: "Cultos", to: "/cultos" },
-  { label: "Procesiones", to: "/procesiones" },
   { label: "Sedes Canónicas", to: "/sedescanonicas" },
   { label: "Contacto", to: "/contacto" },
   { label: "FAQ", to: "/faq" },
@@ -18,17 +17,10 @@ export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
 
-  /*
-   * Cierra el menú cuando el usuario cambia de página.
-   */
   useEffect(() => {
     setIsMenuOpen(false);
   }, [pathname]);
 
-  /*
-   * Bloquea el scroll mientras el menú móvil está abierto
-   * y permite cerrarlo mediante la tecla Escape.
-   */
   useEffect(() => {
     if (!isMenuOpen) {
       return;
@@ -74,7 +66,7 @@ export function Header() {
 
   const desktopLogo = (
     <img
-      src="/logoWeb.png"
+      src="/logoWeb_B.png"
       alt="Gloria Viva — Glorias de Toledo"
       className="h-auto w-62.5"
     />
@@ -82,7 +74,7 @@ export function Header() {
 
   const mobileLogo = (
     <img
-      src="/logoWebMovil_B.png"
+      src="/logoWebMovil_A.png"
       alt="Gloria Viva — Glorias de Toledo"
       className="h-auto w-35"
     />
@@ -92,9 +84,10 @@ export function Header() {
     <>
       <header
         className={[
-          "absolute inset-x-0 top-0 z-50 text-white",
+          "absolute inset-x-0 top-0 z-50 text-black",
           "transition-colors duration-300",
-          isMenuOpen ? "bg-black lg:bg-transparent" : "bg-transparent",
+          isMenuOpen ? "bg-white" : "bg-transparent",
+          "lg:bg-transparent",
         ].join(" ")}
       >
         {/* CABECERA DE ESCRITORIO */}
@@ -106,7 +99,7 @@ export function Header() {
               <Link
                 to="/"
                 aria-label="Volver a la página de inicio"
-                className="block focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+                className="block focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black"
               >
                 {desktopLogo}
               </Link>
@@ -123,9 +116,9 @@ export function Header() {
                           "relative py-2 text-sm font-medium tracking-wide",
                           "transition-opacity duration-200",
                           "hover:opacity-70",
-                          "focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white",
+                          "focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black",
                           "after:absolute after:inset-x-0 after:-bottom-1 after:h-px",
-                          "after:origin-left after:bg-white after:transition-transform after:duration-200",
+                          "after:origin-left after:bg-black after:transition-transform after:duration-200",
                           isActive
                             ? "after:scale-x-100"
                             : "after:scale-x-0 hover:after:scale-x-100",
@@ -150,7 +143,18 @@ export function Header() {
             aria-expanded={isMenuOpen}
             aria-controls="mobile-navigation"
             onClick={() => setIsMenuOpen((currentState) => !currentState)}
-            className="relative flex h-12 w-12 items-center justify-center justify-self-start focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+            className="
+              relative
+              flex
+              h-12
+              w-12
+              items-center
+              justify-center
+              justify-self-start
+              focus-visible:outline-2
+              focus-visible:outline-offset-4
+              focus-visible:outline-black
+            "
           >
             <span className="sr-only">
               {isMenuOpen ? "Cerrar menú" : "Abrir menú"}
@@ -159,7 +163,7 @@ export function Header() {
             <span
               aria-hidden="true"
               className={[
-                "absolute h-px w-7 bg-white transition-transform duration-300",
+                "absolute h-px w-7 bg-black transition-transform duration-300",
                 isMenuOpen ? "translate-y-0 rotate-45" : "-translate-y-1.75",
               ].join(" ")}
             />
@@ -167,7 +171,7 @@ export function Header() {
             <span
               aria-hidden="true"
               className={[
-                "absolute h-px w-7 bg-white transition-opacity duration-300",
+                "absolute h-px w-7 bg-black transition-opacity duration-300",
                 isMenuOpen ? "opacity-0" : "opacity-100",
               ].join(" ")}
             />
@@ -175,7 +179,7 @@ export function Header() {
             <span
               aria-hidden="true"
               className={[
-                "absolute h-px w-7 bg-white transition-transform duration-300",
+                "absolute h-px w-7 bg-black transition-transform duration-300",
                 isMenuOpen ? "translate-y-0 -rotate-45" : "translate-y-1.75",
               ].join(" ")}
             />
@@ -188,7 +192,15 @@ export function Header() {
               <Link
                 to="/"
                 aria-label="Volver a la página de inicio"
-                className="block transition-opacity duration-200 hover:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+                className="
+                  block
+                  transition-opacity
+                  duration-200
+                  hover:opacity-80
+                  focus-visible:outline-2
+                  focus-visible:outline-offset-4
+                  focus-visible:outline-black
+                "
               >
                 {mobileLogo}
               </Link>
@@ -204,7 +216,7 @@ export function Header() {
         id="mobile-navigation"
         aria-label="Navegación móvil"
         className={[
-          "fixed inset-x-0 bottom-0 top-24 z-40 bg-black text-white",
+          "fixed inset-x-0 bottom-0 top-45 z-40 bg-white text-black",
           "overflow-y-auto transition-all duration-300 lg:hidden",
           isMenuOpen
             ? "visible translate-y-0 opacity-100"
@@ -212,9 +224,9 @@ export function Header() {
         ].join(" ")}
       >
         <div className="flex min-h-full flex-col px-8 pb-10 pt-10">
-          <ul className="mt-10 border-t border-white/15">
+          <ul className="mt-10 border-t border-black/15">
             {navigation.map((item) => (
-              <li key={item.to} className="border-b border-white/15">
+              <li key={item.to} className="border-b border-black/15">
                 <NavLink
                   to={item.to}
                   className={({ isActive }) =>
@@ -223,10 +235,10 @@ export function Header() {
                       "text-xl transition-colors duration-200",
                       "focus-visible:outline-2",
                       "focus-visible:-outline-offset-2",
-                      "focus-visible:outline-white",
+                      "focus-visible:outline-black",
                       isActive
-                        ? "text-white"
-                        : "text-white/75 hover:text-white",
+                        ? "text-black"
+                        : "text-black/75 hover:text-black",
                     ].join(" ")
                   }
                 >

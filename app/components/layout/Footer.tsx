@@ -5,7 +5,6 @@ import type { NavigationLink } from "~/types/navigation";
 const navigationLinks = [
   { label: "Cofradías", to: "/cofradias" },
   { label: "Cultos", to: "/cultos" },
-  { label: "Procesiones", to: "/procesiones" },
   { label: "Sedes Canónicas", to: "/sedescanonicas" },
 ] satisfies NavigationLink[];
 

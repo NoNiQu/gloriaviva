@@ -6,6 +6,7 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLocation,
 } from "react-router";
 
 import type { Route } from "./+types/root";
@@ -27,6 +28,9 @@ export const links: Route.LinksFunction = () => [
 */
 
 export function Layout({ children }: { children: React.ReactNode }) {
+  const { pathname } = useLocation();
+  const isHomePage = pathname === "/";
+
   return (
     <html lang="es">
       <head>
@@ -46,15 +50,17 @@ export function Layout({ children }: { children: React.ReactNode }) {
           Saltar al contenido principal
         </a>
 
-        <Header />
+        {!isHomePage && <Header />}
 
         <div id="site-content" tabIndex={-1} className="outline-none">
           {children}
         </div>
 
-        <div id="site-footer">
-          <Footer />
-        </div>
+        {!isHomePage && (
+          <div id="site-footer">
+            <Footer />
+          </div>
+        )}
 
         <ScrollToTop />
 

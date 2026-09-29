@@ -176,7 +176,7 @@ export const cultosCards: CultoCardData[] = [
   titleSize: "large",
 },
 {
-  id: "carmen_carmelitas",
+  id: "carmen-carmelitas",
   nombre: "Carmen",
   subnombre: "Padres Carmelitas",
   fecha: "7 al 16 de JULIO",
@@ -188,7 +188,7 @@ export const cultosCards: CultoCardData[] = [
     titleSize: "large",
 },
 {
-  id: "carmen_SanAndres",
+  id: "carmen-san-andres",
   nombre: "Carmen",
   subnombre: "San Andrés",
   fecha: "9 al 12 de JULIO",

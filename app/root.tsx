@@ -13,19 +13,6 @@ import { ScrollToTop } from "~/components/ScrollToTop";
 import { Footer } from "~/components/layout/Footer";
 import { Header } from "~/components/layout/Header";
 import "./app.css";
-import { PrototypeNotice } from "./components/PrototypeNotice";
-
-/*
-export const links: Route.LinksFunction = () => [
-  {
-    rel: "preload",
-    href: "/fonts/Inter-Variable-Latin.woff2",
-    as: "font",
-    type: "font/woff2",
-    crossOrigin: "anonymous",
-  },
-];
-*/
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -58,8 +45,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
         </div>
 
         <ScrollToTop />
-
-        <PrototypeNotice />
 
         <ScrollRestoration />
         <Scripts />

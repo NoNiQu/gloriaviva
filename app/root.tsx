@@ -13,6 +13,7 @@ import { ScrollToTop } from "~/components/ScrollToTop";
 import { Footer } from "~/components/layout/Footer";
 import { Header } from "~/components/layout/Header";
 import "./app.css";
+import { PrototypeNotice } from "./components/PrototypeNotice";
 
 /*
 export const links: Route.LinksFunction = () => [
@@ -58,6 +59,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
         <ScrollToTop />
 
+        <PrototypeNotice />
+
         <ScrollRestoration />
         <Scripts />
       </body>
@@ -92,14 +95,14 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   }
 
   return (
-    <main className="min-h-screen bg-white text-black">
+    <main className="min-h-screen bg-black text-white">
       <section className="mx-auto flex min-h-svh max-w-360 items-center px-6 py-32 md:px-10 lg:px-30">
         <div className="w-full">
-          <p className="mb-6 text-xs font-semibold uppercase tracking-[0.2em] text-black/60">
+          <p className="mb-6 text-xs font-semibold uppercase tracking-[0.2em] text-white/60">
             {isNotFound ? "Página no encontrada" : "Error del servidor"}
           </p>
 
-          <div className="border-t border-black/15 pt-8">
+          <div className="border-t border-white/15 pt-8">
             <div className="grid gap-10 md:grid-cols-[0.55fr_1fr] md:gap-16">
               <div>
                 <p className="font-serif text-[clamp(5rem,15vw,10rem)] leading-[0.8] tracking-[-0.06em]">
@@ -114,14 +117,14 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
                     : "Algo no ha salido como esperábamos."}
                 </h1>
 
-                <p className="mt-6 max-w-xl text-sm leading-7 tracking-[0.03em] text-black/65 sm:text-base">
+                <p className="mt-6 max-w-xl text-sm leading-7 text-white/65 sm:text-base">
                   {details}
                 </p>
 
                 <div className="mt-10">
                   <Link
                     to="/"
-                    className="group inline-flex cursor-pointer items-center gap-4 border-b border-black/25 pb-2 text-sm font-medium tracking-[0.03em] transition-colors duration-300 hover:border-black focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black"
+                    className="group inline-flex cursor-pointer items-center gap-4 border-b border-white/25 pb-2 text-sm font-medium transition-colors duration-300 hover:border-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
                   >
                     Volver al inicio
                     <span
@@ -137,12 +140,12 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
           </div>
 
           {stack && (
-            <details className="mt-16 border-t border-black/15 pt-6">
-              <summary className="cursor-pointer text-xs font-semibold uppercase tracking-[0.2em] text-black/60">
+            <details className="mt-16 border-t border-white/15 pt-6">
+              <summary className="cursor-pointer text-xs font-semibold uppercase tracking-[0.2em] text-white/60">
                 Detalles técnicos
               </summary>
 
-              <pre className="mt-6 w-full overflow-x-auto whitespace-pre-wrap text-xs leading-6 text-black/65">
+              <pre className="mt-6 w-full overflow-x-auto whitespace-pre-wrap text-xs leading-6 text-white/65">
                 <code>{stack}</code>
               </pre>
             </details>

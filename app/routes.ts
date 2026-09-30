@@ -10,6 +10,10 @@ export default [
   route("cultos", "routes/cultos.tsx"),
   route("cultos/:slug", "routes/cultos.$slug.tsx"),
 
+  route("cofradias", "routes/cofradias.tsx"),
+
+  route("sedescanonicas", "routes/sedescanonicas.tsx"),
+
   route("aviso-legal", "routes/avisolegal.tsx"),
   route("privacidad", "routes/privacidad.tsx"),
   route("contacto", "routes/contacto.tsx"),

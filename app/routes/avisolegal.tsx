@@ -82,9 +82,9 @@ export default function AvisoLegalPage() {
 
         <p>
           La web recopila y organiza información relacionada con cofradías y
-          hermandades de gloria, cultos, procesiones, festividades, titulares,
-          horarios, sedes, acompañamientos musicales y otros elementos de
-          interés vinculados a estas devociones en Toledo capital.
+          hermandades de gloria, cultos, procesiones, titulares, horarios,
+          recorridos, festividades, sedes canónicas y otros elementos de
+          interés.
         </p>
       </InformationSection>
 
@@ -138,14 +138,14 @@ export default function AvisoLegalPage() {
 
       <InformationSection title="8. Fotografías y créditos">
         <p>
-          Parte del material fotográfico publicado en Gloria Viva puede ser de
-          autoría propia del responsable del proyecto.
+          Parte del material fotográfico publicado en Gloria Viva es de autoría
+          propia del responsable del proyecto.
         </p>
 
         <p>
-          Otras fotografías pueden haber sido facilitadas, cedidas o autorizadas
-          para su utilización por hermandades, cofradías, entidades, fotógrafos
-          u otras personas colaboradoras.
+          Otras fotografías han sido facilitadas, cedidas o autorizadas para su
+          utilización por cofradías, hermandades, entidades, fotógrafos u otras
+          personas colaboradoras.
         </p>
 
         <p>

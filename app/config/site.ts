@@ -8,5 +8,5 @@ export const siteConfig = {
    * Sustituye la URL cuando tengas configurado el dominio definitivo.
    */
   email: "marcos.workstation@gmail.com",
-  url: "https://tu-dominio.com",
+  url: "https://gloriaviva.vercel.app/",
 } as const;

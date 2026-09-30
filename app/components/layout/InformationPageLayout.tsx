@@ -10,7 +10,7 @@ export function InformationPageLayout({
 }: InformationPageLayoutProps) {
   return (
     <>
-      <div className="bg-black text-white">
+      <div className="bg-[#263D63] text-white">
         <section className="mx-auto flex min-h-69 max-w-360 items-end px-6 pb-8 pt-20 md:px-10 lg:min-h-102 lg:px-30 lg:pb-27 lg:pt-44">
           <h1 className="m-0 text-5xl font-normal leading-none tracking-[-0.03em] md:text-7xl">
             {title}

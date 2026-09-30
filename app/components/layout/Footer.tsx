@@ -29,7 +29,7 @@ export function Footer() {
   );
 
   return (
-    <footer className="bg-black text-white">
+    <footer className="bg-[#263D63] text-white">
       <div className="mx-auto max-w-360 px-8 pb-8 pt-16">
         <div className="grid grid-cols-1 items-start gap-16 md:grid-cols-[1.5fr_0.75fr_0.75fr]">
           {/* Marca y descripción */}
@@ -46,7 +46,7 @@ export function Footer() {
               </Link>
             )}
 
-            <p className="mt-5 max-w-md text-sm leading-6 text-white/75">
+            <p className="mt-5 max-w-md text-sm leading-6 tracking-[0.03em] text-white/80">
               Guía independiente y no oficial de las cofradías, hermandades y
               devociones de gloria de Toledo.
             </p>
@@ -59,9 +59,27 @@ export function Footer() {
 
         {/* Parte inferior */}
         <div className="mt-14 flex flex-col gap-6 border-t border-white/15 pt-7 text-center lg:flex-row lg:items-end lg:justify-between lg:text-left">
-          <p className="text-sm text-white/75">© {currentYear} Gloria Viva</p>
+          <p
+            className="
+              text-[0.95rem]
+              leading-6
+              tracking-wider
+              text-white/80
+            "
+          >
+            © {currentYear} Gloria Viva
+          </p>
 
-          <p className="max-w-lg text-xs leading-5 text-white/75 lg:text-right">
+          <p
+            className="
+              max-w-xl
+              text-xs
+              leading-6
+              tracking-wider
+              text-white/80
+              lg:text-right
+            "
+          >
             <span className="block">
               La información publicada puede sufrir modificaciones.
             </span>
@@ -80,7 +98,16 @@ export function Footer() {
 function FooterColumn({ title, links }: FooterColumnProps) {
   return (
     <div className="self-start">
-      <h2 className="m-0 text-xs font-semibold uppercase leading-none tracking-[0.2em] text-white/75">
+      <h2
+        className="
+          m-0
+          text-[0.95rem]
+          uppercase
+          leading-none
+          tracking-[0.14em]
+          text-white/90
+        "
+      >
         {title}
       </h2>
 
@@ -89,7 +116,17 @@ function FooterColumn({ title, links }: FooterColumnProps) {
           <li key={link.to}>
             <Link
               to={link.to}
-              className="text-sm text-white/75 transition-colors duration-200 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+              className="
+                text-[1.07rem]
+                tracking-[0.02em]
+                text-white/80
+                transition-opacity
+                duration-200
+                hover:opacity-70
+                focus-visible:outline-2
+                focus-visible:outline-offset-4
+                focus-visible:outline-white
+              "
             >
               {link.label}
             </Link>

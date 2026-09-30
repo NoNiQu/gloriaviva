@@ -10,9 +10,13 @@ const navigation = [
   { label: "FAQ", to: "/faq" },
 ] satisfies NavigationLink[];
 
+const whiteHeaderRoutes = ["/contacto", "/faq", "/aviso-legal", "/privacidad"];
+
 export function Header() {
   const { pathname } = useLocation();
+
   const isHomePage = pathname === "/";
+  const hasWhiteHeader = whiteHeaderRoutes.includes(pathname);
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
@@ -64,9 +68,16 @@ export function Header() {
     };
   }, [isMenuOpen]);
 
+  const desktopLogoSrc = hasWhiteHeader ? "/logoWeb.png" : "/logoWeb_B.png";
+
+  const mobileLogoSrc =
+    hasWhiteHeader && !isMenuOpen
+      ? "/logoWebMovil_B.png"
+      : "/logoWebMovil_A.png";
+
   const desktopLogo = (
     <img
-      src="/logoWeb_B.png"
+      src={desktopLogoSrc}
       alt="Gloria Viva — Glorias de Toledo"
       className="h-auto w-62.5"
     />
@@ -74,17 +85,25 @@ export function Header() {
 
   const mobileLogo = (
     <img
-      src="/logoWebMovil_A.png"
+      src={mobileLogoSrc}
       alt="Gloria Viva — Glorias de Toledo"
       className="h-auto w-35"
     />
   );
 
+  const mobileIconColor =
+    hasWhiteHeader && !isMenuOpen ? "bg-white" : "bg-black";
+
+  const mobileFocusColor =
+    hasWhiteHeader && !isMenuOpen
+      ? "focus-visible:outline-white"
+      : "focus-visible:outline-black";
+
   return (
     <>
       <header
         className={[
-          "absolute inset-x-0 top-0 z-50 text-black",
+          "absolute inset-x-0 top-0 z-50",
           "transition-colors duration-300",
           isMenuOpen ? "bg-white" : "bg-transparent",
           "lg:bg-transparent",
@@ -99,26 +118,47 @@ export function Header() {
               <Link
                 to="/"
                 aria-label="Volver a la página de inicio"
-                className="block focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black"
+                className={[
+                  "block focus-visible:outline-2 focus-visible:outline-offset-4",
+                  hasWhiteHeader
+                    ? "focus-visible:outline-white"
+                    : "focus-visible:outline-black",
+                ].join(" ")}
               >
                 {desktopLogo}
               </Link>
             )}
 
             <nav aria-label="Navegación principal">
-              <ul className="flex items-center gap-7">
+              <ul className="flex items-center gap-8">
                 {navigation.map((item) => (
                   <li key={item.to}>
                     <NavLink
                       to={item.to}
                       className={({ isActive }) =>
                         [
-                          "relative py-2 text-sm font-medium tracking-wide",
+                          "relative py-2",
+                          "text-[1.07rem]",
+                          "tracking-[0.02em]",
                           "transition-opacity duration-200",
                           "hover:opacity-70",
-                          "focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black",
-                          "after:absolute after:inset-x-0 after:-bottom-1 after:h-px",
-                          "after:origin-left after:bg-black after:transition-transform after:duration-200",
+                          "focus-visible:outline-2",
+                          "focus-visible:outline-offset-4",
+
+                          hasWhiteHeader
+                            ? "text-white focus-visible:outline-white"
+                            : "text-black focus-visible:outline-black",
+
+                          "after:absolute",
+                          "after:inset-x-0",
+                          "after:-bottom-1",
+                          "after:h-px",
+                          "after:origin-left",
+                          "after:transition-transform",
+                          "after:duration-200",
+
+                          hasWhiteHeader ? "after:bg-white" : "after:bg-black",
+
                           isActive
                             ? "after:scale-x-100"
                             : "after:scale-x-0 hover:after:scale-x-100",
@@ -143,18 +183,18 @@ export function Header() {
             aria-expanded={isMenuOpen}
             aria-controls="mobile-navigation"
             onClick={() => setIsMenuOpen((currentState) => !currentState)}
-            className="
-              relative
-              flex
-              h-12
-              w-12
-              items-center
-              justify-center
-              justify-self-start
-              focus-visible:outline-2
-              focus-visible:outline-offset-4
-              focus-visible:outline-black
-            "
+            className={[
+              "relative",
+              "flex",
+              "h-12",
+              "w-12",
+              "items-center",
+              "justify-center",
+              "justify-self-start",
+              "focus-visible:outline-2",
+              "focus-visible:outline-offset-4",
+              mobileFocusColor,
+            ].join(" ")}
           >
             <span className="sr-only">
               {isMenuOpen ? "Cerrar menú" : "Abrir menú"}
@@ -163,7 +203,9 @@ export function Header() {
             <span
               aria-hidden="true"
               className={[
-                "absolute h-px w-7 bg-black transition-transform duration-300",
+                "absolute h-px w-7",
+                mobileIconColor,
+                "transition-transform duration-300",
                 isMenuOpen ? "translate-y-0 rotate-45" : "-translate-y-1.75",
               ].join(" ")}
             />
@@ -171,7 +213,9 @@ export function Header() {
             <span
               aria-hidden="true"
               className={[
-                "absolute h-px w-7 bg-black transition-opacity duration-300",
+                "absolute h-px w-7",
+                mobileIconColor,
+                "transition-opacity duration-300",
                 isMenuOpen ? "opacity-0" : "opacity-100",
               ].join(" ")}
             />
@@ -179,7 +223,9 @@ export function Header() {
             <span
               aria-hidden="true"
               className={[
-                "absolute h-px w-7 bg-black transition-transform duration-300",
+                "absolute h-px w-7",
+                mobileIconColor,
+                "transition-transform duration-300",
                 isMenuOpen ? "translate-y-0 -rotate-45" : "translate-y-1.75",
               ].join(" ")}
             />
@@ -192,15 +238,15 @@ export function Header() {
               <Link
                 to="/"
                 aria-label="Volver a la página de inicio"
-                className="
-                  block
-                  transition-opacity
-                  duration-200
-                  hover:opacity-80
-                  focus-visible:outline-2
-                  focus-visible:outline-offset-4
-                  focus-visible:outline-black
-                "
+                className={[
+                  "block",
+                  "transition-opacity",
+                  "duration-200",
+                  "hover:opacity-80",
+                  "focus-visible:outline-2",
+                  "focus-visible:outline-offset-4",
+                  mobileFocusColor,
+                ].join(" ")}
               >
                 {mobileLogo}
               </Link>
@@ -216,8 +262,11 @@ export function Header() {
         id="mobile-navigation"
         aria-label="Navegación móvil"
         className={[
-          "fixed inset-x-0 bottom-0 top-45 z-40 bg-white text-black",
-          "overflow-y-auto transition-all duration-300 lg:hidden",
+          "fixed inset-x-0 bottom-0 top-45 z-40",
+          "bg-white text-black",
+          "overflow-y-auto",
+          "transition-all duration-300",
+          "lg:hidden",
           isMenuOpen
             ? "visible translate-y-0 opacity-100"
             : "invisible -translate-y-4 opacity-0",
@@ -232,13 +281,12 @@ export function Header() {
                   className={({ isActive }) =>
                     [
                       "group flex min-h-20 items-center justify-between gap-6",
-                      "text-xl transition-colors duration-200",
+                      "text-xl font-semibold tracking-[0.06em] text-black",
+                      "transition-colors duration-200",
                       "focus-visible:outline-2",
                       "focus-visible:-outline-offset-2",
                       "focus-visible:outline-black",
-                      isActive
-                        ? "text-black"
-                        : "text-black/75 hover:text-black",
+                      "hover:text-black",
                     ].join(" ")
                   }
                 >

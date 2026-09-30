@@ -23,9 +23,9 @@ export function CopyEmailButton() {
 
   return (
     <div>
-      <div className="inline-flex min-h-11 w-full max-w-105 items-stretch overflow-hidden bg-black text-white md:min-h-12">
-        <div className="flex min-w-0 flex-1 items-center px-4 md:px-5">
-          <span className="truncate text-[13px] font-semibold sm:text-sm">
+      <div className="inline-flex min-h-11 w-full max-w-105 items-stretch overflow-hidden bg-[#263D63] text-white tracking-wider md:min-h-12">
+        <div className="flex min-w-0 flex-1 items-center px-4 tracking-wider md:px-5">
+          <span className="truncate text-[13px] font-semibold tracking-wider sm:text-sm">
             {status === "copied"
               ? "Correo copiado"
               : status === "error"

@@ -16,30 +16,46 @@ export function meta() {
 
 export default function ContactoPage() {
   return (
-    <main className="relative min-h-screen bg-black text-white">
+    <main className="relative min-h-screen bg-[#263D63] text-white">
       <div className="mx-auto flex min-h-screen max-w-360 flex-col justify-start px-5 pb-20 pt-32 sm:px-6 md:px-10 md:pb-20 md:pt-40 lg:justify-center lg:px-30">
         <div className="grid w-full gap-16 md:gap-16 lg:grid-cols-2 lg:items-stretch">
           {/* Columna izquierda */}
-          <section className="mt-9 flex max-w-xl flex-col md:mt-0">
+          <section className="mt-14 flex max-w-xl flex-col md:mt-0">
             <h1 className="text-5xl font-normal leading-none tracking-[-0.03em] md:text-7xl">
               Contacto
             </h1>
 
-            <p className="mt-7 max-w-lg text-[15px] leading-6 text-white/75 md:mt-8 md:text-lg md:leading-8">
+            <p className="mt-7 max-w-lg text-[15px] leading-6 tracking-[0.03em] text-white/75 md:mt-8 md:text-lg md:leading-8">
               Gloria Viva es una guía independiente y no oficial dedicada a las
               cofradías, hermandades y devociones de gloria de Toledo capital.
             </p>
 
             <Link
               to="/faq"
-              className="mt-7 inline-flex w-fit items-center gap-3 text-sm font-medium text-white/75 transition-colors duration-200 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white md:mt-8"
+              className="
+                mt-7
+                inline-flex
+                w-fit
+                items-center
+                gap-3
+                text-[1.05em]
+                tracking-[0.03em]
+                text-white/75
+                transition-colors
+                duration-200
+                hover:text-white
+                focus-visible:outline-2
+                focus-visible:outline-offset-4
+                focus-visible:outline-white
+                md:mt-8
+              "
             >
               Preguntas frecuentes
               <span aria-hidden="true">→</span>
             </Link>
 
             <div className="mt-8 border-t border-white/15 pt-7 md:mt-10 md:pt-8">
-              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-white/75">
+              <p className="text-sm uppercase tracking-[0.18em] text-white/75">
                 Puedes escribir para
               </p>
 
@@ -48,7 +64,7 @@ export default function ContactoPage() {
                   <span aria-hidden="true" className="text-white/75">
                     —
                   </span>
-                  <span>
+                  <span className="tracking-wide">
                     Comunicar información incorrecta o desactualizada.
                   </span>
                 </li>
@@ -57,7 +73,7 @@ export default function ContactoPage() {
                   <span aria-hidden="true" className="text-white/75">
                     —
                   </span>
-                  <span>
+                  <span className="tracking-wide">
                     Proponer información, fotografías o colaboraciones.
                   </span>
                 </li>
@@ -66,14 +82,16 @@ export default function ContactoPage() {
                   <span aria-hidden="true" className="text-white/75">
                     —
                   </span>
-                  <span>Solicitar la corrección o retirada de contenidos.</span>
+                  <span className="tracking-wide">
+                    Solicitar la corrección o retirada de contenidos.
+                  </span>
                 </li>
 
                 <li className="flex gap-4">
                   <span aria-hidden="true" className="text-white/75">
                     —
                   </span>
-                  <span>
+                  <span className="tracking-wide">
                     Consultar cuestiones sobre el diseño y desarrollo del
                     proyecto.
                   </span>
@@ -83,7 +101,7 @@ export default function ContactoPage() {
                   <span aria-hidden="true" className="text-white/75">
                     —
                   </span>
-                  <span>
+                  <span className="tracking-wide">
                     Cualquier otra cuestión relacionada con Gloria Viva que
                     quieras comunicar.
                   </span>
@@ -98,7 +116,7 @@ export default function ContactoPage() {
               ¿Hablamos?
             </h2>
 
-            <p className="mt-6 text-base leading-7 text-black/75 md:mt-8">
+            <p className="mt-6 text-[15px] leading-6 tracking-[0.03em] text-black/75 md:mt-8 md:text-lg md:leading-8">
               Estoy abierto a correcciones, propuestas y colaboraciones que
               ayuden a mejorar la guía y mantener su información útil y
               actualizada.
@@ -109,12 +127,12 @@ export default function ContactoPage() {
             </div>
 
             <div className="mt-8 border-t border-black/15 pt-7 md:mt-8">
-              <p className="text-sm leading-6 text-black/75">
+              <p className="text-[15px] leading-6 tracking-wider text-black/75">
                 Gloria Viva no es un canal oficial de las hermandades,
                 cofradías, parroquias ni de ninguna institución.
               </p>
 
-              <p className="mt-4 text-sm leading-6 text-black/75">
+              <p className="mt-4 text-[15px] leading-6 tracking-wider text-black/75">
                 Para confirmar horarios, suspensiones o cambios de última hora,
                 consulta siempre los canales oficiales de la entidad
                 organizadora.

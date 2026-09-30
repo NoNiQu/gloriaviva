@@ -15,7 +15,7 @@ export function HomeHero() {
   return (
     <div
       id="home-hero"
-      className="relative h-svh min-h-190 overflow-hidden bg-black text-white md:h-screen"
+      className="relative h-svh min-h-190 overflow-hidden bg-white text-white md:h-screen"
     >
       {/* Imagen de fondo */}
       <picture>

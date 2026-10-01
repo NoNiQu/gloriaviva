@@ -148,8 +148,8 @@ export function ScrollToTop() {
         "focus-visible:outline-2 focus-visible:outline-offset-4",
         "md:bottom-8 md:right-8",
         isOnDarkBackground
-          ? "border-white bg-white text-black focus-visible:outline-white"
-          : "border-black bg-black text-white focus-visible:outline-black",
+          ? "border-white bg-white text-[#263D63] focus-visible:outline-white"
+          : "border-[#263D63] bg-[#263D63] text-white focus-visible:outline-[#263D63]",
         isVisible
           ? "pointer-events-auto opacity-100"
           : "pointer-events-none opacity-0",

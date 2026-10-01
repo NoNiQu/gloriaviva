@@ -46,10 +46,10 @@ export function CultoCard({ card }: CultoCardProps) {
 
   const gradient = `linear-gradient(
     to bottom,
-    transparent 45%,
-    ${colorFondo}00 50%,
-    ${colorFondo}80 62%,
-    ${colorFondo} 75%,
+    transparent 51%,
+    ${colorFondo}00 57%,
+    ${colorFondo}80 70%,
+    ${colorFondo} 80%,
     ${colorFondo} 100%
   )`;
 

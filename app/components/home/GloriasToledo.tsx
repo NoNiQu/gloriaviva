@@ -35,16 +35,16 @@ export function GloriasToledo() {
         <div className="mt-16 grid gap-16 md:mt-24 md:grid-cols-3 md:gap-3 lg:mt-28">
           <Link
             to="/cofradias"
-            className="group relative flex min-h-92 flex-col overflow-hidden rounded-2xl p-9 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black md:min-h-80 md:p-9 lg:px-8 lg:py-12"
+            className="group relative flex min-h-92 flex-col overflow-hidden rounded-2xl p-9 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#263D63] md:min-h-80 md:p-9 lg:px-8 lg:py-12"
           >
             <span
               aria-hidden="true"
-              className="absolute inset-0 origin-bottom-right scale-0 bg-black transition-transform duration-450ms ease-out group-hover:scale-100 group-focus-visible:scale-100"
+              className="absolute inset-0 origin-bottom-right scale-0 bg-[#263D63] transition-transform duration-450ms ease-out group-hover:scale-100 group-focus-visible:scale-100"
             />
 
             <span
               aria-hidden="true"
-              className="absolute bottom-0 left-1/2 z-20 h-px w-[70%] -translate-x-1/2 bg-black/15 transition-colors duration-500 group-hover:bg-white/15 group-focus-visible:bg-white/15 md:bottom-auto md:left-auto md:right-0 md:top-1/2 md:h-[70%] md:w-px md:translate-x-0 md:-translate-y-1/2"
+              className="absolute bottom-0 left-1/2 z-20 h-px w-[70%] -translate-x-1/2 bg-[#263D63]/15 transition-colors duration-500 group-hover:bg-white/15 group-focus-visible:bg-white/15 md:bottom-auto md:left-auto md:right-0 md:top-1/2 md:h-[70%] md:w-px md:translate-x-0 md:-translate-y-1/2"
             />
 
             <h3 className="relative z-10 text-4xl font-normal leading-none tracking-[-0.03em] transition-colors duration-500 group-hover:text-white group-focus-visible:text-white md:text-5xl xl:whitespace-nowrap">
@@ -63,16 +63,16 @@ export function GloriasToledo() {
 
           <Link
             to="/cultos"
-            className="group relative flex min-h-92 flex-col overflow-hidden rounded-2xl p-9 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black md:min-h-80 md:p-9 lg:px-8 lg:py-12"
+            className="group relative flex min-h-92 flex-col overflow-hidden rounded-2xl p-9 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#263D63] md:min-h-80 md:p-9 lg:px-8 lg:py-12"
           >
             <span
               aria-hidden="true"
-              className="absolute inset-0 origin-bottom-right scale-0 bg-black transition-transform duration-450ms ease-out group-hover:scale-100 group-focus-visible:scale-100"
+              className="absolute inset-0 origin-bottom-right scale-0 bg-[#263D63] transition-transform duration-450ms ease-out group-hover:scale-100 group-focus-visible:scale-100"
             />
 
             <span
               aria-hidden="true"
-              className="absolute bottom-0 left-1/2 z-20 h-px w-[70%] -translate-x-1/2 bg-black/15 transition-colors duration-500 group-hover:bg-white/15 group-focus-visible:bg-white/15 md:bottom-auto md:left-auto md:right-0 md:top-1/2 md:h-[70%] md:w-px md:translate-x-0 md:-translate-y-1/2"
+              className="absolute bottom-0 left-1/2 z-20 h-px w-[70%] -translate-x-1/2 bg-[#263D63]/15 transition-colors duration-500 group-hover:bg-white/15 group-focus-visible:bg-white/15 md:bottom-auto md:left-auto md:right-0 md:top-1/2 md:h-[70%] md:w-px md:translate-x-0 md:-translate-y-1/2"
             />
 
             <h3 className="relative z-10 text-4xl font-normal leading-none tracking-[-0.03em] transition-colors duration-500 group-hover:text-white group-focus-visible:text-white md:text-5xl xl:whitespace-nowrap">
@@ -92,11 +92,11 @@ export function GloriasToledo() {
 
           <Link
             to="/sedescanonicas"
-            className="group relative flex min-h-92 flex-col overflow-hidden rounded-2xl p-9 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black md:min-h-80 md:p-9 lg:px-8 lg:py-12"
+            className="group relative flex min-h-92 flex-col overflow-hidden rounded-2xl p-9 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#263D63] md:min-h-80 md:p-9 lg:px-8 lg:py-12"
           >
             <span
               aria-hidden="true"
-              className="absolute inset-0 origin-bottom-right scale-0 bg-black transition-transform duration-450ms ease-out group-hover:scale-100 group-focus-visible:scale-100"
+              className="absolute inset-0 origin-bottom-right scale-0 bg-[#263D63] transition-transform duration-450ms ease-out group-hover:scale-100 group-focus-visible:scale-100"
             />
 
             <h3 className="relative z-10 text-4xl font-normal leading-none tracking-[-0.03em] transition-colors duration-500 group-hover:text-white group-focus-visible:text-white md:text-5xl xl:whitespace-nowrap">

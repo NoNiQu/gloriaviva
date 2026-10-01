@@ -161,8 +161,8 @@ export function ProximosCultos() {
               bg-white
               px-7
               py-3
-              text-sm
-              tracking-[0.04em]
+              text-base
+              tracking-[0.08em]
               text-black
               transition-colors
               duration-200
@@ -175,6 +175,7 @@ export function ProximosCultos() {
               sm:w-auto
               sm:px-8
               sm:text-base
+              sm:tracking-[0.04em]
             "
           >
             CULTOS DE SEPTIEMBRE
@@ -183,7 +184,8 @@ export function ProximosCultos() {
           <Link
             to="/cultos/todos"
             className="
-              inline-flex
+              hidden
+              sm:inline-flex
               min-h-14
               w-full
               items-center

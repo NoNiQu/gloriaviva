@@ -7,15 +7,21 @@ export type CultoCardData = {
   fecha: string;
   mes: string;
   diaInicio: number;
+
   imagenUrl: string;
+  imagenMovilUrl?: string;
   imagenAlt: string;
+
   colorFondo: string;
+
   cultosHref?: string | null;
   procesionHref?: string | null;
+
   cultosTexto?: string;
   procesionTexto?: string;
+
   etiquetaSuperior?: string | null;
+
   titleSize?: CultoCardTitleSize;
   imagePosition?: string;
-  prioridad?: boolean;
 };

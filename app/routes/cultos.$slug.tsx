@@ -248,16 +248,18 @@ export default function CultosMesPage() {
   }
 
   if (mostrarTodos) {
+    const primerMesConCultos = meses.find((mes) => mesTieneCultos(mes))?.slug;
+
     return (
       <main className="mx-auto min-h-screen max-w-7xl px-5 pb-20 pt-48 lg:pt-50">
         <header className="mb-16 text-center lg:mb-20">
           <h1
             className="
-            text-4xl
-            leading-none
-            md:text-5xl
-            lg:text-7xl
-          "
+              text-4xl
+              leading-none
+              md:text-5xl
+              lg:text-7xl
+            "
           >
             Todos los Cultos
           </h1>
@@ -278,17 +280,20 @@ export default function CultosMesPage() {
                 <h2
                   id={`cultos-${mes.slug}`}
                   className="
-                  mb-15
-                  text-center
-                  text-4xl
-                  leading-none
-                  md:text-5xl
-                "
+                    mb-15
+                    text-center
+                    text-4xl
+                    leading-none
+                    md:text-5xl
+                  "
                 >
                   {mes.nombre}
                 </h2>
 
-                <CultosGrid cards={cardsDelMes} />
+                <CultosGrid
+                  cards={cardsDelMes}
+                  priorizarPrimera={mes.slug === primerMesConCultos}
+                />
               </section>
             );
           })}
@@ -301,24 +306,24 @@ export default function CultosMesPage() {
           <Link
             to="/cultos"
             className="
-            inline-flex
-            min-h-16
-            items-center
-            justify-center
-            rounded-2xl
-            border
-            border-black
-            px-10
-            py-4
-            text-center
-            text-lg
-            transition-colors
-            hover:bg-black
-            hover:text-white
-            focus-visible:outline-2
-            focus-visible:outline-offset-4
-            focus-visible:outline-black
-          "
+              inline-flex
+              min-h-16
+              items-center
+              justify-center
+              rounded-2xl
+              border
+              border-black
+              px-10
+              py-4
+              text-center
+              text-lg
+              transition-colors
+              hover:bg-black
+              hover:text-white
+              focus-visible:outline-2
+              focus-visible:outline-offset-4
+              focus-visible:outline-black
+            "
           >
             VOLVER A CULTOS
           </Link>
@@ -342,7 +347,7 @@ export default function CultosMesPage() {
       </header>
 
       {cardsDelMes.length > 0 ? (
-        <CultosGrid cards={cardsDelMes} />
+        <CultosGrid cards={cardsDelMes} priorizarPrimera />
       ) : (
         <div className="py-20 text-center">
           <p className="text-lg">No hay cultos publicados para este mes.</p>

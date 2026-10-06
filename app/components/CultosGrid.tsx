@@ -3,13 +3,33 @@ import type { CultoCardData } from "../types/culto_card";
 
 type CultosGridProps = {
   cards: CultoCardData[];
+  priorizarPrimera?: boolean;
 };
 
-export function CultosGrid({ cards }: CultosGridProps) {
-  const cardsOrdenadas = [...cards].sort(
-    (a, b) =>
-      a.diaInicio - b.diaInicio || a.nombre.localeCompare(b.nombre, "es"),
-  );
+export function CultosGrid({
+  cards,
+  priorizarPrimera = true,
+}: CultosGridProps) {
+  /*
+   * Ordenamos primero por día.
+   *
+   * Si dos cultos empiezan el mismo día, mantenemos el orden
+   * original de cultos_cards.ts.
+   *
+   * Esto permite decidir manualmente casos como:
+   * Salud → Guadalupe.
+   */
+  const cardsOrdenadas = cards
+    .map((card, index) => ({
+      card,
+      ordenOriginal: index,
+    }))
+    .sort(
+      (a, b) =>
+        a.card.diaInicio - b.card.diaInicio ||
+        a.ordenOriginal - b.ordenOriginal,
+    )
+    .map(({ card }) => card);
 
   const totalCards = cardsOrdenadas.length;
 
@@ -77,7 +97,10 @@ export function CultosGrid({ cards }: CultosGridProps) {
                 : "",
             ].join(" ")}
           >
-            <CultoCard card={card} />
+            <CultoCard
+              card={card}
+              prioridad={priorizarPrimera && index === 0}
+            />
           </div>
         );
       })}

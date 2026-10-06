@@ -7,6 +7,7 @@ import type { CultoCardData } from "../types/culto_card";
 
 type CultoCardProps = {
   card: CultoCardData;
+  prioridad?: boolean;
 };
 
 type VistaCard = "principal" | "cultos" | "procesion";
@@ -17,7 +18,7 @@ const titleSizeClasses = {
   large: "text-[clamp(4.8rem,20cqw,9rem)]",
 };
 
-export function CultoCard({ card }: CultoCardProps) {
+export function CultoCard({ card, prioridad = false }: CultoCardProps) {
   const [vista, setVista] = useState<VistaCard>("principal");
 
   const {
@@ -26,12 +27,12 @@ export function CultoCard({ card }: CultoCardProps) {
     subnombre,
     fecha,
     imagenUrl,
+    imagenMovilUrl,
     imagenAlt,
     colorFondo,
     etiquetaSuperior,
     titleSize = "medium",
     imagePosition = "50% 50%",
-    prioridad = false,
   } = card;
 
   const advocacionId = String(id);
@@ -69,23 +70,27 @@ export function CultoCard({ card }: CultoCardProps) {
     >
       {vista === "principal" ? (
         <>
-          <img
-            src={imagenUrl}
-            alt={imagenAlt}
-            loading={prioridad ? "eager" : "lazy"}
-            fetchPriority={prioridad ? "high" : "auto"}
-            decoding="async"
-            className="
-              absolute
-              inset-0
-              h-full
-              w-full
-              object-cover
-            "
-            style={{
-              objectPosition: imagePosition,
-            }}
-          />
+          <picture className="absolute inset-0 block h-full w-full">
+            {imagenMovilUrl && (
+              <source media="(max-width: 767px)" srcSet={imagenMovilUrl} />
+            )}
+
+            <img
+              src={imagenUrl}
+              alt={imagenAlt}
+              loading={prioridad ? "eager" : "lazy"}
+              fetchPriority={prioridad ? "high" : "auto"}
+              decoding="async"
+              className="
+                h-full
+                w-full
+                object-cover
+              "
+              style={{
+                objectPosition: imagePosition,
+              }}
+            />
+          </picture>
 
           <div
             aria-hidden="true"
@@ -145,7 +150,7 @@ export function CultoCard({ card }: CultoCardProps) {
               {nombre}{" "}
               {subnombre && (
                 <span
-                  className="block text-4xl mt-2"
+                  className="mt-2 block text-4xl"
                   style={{ letterSpacing: "0.02em" }}
                 >
                   {subnombre}

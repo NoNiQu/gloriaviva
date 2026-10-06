@@ -143,19 +143,63 @@ export function ScrollToTop() {
       aria-hidden={!isVisible}
       tabIndex={isVisible ? 0 : -1}
       className={[
-        "fixed bottom-5 right-5 z-50 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full border",
-        "transition-[opacity,background-color,color,border-color] duration-300",
+        "fixed bottom-5 right-5 z-50 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full",
+        "transition-opacity duration-300",
+        "motion-reduce:transition-none",
+        "will-change-[transform,opacity]",
         "focus-visible:outline-2 focus-visible:outline-offset-4",
         "md:bottom-8 md:right-8",
         isOnDarkBackground
-          ? "border-white bg-white text-[#263D63] focus-visible:outline-white"
-          : "border-[#263D63] bg-[#263D63] text-white focus-visible:outline-[#263D63]",
+          ? "focus-visible:outline-white"
+          : "focus-visible:outline-[#263D63]",
         isVisible
           ? "pointer-events-auto opacity-100"
           : "pointer-events-none opacity-0",
       ].join(" ")}
     >
-      <svg aria-hidden="true" viewBox="0 0 24 24" className="h-8 w-8">
+      {/* Variante para fondos oscuros */}
+      <span
+        aria-hidden="true"
+        className={[
+          "absolute inset-0 rounded-full border border-white bg-white",
+          "transition-opacity duration-300 motion-reduce:transition-none",
+          isOnDarkBackground ? "opacity-100" : "opacity-0",
+        ].join(" ")}
+      />
+
+      {/* Variante para fondos claros */}
+      <span
+        aria-hidden="true"
+        className={[
+          "absolute inset-0 rounded-full border border-[#263D63] bg-[#263D63]",
+          "transition-opacity duration-300 motion-reduce:transition-none",
+          isOnDarkBackground ? "opacity-0" : "opacity-100",
+        ].join(" ")}
+      />
+
+      {/* Flecha azul */}
+      <svg
+        aria-hidden="true"
+        viewBox="0 0 24 24"
+        className={[
+          "absolute inset-0 m-auto h-8 w-8 text-[#263D63]",
+          "transition-opacity duration-300 motion-reduce:transition-none",
+          isOnDarkBackground ? "opacity-100" : "opacity-0",
+        ].join(" ")}
+      >
+        <path d="M12 7 5.5 15h13L12 7Z" fill="currentColor" />
+      </svg>
+
+      {/* Flecha blanca */}
+      <svg
+        aria-hidden="true"
+        viewBox="0 0 24 24"
+        className={[
+          "absolute inset-0 m-auto h-8 w-8 text-white",
+          "transition-opacity duration-300 motion-reduce:transition-none",
+          isOnDarkBackground ? "opacity-0" : "opacity-100",
+        ].join(" ")}
+      >
         <path d="M12 7 5.5 15h13L12 7Z" fill="currentColor" />
       </svg>
     </button>

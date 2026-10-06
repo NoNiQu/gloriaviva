@@ -25,10 +25,15 @@ export default function handleRequest(
     const contentSecurityPolicy = [
       "default-src 'none'",
       `script-src 'self' 'nonce-${nonce}'`,
+
       "style-src 'self'",
+      "style-src-elem 'self'",
+      "style-src-attr 'unsafe-inline'",
+
       "img-src 'self' data: https://*.supabase.co",
       "font-src 'self'",
       "connect-src 'self' https://*.supabase.co wss://*.supabase.co",
+
       "object-src 'none'",
       "base-uri 'self'",
       "form-action 'self'",
@@ -38,7 +43,6 @@ export default function handleRequest(
     responseHeaders.set("Content-Security-Policy", contentSecurityPolicy);
   }
 
-  // https://httpwg.org/specs/rfc9110.html#HEAD
   if (request.method.toUpperCase() === "HEAD") {
     return new Response(null, {
       status: responseStatusCode,

@@ -22,7 +22,7 @@ export function Footer() {
 
   const logo = (
     <img
-      src="/logoWeb.png"
+      src="/logoWeb.webp"
       alt="Gloria Viva — Glorias de Toledo"
       className="block h-auto w-62.5"
     />

@@ -91,8 +91,8 @@ export function Header() {
     <img
       src={mobileLogoSrc}
       alt="Gloria Viva — Glorias de Toledo"
-      width={300}
-      height={200}
+      width={140}
+      height={95}
       loading="eager"
       fetchPriority={isHomePage ? "high" : "auto"}
       className="h-auto w-35"

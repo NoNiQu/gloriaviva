@@ -68,17 +68,21 @@ export function Header() {
     };
   }, [isMenuOpen]);
 
-  const desktopLogoSrc = hasWhiteHeader ? "/logoWeb.png" : "/logoWeb_B.png";
+  const desktopLogoSrc = hasWhiteHeader ? "/logoWeb.webp" : "/logoWeb_B.webp";
 
   const mobileLogoSrc =
     hasWhiteHeader && !isMenuOpen
-      ? "/logoWebMovil_B.png"
-      : "/logoWebMovil_A.png";
+      ? "/logoWebMovil_B.webp"
+      : "/logoWebMovil_A.webp";
 
   const desktopLogo = (
     <img
       src={desktopLogoSrc}
       alt="Gloria Viva — Glorias de Toledo"
+      width={300}
+      height={60}
+      loading="eager"
+      fetchPriority={isHomePage ? "high" : "auto"}
       className="h-auto w-62.5"
     />
   );
@@ -87,6 +91,10 @@ export function Header() {
     <img
       src={mobileLogoSrc}
       alt="Gloria Viva — Glorias de Toledo"
+      width={300}
+      height={200}
+      loading="eager"
+      fetchPriority={isHomePage ? "high" : "auto"}
       className="h-auto w-35"
     />
   );

@@ -1,7 +1,6 @@
 import type { Route } from "./+types/home";
 import { HomeHero } from "~/components/home/HomeHero";
 import { ProximosCultos } from "~/components/home/ProximosCultos";
-import { GloriasNoDescansan } from "~/components/home/GloriasNoDescansan";
 import { GloriasToledo } from "~/components/home/GloriasToledo";
 import { Agradecimientos } from "~/components/home/Agradecimiento";
 

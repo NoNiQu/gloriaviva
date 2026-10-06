@@ -132,21 +132,37 @@ export function ProximosCultos() {
       />
 
       {/* Título */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-10 flex justify-center px-5 pt-26 text-center sm:px-6 sm:pt-28 md:pt-30 lg:pt-32">
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-10 flex justify-center px-5 pt-20 text-center sm:px-6 sm:pt-24 md:pt-30 lg:pt-28 xl:pt-30">
         <h2 id="cultos-septiembre-title" className="flex flex-col items-center">
-          <span className="text-[2.4rem] leading-none tracking-[-0.03em] sm:text-[2.8rem] md:text-[3.2rem] lg:text-[3.5rem]">
+          <span className="text-[2.5rem] leading-none tracking-[-0.03em] sm:text-[2.8rem] md:text-[3.2rem] lg:text-[2.9rem] xl:text-[3.15rem]">
             Cultos
           </span>
 
-          <span className="mt-3 text-[clamp(2.35rem,10.5vw,7.8rem)] leading-[0.86] tracking-[-0.045em]">
+          <span
+            className="
+              mt-2
+              text-[3.4rem]
+              leading-[0.88]
+              tracking-[-0.045em]
+              sm:mt-3
+              sm:text-[4.75rem]
+              md:text-[5.8rem]
+              lg:mt-2
+              lg:text-[5.75rem]
+              lg:leading-[0.9]
+              lg:tracking-[-0.04em]
+              xl:text-[6.5rem]
+              2xl:text-[7rem]
+            "
+          >
             SEPTIEMBRE
           </span>
         </h2>
       </div>
 
       {/* Botones inferiores */}
-      <div className="absolute inset-x-0 bottom-12 z-10 flex justify-center px-6 sm:bottom-14 md:bottom-16">
-        <div className="flex w-full max-w-2xl flex-col items-center justify-center gap-3 sm:w-auto sm:flex-row sm:gap-30">
+      <div className="absolute inset-x-0 bottom-24 z-10 flex justify-center px-6 sm:bottom-14 md:bottom-16">
+        <div className="flex w-full max-w-2xl flex-col items-center justify-center gap-3 sm:w-auto sm:flex-row sm:gap-8 lg:gap-10">
           <Link
             to="/cultos/septiembre"
             className="
@@ -176,6 +192,21 @@ export function ProximosCultos() {
               sm:px-8
               sm:text-base
               sm:tracking-[0.04em]
+              lg:min-h-16
+              lg:min-w-74
+              lg:border-[#eee9dc]
+              lg:bg-[#eee9dc]
+              lg:px-10
+              lg:py-4
+              lg:text-[1.18rem]
+              lg:leading-none
+              lg:tracking-wide
+              lg:text-[#080807]
+              lg:hover:border-[#d8d2c4]
+              lg:hover:bg-[#d8d2c4]
+              lg:hover:text-[#080807]
+              xl:min-w-76
+              xl:text-[1.22rem]
             "
           >
             CULTOS DE SEPTIEMBRE
@@ -210,6 +241,21 @@ export function ProximosCultos() {
               sm:w-auto
               sm:px-8
               sm:text-base
+              lg:min-h-16
+              lg:min-w-74
+              lg:border-[#eee9dc]
+              lg:bg-[#eee9dc]
+              lg:px-10
+              lg:py-4
+              lg:text-[1.18rem]
+              lg:leading-none
+              lg:tracking-wide
+              lg:text-[#080807]
+              lg:hover:border-[#d8d2c4]
+              lg:hover:bg-[#d8d2c4]
+              lg:hover:text-[#080807]
+              xl:min-w-76
+              xl:text-[1.22rem]
             "
           >
             TODOS LOS CULTOS

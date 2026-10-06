@@ -63,7 +63,7 @@ export function ScrollToTop() {
   const buttonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    let frameId: number;
+    let frameId = 0;
 
     const updateButton = () => {
       const button = buttonRef.current;
@@ -72,7 +72,22 @@ export function ScrollToTop() {
         return;
       }
 
-      setIsVisible(window.scrollY > 500);
+      cancelAnimationFrame(frameId);
+
+      const shouldBeVisible = window.scrollY > 500;
+
+      setIsVisible(shouldBeVisible);
+
+      /*
+       * Mientras el botón está oculto no necesitamos consultar
+       * geometría, estilos ni posición del Footer.
+       *
+       * Esto evita provocar cálculos de layout durante la carga inicial.
+       */
+      if (!shouldBeVisible) {
+        button.style.transform = "translateY(0)";
+        return;
+      }
 
       const footer = document.getElementById("site-footer");
 
@@ -95,8 +110,6 @@ export function ScrollToTop() {
       } else {
         button.style.transform = "translateY(0)";
       }
-
-      cancelAnimationFrame(frameId);
 
       frameId = requestAnimationFrame(() => {
         if (buttonRef.current) {

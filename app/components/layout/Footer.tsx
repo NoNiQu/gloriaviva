@@ -24,6 +24,9 @@ export function Footer() {
     <img
       src="/logoWeb.webp"
       alt="Gloria Viva — Glorias de Toledo"
+      width={300}
+      height={60}
+      loading="lazy"
       className="block h-auto w-62.5"
     />
   );

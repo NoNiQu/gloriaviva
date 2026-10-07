@@ -158,6 +158,11 @@ export const cultosCards: CultoCardData[] = [
     colorFondo: "#4E5B3D",
     titleSize: "medium",
     imagePosition: "50% 25%",
+    creditoFoto: {
+      nombre: "Toledo Sacro",
+      logoUrl: "/colaboradores/toledo_sacro.webp",
+      logoAlt: "Toledo Sacro",
+    },
   },
 
   {
@@ -172,6 +177,11 @@ export const cultosCards: CultoCardData[] = [
     colorFondo: "#1F2B3C",
     titleSize: "large",
     imagePosition: "50% 25%",
+    creditoFoto: {
+      nombre: "Toledo Sacro",
+      logoUrl: "/colaboradores/toledo_sacro.webp",
+      logoAlt: "Toledo Sacro",
+    },
   },
 
   {

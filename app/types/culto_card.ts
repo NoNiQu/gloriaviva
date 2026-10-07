@@ -1,5 +1,11 @@
 export type CultoCardTitleSize = "small" | "medium" | "large";
 
+export type CreditoFoto = {
+  nombre: string;
+  logoUrl?: string | null;
+  logoAlt?: string | null;
+};
+
 export type CultoCardData = {
   id: number | string;
   nombre: string;
@@ -24,4 +30,6 @@ export type CultoCardData = {
 
   titleSize?: CultoCardTitleSize;
   imagePosition?: string;
+
+  creditoFoto?: CreditoFoto | null;
 };

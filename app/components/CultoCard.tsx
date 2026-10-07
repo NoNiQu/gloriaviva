@@ -18,6 +18,12 @@ const titleSizeClasses = {
   large: "text-[clamp(4.8rem,20cqw,9rem)]",
 };
 
+const titleSizeMovilClasses = {
+  small: "[@media(max-width:767px)]:text-[clamp(2.8rem,12.2cqw,5.4rem)]",
+  medium: "[@media(max-width:767px)]:text-[clamp(4rem,16.5cqw,7.4rem)]",
+  large: "[@media(max-width:767px)]:text-[clamp(4.8rem,20cqw,9rem)]",
+};
+
 export function CultoCard({ card, prioridad = false }: CultoCardProps) {
   const [vista, setVista] = useState<VistaCard>("principal");
 
@@ -32,6 +38,7 @@ export function CultoCard({ card, prioridad = false }: CultoCardProps) {
     colorFondo,
     etiquetaSuperior,
     titleSize = "medium",
+    titleSizeMovil,
     imagePosition = "50% 50%",
     creditoFoto,
   } = card;
@@ -187,6 +194,7 @@ export function CultoCard({ card, prioridad = false }: CultoCardProps) {
             <h3
               className={`
                 ${titleSizeClasses[titleSize]}
+                ${titleSizeMovil ? titleSizeMovilClasses[titleSizeMovil] : ""}
                 translate-y-[-10%]
                 text-center
                 leading-[0.82]

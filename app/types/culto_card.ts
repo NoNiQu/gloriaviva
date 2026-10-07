@@ -29,6 +29,7 @@ export type CultoCardData = {
   etiquetaSuperior?: string | null;
 
   titleSize?: CultoCardTitleSize;
+  titleSizeMovil?: CultoCardTitleSize;
   imagePosition?: string;
 
   creditoFoto?: CreditoFoto | null;

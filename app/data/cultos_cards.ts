@@ -95,6 +95,7 @@ export const cultosCards: CultoCardData[] = [
     cultosHref: "/cultos/septiembre/desktop/misericordia",
     procesionHref: "/procesiones/misericordia",
     titleSize: "medium",
+    titleSizeMovil: "small",
     imagePosition: "50% 20%",
   },
 

@@ -111,7 +111,7 @@ export default function ContactoPage() {
           </section>
 
           {/* Tarjeta derecha */}
-          <section className="h-full w-full bg-white px-6 py-8 text-black sm:p-8 md:p-12 lg:p-14">
+          <section className="h-full w-full bg-white px-6 py-8 text-[#263D63] sm:p-8 md:p-12 lg:p-14">
             <h2 className="text-5xl font-normal leading-none tracking-[-0.03em] md:text-6xl">
               ¿Hablamos?
             </h2>

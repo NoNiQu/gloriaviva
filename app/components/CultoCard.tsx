@@ -13,7 +13,7 @@ type CultoCardProps = {
 type VistaCard = "principal" | "cultos" | "procesion" | "credito";
 
 const titleSizeClasses = {
-  small: "text-[clamp(3.2rem,13cqw,5.8rem)]",
+  small: "text-[clamp(2.8rem,12.2cqw,5.4rem)]",
   medium: "text-[clamp(4rem,16.5cqw,7.4rem)]",
   large: "text-[clamp(4.8rem,20cqw,9rem)]",
 };
@@ -155,7 +155,7 @@ export function CultoCard({ card, prioridad = false }: CultoCardProps) {
               className="
                 absolute
                 left-1/2
-                top-[3.5%]
+                top-[5.5%]
                 z-20
                 -translate-x-1/2
                 whitespace-nowrap

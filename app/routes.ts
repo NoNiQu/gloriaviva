@@ -11,6 +11,7 @@ export default [
   route("cultos/:slug", "routes/cultos.$slug.tsx"),
 
   route("cofradias", "routes/cofradias.tsx"),
+  route("cofradias/:slug", "routes/cofradias.$slug.tsx"),
 
   route("sedescanonicas", "routes/sedescanonicas.tsx"),
 

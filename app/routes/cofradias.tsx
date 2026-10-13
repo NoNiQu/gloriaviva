@@ -119,10 +119,6 @@ export default function CofradiasPage({ loaderData }: Route.ComponentProps) {
                           {cofradia.subnombre}
                         </p>
                       )}
-
-                      <span className="mt-4 block text-sm tracking-[0.04em] text-black sm:hidden">
-                        Saber más…
-                      </span>
                     </div>
                   </div>
                 </article>

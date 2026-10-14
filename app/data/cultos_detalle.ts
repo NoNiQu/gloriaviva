@@ -1,3 +1,4 @@
+
 import type { CultoDetalle } from "../types/culto_detalle";
 
 export const cultosDetalle: CultoDetalle[] = [
@@ -257,175 +258,256 @@ export const cultosDetalle: CultoDetalle[] = [
   },
 
   {
-  advocacionId: "guadalupe",
-  titulo: "Solemne Triduo",
-  subtitulo: "Cultos en honor de Ntra. Sra. de Guadalupe",
-  bloques: [
-    {
-      id: "guadalupe-triduo",
-      fecha: "Del 6 al 8 de septiembre",
-      lineas: [
-        "19:30 h — Santo Rosario y ejercicio del Triduo",
-        "20:00 h — Santa Misa y Salve cantada",
-      ],
-    },
-    {
-      id: "guadalupe-8-septiembre",
-      titulo: "Festividad de Ntra. Sra. de Guadalupe",
-      fecha: "8 de septiembre",
-      lineas: [
-        "20:00 h — Solemne Celebración Eucarística y Procesión",
-        "Al regreso — Consagración a la Virgen, Himno y Besamanto",
-      ],
-    },
-    {
-      id: "guadalupe-9-septiembre",
-      titulo: "Misa por los hermanos fallecidos",
-      fecha: "9 de septiembre",
-      lineas: [
-        "19:30 h — Santo Rosario",
-        "20:00 h — Santa Misa por los hermanos fallecidos",
-      ],
-    },
-  ],
-},
+    advocacionId: "guadalupe",
+    titulo: "Solemne Triduo",
+    subtitulo: "Cultos en honor de Ntra. Sra. de Guadalupe",
+    bloques: [
+      {
+        id: "guadalupe-triduo",
+        fecha: "Del 6 al 8 de septiembre",
+        lineas: [
+          "19:30 h — Santo Rosario y ejercicio del Triduo",
+          "20:00 h — Santa Misa y Salve cantada",
+        ],
+      },
+      {
+        id: "guadalupe-8-septiembre",
+        titulo: "Festividad de Ntra. Sra. de Guadalupe",
+        fecha: "8 de septiembre",
+        lineas: [
+          "20:00 h — Solemne Celebración Eucarística y Procesión",
+          "Al regreso — Consagración a la Virgen, Himno y Besamanto",
+        ],
+      },
+      {
+        id: "guadalupe-9-septiembre",
+        titulo: "Misa por los hermanos fallecidos",
+        fecha: "9 de septiembre",
+        lineas: [
+          "19:30 h — Santo Rosario",
+          "20:00 h — Santa Misa por los hermanos fallecidos",
+        ],
+      },
+    ],
+  },
 
-{
-  advocacionId: "alcazar",
-  titulo: "Cultos",
-  subtitulo: "Cultos en honor de Santa María del Alcázar",
-  bloques: [
-    {
-      id: "alcazar-24y25-septiembre",
-      fecha: "24 y 25 de septiembre",
-      lineas: [
-        "19:00 h — Santo Rosario y ejercicio del Triduo",
-        "19:30 h — Santa Misa",
-      ],
-    },
-    {
-      id: "alcazar-26-septiembre",
-      fecha: "26 de septiembre",
-      lineas: [
-        "19:00 h — Santa Misa",
-      ],
-    },
-    {
-      id: "alcazar-27-septiembre",
-      titulo: "Fiesta principal",
-      fecha: "27 de septiembre",
-      lineas: [
-        "11:00 h — Santa Misa",
-        "12:00 h — Procesión",
-      ],
-    },
-  ],
-},
+  {
+    advocacionId: "alcazar",
+    titulo: "Cultos",
+    subtitulo: "Cultos en honor de Santa María del Alcázar",
+    bloques: [
+      {
+        id: "alcazar-24y25-septiembre",
+        fecha: "24 y 25 de septiembre",
+        lineas: [
+          "19:00 h — Santo Rosario y ejercicio del Triduo",
+          "19:30 h — Santa Misa",
+        ],
+      },
+      {
+        id: "alcazar-26-septiembre",
+        fecha: "26 de septiembre",
+        lineas: [
+          "19:00 h — Santa Misa",
+        ],
+      },
+      {
+        id: "alcazar-27-septiembre",
+        titulo: "Fiesta principal",
+        fecha: "27 de septiembre",
+        lineas: [
+          "11:00 h — Santa Misa",
+          "12:00 h — Procesión",
+        ],
+      },
+    ],
+  },
 
-{
-  advocacionId: "sagrario",
-  titulo: "Octavario",
-  subtitulo: "Cultos en honor de Ntra. Sra. del Sagrario",
-  bloques: [
-    {
-      id: "sagrario-7-agosto",
-      fecha: "7 de agosto",
-      lineas: [
-        "19:00 h — Descorrimiento del velo y traslado de la imagen desde su capilla al altar y comienzo del Octavario",
-      ],
-    },
-    {
-      id: "sagrario-octavario",
-      fecha: "Del 8 al 14 de agosto",
-      lineas: [
-        "19:00 h — Rosario y Oración",
-        "19:30 h — Santa Misa con predicación",
-      ],
-    },
-    {
-      id: "sagrario-15-agosto",
-      titulo: "Solemnidad de la Asunción de la Virgen María",
-      fecha: "15 de agosto",
-      lineas: [
-        "07:00 h — Santa Misa",
-        "08:00 h — Santa Misa",
-        "09:00 h — Santa Misa",
-        "11:00 h — Misa Estacional",
-        "Al finalizar — Solemne Procesión con la venerada imagen de Ntra. Sra. del Sagrario",
-      ],
-    },
-  ],
-},
-{
-  advocacionId: "carmen-carmelitas",
-  titulo: "Solemne Novena",
-  subtitulo: "Cultos en honor de la Virgen del Carmen",
-  bloques: [
-    {
-      id: "carmen-carmelitas-novena",
-      fecha: "Del 7 al 16 de julio",
-      lineas: [
-        "19:30 h — Santo Rosario",
-        "20:00 h — Santa Eucaristía",
-      ],
-    },
-    {
-      id: "carmen-carmelitas-14-julio",
-      titulo: "Actos destacados",
-      fecha: "14 de julio",
-      lineas: [
-        "20:00 h — Fiesta de los Beatos Mártires Carmelitas y solemne entrada en el templo de la imagen procesional de la Virgen del Carmen",
-      ],
-    },
-    {
-      id: "carmen-carmelitas-15-julio",
-      fecha: "15 de julio",
-      lineas: [
-        "20:00 h — Colecta para las flores de las andas, imposición del Escapulario a los nuevos cofrades y presentación de los niños a la Virgen",
-      ],
-    },
-    {
-      id: "carmen-carmelitas-16-julio",
-      titulo: "Solemnidad de la Virgen del Carmen",
-      fecha: "16 de julio",
-      lineas: [
-        "08:00 h — Rosario de la Aurora",
-        "09:00 h — Santa Misa",
-        "10:00 h — Santa Misa",
-        "12:30 h — Santa Misa",
-        "20:00 h — Solemne Eucaristía",
-        "Al finalizar — Solemne Procesión",
-      ],
-    },
-  ],
-},
-{
-  advocacionId: "carmen-san-andres",
-  titulo: "Solemne Triduo",
-  subtitulo: "Cultos en honor de la Virgen del Carmen de San Andrés",
-  bloques: [
-    {
-      id: "carmen-san-andres-triduo",
-      fecha: "9, 10 y 11 de julio",
-      lineas: [
-        "19:00 h — Triduo y Santa Misa",
-      ],
-    },
-    {
-      id: "carmen-san-andres-11-julio",
-      titulo: "Procesión",
-      fecha: "11 de julio",
-      lineas: [
-        "Al finalizar la Santa Misa — Solemne Procesión",
-      ],
-    },
-    {
-      id: "carmen-san-andres-12-julio",
-      fecha: "12 de julio",
-      lineas: [
-        "12:30 h — Solemne Celebración Eucarística",
-      ],
-    },
-  ],
-},
+  {
+    advocacionId: "sagrario",
+    titulo: "Octavario",
+    subtitulo: "Cultos en honor de Ntra. Sra. del Sagrario",
+    bloques: [
+      {
+        id: "sagrario-7-agosto",
+        fecha: "7 de agosto",
+        lineas: [
+          "19:00 h — Descorrimiento del velo y traslado de la imagen desde su capilla al altar y comienzo del Octavario",
+        ],
+      },
+      {
+        id: "sagrario-octavario",
+        fecha: "Del 8 al 14 de agosto",
+        lineas: [
+          "19:00 h — Rosario y Oración",
+          "19:30 h — Santa Misa con predicación",
+        ],
+      },
+      {
+        id: "sagrario-15-agosto",
+        titulo: "Solemnidad de la Asunción de la Virgen María",
+        fecha: "15 de agosto",
+        lineas: [
+          "07:00 h — Santa Misa",
+          "08:00 h — Santa Misa",
+          "09:00 h — Santa Misa",
+          "11:00 h — Misa Estacional",
+          "Al finalizar — Solemne Procesión con la venerada imagen de Ntra. Sra. del Sagrario",
+        ],
+      },
+    ],
+  },
+
+  {
+    advocacionId: "carmen-carmelitas",
+    titulo: "Solemne Novena",
+    subtitulo: "Cultos en honor de la Virgen del Carmen",
+    bloques: [
+      {
+        id: "carmen-carmelitas-novena",
+        fecha: "Del 7 al 16 de julio",
+        lineas: [
+          "19:30 h — Santo Rosario",
+          "20:00 h — Santa Eucaristía",
+        ],
+      },
+      {
+        id: "carmen-carmelitas-14-julio",
+        titulo: "Actos destacados",
+        fecha: "14 de julio",
+        lineas: [
+          "20:00 h — Fiesta de los Beatos Mártires Carmelitas y solemne entrada en el templo de la imagen procesional de la Virgen del Carmen",
+        ],
+      },
+      {
+        id: "carmen-carmelitas-15-julio",
+        fecha: "15 de julio",
+        lineas: [
+          "20:00 h — Colecta para las flores de las andas, imposición del Escapulario a los nuevos cofrades y presentación de los niños a la Virgen",
+        ],
+      },
+      {
+        id: "carmen-carmelitas-16-julio",
+        titulo: "Solemnidad de la Virgen del Carmen",
+        fecha: "16 de julio",
+        lineas: [
+          "08:00 h — Rosario de la Aurora",
+          "09:00 h — Santa Misa",
+          "10:00 h — Santa Misa",
+          "12:30 h — Santa Misa",
+          "20:00 h — Solemne Eucaristía",
+          "Al finalizar — Solemne Procesión",
+        ],
+      },
+    ],
+  },
+
+  {
+    advocacionId: "carmen-san-andres",
+    titulo: "Solemne Triduo",
+    subtitulo: "Cultos en honor de la Virgen del Carmen de San Andrés",
+    bloques: [
+      {
+        id: "carmen-san-andres-triduo",
+        fecha: "9, 10 y 11 de julio",
+        lineas: [
+          "19:00 h — Triduo y Santa Misa",
+        ],
+      },
+      {
+        id: "carmen-san-andres-11-julio",
+        titulo: "Procesión",
+        fecha: "11 de julio",
+        lineas: [
+          "Al finalizar la Santa Misa — Solemne Procesión",
+        ],
+      },
+      {
+        id: "carmen-san-andres-12-julio",
+        fecha: "12 de julio",
+        lineas: [
+          "12:30 h — Solemne Celebración Eucarística",
+        ],
+      },
+    ],
+  },
+
+  /* ==========================================
+     VIRGEN DE LA GUÍA
+  ========================================== */
+
+  {
+    advocacionId: "guia",
+    titulo: "Cultos y Romería",
+    subtitulo: "Cultos en honor de Nuestra Señora de la Guía",
+    bloques: [
+      {
+        id: "guia-mayo",
+        titulo: "Cultos de mayo",
+        fecha: "Último domingo de mayo",
+        lineas: [
+          "Santa Misa en honor de Nuestra Señora de la Guía — horario por confirmar",
+        ],
+      },
+      {
+        id: "guia-octubre-vispera",
+        titulo: "Cultos previos a la romería",
+        fecha: "Sábado anterior al 12 de octubre",
+        lineas: [
+          "Santo Rosario — horario por confirmar",
+          "Santa Misa por los hermanos difuntos — horario por confirmar",
+        ],
+      },
+      {
+        id: "guia-romeria",
+        titulo: "Romería de Nuestra Señora de la Guía",
+        fecha: "12 de octubre",
+        lineas: [
+          "Santa Misa en honor de la Virgen — horario por confirmar",
+          "Procesión por los alrededores de la ermita — horario por confirmar",
+        ],
+      },
+    ],
+  },
+
+  /* ==========================================
+     NUESTRA SEÑORA DE LA ESTRELLA
+     CULTOS DE 2026
+  ========================================== */
+
+  {
+    advocacionId: "estrella",
+    titulo: "Solemne Novenario",
+    subtitulo: "Cultos en honor de Nuestra Señora de la Estrella",
+    bloques: [
+      {
+        id: "estrella-novenario",
+        titulo: "Solemne Novenario",
+        fecha: "Del 5 al 13 de junio",
+        lineas: [
+          "11:00 h — Santa Misa",
+          "19:30 h — Rosario, Novena, Santa Misa y Salve",
+        ],
+      },
+      {
+        id: "estrella-fiesta-principal",
+        titulo: "Fiesta principal",
+        fecha: "14 de junio",
+        lineas: [
+          "08:30 h — Santa Misa y Salve",
+          "12:00 h — Solemne Función Principal",
+          "19:00 h — Procesión Gloriosa",
+        ],
+      },
+      {
+        id: "estrella-besamanos",
+        titulo: "Besamanos",
+        fecha: "15 de junio",
+        lineas: [
+          "18:00 a 20:00 h — Devoto Besamanos",
+          "20:00 h — Santa Misa",
+        ],
+      },
+    ],
+  },
 ];

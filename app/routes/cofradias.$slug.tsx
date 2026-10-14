@@ -35,8 +35,8 @@ function nombreTipo(tipo: TipoCofradia) {
   switch (tipo) {
     case "devocion-popular":
       return "Devoción popular";
-    case "hermandad":
-      return "Hermandad";
+    case "gloria":
+      return "Hermandad de Gloria";
     default:
       return "Cofradía";
   }
@@ -499,12 +499,12 @@ export default function CofradiaPage({ loaderData }: Route.ComponentProps) {
               </dl>
 
               {/* Redes sociales */}
-              {redes.length > 0 && (
-                <div className="mt-10">
-                  <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-white/70">
-                    Redes sociales
-                  </h2>
+              <div className="mt-10">
+                <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-white/70">
+                  Redes sociales
+                </h2>
 
+                {redes.length > 0 ? (
                   <div className="mt-5 flex flex-wrap gap-3">
                     {redes.map(([tipo, url]) => (
                       <a
@@ -520,8 +520,12 @@ export default function CofradiaPage({ loaderData }: Route.ComponentProps) {
                       </a>
                     ))}
                   </div>
-                </div>
-              )}
+                ) : (
+                  <p className="mt-5 text-sm text-white/85">
+                    No tiene redes sociales disponibles.
+                  </p>
+                )}
+              </div>
             </aside>
 
             {/* Historia */}
@@ -559,6 +563,36 @@ export default function CofradiaPage({ loaderData }: Route.ComponentProps) {
             onAmpliar={setImagenAmpliada}
           />
         ))}
+
+        {cofradia.fotosCedidas === true && (
+          <section
+            aria-label="Agradecimiento por la cesión de fotografías"
+            className="mx-auto max-w-360 px-6 pb-12 md:px-10 md:pb-16 lg:px-30"
+          >
+            <div className="mx-auto flex max-w-3xl flex-col items-center justify-center gap-6 border-t border-black/15 py-10 sm:flex-row sm:gap-10">
+              {cofradia.fotosLogo && (
+                <img
+                  src={cofradia.fotosLogo}
+                  alt={
+                    cofradia.fotoQuien
+                      ? `Logo de ${cofradia.fotoQuien}`
+                      : "Logo de quien cedió las fotografías"
+                  }
+                  loading="lazy"
+                  decoding="async"
+                  className="h-20 w-40 shrink-0 object-contain sm:h-24 sm:w-48"
+                />
+              )}
+
+              <p className="max-w-xl text-center text-lg leading-relaxed text-black/80 sm:text-left">
+                Gracias a {cofradia.fotoQuien || "quienes colaboraron"} por
+                ceder las fotografías. Estoy muy agradecido por su generosidad y
+                apoyo, que han permitido enriquecer esta página con sus
+                imágenes.
+              </p>
+            </div>
+          </section>
+        )}
 
         {/* Volver a cofradías */}
         <nav

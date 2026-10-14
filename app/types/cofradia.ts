@@ -1,7 +1,7 @@
 
 export type TipoCofradia =
   | "cofradia"
-  | "hermandad"
+  | "gloria"
   | "devocion-popular";
 
 export interface RedesSociales {
@@ -60,4 +60,8 @@ export interface CofradiaData {
   procesionId: string | null;
 
   redes: RedesSociales;
+
+  fotosCedidas?: boolean;
+  fotoQuien?: string | null;
+  fotosLogo?: string | null;
 }

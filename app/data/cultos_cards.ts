@@ -1,3 +1,4 @@
+
 import type { CultoCardData } from "../types/culto_card";
 
 export const cultosCards: CultoCardData[] = [
@@ -224,5 +225,49 @@ export const cultosCards: CultoCardData[] = [
     imagenMovilUrl: "/cultos/julio/movil/carmen_sanAndres.webp",
     imagenAlt: "Virgen del Carmen de San Andrés",
     titleSize: "large",
+  },
+
+  /* ==========================================
+     VIRGEN DE LA GUÍA
+     HERMANDAD DE GLORIA
+  ========================================== */
+
+  {
+    id: "guia",
+    nombre: "Guía",
+    fecha: "12 de OCTUBRE",
+    mes: "OCTUBRE",
+    diaInicio: 12,
+
+    // Imágenes pendientes de preparar.
+    imagenUrl: "/cultos/octubre/desktop/guia.webp",
+    imagenMovilUrl: "/cultos/octubre/movil/guia.webp",
+    imagenAlt: "Nuestra Señora de la Guía de Toledo",
+
+    colorFondo: "#590716",
+    titleSize: "large",
+    imagePosition: "50% 30%",
+  },
+
+  /* ==========================================
+     NUESTRA SEÑORA DE LA ESTRELLA
+     HERMANDAD DE GLORIA
+  ========================================== */
+
+  {
+    id: "estrella",
+    nombre: "Estrella",
+    fecha: "5 al 15 de JUNIO",
+    mes: "JUNIO",
+    diaInicio: 5,
+
+    // Imágenes pendientes de preparar.
+    imagenUrl: "/cultos/junio/desktop/estrella.webp",
+    imagenMovilUrl: "/cultos/junio/movil/estrella.webp",
+    imagenAlt: "Nuestra Señora de la Estrella de Toledo",
+
+    colorFondo: "#385A91",
+    titleSize: "large",
+    imagePosition: "50% 25%",
   },
 ];

@@ -54,14 +54,14 @@ export default function CofradiasPage({ loaderData }: Route.ComponentProps) {
         ================================== */}
 
         {cofradias.length === 0 ? (
-          <p className="text-center text-base text-black">
+          <p className="text-center text-base text-black/75">
             No hay cofradías disponibles.
           </p>
         ) : (
           <div
             className={
               unicaCofradia
-                ? "mx-auto grid w-full max-w-96 grid-cols-1"
+                ? "mx-auto grid w-full max-w-120 grid-cols-1"
                 : "grid grid-cols-1 gap-y-8 sm:grid-cols-2 sm:gap-x-10 sm:gap-y-16 lg:grid-cols-3 lg:gap-x-14 lg:gap-y-20"
             }
           >
@@ -78,10 +78,10 @@ export default function CofradiasPage({ loaderData }: Route.ComponentProps) {
                     CARD
                 ================================== */}
 
-                <article className="mx-auto w-full max-w-96">
+                <article className="mx-auto w-full max-w-120">
                   {/* Imagen */}
                   <div className="relative flex justify-center">
-                    <div className="relative flex h-68 w-full items-end justify-center overflow-visible sm:h-80 lg:h-88">
+                    <div className="relative flex h-88 w-full items-end justify-center overflow-visible sm:h-100 lg:h-108">
                       {cofradia.logoUrl ? (
                         <img
                           src={cofradia.logoUrl}
@@ -93,7 +93,7 @@ export default function CofradiasPage({ loaderData }: Route.ComponentProps) {
                       ) : (
                         <div
                           aria-hidden="true"
-                          className="relative z-10 flex h-48 w-48 items-center justify-center rounded-full border border-[#263D63]/15 text-6xl text-black sm:h-56 sm:w-56"
+                          className="relative z-10 flex h-48 w-48 items-center justify-center rounded-full border border-black/15 text-6xl text-black/40 sm:h-56 sm:w-56"
                         >
                           {cofradia.nombreCorto.charAt(0)}
                         </div>
@@ -102,23 +102,27 @@ export default function CofradiasPage({ loaderData }: Route.ComponentProps) {
                       {/* Degradado curvo inferior */}
                       <div
                         aria-hidden="true"
-                        className="pointer-events-none absolute inset-x-8 bottom-0 z-20 h-18 rounded-t-[999px] bg-linear-to-t from-[#F8F7F3] via-[#F8F7F3]/92 to-transparent sm:inset-x-10 sm:h-20"
+                        className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-20 w-full bg-linear-to-t from-[#F8F7F3] via-[#F8F7F3]/92 to-transparent sm:h-22"
                       />
                     </div>
                   </div>
 
                   {/* Bloque de texto */}
-                  <div className="relative z-30 -mt-8 sm:-mt-10">
-                    <div className="mx-auto max-w-76 px-4 py-3 sm:max-w-84 sm:py-4">
-                      <p className="text-[2.1rem] leading-none tracking-[-0.03em] text-black sm:text-[2.4rem]">
+                  <div className="relative z-30 -mt-14 sm:-mt-16">
+                    <div className="mx-auto max-w-76 px-4 py-4 sm:max-w-84 sm:py-5">
+                      <p className="text-[2rem] leading-none tracking-[-0.03em] text-black sm:text-[2.35rem]">
                         {cofradia.nombreCorto || cofradia.nombre}
                       </p>
 
                       {cofradia.subnombre && (
-                        <p className="mt-3 text-[1.2rem] leading-snug tracking-[0.015em] text-black sm:text-[1.3rem]">
+                        <p className="mt-3 text-lg leading-snug tracking-[0.015em] text-black/78 sm:text-[1.35rem]">
                           {cofradia.subnombre}
                         </p>
                       )}
+
+                      <span className="mt-4 block text-sm tracking-[0.04em] text-black/60 sm:hidden">
+                        Saber más…
+                      </span>
                     </div>
                   </div>
                 </article>

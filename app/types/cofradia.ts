@@ -2,7 +2,9 @@
 export type TipoCofradia =
   | "cofradia"
   | "gloria"
-  | "devocion-popular";
+  | "devocion-popular"
+  | "dos-tipos"
+  | "penitencia";
 
 export interface RedesSociales {
   web: string | null;

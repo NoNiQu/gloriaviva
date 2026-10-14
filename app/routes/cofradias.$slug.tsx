@@ -37,6 +37,10 @@ function nombreTipo(tipo: TipoCofradia) {
       return "Devoción popular";
     case "gloria":
       return "Hermandad de Gloria";
+    case "penitencia":
+      return "Hermandad de Penitencia";
+    case "dos-tipos":
+      return "Hermandad de Penitencia y Gloria";
     default:
       return "Cofradía";
   }

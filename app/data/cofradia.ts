@@ -2,8 +2,14 @@
 import type { CofradiaData } from "../types/cofradia";
 
 const carmenPath = "/cofradias/devocion/carmen_carmelitas";
+
 const guiaPath = "/cofradias/gloria/guia";
 const estrellaPath = "/cofradias/gloria/estrella";
+const alegriaPath = "/cofradias/gloria/alegria";
+
+const doloresPath = "/cofradias/penitencia/dolores";
+const misericordiaPath = "/cofradias/penitencia/misericordia";
+const angustiasPath = "/cofradias/penitencia/angustias";
 
 export const cofradias: CofradiaData[] = [
   {
@@ -212,6 +218,270 @@ export const cofradias: CofradiaData[] = [
     fotosCedidas: true,
     fotoQuien: "Hermandad de Nuestra Señora de la Estrella",
     fotosLogo: `${estrellaPath}/fotoslogo.png`,
+  },
 
+  /* ==========================================
+     NUESTRA SEÑORA DE LA ALEGRÍA
+  ========================================== */
+
+  {
+    id: "alegria",
+    slug: "alegria",
+
+    nombre: "Nuestra Señora de la Alegría",
+    nombreCorto: "Alegría",
+
+    sedeCanonica: "Parroquia de San Andrés",
+    tipo: "dos-tipos",
+
+    anioFundacion: 1747,
+    anioRefundacion: null,
+    referenciaHistorica: null,
+
+    historia:
+      "La Hermandad de Nuestra Señora de la Alegría nació en la parroquia de San Cristóbal y sus orígenes se sitúan en el siglo XVIII. Tras distintos cambios de sede, a finales del siglo XIX quedó establecida en la iglesia de San Andrés. En 1982 se incorporó a la Semana Santa de Toledo organizando la procesión del encuentro entre Jesús Resucitado y su Madre. Desde entonces ambas imágenes recorren itinerarios distintos antes de reunirse en la Plaza del Ayuntamiento y regresar juntas a San Andrés.",
+
+    escudoUrl: "/escudos/desktop/gloria/alegria.png",
+    escudoMovilUrl:"/escudos/movil/gloria/alegria.png",
+    logoUrl: `${alegriaPath}/logo.avif`,
+
+    portadaDesktopUrl: `${alegriaPath}/portada.avif`,
+    portada2kUrl: `${alegriaPath}/portada_2k.avif`,
+    portadaMovilUrl: `${alegriaPath}/portadamovil.avif`,
+
+    titulares: [
+      {
+        id: "alegria-titular",
+        nombre: "Nuestra Señora de la Alegría",
+        advocacion: "Virgen de la Alegría",
+        esVirgen: true,
+
+        anio: null,
+        siglo: "XVII",
+        autor: "Anónimo",
+        tipoAndas: "Andas",
+
+        datosTalla:
+          "Imagen mariana tallada y policromada, de autoría anónima, fechada en el siglo XVII. Representa a la Virgen María encinta y conserva una singular iconografía vinculada a la Expectación. Porta un Niño Jesús policromado de época posterior, fechado en el siglo XVIII, y procesiona sobre andas de madera tallada.",
+        fotoUrl: `${alegriaPath}/titular.avif`,
+        galeria: [
+          `${alegriaPath}/galeria1.avif`,
+          `${alegriaPath}/galeria2.avif`,
+          `${alegriaPath}/galeria3.avif`,
+          `${alegriaPath}/galeria4.avif`,
+        ],
+      },
+    ],
+
+    cultosId: "alegria",
+    procesionId: "alegria-principal",
+
+    redes: {
+      web: null,
+      instagram: null,
+      facebook: null,
+      tiktok: null,
+      youtube: null,
+    },
+  },
+
+  /* ==========================================
+     NUESTRA SEÑORA DE LOS DOLORES
+     HERMANDAD DEL SANTO ENCUENTRO
+  ========================================== */
+
+  {
+    id: "dolores",
+    slug: "dolores",
+
+    nombre: "Nuestra Señora de los Dolores",
+    nombreCorto: "Dolores",
+
+    sedeCanonica: "Parroquia de Santiago el Mayor",
+    tipo: "penitencia",
+
+    anioFundacion: 1731,
+    anioRefundacion: null,
+    referenciaHistorica: null,
+
+    historia:
+      "La Hermandad y Esclavitud fue fundada en 1731 en el convento de los Trinitarios Descalzos. Tras el incendio del edificio durante la Guerra de la Independencia, en 1813 las imágenes fueron trasladadas y la corporación quedó vinculada a la parroquia de San Isidoro. Desde 1842 se estableció en Santiago el Mayor. En 1953 comenzó la procesión conocida como Santo Encuentro, concebida como un Vía Crucis y convertida con el tiempo en una de las citas características de la Semana Santa de Toledo.",
+
+    escudoUrl: `/escudos/desktop/penitencia/santo_encuentro.png`,
+    escudoMovilUrl: `/escudos/movil/penitencia/santo_encuentro.png`,
+    logoUrl: `${doloresPath}/logo.avif`,
+
+    portadaDesktopUrl: `${doloresPath}/portada.avif`,
+    portada2kUrl: `${doloresPath}/portada_2k.avif`,
+    portadaMovilUrl: `${doloresPath}/portadamovil.avif`,
+
+    titulares: [
+      {
+        id: "dolores-titular",
+        nombre: "Nuestra Señora de los Dolores",
+        advocacion: "Virgen de los Dolores",
+        esVirgen: true,
+
+        anio: 2023,
+        siglo: "XXI",
+        autor: "Juan Carlos Arango Palacios",
+        tipoAndas: "Andas",
+
+        datosTalla:
+          "Virgen dolorosa de candelero para vestir, tallada en madera de cedro y policromada al óleo por Juan Carlos Arango Palacios. La imagen, de 160 centímetros de altura y brazos articulados, fue incorporada como titular de la Hermandad en 2023.",
+
+        fotoUrl: `${doloresPath}/titular.avif`,
+        galeria: [
+          `${doloresPath}/galeria1.avif`,
+          `${doloresPath}/galeria2.avif`,
+          `${doloresPath}/galeria3.avif`,
+          `${doloresPath}/galeria4.avif`,
+        ],
+      },
+    ],
+
+    cultosId: "dolores",
+    procesionId: "dolores-rosario-matutino",
+
+    redes: {
+      web: null,
+      instagram: null,
+      facebook: null,
+      tiktok: null,
+      youtube: null,
+    },
+  },
+
+  /* ==========================================
+     SANTÍSIMO CRISTO DE LA MISERICORDIA
+  ========================================== */
+
+  {
+    id: "misericordia",
+    slug: "misericordia",
+
+    nombre: "Santísimo Cristo de la Misericordia",
+    nombreCorto: "Misericordia",
+
+    sedeCanonica: "Parroquia de Santa Leocadia",
+    tipo: "penitencia",
+
+    anioFundacion: null,
+    anioRefundacion: 1989,
+    referenciaHistorica: null,
+
+    historia:
+      "La Hermandad tiene sus orígenes en el siglo XVII y sus primeras Ordenanzas conocidas fueron aprobadas en 1656. En 1733 una bula del papa Clemente XII permitió también la incorporación de mujeres. Tras desaparecer a comienzos del siglo XX, fue recuperada en 1989 por un grupo de jóvenes y sus nuevos Estatutos se aprobaron ese mismo año. El Cristo de la Misericordia volvió a procesionar en 1990 y María Santísima de la Caridad se incorporó al cortejo en 1998, quedando la corporación vinculada a Santa Leocadia.",
+
+    escudoUrl: `/escudos/desktop/penitencia/misericordia.png`,
+    escudoMovilUrl: `/escudos/movil/penitencia/misericordia.png`,
+    logoUrl: `${misericordiaPath}/logo.avif`,
+
+    portadaDesktopUrl: `${misericordiaPath}/portada.avif`,
+    portada2kUrl: `${misericordiaPath}/portada_2k.avif`,
+    portadaMovilUrl: `${misericordiaPath}/portadamovil.avif`,
+
+    titulares: [
+      {
+        id: "misericordia-titular",
+        nombre: "Santísimo Cristo de la Misericordia",
+        advocacion: "Cristo de la Misericordia",
+        esVirgen: false,
+
+        anio: null,
+        siglo: "XVII",
+        autor: "Anónimo",
+        tipoAndas: "Tumbado",
+
+        datosTalla:
+          "Crucificado anónimo de escuela castellana del siglo XVII, de tamaño algo menor al natural y sujeto a la Cruz mediante cuatro clavos. Procesiona junto a María Santísima de la Caridad en un único paso de metal repujado.",
+
+        fotoUrl: `${misericordiaPath}/titular.avif`,
+        galeria: [
+          `${misericordiaPath}/galeria1.avif`,
+          `${misericordiaPath}/galeria2.avif`,
+          `${misericordiaPath}/galeria3.avif`,
+          `${misericordiaPath}/galeria4.avif`,
+        ],
+      },
+    ],
+
+    cultosId: "misericordia",
+    procesionId: "misericordia-principal",
+
+    redes: {
+      web: null,
+      instagram: null,
+      facebook: null,
+      tiktok: null,
+      youtube: null,
+    },
+  },
+
+  /* ==========================================
+     NUESTRA SEÑORA DE LAS ANGUSTIAS
+     HERMANDAD DE LAS ANGUSTIAS Y BORRIQUITA
+  ========================================== */
+
+  {
+    id: "angustias",
+    slug: "angustias",
+
+    nombre: "Nuestra Señora de las Angustias",
+    nombreCorto: "Angustias",
+
+    sedeCanonica: "Parroquia Mozárabe de Santas Justa y Rufina",
+    tipo: "penitencia",
+
+    anioFundacion: null,
+    anioRefundacion: 1989,
+    referenciaHistorica: null,
+
+    historia:
+      "Las referencias históricas conservadas sitúan la fundación de la Cofradía de la Virgen de las Angustias en 1599, cuando tenía su sede en el Hospital de San Lázaro, y durante el reinado de Felipe II recibió el título de Real. Tras una larga etapa de menor actividad, un grupo de devotos reorganizó la Hermandad en 1988 y sus Estatutos fueron aprobados en 1989. En 2008 incorporó como titular a Cristo Rey en su entrada triunfal en Jerusalén, ampliando su presencia al Domingo de Ramos.",
+
+    escudoUrl: "/escudos/desktop/penitencia/angustias.png",
+    escudoMovilUrl: "/escudos/movil/penitencia/angustias.png",
+    logoUrl: `${angustiasPath}/logo.avif`,
+
+    portadaDesktopUrl: `${angustiasPath}/portada.avif`,
+    portada2kUrl: `${angustiasPath}/portada_2k.avif`,
+    portadaMovilUrl: `${angustiasPath}/portadamovil.avif`,
+
+    titulares: [
+      {
+        id: "angustias-titular",
+        nombre: "Nuestra Madre María Inmaculada en su Mayor Angustia y Piedad",
+        advocacion: "Nuestra Señora de las Angustias",
+        esVirgen: true,
+
+        anio: 2009,
+        siglo: "XXI",
+        autor: "Antonio José Martínez Rodríguez",
+        tipoAndas: "Carroza",
+
+        datosTalla:
+          "Conjunto de la Piedad presidido por la Virgen realizada en 2009 por Antonio José Martínez Rodríguez. Acoge sobre su regazo un antiguo Cristo yacente anónimo del siglo XVII. Procesiona sobre una carroza revestida de metal repujado y plateado, decorada con los apóstoles y escenas del Vía Crucis.",
+
+        fotoUrl: `${angustiasPath}/titular.avif`,
+        galeria: [
+          `${angustiasPath}/galeria1.avif`,
+          `${angustiasPath}/galeria2.avif`,
+          `${angustiasPath}/galeria3.avif`,
+          `${angustiasPath}/galeria4.avif`,
+        ],
+      },
+    ],
+
+    cultosId: "angustias",
+    procesionId: "angustias-principal",
+
+    redes: {
+      web: null,
+      instagram: null,
+      facebook: null,
+      tiktok: null,
+      youtube: null,
+    },
   },
 ];

@@ -103,7 +103,7 @@ export const cofradias: CofradiaData[] = [
 
     portadaDesktopUrl: `${guiaPath}/portada.avif`,
     portada2kUrl: `${guiaPath}/portada_2k.avif`,
-    portadaMovilUrl: `${guiaPath}/portada_movil.avif`,
+    portadaMovilUrl: `${guiaPath}/portadamovil.avif`,
 
     titulares: [
       {

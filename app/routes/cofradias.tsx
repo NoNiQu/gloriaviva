@@ -1,6 +1,8 @@
 import { Link } from "react-router";
 import type { Route } from "./+types/cofradias";
 import { cofradias } from "~/data/cofradia";
+import { cultosCards } from "~/data/cultos_cards";
+import type { TipoCofradia } from "~/types/cofradia";
 
 /* ==========================================
    SEO
@@ -27,14 +29,64 @@ export function loader() {
   return { cofradias };
 }
 
+const ordenMeses = new Map(
+  [
+    "ENERO",
+    "FEBRERO",
+    "MARZO",
+    "ABRIL",
+    "MAYO",
+    "JUNIO",
+    "JULIO",
+    "AGOSTO",
+    "SEPTIEMBRE",
+    "OCTUBRE",
+    "NOVIEMBRE",
+    "DICIEMBRE",
+  ].map((mes, indice) => [mes, indice]),
+);
+
+function ordenarPorFechaDeCultos(
+  primera: (typeof cofradias)[number],
+  segunda: (typeof cofradias)[number],
+) {
+  const fechaOrden = (cofradia: (typeof cofradias)[number]) => {
+    const culto = cultosCards.find(
+      (item) => item.id === (cofradia.cultosId ?? cofradia.id),
+    );
+    if (!culto) return Number.MAX_SAFE_INTEGER;
+
+    const mes = ordenMeses.get(culto.mes);
+    return mes === undefined
+      ? Number.MAX_SAFE_INTEGER
+      : mes * 32 + culto.diaInicio;
+  };
+
+  return fechaOrden(primera) - fechaOrden(segunda);
+}
+
+function nombreTipo(tipo: TipoCofradia) {
+  switch (tipo) {
+    case "gloria":
+      return "Gloria";
+    case "penitencia":
+      return "Penitencia";
+    case "devocion-popular":
+      return "Devoción popular";
+    case "dos-tipos":
+      return "Penitencia y Gloria";
+    default:
+      return "Cofradía";
+  }
+}
+
 /* ==========================================
    PÁGINA
 ========================================== */
 
 export default function CofradiasPage({ loaderData }: Route.ComponentProps) {
   const { cofradias } = loaderData;
-
-  const unicaCofradia = cofradias.length === 1;
+  const cofradiasOrdenadas = [...cofradias].sort(ordenarPorFechaDeCultos);
 
   return (
     <main className="min-h-svh bg-[#F8F7F3] text-black">
@@ -60,12 +112,12 @@ export default function CofradiasPage({ loaderData }: Route.ComponentProps) {
         ) : (
           <div
             className={
-              unicaCofradia
+              cofradiasOrdenadas.length === 1
                 ? "mx-auto grid w-full max-w-120 grid-cols-1"
                 : "grid grid-cols-1 gap-y-8 sm:grid-cols-2 sm:gap-x-10 sm:gap-y-16 lg:grid-cols-3 lg:gap-x-14 lg:gap-y-20"
             }
           >
-            {cofradias.map((cofradia) => (
+            {cofradiasOrdenadas.map((cofradia) => (
               <Link
                 key={cofradia.id}
                 to={`/cofradias/${cofradia.slug}`}
@@ -74,12 +126,7 @@ export default function CofradiasPage({ loaderData }: Route.ComponentProps) {
                 }`}
                 className="group block text-center focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#263D63]"
               >
-                {/* ==================================
-                    CARD
-                ================================== */}
-
                 <article className="mx-auto w-full max-w-120">
-                  {/* Imagen */}
                   <div className="relative flex justify-center">
                     <div className="relative flex h-88 w-full items-end justify-center overflow-visible sm:h-100 lg:h-108">
                       {cofradia.logoUrl ? (
@@ -98,8 +145,6 @@ export default function CofradiasPage({ loaderData }: Route.ComponentProps) {
                           {cofradia.nombreCorto.charAt(0)}
                         </div>
                       )}
-
-                      {/* Degradado curvo inferior */}
                       <div
                         aria-hidden="true"
                         className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-20 w-full bg-linear-to-t from-[#F8F7F3] via-[#F8F7F3]/92 to-transparent sm:h-22"
@@ -107,22 +152,14 @@ export default function CofradiasPage({ loaderData }: Route.ComponentProps) {
                     </div>
                   </div>
 
-                  {/* Bloque de texto */}
                   <div className="relative z-30 -mt-14 sm:-mt-16">
                     <div className="mx-auto max-w-76 px-4 py-4 sm:max-w-84 sm:py-5">
                       <p className="text-[2rem] leading-none tracking-[-0.03em] text-black sm:text-[2.35rem]">
                         {cofradia.nombreCorto || cofradia.nombre}
                       </p>
-
-                      {cofradia.subnombre && (
-                        <p className="mt-3 text-lg leading-snug tracking-[0.015em] text-black/78 sm:text-[1.35rem]">
-                          {cofradia.subnombre}
-                        </p>
-                      )}
-
-                      <span className="mt-4 block text-sm tracking-[0.04em] text-black/60 sm:hidden">
-                        Saber más…
-                      </span>
+                      <p className="mt-3 uppercase text-lg leading-snug tracking-wider text-black/80 sm:text-[1.20rem]">
+                        {nombreTipo(cofradia.tipo)}
+                      </p>
                     </div>
                   </div>
                 </article>

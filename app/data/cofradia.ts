@@ -6,10 +6,15 @@ const carmenPath = "/cofradias/devocion/carmen_carmelitas";
 const guiaPath = "/cofradias/gloria/guia";
 const estrellaPath = "/cofradias/gloria/estrella";
 const alegriaPath = "/cofradias/gloria/alegria";
+const esperanzaPath = "/cofradias/gloria/esperanza";
+const pazPath = "/cofradias/gloria/paz";
+const carmenPathGloria = "/cofradias/gloria/carmen";
 
 const doloresPath = "/cofradias/penitencia/dolores";
 const misericordiaPath = "/cofradias/penitencia/misericordia";
 const angustiasPath = "/cofradias/penitencia/angustias";
+const salvadorPath = "/cofradias/penitencia/salvador";
+const amparoPath = "/cofradias/penitencia/amparo";
 
 export const cofradias: CofradiaData[] = [
   {
@@ -75,6 +80,7 @@ export const cofradias: CofradiaData[] = [
       instagram:
         "https://www.instagram.com/stma.virgendelcarmentoledo/",
       facebook: null,
+      X: null,
       tiktok: null,
       youtube: null,
     },
@@ -143,6 +149,7 @@ export const cofradias: CofradiaData[] = [
       web: null,
       instagram: null,
       facebook: null,
+      X: null,
       tiktok: null,
       youtube: null,
     },
@@ -211,6 +218,7 @@ export const cofradias: CofradiaData[] = [
       web: "https://www.hermandadestrella.es",
       instagram: "https://www.instagram.com/hermandadestrella/",
       facebook: "https://www.facebook.com/hermandadestrellatoledo",
+      X: null,
       tiktok: null,
       youtube: null,
     },
@@ -278,8 +286,9 @@ export const cofradias: CofradiaData[] = [
 
     redes: {
       web: null,
-      instagram: null,
-      facebook: null,
+      instagram: "https://www.instagram.com/virgendelaalegriatoledo/",
+      facebook: "https://www.facebook.com/virgendelaalegria.toledo.7/",
+      X: null,
       tiktok: null,
       youtube: null,
     },
@@ -344,9 +353,10 @@ export const cofradias: CofradiaData[] = [
     procesionId: "dolores-rosario-matutino",
 
     redes: {
-      web: null,
-      instagram: null,
+      web: "https://santoencuentro.es",
+      instagram: "https://www.instagram.com/santo_encuentro/",
       facebook: null,
+      X: "https://x.com/santo_encuentro",
       tiktok: null,
       youtube: null,
     },
@@ -411,8 +421,9 @@ export const cofradias: CofradiaData[] = [
 
     redes: {
       web: null,
-      instagram: null,
+      instagram: "https://www.instagram.com/misericordiacaridad.cof/",
       facebook: null,
+      X: null,
       tiktok: null,
       youtube: null,
     },
@@ -458,7 +469,7 @@ export const cofradias: CofradiaData[] = [
         anio: 2009,
         siglo: "XXI",
         autor: "Antonio José Martínez Rodríguez",
-        tipoAndas: "Carroza",
+        tipoAndas: "Costal",
 
         datosTalla:
           "Conjunto de la Piedad presidido por la Virgen realizada en 2009 por Antonio José Martínez Rodríguez. Acoge sobre su regazo un antiguo Cristo yacente anónimo del siglo XVII. Procesiona sobre una carroza revestida de metal repujado y plateado, decorada con los apóstoles y escenas del Vía Crucis.",
@@ -478,10 +489,323 @@ export const cofradias: CofradiaData[] = [
 
     redes: {
       web: null,
-      instagram: null,
-      facebook: null,
+      instagram: "https://www.instagram.com/h.borriquita_angustias_toledo/",
+      facebook: "https://www.facebook.com/p/Hermandad-de-las-Angustias-y-Borriquita-de-Toledo-100087111602198/",
+      X: "https://x.com/AngustiasToledo",
       tiktok: null,
       youtube: null,
     },
   },
+
+  
+  /* ==========================================
+     NUESTRA SEÑORA DE LA ESPERANZA
+     COFRADÍA DE GLORIA
+  ========================================== */
+
+  {
+    id: "esperanza",
+    slug: "esperanza",
+
+    nombre: "Nuestra Señora de la Esperanza",
+    nombreCorto: "Esperanza",
+    subnombre: "La Morenita de San Cipriano",
+
+    sedeCanonica: "Iglesia de San Cipriano",
+    tipo: "gloria",
+
+    anioFundacion: null,
+    anioRefundacion: null,
+    referenciaHistorica: 1200,
+
+    historia:
+      "La Cofradía de Nuestra Señora de la Esperanza, constituida en el siglo XVII, custodia una antigua talla románica venerada anteriormente como Nuestra Señora del Destierro. Según la tradición, la Procesión del Voto recuerda el final de una epidemia hacia el año 1200. En 1676 aparece documentada la advocación de la Esperanza. Desde San Cipriano mantiene las procesiones del Voto y de la Octava. La Virgen recibió la coronación canónica el 8 de junio de 1952 en la plaza de Zocodover.",
+
+    escudoUrl: "/escudos/desktop/gloria/esperanza.png",
+    escudoMovilUrl: "/escudos/movil/gloria/esperanza.png",
+
+    logoUrl: `${esperanzaPath}/logo.avif`,
+
+    portadaDesktopUrl: `${esperanzaPath}/portada.avif`,
+    portada2kUrl: `${esperanzaPath}/portada_2k.avif`,
+    portadaMovilUrl: `${esperanzaPath}/portadamovil.avif`,
+
+    titulares: [
+      {
+        id: "esperanza-titular",
+        nombre: "Nuestra Señora de la Esperanza",
+        advocacion: "Virgen de la Esperanza",
+        esVirgen: true,
+
+        anio: null,
+        siglo: "XI",
+        autor: "Anónimo",
+        tipoAndas: "Andas",
+
+        datosTalla:
+          "Talla románica anónima del siglo XI, de unos 50 centímetros de altura, que representa a la Virgen entronizada con el Niño Jesús. Entre finales del siglo XVI y comienzos del XVII fue adaptada como imagen de vestir, desplazando al Niño a su costado izquierdo. Restaurada en 2007, recuperó su policromía medieval. Se muestra sin mantos de noviembre a abril y revestida de mayo a octubre.",
+
+        fotoUrl: `${esperanzaPath}/titular.avif`,
+
+        galeria: [
+          `${esperanzaPath}/galeria1.avif`,
+          `${esperanzaPath}/galeria2.avif`,
+          `${esperanzaPath}/galeria3.avif`,
+          `${esperanzaPath}/galeria4.avif`,
+        ],
+      },
+    ],
+
+    cultosId: "esperanza",
+    procesionId: "esperanza-voto",
+
+    redes: {
+      web: "https://virgendelaesperanzatoledo.es",
+      instagram: "https://www.instagram.com/cofradiaesperanzatoledo/",
+      facebook:
+        "https://www.facebook.com/people/Virgen-De-La-Esperanza-De-Toledo/pfbid0V7FF9VP1vmtypj4BPek1TjDsjR3tkL2agwzK3bbqdDzqPzwcUCLPhu794LuMeNfyl/?ref=bookmarks",
+      X: null,
+      tiktok: null,
+      youtube: null,
+    },
+  },
+
+  
+  /* ==========================================
+     NUESTRA SEÑORA DEL CARMEN
+     SAN ANDRÉS
+     COFRADÍA DE GLORIA
+  ========================================== */
+
+  {
+    id: "carmen-san-andres",
+    slug: "carmen-san-andres",
+
+    nombre: "Nuestra Señora del Carmen",
+    nombreCorto: "Carmen",
+    subnombre: "San Andrés",
+
+    sedeCanonica: "Parroquia de San Andrés",
+    tipo: "gloria",
+
+    anioFundacion: null,
+    anioRefundacion: 2011,
+    referenciaHistorica: null,
+
+    historia:
+      "La Cofradía de Nuestra Señora del Carmen fue fundada en 1711 en la parroquia de San Andrés, con sus primeros estatutos firmados por el deán de la Catedral, Pedro de Herrera. Sus orígenes están vinculados a la antigua Cofradía de Ánimas de la parroquia, posteriormente integrada en la corporación carmelitana. El 1 de julio de 2011 fue erigida canónicamente de nuevo, aprobándose sus estatutos durante el episcopado de Braulio Rodríguez Plaza. Desde entonces mantiene los cultos de julio y la tradicional procesión de la Virgen por las calles de Toledo.",
+
+    escudoUrl: "/escudos/desktop/gloria/carmen.png",
+    escudoMovilUrl: "/escudos/movil/gloria/carmen.png",
+
+    logoUrl: `${carmenPathGloria}/logo.avif`,
+
+    portadaDesktopUrl: `${carmenPathGloria}/portada.avif`,
+    portada2kUrl: `${carmenPathGloria}/portada_2k.avif`,
+    portadaMovilUrl: `${carmenPathGloria}/portadamovil.avif`,
+
+    titulares: [
+      {
+        id: "carmen-san-andres-titular",
+        nombre: "Nuestra Señora del Carmen",
+        advocacion: "Virgen del Carmen",
+        esVirgen: true,
+
+        anio: null,
+        siglo: "XVIII",
+        autor: "Anónimo",
+        tipoAndas: "Costal",
+
+        datosTalla:
+          "Imagen de talla completa realizada en madera policromada durante el siglo XVIII, de autoría desconocida. Representa a la Virgen del Carmen con el Niño Jesús y conserva su policromía histórica, recuperada parcialmente durante las restauraciones efectuadas en 2014 y 2015 en el taller de Gloria Loarce. La intervención permitió descubrir los colores originales bajo sucesivas capas de repintes. La imagen recibe culto en la parroquia de San Andrés y procesiona sobre andas durante las celebraciones del mes de julio.",
+
+        fotoUrl: `${carmenPathGloria}/titular.avif`,
+
+        galeria: [
+          `${carmenPathGloria}/galeria1.avif`,
+          `${carmenPathGloria}/galeria2.avif`,
+          `${carmenPathGloria}/galeria3.avif`,
+          `${carmenPathGloria}/galeria4.avif`,
+        ],
+      },
+    ],
+
+    cultosId: "carmen-san-andres",
+    procesionId: "carmen-san-andres-principal",
+
+    redes: {
+      web: null,
+      instagram: "https://www.instagram.com/carmen_san_andres_toledo/",
+      facebook: null,
+      X: null,
+      tiktok: null,
+      youtube: null,
+    },
+  },
+
+  /* ==========================================
+     NUESTRA SEÑORA DE LA PAZ
+     SAN ANDRÉS
+     HERMANDAD DE GLORIA
+  ========================================== */
+
+  {
+    id: "paz",
+    slug: "paz",
+
+    nombre: "Nuestra Señora de la Paz",
+    nombreCorto: "Paz",
+    subnombre: "San Andrés",
+
+    sedeCanonica: "Iglesia de San Andrés",
+    tipo: "gloria",
+
+    anioFundacion: 1607,
+    anioRefundacion: null,
+    referenciaHistorica: null,
+
+    historia:
+      "La devoción a Nuestra Señora de la Paz está vinculada a la parroquia de San Andrés, donde, según la tradición, se veneraba una imagen trasladada desde la Catedral en 1496. La Hermandad fue erigida en 1607 por el cardenal Bernardo de Sandoval y Rojas. En 1732, los ocho cofrades que permanecían activos impulsaron su revitalización y la reforma de sus estatutos. La corporación conserva su festividad de enero y celebra su fiesta principal en Pentecostés, con una tradicional procesión por las calles del barrio.",
+
+    escudoUrl: "/escudos/desktop/gloria/paz.png",
+    escudoMovilUrl: "/escudos/movil/gloria/paz.png",
+    logoUrl: `${pazPath}/logo.avif`,
+
+    portadaDesktopUrl: `${pazPath}/portada.avif`,
+    portada2kUrl: `${pazPath}/portada_2k.avif`,
+    portadaMovilUrl: `${pazPath}/portadamovil.avif`,
+
+    titulares: [
+      {
+        id: "paz-titular",
+        nombre: "Nuestra Señora de la Paz",
+        advocacion: "Virgen de la Paz",
+        esVirgen: true,
+
+        anio: null,
+        siglo: "XX",
+        autor: "Tomás Gimena",
+        tipoAndas: "Andas",
+
+        datosTalla:
+          "La imagen actual es obra del escultor Tomás Gimena, aunque no se ha podido confirmar su fecha exacta de ejecución. Representa a la Virgen María sosteniendo al Niño Jesús. Se presenta revestida con manto bordado, corona y una gran ráfaga de rayos. La imagen recibe culto en la iglesia de San Andrés y protagoniza la tradicional procesión de Pentecostés, que recorre las calles del barrio y mantiene los vínculos históricos de la Hermandad con las comunidades religiosas de su entorno.",
+
+        fotoUrl: `${pazPath}/titular.avif`,
+        galeria: [
+          `${pazPath}/galeria1.avif`,
+          `${pazPath}/galeria2.avif`,
+          `${pazPath}/galeria3.avif`,
+          `${pazPath}/galeria4.avif`,
+        ],
+      },
+    ],
+
+    cultosId: "paz",
+    procesionId: "paz-principal",
+
+    redes: {
+      web: null,
+      instagram: "https://www.instagram.com/hermandadpaztoledo/",
+      facebook: "https://www.facebook.com/virgendelapaztoledo/?ref=NONE_xav_ig_profile_page_web",
+      X: null,
+      tiktok: null,
+      youtube: null,
+    },
+  },
+
+  
+  /* ==========================================
+     SANTÍSIMO CRISTO DEL CALVARIO
+     Y NUESTRA SEÑORA DEL ROSARIO
+     COFRADÍA DE PENITENCIA
+  ========================================== */
+
+  {
+    id: "calvario",
+    slug: "calvario",
+
+    nombre:
+      "Santísimo Cristo del Calvario y Nuestra Señora del Rosario",
+    nombreCorto: "Calvario y Rosario",
+
+    sedeCanonica: "Iglesia del Salvador",
+    tipo: "penitencia",
+
+    anioFundacion: 1729,
+    anioRefundacion: null,
+    referenciaHistorica: null,
+
+    historia:
+      "Los primeros estatutos conocidos de la Cofradía fueron aprobados en 1729. El Cristo de la Fe, origen de la actual advocación del Calvario, recibió culto inicialmente en la antigua ermita del Calvario y posteriormente en San Cipriano, desde donde procesionó en 1925. En 1951 la corporación trasladó su sede a la iglesia del Salvador. Desde 1990 participa en la Semana Santa únicamente el Viernes Santo. En 2015 se aprobaron nuevos estatutos que establecieron su actual denominación junto a Nuestra Señora del Rosario.",
+
+    escudoUrl: "/escudos/desktop/penitencia/calvario.png",
+    escudoMovilUrl: "/escudos/movil/penitencia/calvario.png",
+    logoUrl: `${salvadorPath}/logo.avif`,
+
+    portadaDesktopUrl: `${salvadorPath}/portada.avif`,
+    portada2kUrl: `${salvadorPath}/portada_2k.avif`,
+    portadaMovilUrl: `${salvadorPath}/portadamovil.avif`,
+
+    titulares: [
+      {
+        id: "calvario-titular",
+        nombre: "Santísimo Cristo del Calvario",
+        advocacion: "Cristo de la Fe",
+        esVirgen: false,
+
+        anio: null,
+        siglo: "XVII",
+        autor: "Anónimo",
+        tipoAndas: "Andas",
+
+        datosTalla:
+          "Crucificado de autoría anónima, realizado en el siglo XVII y venerado históricamente bajo la advocación del Cristo de la Fe. Se distingue por el empleo de cabello natural y la pronunciada inclinación de su cuerpo sobre la cruz. Procesiona sobre una carroza de madera con decoración estofada en oro, acompañada por cuatro faroles de tradición toledana.",
+
+        fotoUrl: `${salvadorPath}/calvario/titular.avif`,
+        galeria: [
+          `${salvadorPath}/calvario/galeria1.avif`,
+          `${salvadorPath}/calvario/galeria2.avif`,
+          `${salvadorPath}/calvario/galeria3.avif`,
+          `${salvadorPath}/calvario/galeria4.avif`,
+        ],
+      },
+
+      {
+        id: "rosario-titular",
+        nombre: "Nuestra Señora del Rosario",
+        advocacion: "Virgen del Rosario",
+        esVirgen: true,
+
+        anio: null,
+        siglo: "XVIII",
+        autor: "Anónimo",
+        tipoAndas: "Andas",
+
+        datosTalla:
+          "Dolorosa de vestir de autor desconocido, fechada en el siglo XVIII y restaurada durante el siglo XX. Entre sus elementos más característicos destacan el manto de color granate bordado en oro y los atributos dorados de la corona y el puñal. Procesiona sobre una carroza decorada con motivos estofados en plata.",
+
+        fotoUrl: `${salvadorPath}/rosario/titular.avif`,
+        galeria: [
+          `${salvadorPath}/rosario/galeria1.avif`,
+          `${salvadorPath}/rosario/galeria2.avif`,
+          `${salvadorPath}/rosario/galeria3.avif`,
+          `${salvadorPath}/rosario/galeria4.avif`,
+        ],
+      },
+    ],
+
+    cultosId: "calvario",
+    procesionId: "calvario-principal",
+
+    redes: {
+      web: null,
+      instagram: null,
+      facebook: null,
+      X: null,
+      tiktok: null,
+      youtube: null,
+    },
+  },
+
+
 ];

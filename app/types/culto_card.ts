@@ -12,6 +12,7 @@ export type CultoCardData = {
   subnombre?: string | null;
   fecha: string;
   mes: string;
+  meses?: string[];
   diaInicio: number;
 
   imagenUrl: string;

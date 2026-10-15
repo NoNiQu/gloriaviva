@@ -10,6 +10,7 @@ export interface RedesSociales {
   web: string | null;
   instagram: string | null;
   facebook: string | null;
+  X: string | null;
   tiktok: string | null;
   youtube: string | null;
 }

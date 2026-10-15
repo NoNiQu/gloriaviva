@@ -270,4 +270,74 @@ export const cultosCards: CultoCardData[] = [
     titleSize: "large",
     imagePosition: "50% 25%",
   },
+
+  
+  /* ==========================================
+     NUESTRA SEÑORA DE LA ESPERANZA
+     COFRADÍA DE GLORIA
+  ========================================== */
+
+  {
+    id: "esperanza",
+    nombre: "Esperanza",
+    fecha: "25 de MAYO al 2 de JUNIO",
+    mes: "MAYO",
+    meses: ["MAYO", "JUNIO"],
+    diaInicio: 25,
+
+    imagenUrl: "/cultos/mayo/desktop/esperanza.webp",
+    imagenMovilUrl: "/cultos/mayo/movil/esperanza.webp",
+    imagenAlt: "Nuestra Señora de la Esperanza de San Cipriano",
+
+    colorFondo: "#305746",
+    titleSize: "large",
+    imagePosition: "50% 25%",
+  },
+
+  /* ==========================================
+     NUESTRA SEÑORA DE LA PAZ
+     SAN ANDRÉS
+  ========================================== */
+
+  {
+    id: "paz",
+    nombre: "Paz",
+    subnombre: "San Andrés",
+
+    fecha: "21 al 24 de MAYO",
+    mes: "MAYO",
+    diaInicio: 21,
+
+    imagenUrl: "/cultos/mayo/desktop/paz.webp",
+    imagenMovilUrl: "/cultos/mayo/movil/paz.webp",
+    imagenAlt: "Nuestra Señora de la Paz de San Andrés",
+
+    colorFondo: "#6A573A",
+    titleSize: "large",
+    imagePosition: "50% 25%",
+  },
+
+  
+/* ==========================================
+   NUESTRA SEÑORA DEL ROSARIO
+   HERMANDAD DEL CALVARIO
+========================================== */
+
+{
+  id: "rosario",
+  nombre: "Rosario",
+  fecha: "11 de OCTUBRE",
+  mes: "OCTUBRE",
+  diaInicio: 11,
+
+  imagenUrl: "/cultos/octubre/desktop/rosario.webp",
+  imagenMovilUrl: "/cultos/octubre/movil/rosario.webp",
+  imagenAlt: "Nuestra Señora del Rosario de Toledo",
+
+  colorFondo: "#7B163F",
+  titleSize: "large",
+  imagePosition: "50% 25%",
+},
+
+
 ];

@@ -510,4 +510,107 @@ export const cultosDetalle: CultoDetalle[] = [
       },
     ],
   },
+
+  
+  /* ==========================================
+     NUESTRA SEÑORA DE LA ESPERANZA
+     CULTOS DE 2026
+  ========================================== */
+
+ 
+{
+  advocacionId: "esperanza",
+  titulo: "Solemne Novena",
+  subtitulo: "Cultos en honor de Nuestra Señora de la Esperanza",
+
+  bloques: [
+    {
+      id: "esperanza-novena",
+      titulo: "Solemne Novena",
+      fecha: "Del 25 de mayo al 2 de junio",
+      lineas: [
+        "19:00 h — Santo Rosario, Santa Misa y Novena",
+      ],
+    },
+    {
+      id: "esperanza-voto",
+      titulo: "Procesión del Voto",
+      fecha: "26 de mayo",
+      lineas: [
+        "08:00 h — Misa del Peregrino",
+        "08:45 h — Procesión del Voto",
+      ],
+    },
+    {
+      id: "esperanza-cultos-dominicales",
+      titulo: "Cultos dominicales",
+      fecha: "31 de mayo",
+      lineas: [
+        "11:00 h — Santa Misa y Novena",
+      ],
+    },
+    {
+      id: "esperanza-octava",
+      titulo: "Octava",
+      fecha: "2 de junio",
+      lineas: [
+        "19:00 h — Santa Misa y Novena",
+        "19:45 h — Procesión de la Octava",
+      ],
+    },
+  ],
+},
+
+
+  
+{
+  advocacionId: "paz",
+  titulo: "Solemne Triduo",
+  subtitulo: "Cultos en honor de Nuestra Señora de la Paz",
+
+  bloques: [
+    {
+      id: "paz-triduo",
+      titulo: "Solemne Triduo",
+      fecha: "21, 22 y 23 de mayo",
+      lineas: [
+        "19:00 h — Santo Rosario, Santa Misa, ejercicio del Triduo y Salve",
+      ],
+    },
+    {
+      id: "paz-fiesta-principal",
+      titulo: "Fiesta principal",
+      fecha: "24 de mayo",
+      lineas: [
+        "11:00 h — Solemne Función Principal",
+        "Al finalizar — Procesión Gloriosa",
+      ],
+    },
+  ],
+},
+
+
+/* ==========================================
+   NUESTRA SEÑORA DEL ROSARIO
+========================================== */
+
+{
+  advocacionId: "rosario",
+  titulo: "Solemne Culto",
+  subtitulo: "Cultos en honor de Nuestra Señora del Rosario",
+
+  bloques: [
+    {
+      id: "rosario-11-octubre",
+      titulo: "Solemne Culto",
+      fecha: "11 de octubre",
+      lineas: [
+        "12:00 h — Santa Misa en honor de Nuestra Señora del Rosario",
+        "Al finalizar — Devota Procesión por las calles del barrio",
+      ],
+    },
+  ],
+},
+
+  
 ];

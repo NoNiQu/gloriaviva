@@ -17,6 +17,18 @@ const meses = [
   { nombre: "DICIEMBRE", slug: "diciembre" },
 ];
 
+function cardPerteneceAlMes(
+  card: (typeof cultosCards)[number],
+  nombreMes: string,
+) {
+  const mesBuscado = nombreMes.toLowerCase();
+
+  return (
+    card.mes.toLowerCase() === mesBuscado ||
+    card.meses?.some((mes) => mes.toLowerCase() === mesBuscado) === true
+  );
+}
+
 export function meta() {
   return [
     {
@@ -48,8 +60,8 @@ export default function CultosPage() {
           "
         >
           {meses.map((mes) => {
-            const tieneCultos = cultosCards.some(
-              (card) => card.mes.toLowerCase() === mes.nombre.toLowerCase(),
+            const tieneCultos = cultosCards.some((card) =>
+              cardPerteneceAlMes(card, mes.nombre),
             );
 
             const nombreMes =

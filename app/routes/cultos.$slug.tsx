@@ -30,14 +30,34 @@ const meses: Mes[] = [
   { nombre: "DICIEMBRE", slug: "diciembre" },
 ];
 
+function cardPerteneceAlMes(
+  card: (typeof cultosCards)[number],
+  nombreMes: string,
+) {
+  const mesBuscado = nombreMes.toLowerCase();
+
+  return (
+    card.mes.toLowerCase() === mesBuscado ||
+    card.meses?.some((mes) => mes.toLowerCase() === mesBuscado) === true
+  );
+}
+
+function obtenerCardsDelMes(nombreMes: string) {
+  return cultosCards
+    .filter((card) => cardPerteneceAlMes(card, nombreMes))
+    .map((card) =>
+      card.mes.toLowerCase() === nombreMes.toLowerCase()
+        ? card
+        : { ...card, diaInicio: 1 },
+    );
+}
+
 function mesTieneCultos(mes?: Mes) {
   if (!mes) {
     return false;
   }
 
-  return cultosCards.some(
-    (card) => card.mes.toLowerCase() === mes.nombre.toLowerCase(),
-  );
+  return cultosCards.some((card) => cardPerteneceAlMes(card, mes.nombre));
 }
 
 function BotonMes({
@@ -332,9 +352,7 @@ export default function CultosMesPage() {
     );
   }
 
-  const cardsDelMes = cultosCards.filter(
-    (card) => card.mes.toLowerCase() === mesActual!.nombre.toLowerCase(),
-  );
+  const cardsDelMes = obtenerCardsDelMes(mesActual!.nombre);
 
   return (
     <main className="mx-auto min-h-screen max-w-7xl px-5 pb-20 pt-48 lg:pt-50">

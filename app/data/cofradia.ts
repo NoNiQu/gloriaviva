@@ -559,6 +559,9 @@ export const cofradias: CofradiaData[] = [
     cultosId: "esperanza",
     procesionId: "esperanza-voto",
 
+    cultosIds: ["esperanza", "esperanza-patrocinio"],
+    procesionesIds: ["esperanza-voto", "esperanza-octava"],
+
     redes: {
       web: "https://virgendelaesperanzatoledo.es",
       instagram: "https://www.instagram.com/cofradiaesperanzatoledo/",
@@ -797,6 +800,80 @@ export const cofradias: CofradiaData[] = [
     cultosId: "calvario",
     procesionId: "calvario-principal",
 
+    cultosIds: ["calvario", "rosario"],
+    procesionesIds: ["calvario-principal", "rosario-principal"],
+
+    redes: {
+      web: null,
+      instagram: "https://www.instagram.com/calvario_toledo/",
+      facebook: null,
+      X: null,
+      tiktok: null,
+      youtube: null,
+    },
+  },
+
+
+  /* ==========================================
+     NUESTRA SEÑORA DEL AMPARO
+     COFRADÍA DE PENITENCIA CON CULTOS GLORIOSOS
+  ========================================== */
+
+  {
+    id: "amparo",
+    slug: "amparo",
+
+    nombre: "Nuestra Señora del Amparo",
+    nombreCorto: "Amparo",
+
+    sedeCanonica: "Parroquia de San Ildefonso",
+    tipo: "penitencia",
+
+    anioFundacion: 1952,
+    anioRefundacion: null,
+    referenciaHistorica: null,
+
+    historia:
+      "La Cofradía de Nuestra Señora del Amparo fue fundada en 1952 por trabajadores y mandos vinculados a la Fábrica de Armas de Toledo. Sus primeros años estuvieron ligados a la iglesia de la Magdalena, desde donde participaba en las celebraciones del Jueves Santo. En 1994 trasladó su sede a la parroquia de San Ildefonso. La corporación conserva su carácter penitencial y una arraigada devoción a Nuestra Señora del Amparo.",
+
+    // Escudos pendientes de incorporar, si están disponibles.
+    escudoUrl: "/escudos/desktop/penitencia/amparo.png",
+    escudoMovilUrl: "/escudos/movil/penitencia/amparo.png",
+
+    logoUrl: `${amparoPath}/logo.avif`,
+    portadaDesktopUrl: `${amparoPath}/portada.avif`,
+    portada2kUrl: `${amparoPath}/portada_2k.avif`,
+    portadaMovilUrl: `${amparoPath}/portadamovil.avif`,
+
+    // Solo la Virgen del Amparo; sin otros pasos penitenciales.
+    titulares: [
+      {
+        id: "amparo-titular",
+        nombre: "Nuestra Señora del Amparo",
+        advocacion: "Virgen del Amparo",
+        esVirgen: true,
+
+        anio: null,
+        siglo: "XX",
+        autor: "Cecilio Béjar",
+        tipoAndas: "Palio",
+
+        datosTalla:
+          "Imagen de Nuestra Señora del Amparo realizada por Cecilio Béjar. Procesiona bajo un palio de terciopelo verde bordado en oro y seda. Fue restaurada en 2001 por Enrique Toledo Brazal.",
+
+        fotoUrl: `${amparoPath}/titular.avif`,
+        galeria: [
+          `${amparoPath}/galeria1.avif`,
+          `${amparoPath}/galeria2.avif`,
+          `${amparoPath}/galeria3.avif`,
+          `${amparoPath}/galeria4.avif`,
+        ],
+      },
+    ],
+
+    cultosId: "amparo",
+    procesionId: "amparo-principal",
+
     redes: {
       web: null,
       instagram: null,
@@ -806,6 +883,5 @@ export const cofradias: CofradiaData[] = [
       youtube: null,
     },
   },
-
 
 ];

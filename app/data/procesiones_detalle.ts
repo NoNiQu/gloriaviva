@@ -387,18 +387,19 @@ export const procesionesDetalle: ProcesionDetalle[] = [
   {
     id: "guia-principal",
     advocacionId: "guia",
-    nombre: "Romería y Procesión de Nuestra Señora de la Guía",
+    nombre: "Procesión de Nuestra Señora de la Guía",
     tipo: "principal",
     fecha: "12 de octubre",
     hora: "17:00",
-    horaTexto: "Salida aproximada: 17:00",
+    horaTexto: "Salida: 17:00 h",
 
     salida: "Ermita de Nuestra Señora de la Guía",
-    llegada: "Ermita de Nuestra Señora de la Guía",
+    llegada: "",
 
+    // El cartel de 2026 no indica el itinerario de calles.
     recorrido: [
       "Ermita de Nuestra Señora de la Guía",
-      "Caminos y cerros del entorno de la ermita",
+      "Caminos del cerro del entorno de la ermita",
       "Ermita de Nuestra Señora de la Guía",
     ],
   },
@@ -443,150 +444,162 @@ export const procesionesDetalle: ProcesionDetalle[] = [
     ],
   },
 
-  
   /* ==========================================
-     PROCESIONES DE NUESTRA SEÑORA DE LA ESPERANZA
-     2026
+     NUESTRA SEÑORA DE LA ESPERANZA
+     PROCESIÓN DEL VOTO — 26 DE MAYO
   ========================================== */
 
-
-{
-  id: "esperanza-voto",
-  advocacionId: "esperanza",
-
-  nombre: "Procesión del Voto de Nuestra Señora de la Esperanza",
-  tipo: "principal",
-
-  fecha: "26 de mayo",
-  hora: "08:45",
-  horaTexto: "Salida: 08:45 h",
-
-  salida: "Parroquia de San Cipriano",
-  llegada: "Parroquia de San Cipriano",
-
-  recorrido: [
-    "Parroquia de San Cipriano",
-    "Descalzos",
-    "Plaza del Conde",
-    "Santo Tomé",
-    "Plaza del Salvador",
-    "Ciudad",
-    "Plaza del Ayuntamiento",
-    "Catedral (entrada por Puerta Llana)",
-    "Arco de Palacio",
-    "Hombre de Palo",
-    "Cuatro Calles",
-    "Comercio",
-    "Toledo Ohio",
-    "Plata",
-    "Plaza de San Vicente",
-    "Alfonso X el Sabio",
-    "San Ildefonso (Misa)",
-    "Alfonso XII",
-    "Rojas",
-    "Plaza del Salvador",
-    "Santa Úrsula",
-    "Corredorcillo de San Bartolomé",
-    "Calle de la Mano",
-    "Parroquia de San Cipriano",
-  ],
-},
-
   {
-    id: "esperanza-octava",
+    id: "esperanza-voto",
     advocacionId: "esperanza",
-
-    nombre: "Procesión de la Octava de Nuestra Señora de la Esperanza",
+    nombre: "Procesión del Voto",
     tipo: "principal",
-
-    fecha: "2 de junio",
-    hora: null,
-    horaTexto: "19:45",
-
+    fecha: "26 de mayo",
+    hora: "08:45",
+    horaTexto: "Salida: 08:45 h, tras la Misa del Peregrino",
     salida: "Iglesia de San Cipriano",
     llegada: "Iglesia de San Cipriano",
-
     recorrido: [
       "Iglesia de San Cipriano",
-      "Calle de la Mano",
-      "Corredorcillo de San Bartolomé",
-      "Santa Úrsula",
-      "Plaza del Salvador",
-      "Santo Tomé",
-      "Plaza del Conde",
       "Descalzos",
+      "Plaza del Conde",
+      "Santo Tomé",
+      "Plaza del Salvador",
+      "Calle Ciudad",
+      "Plaza del Ayuntamiento",
+      "Catedral Primada (entrada por la Puerta Llana)",
+      "Arco de Palacio",
+      "Hombre de Palo",
+      "Cuatro Calles",
+      "Comercio",
+      "Toledo Ohio",
+      "Plata",
+      "Plaza de San Vicente",
+      "Alfonso X el Sabio",
+      "Iglesia de San Ildefonso (Misa)",
+      "Alfonso XII",
+      "Rojas",
+      "Plaza del Salvador",
+      "Santa Úrsula",
+      "Corredorcillo de San Bartolomé",
+      "Calle de la Mano",
       "Iglesia de San Cipriano",
     ],
   },
 
-  
   /* ==========================================
-     PROCESIÓN DE NUESTRA SEÑORA DE LA PAZ
-     24 DE MAYO DE 2026
+     NUESTRA SEÑORA DE LA ESPERANZA
+     PROCESIÓN DE LA OCTAVA — 2 DE JUNIO
+  ========================================== */
+
+  {
+    id: "esperanza-octava",
+    advocacionId: "esperanza",
+    nombre: "Procesión de la Octava",
+    tipo: "principal",
+    fecha: "2 de junio",
+    hora: "19:45",
+    horaTexto: "Salida: 19:45 h",
+    salida: "Iglesia de San Cipriano",
+    llegada: "Iglesia de San Cipriano",
+    recorrido: [
+      "Iglesia de San Cipriano",
+      "Calle de la Mano",
+      "Corredorcillo de San Bartolomé",
+      "Jardines del Convento de Santa Isabel",
+      "Santa Úrsula",
+      "Plaza del Salvador",
+      "Santo Tomé",
+      "Travesía del Conde",
+      "Plaza del Conde",
+      "Descalzos",
+      "Iglesia de San Cipriano",
+    ],
+    nota: "Itinerario pendiente de confirmación oficial para 2026.",
+  },
+
+
+  /* ==========================================
+     NUESTRA SEÑORA DEL AMPARO
+     PROCESIÓN GLORIOSA · 24 DE OCTUBRE DE 2026
+  ========================================== */
+
+  {
+    id: "amparo-principal",
+    advocacionId: "amparo",
+    nombre: "Solemne Procesión de Nuestra Señora del Amparo",
+    tipo: "principal",
+    fecha: "24 de octubre",
+    hora: "17:30",
+    horaTexto: "Salida: 17:30 h",
+    salida: "Parroquia de San Ildefonso",
+    llegada: "Parroquia de San Ildefonso",
+    recorrido: [
+      "Parroquia de San Ildefonso",
+      "Avenida de los Maestros Espaderos",
+      "Calle de Méjico",
+      "Calle de Colombia",
+      "Calle de Panamá",
+      "Avenida de los Maestros Espaderos",
+      "Parroquia de San Ildefonso",
+    ],
+  },
+
+  /* ==========================================
+     NUESTRA SEÑORA DE LA PAZ
+     PROCESIÓN GLORIOSA · 24 DE MAYO DE 2026
   ========================================== */
 
   {
     id: "paz-principal",
     advocacionId: "paz",
-
     nombre: "Procesión Gloriosa de Nuestra Señora de la Paz",
     tipo: "principal",
-
     fecha: "24 de mayo",
-    hora: "12:00",
-    horaTexto: "Salida aproximada: 12:00 h",
-
+    hora: null,
+    horaTexto: "Al finalizar la Solemne Función Principal de las 11:00 h",
     salida: "Iglesia de San Andrés",
-    llegada: "Iglesia de San Andrés",
-
-    // Recorrido resumido a partir de las calles
-    // documentadas. Pendiente de confirmar
-    // el itinerario exacto completo de 2026.
+    llegada: "",
     recorrido: [
-      "Iglesia de San Andrés",
-      "Convento de Santa Isabel de los Reyes",
-      "Calle de Santa Isabel",
+      "Convento de Santa Isabel",
+      "Calle Santa Isabel",
       "Pozo Amargo",
       "Plaza de Don Fernando",
-      "Carrera de San Sebastián",
+      "Carreras de San Sebastián",
       "Subida a la Cruz Verde",
       "Plegadero",
       "Ave María",
+      "Convento de San Pablo",
       "Iglesia de San Andrés",
     ],
   },
 
-  
-/* ==========================================
-   PROCESIÓN DE NUESTRA SEÑORA DEL ROSARIO
-========================================== */
+  /* ==========================================
+     NUESTRA SEÑORA DEL ROSARIO
+     PROCESIÓN · 11 DE OCTUBRE DE 2026
+  ========================================== */
 
-{
-  id: "rosario-principal",
-  advocacionId: "rosario",
-
-  nombre: "Procesión de Nuestra Señora del Rosario",
-  tipo: "principal",
-
-  fecha: "11 de octubre",
-  hora: null,
-  horaTexto: "Tras la Santa Misa de las 12:00 h",
-
-  salida: "Iglesia del Salvador",
-  llegada: "Iglesia del Salvador",
-
-  recorrido: [
-    "Iglesia del Salvador",
-    "Taller del Moro",
-    "Plaza del Conde",
-    "Travesía del Conde",
-    "Santo Tomé",
-    "Entrada en San Antonio",
-    "Santo Tomé",
-    "Plaza del Salvador",
-    "Iglesia del Salvador",
-  ],
-},
-
+  {
+    id: "rosario-principal",
+    advocacionId: "rosario",
+    nombre: "Procesión de Nuestra Señora del Rosario",
+    tipo: "principal",
+    fecha: "11 de octubre",
+    hora: null,
+    horaTexto: "Tras la Santa Misa de las 12:00 h",
+    salida: "Iglesia del Salvador",
+    llegada: "Iglesia del Salvador",
+    recorrido: [
+      "Iglesia del Salvador",
+      "Taller del Moro",
+      "Plaza del Conde",
+      "Travesía del Conde",
+      "Santo Tomé",
+      "Entrada en San Antonio",
+      "Santo Tomé",
+      "Plaza del Salvador",
+      "Iglesia del Salvador",
+    ],
+  },
 
 ];

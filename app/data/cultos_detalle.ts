@@ -438,33 +438,47 @@ export const cultosDetalle: CultoDetalle[] = [
 
   {
     advocacionId: "guia",
-    titulo: "Cultos y Romería",
+    titulo: "Solemnes Cultos",
     subtitulo: "Cultos en honor de Nuestra Señora de la Guía",
     bloques: [
       {
-        id: "guia-mayo",
-        titulo: "Cultos de mayo",
-        fecha: "Último domingo de mayo",
+        id: "guia-9-octubre",
+        titulo: "Santo Rosario, Misa y Triduo",
+        fecha: "Viernes 9 de octubre",
         lineas: [
-          "Santa Misa en honor de Nuestra Señora de la Guía — horario por confirmar",
+          "18:30 h — Santo Rosario",
+          "19:00 h — Santa Misa y Triduo",
+          "Lugar: Parroquia de Santa Bárbara",
         ],
       },
       {
-        id: "guia-octubre-vispera",
-        titulo: "Cultos previos a la romería",
-        fecha: "Sábado anterior al 12 de octubre",
+        id: "guia-10-octubre",
+        titulo: "Misa por los hermanos fallecidos",
+        fecha: "Sábado 10 de octubre",
         lineas: [
-          "Santo Rosario — horario por confirmar",
-          "Santa Misa por los hermanos difuntos — horario por confirmar",
+          "17:00 h — Santo Rosario",
+          "17:30 h — Santa Misa por los hermanos fallecidos",
+          "Lugar: Ermita de Nuestra Señora de la Guía",
         ],
       },
       {
-        id: "guia-romeria",
-        titulo: "Romería de Nuestra Señora de la Guía",
-        fecha: "12 de octubre",
+        id: "guia-11-octubre",
+        titulo: "Santo Rosario, Misa y Triduo",
+        fecha: "Domingo 11 de octubre",
         lineas: [
-          "Santa Misa en honor de la Virgen — horario por confirmar",
-          "Procesión por los alrededores de la ermita — horario por confirmar",
+          "18:30 h — Santo Rosario",
+          "19:00 h — Santa Misa y Triduo",
+          "Lugar: Parroquia de Santa Bárbara",
+        ],
+      },
+      {
+        id: "guia-12-octubre",
+        titulo: "Festividad de Nuestra Señora de la Guía",
+        fecha: "Lunes 12 de octubre",
+        lineas: [
+          "11:30 h — Santa Misa",
+          "17:00 h — Solemne Procesión",
+          "Lugar: Ermita de Nuestra Señora de la Guía",
         ],
       },
     ],
@@ -526,6 +540,7 @@ export const cultosDetalle: CultoDetalle[] = [
   bloques: [
     {
       id: "esperanza-novena",
+      meses: ["MAYO", "JUNIO"],
       titulo: "Solemne Novena",
       fecha: "Del 25 de mayo al 2 de junio",
       lineas: [
@@ -534,6 +549,7 @@ export const cultosDetalle: CultoDetalle[] = [
     },
     {
       id: "esperanza-voto",
+      meses: ["MAYO"],
       titulo: "Procesión del Voto",
       fecha: "26 de mayo",
       lineas: [
@@ -543,6 +559,7 @@ export const cultosDetalle: CultoDetalle[] = [
     },
     {
       id: "esperanza-cultos-dominicales",
+      meses: ["MAYO"],
       titulo: "Cultos dominicales",
       fecha: "31 de mayo",
       lineas: [
@@ -551,6 +568,7 @@ export const cultosDetalle: CultoDetalle[] = [
     },
     {
       id: "esperanza-octava",
+      meses: ["JUNIO"],
       titulo: "Octava",
       fecha: "2 de junio",
       lineas: [
@@ -590,6 +608,29 @@ export const cultosDetalle: CultoDetalle[] = [
 },
 
 
+  /* ==========================================
+     NUESTRA SEÑORA DE LA ESPERANZA
+     FIESTA DEL PATROCINIO · 2026
+  ========================================== */
+
+  {
+    id: "esperanza-patrocinio",
+    advocacionId: "esperanza",
+    titulo: "Fiesta del Patrocinio",
+    subtitulo: "Cultos en honor de Nuestra Señora de la Esperanza",
+    bloques: [
+      {
+        id: "esperanza-patrocinio-misa",
+        titulo: "Santa Misa y recibimiento de nuevos hermanos",
+        fecha: "8 de noviembre",
+        lineas: [
+          "11:00 h — Santa Misa y recibimiento de los nuevos hermanos",
+          "Lugar — Iglesia de San Cipriano",
+        ],
+      },
+    ],
+  },
+
 /* ==========================================
    NUESTRA SEÑORA DEL ROSARIO
 ========================================== */
@@ -612,5 +653,53 @@ export const cultosDetalle: CultoDetalle[] = [
   ],
 },
 
-  
+
+  /* ==========================================
+     NUESTRA SEÑORA DEL AMPARO
+     SOLEMNES CULTOS · OCTUBRE DE 2026
+  ========================================== */
+
+  {
+    advocacionId: "amparo",
+    titulo: "Solemnes Cultos",
+    subtitulo: "En honor de Nuestra Señora del Amparo",
+    bloques: [
+      {
+        id: "amparo-22-octubre",
+        fecha: "22 de octubre",
+        lineas: [
+          "19:00 h — Rezo del Santo Rosario",
+          "19:30 h — Santa Misa",
+        ],
+      },
+      {
+        id: "amparo-23-octubre",
+        fecha: "23 de octubre",
+        lineas: [
+          "19:00 h — Rezo del Santo Rosario",
+          "19:30 h — Santa Misa",
+        ],
+      },
+      {
+        id: "amparo-24-octubre",
+        titulo: "Solemne Procesión y Misa de Difuntos",
+        fecha: "24 de octubre",
+        lineas: [
+          "17:30 h — Solemne Procesión",
+          "19:30 h — Santa Misa por los difuntos de la Hermandad",
+        ],
+      },
+      {
+        id: "amparo-25-octubre",
+        titulo: "Función Principal",
+        fecha: "25 de octubre",
+        lineas: [
+          "11:00 h — Función Principal",
+          "Imposición de medallas y juramento de los nuevos hermanos",
+          "Oficia el Rvdo. Sr. D. Gustavo Johansson de Terry",
+        ],
+      },
+    ],
+  },
+
 ];

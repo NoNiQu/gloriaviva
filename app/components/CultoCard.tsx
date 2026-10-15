@@ -43,14 +43,34 @@ export function CultoCard({ card, prioridad = false }: CultoCardProps) {
     creditoFoto,
   } = card;
 
-  const advocacionId = String(id);
+  // Cada celebracion tiene su propia tarjeta; varias tarjetas
+  // pueden pertenecer a una misma advocacion o cofradia.
+  const advocacionId = card.advocacionId ?? String(id);
+  const cultoId = card.cultoId ?? String(id);
+  const mesVista = card.mesVista?.toUpperCase();
 
   const culto = cultosDetalle.find(
-    (item) => item.advocacionId === advocacionId,
+    (item) =>
+      item.id === cultoId || (!item.id && item.advocacionId === cultoId),
   );
 
-  const procesiones = procesionesDetalle.filter(
-    (item) => item.advocacionId === advocacionId,
+  const bloquesVisibles =
+    culto?.bloques.filter(
+      (bloque) =>
+        !mesVista ||
+        !bloque.meses?.length ||
+        bloque.meses.some((mes) => mes.toUpperCase() === mesVista),
+    ) ?? [];
+
+  const idsProcesion =
+    mesVista && card.procesionesIdsPorMes?.[mesVista] !== undefined
+      ? card.procesionesIdsPorMes[mesVista]
+      : card.procesionesIds;
+
+  const procesiones = procesionesDetalle.filter((item) =>
+    idsProcesion !== undefined
+      ? idsProcesion.includes(item.id)
+      : item.advocacionId === advocacionId,
   );
 
   const tieneProcesion = procesiones.length > 0;
@@ -500,7 +520,7 @@ export function CultoCard({ card, prioridad = false }: CultoCardProps) {
                 </header>
 
                 <div className="mt-[10%] space-y-8">
-                  {culto.bloques.map((bloque) => (
+                  {bloquesVisibles.map((bloque) => (
                     <section key={bloque.id}>
                       {bloque.titulo && (
                         <h4

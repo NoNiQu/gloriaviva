@@ -45,11 +45,18 @@ function cardPerteneceAlMes(
 function obtenerCardsDelMes(nombreMes: string) {
   return cultosCards
     .filter((card) => cardPerteneceAlMes(card, nombreMes))
-    .map((card) =>
-      card.mes.toLowerCase() === nombreMes.toLowerCase()
-        ? card
-        : { ...card, diaInicio: 1 },
-    );
+    .map((card) => {
+      const mesPrincipal = card.mes.toLowerCase() === nombreMes.toLowerCase();
+
+      return {
+        ...card,
+        mesVista: nombreMes,
+        fecha: card.fechaPorMes?.[nombreMes] ?? card.fecha,
+        diaInicio:
+          card.diaInicioPorMes?.[nombreMes] ??
+          (mesPrincipal ? card.diaInicio : 1),
+      };
+    });
 }
 
 function mesTieneCultos(mes?: Mes) {

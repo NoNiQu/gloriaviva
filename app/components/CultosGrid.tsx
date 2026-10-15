@@ -71,7 +71,7 @@ export function CultosGrid({
                * visual de una tarjeta y queda centrada.
                */
               ultimaFilaTieneUnaTablet && esUltimaCard
-                ? "sm:col-span-2 sm:mx-auto sm:w-[calc(50%-1rem)]"
+                ? "sm:col-span-2 sm:mx-auto sm:w-[calc(50%-1rem)] xl:mx-0 xl:w-auto"
                 : "",
 
               /*

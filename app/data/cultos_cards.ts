@@ -36,6 +36,7 @@ export const cultosCards: CultoCardData[] = [
 
   {
     id: "calvario",
+    cofradiaId: "calvario",
     nombre: "Calvario",
     fecha: "11 al 13 de SEPTIEMBRE",
     mes: "SEPTIEMBRE",
@@ -50,6 +51,7 @@ export const cultosCards: CultoCardData[] = [
     imagePosition: "50% 25%",
   },
 
+  /*
   {
     id: "descendimiento",
     nombre: "Descendimiento",
@@ -66,6 +68,7 @@ export const cultosCards: CultoCardData[] = [
     titleSize: "small",
     imagePosition: "50% 30%",
   },
+  */
 
   {
     id: "dolores",
@@ -100,6 +103,7 @@ export const cultosCards: CultoCardData[] = [
     imagePosition: "50% 20%",
   },
 
+  /*
   {
     id: "padre-pio",
     nombre: "Padre Pío",
@@ -115,6 +119,7 @@ export const cultosCards: CultoCardData[] = [
     titleSize: "large",
     imagePosition: "50% 20%",
   },
+  */
 
   {
     id: "remedios",
@@ -189,6 +194,7 @@ export const cultosCards: CultoCardData[] = [
   {
     id: "sagrario",
     nombre: "Sagrario",
+    subnombre: "Patrona de Toledo",
     fecha: "7 al 15 de AGOSTO",
     mes: "AGOSTO",
     diaInicio: 7,
@@ -235,9 +241,9 @@ export const cultosCards: CultoCardData[] = [
   {
     id: "guia",
     nombre: "Guía",
-    fecha: "12 de OCTUBRE",
+    fecha: "9 al 12 de OCTUBRE",
     mes: "OCTUBRE",
-    diaInicio: 12,
+    diaInicio: 9,
 
     // Imágenes pendientes de preparar.
     imagenUrl: "/cultos/octubre/desktop/guia.webp",
@@ -279,12 +285,51 @@ export const cultosCards: CultoCardData[] = [
 
   {
     id: "esperanza",
+    cofradiaId: "esperanza",
     nombre: "Esperanza",
     fecha: "25 de MAYO al 2 de JUNIO",
     mes: "MAYO",
     meses: ["MAYO", "JUNIO"],
     diaInicio: 25,
 
+    diaInicioPorMes: {
+      MAYO: 25,
+      JUNIO: 1,
+    },
+    procesionesIdsPorMes: {
+      MAYO: ["esperanza-voto"],
+      JUNIO: ["esperanza-octava"],
+    },
+
+    imagenUrl: "/cultos/mayo/desktop/esperanza.webp",
+    imagenMovilUrl: "/cultos/mayo/movil/esperanza.webp",
+    imagenAlt: "Nuestra Señora de la Esperanza de San Cipriano",
+
+    colorFondo: "#305746",
+    titleSize: "large",
+    imagePosition: "50% 25%",
+  },
+
+  /* ==========================================
+     NUESTRA SEÑORA DE LA ESPERANZA
+     FIESTA DEL PATROCINIO · NOVIEMBRE
+  ========================================== */
+
+  {
+    id: "esperanza-patrocinio",
+    cofradiaId: "esperanza",
+    advocacionId: "esperanza",
+    cultoId: "esperanza-patrocinio",
+
+    nombre: "Esperanza",
+    fecha: "8 de NOVIEMBRE",
+    mes: "NOVIEMBRE",
+    diaInicio: 8,
+
+    // Solo hay Santa Misa, sin procesión.
+    procesionesIds: [],
+
+    // Reutiliza las fotografías existentes de la Virgen.
     imagenUrl: "/cultos/mayo/desktop/esperanza.webp",
     imagenMovilUrl: "/cultos/mayo/movil/esperanza.webp",
     imagenAlt: "Nuestra Señora de la Esperanza de San Cipriano",
@@ -302,7 +347,6 @@ export const cultosCards: CultoCardData[] = [
   {
     id: "paz",
     nombre: "Paz",
-    subnombre: "San Andrés",
 
     fecha: "21 al 24 de MAYO",
     mes: "MAYO",
@@ -325,6 +369,7 @@ export const cultosCards: CultoCardData[] = [
 
 {
   id: "rosario",
+  cofradiaId: "calvario",
   nombre: "Rosario",
   fecha: "11 de OCTUBRE",
   mes: "OCTUBRE",
@@ -339,5 +384,27 @@ export const cultosCards: CultoCardData[] = [
   imagePosition: "50% 25%",
 },
 
+
+  /* ==========================================
+     NUESTRA SEÑORA DEL AMPARO
+     CULTOS DE OCTUBRE DE 2026
+  ========================================== */
+
+  {
+    id: "amparo",
+    cofradiaId: "amparo",
+    nombre: "Amparo",
+    fecha: "22 al 25 de OCTUBRE",
+    mes: "OCTUBRE",
+    diaInicio: 22,
+
+    imagenUrl: "/cultos/octubre/desktop/amparo.webp",
+    imagenMovilUrl: "/cultos/octubre/movil/amparo.webp",
+    imagenAlt: "Nuestra Señora del Amparo de Toledo",
+
+    colorFondo: "#36543C",
+    titleSize: "large",
+    imagePosition: "50% 25%",
+  },
 
 ];

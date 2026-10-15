@@ -138,8 +138,11 @@ export function loader({ params }: Route.LoaderArgs) {
   }
 
   const colorCofradia =
-    cultosCards.find((culto) => culto.id === (cofradia.cultosId ?? cofradia.id))
-      ?.colorFondo ?? "#263D63";
+    cultosCards.find(
+      (culto) =>
+        String(culto.id) ===
+        (cofradia.cultosIds?.[0] ?? cofradia.cultosId ?? cofradia.id),
+    )?.colorFondo ?? "#263D63";
 
   return {
     cofradia,

@@ -59,8 +59,13 @@ export interface CofradiaData {
 
   titulares: TitularData[];
 
+  // Enlaces principales, mantenidos por compatibilidad.
   cultosId: string | null;
   procesionId: string | null;
+
+  // Enlaces adicionales para varias advocaciones y celebraciones.
+  cultosIds?: string[];
+  procesionesIds?: string[];
 
   redes: RedesSociales;
 

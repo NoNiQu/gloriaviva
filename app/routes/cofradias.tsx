@@ -51,15 +51,21 @@ function ordenarPorFechaDeCultos(
   segunda: (typeof cofradias)[number],
 ) {
   const fechaOrden = (cofradia: (typeof cofradias)[number]) => {
-    const culto = cultosCards.find(
-      (item) => item.id === (cofradia.cultosId ?? cofradia.id),
-    );
-    if (!culto) return Number.MAX_SAFE_INTEGER;
+    const ids = cofradia.cultosIds?.length
+      ? cofradia.cultosIds
+      : [cofradia.cultosId ?? cofradia.id];
 
-    const mes = ordenMeses.get(culto.mes);
-    return mes === undefined
-      ? Number.MAX_SAFE_INTEGER
-      : mes * 32 + culto.diaInicio;
+    return Math.min(
+      ...ids.map((id) => {
+        const culto = cultosCards.find((item) => String(item.id) === id);
+        if (!culto) return Number.MAX_SAFE_INTEGER;
+
+        const mes = ordenMeses.get(culto.mes);
+        return mes === undefined
+          ? Number.MAX_SAFE_INTEGER
+          : mes * 32 + culto.diaInicio;
+      }),
+    );
   };
 
   return fechaOrden(primera) - fechaOrden(segunda);

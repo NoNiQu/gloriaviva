@@ -582,28 +582,13 @@ export default function CofradiaPage({ loaderData }: Route.ComponentProps) {
         {cofradia.fotosCedidas === true && (
           <section
             aria-label="Agradecimiento por la cesión de fotografías"
-            className="mx-auto max-w-360 px-6 pb-12 md:px-10 md:pb-16 lg:px-30"
+            className="mx-auto max-w-360 px-6 md:px-10 lg:px-30"
           >
-            <div className="mx-auto flex max-w-3xl flex-col items-center justify-center gap-6 border-t border-black/15 py-10 sm:flex-row sm:gap-10">
-              {cofradia.fotosLogo && (
-                <img
-                  src={cofradia.fotosLogo}
-                  alt={
-                    cofradia.fotoQuien
-                      ? `Logo de ${cofradia.fotoQuien}`
-                      : "Logo de quien cedió las fotografías"
-                  }
-                  loading="lazy"
-                  decoding="async"
-                  className="h-20 w-40 shrink-0 object-contain sm:h-24 sm:w-48"
-                />
-              )}
-
-              <p className="max-w-xl text-center text-lg leading-relaxed text-black/80 sm:text-left">
+            <div className="border-t border-black/15 py-10">
+              <p className="text-center text-lg leading-relaxed text-black/80">
                 Gracias a {cofradia.fotoQuien || "quienes colaboraron"} por
                 ceder las fotografías. Estoy muy agradecido por su generosidad y
-                apoyo, que han permitido enriquecer esta página con sus
-                imágenes.
+                apoyo.
               </p>
             </div>
           </section>

@@ -42,6 +42,7 @@ export const cofradias: CofradiaData[] = [
       "/escudos/movil/devocion/carmen_carmelitas.png",
 
     logoUrl: `${carmenPath}/logo.avif`,
+    logoDoradoUrl: `${carmenPath}/logodorado.avif`,
 
     portadaDesktopUrl: `${carmenPath}/portada.avif`,
     portada2kUrl: `${carmenPath}/portada_2k.avif`,
@@ -112,6 +113,7 @@ export const cofradias: CofradiaData[] = [
     escudoUrl: "/escudos/desktop/gloria/guia.png",
     escudoMovilUrl: "/escudos/movil/gloria/guia.png",
     logoUrl: `${guiaPath}/logo.avif`,
+    logoDoradoUrl: `${guiaPath}/logodorado.avif`,
 
     portadaDesktopUrl: `${guiaPath}/portada.avif`,
     portada2kUrl: `${guiaPath}/portada_2k.avif`,
@@ -181,6 +183,7 @@ export const cofradias: CofradiaData[] = [
     escudoUrl: "/escudos/desktop/gloria/estrella.png",
     escudoMovilUrl: "/escudos/movil/gloria/estrella.png",
     logoUrl: `${estrellaPath}/logo.avif`,
+    logoDoradoUrl: `${estrellaPath}/logodorado.avif`,
 
     portadaDesktopUrl: `${estrellaPath}/portada.avif`,
     portada2kUrl: `${estrellaPath}/portada_2k.avif`,
@@ -224,7 +227,7 @@ export const cofradias: CofradiaData[] = [
     },
 
     fotosCedidas: true,
-    fotoQuien: "Hermandad de Nuestra Señora de la Estrella",
+    fotoQuien: "la Hermandad de Nuestra Señora de la Estrella",
     fotosLogo: `${estrellaPath}/fotoslogo.png`,
   },
 
@@ -252,6 +255,7 @@ export const cofradias: CofradiaData[] = [
     escudoUrl: "/escudos/desktop/gloria/alegria.png",
     escudoMovilUrl:"/escudos/movil/gloria/alegria.png",
     logoUrl: `${alegriaPath}/logo.avif`,
+    logoDoradoUrl: `${alegriaPath}/logodorado.avif`,
 
     portadaDesktopUrl: `${alegriaPath}/portada.avif`,
     portada2kUrl: `${alegriaPath}/portada_2k.avif`,
@@ -319,6 +323,7 @@ export const cofradias: CofradiaData[] = [
     escudoUrl: `/escudos/desktop/penitencia/santo_encuentro.png`,
     escudoMovilUrl: `/escudos/movil/penitencia/santo_encuentro.png`,
     logoUrl: `${doloresPath}/logo.avif`,
+    logoDoradoUrl: `${doloresPath}/logodorado.avif`,
 
     portadaDesktopUrl: `${doloresPath}/portada.avif`,
     portada2kUrl: `${doloresPath}/portada_2k.avif`,
@@ -386,6 +391,7 @@ export const cofradias: CofradiaData[] = [
     escudoUrl: `/escudos/desktop/penitencia/misericordia.png`,
     escudoMovilUrl: `/escudos/movil/penitencia/misericordia.png`,
     logoUrl: `${misericordiaPath}/logo.avif`,
+    logoDoradoUrl: `${misericordiaPath}/logodorado.avif`,
 
     portadaDesktopUrl: `${misericordiaPath}/portada.avif`,
     portada2kUrl: `${misericordiaPath}/portada_2k.avif`,
@@ -454,6 +460,7 @@ export const cofradias: CofradiaData[] = [
     escudoUrl: "/escudos/desktop/penitencia/angustias.png",
     escudoMovilUrl: "/escudos/movil/penitencia/angustias.png",
     logoUrl: `${angustiasPath}/logo.avif`,
+    logoDoradoUrl: `${angustiasPath}/logodorado.avif`,
 
     portadaDesktopUrl: `${angustiasPath}/portada.avif`,
     portada2kUrl: `${angustiasPath}/portada_2k.avif`,
@@ -523,8 +530,8 @@ export const cofradias: CofradiaData[] = [
 
     escudoUrl: "/escudos/desktop/gloria/esperanza.png",
     escudoMovilUrl: "/escudos/movil/gloria/esperanza.png",
-
     logoUrl: `${esperanzaPath}/logo.avif`,
+    logoDoradoUrl: `${esperanzaPath}/logodorado.avif`,
 
     portadaDesktopUrl: `${esperanzaPath}/portada.avif`,
     portada2kUrl: `${esperanzaPath}/portada_2k.avif`,
@@ -600,8 +607,8 @@ export const cofradias: CofradiaData[] = [
 
     escudoUrl: "/escudos/desktop/gloria/carmen.png",
     escudoMovilUrl: "/escudos/movil/gloria/carmen.png",
-
     logoUrl: `${carmenPathGloria}/logo.avif`,
+    logoDoradoUrl: `${carmenPathGloria}/logodorado.avif`,
 
     portadaDesktopUrl: `${carmenPathGloria}/portada.avif`,
     portada2kUrl: `${carmenPathGloria}/portada_2k.avif`,
@@ -639,7 +646,7 @@ export const cofradias: CofradiaData[] = [
     redes: {
       web: null,
       instagram: "https://www.instagram.com/carmen_san_andres_toledo/",
-      facebook: null,
+      facebook: "https://www.facebook.com/profile.php?id=100070769869829",
       X: null,
       tiktok: null,
       youtube: null,
@@ -673,6 +680,7 @@ export const cofradias: CofradiaData[] = [
     escudoUrl: "/escudos/desktop/gloria/paz.png",
     escudoMovilUrl: "/escudos/movil/gloria/paz.png",
     logoUrl: `${pazPath}/logo.avif`,
+    logoDoradoUrl: `${pazPath}/logodorado.avif`,
 
     portadaDesktopUrl: `${pazPath}/portada.avif`,
     portada2kUrl: `${pazPath}/portada_2k.avif`,
@@ -728,8 +736,8 @@ export const cofradias: CofradiaData[] = [
     slug: "calvario",
 
     nombre:
-      "Santísimo Cristo del Calvario y Nuestra Señora del Rosario",
-    nombreCorto: "Calvario y Rosario",
+      "Santísimo Cristo de la Fe y Nuestra Señora del Rosario",
+    nombreCorto: "Fe y Rosario",
 
     sedeCanonica: "Iglesia del Salvador",
     tipo: "penitencia",
@@ -744,6 +752,7 @@ export const cofradias: CofradiaData[] = [
     escudoUrl: "/escudos/desktop/penitencia/calvario.png",
     escudoMovilUrl: "/escudos/movil/penitencia/calvario.png",
     logoUrl: `${salvadorPath}/logo.avif`,
+    logoDoradoUrl: `${salvadorPath}/logodorado.avif`,
 
     portadaDesktopUrl: `${salvadorPath}/portada.avif`,
     portada2kUrl: `${salvadorPath}/portada_2k.avif`,
@@ -806,7 +815,7 @@ export const cofradias: CofradiaData[] = [
     redes: {
       web: null,
       instagram: "https://www.instagram.com/calvario_toledo/",
-      facebook: null,
+      facebook: "https://www.facebook.com/profile.php?id=61592823255367",
       X: null,
       tiktok: null,
       youtube: null,
@@ -839,8 +848,9 @@ export const cofradias: CofradiaData[] = [
     // Escudos pendientes de incorporar, si están disponibles.
     escudoUrl: "/escudos/desktop/penitencia/amparo.png",
     escudoMovilUrl: "/escudos/movil/penitencia/amparo.png",
-
     logoUrl: `${amparoPath}/logo.avif`,
+    logoDoradoUrl: `${amparoPath}/logodorado.avif`,
+
     portadaDesktopUrl: `${amparoPath}/portada.avif`,
     portada2kUrl: `${amparoPath}/portada_2k.avif`,
     portadaMovilUrl: `${amparoPath}/portadamovil.avif`,
@@ -876,7 +886,7 @@ export const cofradias: CofradiaData[] = [
 
     redes: {
       web: null,
-      instagram: null,
+      instagram: "https://www.instagram.com/cofradia.virgen.del.amparo/",
       facebook: null,
       X: null,
       tiktok: null,

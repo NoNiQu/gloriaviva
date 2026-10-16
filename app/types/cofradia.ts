@@ -52,6 +52,7 @@ export interface CofradiaData {
   escudoUrl: string | null;
   escudoMovilUrl: string | null;
   logoUrl: string | null;
+  logoDoradoUrl: string | null;
 
   portadaDesktopUrl: string | null;
   portada2kUrl: string | null;

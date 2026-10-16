@@ -96,13 +96,13 @@ export default function CofradiasPage({ loaderData }: Route.ComponentProps) {
 
   return (
     <main className="min-h-svh bg-[#F8F7F3] text-black">
-      <div className="mx-auto w-full max-w-360 px-6 pb-24 pt-32 md:px-10 md:pb-32 md:pt-40 lg:px-30">
+      <div className="mx-auto w-full max-w-360 px-6 pb-24 pt-50 md:px-10 md:pb-32 lg:px-30">
         {/* ==================================
             ENCABEZADO
         ================================== */}
 
         <header className="mb-14 text-center md:mb-20">
-          <h1 className="text-5xl font-normal leading-[1.05] tracking-[-0.03em] md:text-6xl lg:text-7xl">
+          <h1 className="text-5xl leading-none md:text-7xl">
             Cofradías
           </h1>
         </header>
@@ -136,13 +136,32 @@ export default function CofradiasPage({ loaderData }: Route.ComponentProps) {
                   <div className="relative flex justify-center">
                     <div className="relative flex h-88 w-full items-end justify-center overflow-visible sm:h-100 lg:h-108">
                       {cofradia.logoUrl ? (
-                        <img
-                          src={cofradia.logoUrl}
-                          alt=""
-                          loading="lazy"
-                          decoding="async"
-                          className="relative z-10 h-full w-full object-contain"
-                        />
+                        <>
+                          {/* Logotipo original */}
+                          <img
+                            src={cofradia.logoUrl}
+                            alt=""
+                            loading="lazy"
+                            decoding="async"
+                            className="relative z-10 h-full w-full object-contain"
+                          />
+
+                          {/* El dorado se revela de arriba abajo al pasar el cursor. */}
+                          {cofradia.logoDoradoUrl && (
+                            <div
+                              aria-hidden="true"
+                              className="pointer-events-none absolute inset-0 z-10 [clip-path:inset(0_0_100%_0)] transition-[clip-path] duration-700 ease-in-out group-hover:[clip-path:inset(0_0_0_0)] group-focus-visible:[clip-path:inset(0_0_0_0)] motion-reduce:transition-none"
+                            >
+                              <img
+                                src={cofradia.logoDoradoUrl}
+                                alt=""
+                                loading="lazy"
+                                decoding="async"
+                                className="h-full w-full object-contain"
+                              />
+                            </div>
+                          )}
+                        </>
                       ) : (
                         <div
                           aria-hidden="true"

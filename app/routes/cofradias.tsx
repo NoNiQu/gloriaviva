@@ -172,7 +172,7 @@ export default function CofradiasPage({ loaderData }: Route.ComponentProps) {
                       )}
                       <div
                         aria-hidden="true"
-                        className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-20 w-full bg-linear-to-t from-[#F8F7F3] via-[#F8F7F3]/92 to-transparent sm:h-22"
+                        className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-20 w-full bg-linear-to-t from-white via-white/92 to-transparent sm:h-22"
                       />
                     </div>
                   </div>

@@ -91,8 +91,10 @@ export default function CultosPage() {
                       transition-colors
                       duration-200
                       tracking-wider
-                      hover:bg-black
+                      hover:bg-[#263D63]
                       hover:text-white
+                      focus-visible:bg-[#263D63]
+                      focus-visible:text-white
                       focus-visible:outline-2
                       focus-visible:outline-offset-4
                       focus-visible:outline-black
@@ -112,7 +114,7 @@ export default function CultosPage() {
                         -translate-x-1/2
                         whitespace-nowrap
                         rounded-xl
-                        bg-black
+                        bg-[#263D63]
                         px-3
                         py-2
                         text-sm
@@ -168,7 +170,7 @@ export default function CultosPage() {
                         -translate-x-1/2
                         whitespace-nowrap
                         rounded-xl
-                        bg-black
+                        bg-[#263D63]
                         px-3
                         py-2
                         text-sm
@@ -199,18 +201,21 @@ export default function CultosPage() {
             items-center
             justify-center
             rounded-2xl
-            bg-black
+            bg-[#263D63]
             px-15
             py-5
             text-center
             text-xl
             text-white
-            transition-opacity
-            duration-200
-            hover:opacity-80
+            transition-colors
+            duration-300
+            ease-out
+            hover:bg-[#344F7A]
+            focus-visible:bg-[#344F7A]
             focus-visible:outline-2
             focus-visible:outline-offset-4
             focus-visible:outline-black
+            motion-reduce:transition-none
           "
           >
             VER TODOS LOS CULTOS

@@ -315,7 +315,7 @@ export const sedesCanonicas: SedeCanonicaData[] = [
   /* ==========================================
      IGLESIA DE LOS SANTOS JUSTO Y PASTOR
      Cofradía pendiente de incorporar
-  ========================================== */
+  ========================================== 
   {
     id: "santos-justo-y-pastor",
     slug: "santos-justo-y-pastor",
@@ -347,6 +347,7 @@ export const sedesCanonicas: SedeCanonicaData[] = [
     cofradiasIds: [], // Se añadirá una cofradía posteriormente.
     existe: false,
   },
+  */
   /* ==========================================
      SANTA IGLESIA CATEDRAL PRIMADA
      Nuestra Señora Santa María del Alcázar

@@ -3,10 +3,11 @@ import type { SedeCanonicaData } from "../types/sede_canonica";
 /* ==========================================
    SEDES CANÓNICAS · GLORIA VIVA · TOLEDO
 
-   Solo las siete sedes compartidas con Entre Silencios.
-   Horarios de misa transcritos de las capturas aportadas.
-   Santiago el Mayor conserva el enlace a la información
-   oficial hasta disponer de horarios concretos.
+   Sedes existentes + nuevas sedes de gloria.
+   Los horarios de las siete sedes originales se conservan
+   según las capturas aportadas. Las nuevas sedes proceden
+   de fuentes consultadas en octubre de 2026; los horarios
+   no confirmados como públicos no se inventan.
 
    Los IDs enlazan con app/data/cofradia.ts.
 ========================================== */
@@ -183,6 +184,186 @@ export const sedesCanonicas: SedeCanonicaData[] = [
     horariosUrl: null,
     cofradiasIds: ["amparo"],
     existe: true,
+  },
+  /* ==========================================
+     ERMITA DE NUESTRA SEÑORA DE LA ESTRELLA
+     Cofradía de Nuestra Señora de la Estrella
+  ========================================== */
+  {
+    id: "ermita-estrella",
+    slug: "ermita-estrella",
+    nombre: "Ermita de Nuestra Señora de la Estrella",
+    direccion: "Callejón de la Estrella, 1 · 45003 Toledo",
+    descripcionBreve:
+      "Ermita histórica del barrio de Santiago del Arrabal, vinculada desde sus orígenes a la Cofradía de Nuestra Señora de la Estrella. La construcción del templo actual se emprendió en 1611 siguiendo las trazas de Juan Bautista Monegro, sobre el emplazamiento de una ermita anterior. Conserva su función devocional como sede de la hermandad.",
+    usoActual: "CULTO",
+    // Según petición del proyecto: anunciar los actos de la cofradía,
+    // sin asignarles una hora fija que no se haya confirmado.
+    horarios: [
+      {
+        id: "ermita-estrella-1",
+        texto: "",
+        hora: "Durante actos de la Hermandad",
+      },
+    ],
+    horariosUrl: null,
+    cofradiasIds: ["estrella"],
+    existe: false,
+  },
+  /* ==========================================
+     CONVENTO DEL ESPÍRITU SANTO · CARMELITAS
+     Nuestra Señora del Carmen · devoción popular
+  ========================================== */
+  {
+    id: "convento-espiritu-santo",
+    slug: "convento-espiritu-santo",
+    nombre: "Convento del Espíritu Santo",
+    direccion: "Plaza de los Carmelitas, 0 · 45003 Toledo",
+    descripcionBreve:
+      "Convento de los Carmelitas Descalzos, comunidad establecida en Toledo a finales del siglo XVI. El conjunto actual se levantó fundamentalmente entre 1643 y 1655, con una iglesia barroca de tres naves y cúpula sobre el crucero. En el templo se venera a Nuestra Señora del Carmen, cuya devoción y cultos están ligados a esta comunidad religiosa.",
+    usoActual: "CULTO",
+    // Horarios publicados en directorios de 2026; confirmar posibles cambios.
+    horarios: [
+      {
+        id: "convento-espiritu-santo-1",
+        texto: "Lunes a sábados · capilla de la comunidad",
+        hora: "09:00",
+      },
+      {
+        id: "convento-espiritu-santo-2",
+        texto: "Domingos · horario publicado",
+        hora: "10:00 · 12:30",
+      },
+    ],
+    horariosUrl: null,
+    cofradiasIds: ["carmen-carmelitas"],
+    existe: false,
+  },
+  /* ==========================================
+     IGLESIA DE SAN MIGUEL EL ALTO
+     Nuestra Señora de los Remedios
+  ========================================== */
+  {
+    id: "san-miguel-el-alto",
+    slug: "san-miguel-el-alto",
+    nombre: "Iglesia de San Miguel el Alto",
+    direccion: "Calle Cobertizo de San Miguel, 2 · 45001 Toledo",
+    descripcionBreve:
+      "Antigua parroquia toledana de origen medieval, relacionada tradicionalmente con la presencia de la Orden del Temple. Destaca su torre mudéjar de finales del siglo XIII o comienzos del XIV y la singular disposición del templo sobre un cobertizo. La iglesia fue transformada en el siglo XVII y volvió a utilizarse para el culto tras su restauración del siglo XX.",
+    usoActual: "CULTO",
+    // Un directorio publica estos horarios estacionales distintos.
+    // Se señalan como orientativos hasta confirmación parroquial.
+    horarios: [
+      {
+        id: "san-miguel-el-alto-1",
+        texto: "Sábados · verano (horario orientativo)",
+        hora: "19:00",
+      },
+      {
+        id: "san-miguel-el-alto-2",
+        texto: "Domingos · invierno (horario orientativo)",
+        hora: "11:00",
+      },
+    ],
+    horariosUrl: null,
+    cofradiasIds: ["remedios"],
+    existe: false,
+  },
+  /* ==========================================
+     IMPERIAL MONASTERIO DE SAN CLEMENTE
+     Nuestra Señora de la Salud de San Clemente
+  ========================================== */
+  {
+    id: "san-clemente",
+    slug: "san-clemente",
+    nombre: "Convento de San Clemente",
+    direccion: "Calle San Clemente, 1 · 45002 Toledo",
+    descripcionBreve:
+      "Convento cisterciense de origen medieval, fundado en el siglo XII y estrechamente unido a la historia religiosa de Toledo. El conjunto monástico conserva dependencias de diferentes épocas y es conocido también por su tradición en la elaboración de mazapán. En este monasterio recibe culto Nuestra Señora de la Salud de San Clemente.",
+    usoActual: "CULTO",
+    // Figura una misa a las 08:00 en el coro de clausura, pero no se ha
+    // confirmado que sea una celebración abierta al público.
+    horarios: [
+      {
+        id: "san-clemente-1",
+        texto: "",
+        hora: "Durante actos de la Cofradía",
+      },
+    ],
+    horariosUrl: null,
+    cofradiasIds: ["salud"],
+    existe: false,
+  },
+  /* ==========================================
+     IGLESIA DE SANTO TOMÉ
+     Nuestra Señora de Guadalupe
+  ========================================== */
+  {
+    id: "santo-tome",
+    slug: "santo-tome",
+    nombre: "Iglesia de Santo Tomé",
+    direccion: "Plaza del Conde, 4 · 45002 Toledo",
+    descripcionBreve:
+      "Parroquia histórica documentada desde el siglo XII, reedificada a comienzos del XIV gracias al patrocinio de Gonzalo Ruiz de Toledo, señor de Orgaz. Destaca por su torre mudéjar y por custodiar el célebre lienzo de El Greco «El entierro del Señor de Orgaz». Mantiene su actividad parroquial y es sede de la devoción a Nuestra Señora de Guadalupe.",
+    usoActual: "CULTO_Y_MUSEO",
+    // Horarios de misa de la web oficial de Santo Tomé.
+    horarios: [],
+    horariosUrl: "https://santotome.org/parroquia/",
+    cofradiasIds: ["guadalupe"],
+    existe: false,
+  },
+  /* ==========================================
+     IGLESIA DE LOS SANTOS JUSTO Y PASTOR
+     Cofradía pendiente de incorporar
+  ========================================== */
+  {
+    id: "santos-justo-y-pastor",
+    slug: "santos-justo-y-pastor",
+    nombre: "Iglesia de los Santos Justo y Pastor",
+    direccion: "Plaza de San Justo, 6 · 45001 Toledo",
+    descripcionBreve:
+      "Templo parroquial fundado tras la conquista cristiana de Toledo en el siglo XI y transformado a lo largo de los siglos posteriores. Conserva elementos mudéjares y destaca su capilla del Corpus Christi, con ornamentación histórica de yeserías y azulejería. La parroquia mantiene celebraciones religiosas y su vinculación con la tradición espiritual toledana.",
+    usoActual: "CULTO",
+    // Horarios orientativos: los directorios difieren en algunas misas
+    // de invierno; se aconseja confirmarlos con la parroquia.
+    horarios: [
+      {
+        id: "santos-justo-y-pastor-1",
+        texto: "Laborables · invierno (horario orientativo)",
+        hora: "18:00",
+      },
+      {
+        id: "santos-justo-y-pastor-2",
+        texto: "Laborables · verano (horario orientativo)",
+        hora: "19:00",
+      },
+      {
+        id: "santos-justo-y-pastor-3",
+        texto: "Domingos y festivos (horario orientativo)",
+        hora: "12:30",
+      },
+    ],
+    horariosUrl: null,
+    cofradiasIds: [], // Se añadirá una cofradía posteriormente.
+    existe: false,
+  },
+  /* ==========================================
+     SANTA IGLESIA CATEDRAL PRIMADA
+     Nuestra Señora Santa María del Alcázar
+  ========================================== */
+  {
+    id: "catedral-primada",
+    slug: "catedral-primada",
+    nombre: "Santa Iglesia Catedral Primada",
+    direccion: "Calle Cardenal Cisneros, 1 · 45002 Toledo",
+    descripcionBreve:
+      "Catedral metropolitana de Toledo, uno de los principales conjuntos de arquitectura gótica de España. Su construcción comenzó en el siglo XIII y se desarrolló durante generaciones, reuniendo un extraordinario patrimonio artístico y litúrgico. Continúa siendo un centro vivo de celebración religiosa, con misas diarias y liturgia hispano-mozárabe.",
+    usoActual: "CULTO",
+    // Fuente: calendario de cultos de la Catedral Primada.
+    horarios: [],
+    horariosUrl: "https://www.catedralprimada.es/culto/horarios-misas/",
+    cofradiasIds: ["alcazar"],
+    existe: false,
   },
 ];
 

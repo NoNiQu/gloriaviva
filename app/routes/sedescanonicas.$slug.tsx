@@ -49,17 +49,14 @@ export default function SedeCanonicaPage({ loaderData }: Route.ComponentProps) {
   const { sede, cofradiasVinculadas } = loaderData;
 
   return (
-    <main className="min-h-svh bg-[#F8F7F3] text-[#263D63]">
+    <main className="min-h-svh bg-white text-[#263D63]">
       {/* Cabecera en el azul identitario de Gloria Viva */}
       <header className="bg-[#263D63] px-6 pb-15 pt-36 text-white md:px-10 md:pb-20 md:pt-44 lg:px-30">
         <div className="mx-auto max-w-300 text-center">
-          <p className="text-xs uppercase tracking-[0.22em] text-white/70 md:text-sm">
-            Sede canónica · Toledo
-          </p>
-          <h1 className="mx-auto mt-6 max-w-4xl text-4xl leading-[1.08] tracking-[-0.035em] sm:text-5xl md:text-6xl lg:text-7xl">
+          <h1 className="mx-auto mt-6 max-w-4xl text-4xl leading-[1.08] tracking-wide sm:text-5xl md:text-6xl lg:text-7xl">
             {sede.nombre}
           </h1>
-          <p className="mt-7 text-sm leading-relaxed tracking-[0.03em] text-white/80 md:text-base">
+          <p className="mt-7 text-sm leading-relaxed tracking-wider text-white/85 md:text-base">
             {sede.direccion}
           </p>
         </div>

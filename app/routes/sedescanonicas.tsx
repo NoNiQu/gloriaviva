@@ -31,7 +31,7 @@ export default function SedesCanonicasPage({
   const { sedes } = loaderData;
 
   return (
-    <main className="min-h-svh bg-[#F8F7F3] text-black">
+    <main className="min-h-svh bg-white text-black">
       <div className="mx-auto w-full max-w-360 px-6 pb-24 pt-50 md:px-10 md:pb-32 lg:px-30">
         <header className="mb-14 text-center md:mb-20">
           <h1 className="text-5xl font-normal leading-none tracking-[0.02em] md:text-7xl">
@@ -53,7 +53,7 @@ export default function SedesCanonicasPage({
                 >
                   <span
                     aria-hidden="true"
-                    className="pointer-events-none absolute inset-0 z-0 origin-bottom-right scale-0 rounded-2xl bg-[#263D63] transition-transform duration-500 ease-out group-hover:scale-100 group-hover:duration-300 group-focus-visible:scale-100 motion-reduce:transition-none"
+                    className="pointer-events-none absolute inset-0 z-0 origin-bottom-right scale-0 rounded-2xl bg-black transition-transform duration-500 ease-out group-hover:scale-100 group-hover:duration-300 group-focus-visible:scale-100 motion-reduce:transition-none"
                   />
                   <div className="relative z-10 flex min-h-35 items-center justify-between gap-6 px-5 py-9 md:min-h-40 md:px-8 lg:px-10">
                     <div>

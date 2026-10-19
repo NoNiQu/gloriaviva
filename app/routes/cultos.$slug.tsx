@@ -238,8 +238,9 @@ export default function CultosMesPage() {
 
   if (!mostrarTodos && !mesActual) {
     return (
-      <main className="mx-auto min-h-screen max-w-7xl px-5 pb-20 pt-48 lg:pt-50">
-        <div className="text-center">
+      <main className="min-h-screen bg-white text-black">
+        <div className="mx-auto max-w-7xl px-5 pb-20 pt-48 lg:pt-50">
+          <div className="text-center">
           <h1 className="text-5xl leading-none md:text-7xl">
             Mes no encontrado
           </h1>
@@ -269,6 +270,7 @@ export default function CultosMesPage() {
           >
             Volver a Cultos
           </Link>
+          </div>
         </div>
       </main>
     );
@@ -278,7 +280,8 @@ export default function CultosMesPage() {
     const primerMesConCultos = meses.find((mes) => mesTieneCultos(mes))?.slug;
 
     return (
-      <main className="mx-auto min-h-screen max-w-7xl px-5 pb-20 pt-48 lg:pt-50">
+      <main className="min-h-screen bg-white text-black">
+        <div className="mx-auto max-w-7xl px-5 pb-20 pt-48 lg:pt-50">
         <header className="mb-16 text-center lg:mb-20">
           <h1
             className="
@@ -355,6 +358,7 @@ export default function CultosMesPage() {
             VOLVER A CULTOS
           </Link>
         </nav>
+        </div>
       </main>
     );
   }
@@ -362,7 +366,8 @@ export default function CultosMesPage() {
   const cardsDelMes = obtenerCardsDelMes(mesActual!.nombre);
 
   return (
-    <main className="mx-auto min-h-screen max-w-7xl px-5 pb-20 pt-48 lg:pt-50">
+    <main className="min-h-screen bg-white text-black">
+      <div className="mx-auto max-w-7xl px-5 pb-20 pt-48 lg:pt-50">
       <header className="mb-12 text-center lg:mb-20">
         <h1 className="text-3xl leading-none lg:text-5xl">Cultos</h1>
 
@@ -474,6 +479,7 @@ export default function CultosMesPage() {
           </div>
         </div>
       </nav>
+      </div>
     </main>
   );
 }

@@ -44,36 +44,37 @@ export function meta() {
 
 export default function CultosPage() {
   return (
-    <main className="mx-auto min-h-screen max-w-7xl px-5 pb-20 pt-50">
-      <header className="mb-16 text-center">
-        <h1 className="text-5xl leading-none md:text-7xl">Cultos</h1>
-      </header>
+    <main className="min-h-svh bg-white text-black">
+      <div className="mx-auto max-w-7xl px-5 pb-20 pt-50">
+        <header className="mb-16 text-center">
+          <h1 className="text-5xl leading-none md:text-7xl">Cultos</h1>
+        </header>
 
-      <nav aria-label="Cultos por meses">
-        <ul
-          className="
+        <nav aria-label="Cultos por meses">
+          <ul
+            className="
             grid
             grid-cols-2
             gap-5
             sm:grid-cols-3
             lg:grid-cols-4
           "
-        >
-          {meses.map((mes) => {
-            const tieneCultos = cultosCards.some((card) =>
-              cardPerteneceAlMes(card, mes.nombre),
-            );
+          >
+            {meses.map((mes) => {
+              const tieneCultos = cultosCards.some((card) =>
+                cardPerteneceAlMes(card, mes.nombre),
+              );
 
-            const nombreMes =
-              mes.nombre.charAt(0) + mes.nombre.slice(1).toLowerCase();
+              const nombreMes =
+                mes.nombre.charAt(0) + mes.nombre.slice(1).toLowerCase();
 
-            return (
-              <li key={mes.slug}>
-                {tieneCultos ? (
-                  <Link
-                    to={`/cultos/${mes.slug}`}
-                    aria-label={`Cultos de ${nombreMes}`}
-                    className="
+              return (
+                <li key={mes.slug}>
+                  {tieneCultos ? (
+                    <Link
+                      to={`/cultos/${mes.slug}`}
+                      aria-label={`Cultos de ${nombreMes}`}
+                      className="
                       group
                       relative
                       flex
@@ -89,6 +90,7 @@ export default function CultosPage() {
                       text-xl
                       transition-colors
                       duration-200
+                      tracking-wider
                       hover:bg-black
                       hover:text-white
                       focus-visible:outline-2
@@ -96,12 +98,12 @@ export default function CultosPage() {
                       focus-visible:outline-black
                       md:text-2xl
                     "
-                  >
-                    {mes.nombre}
+                    >
+                      {mes.nombre}
 
-                    <span
-                      role="tooltip"
-                      className="
+                      <span
+                        role="tooltip"
+                        className="
                         pointer-events-none
                         absolute
                         -bottom-10
@@ -121,16 +123,16 @@ export default function CultosPage() {
                         group-hover:opacity-100
                         group-focus-visible:opacity-100
                       "
-                    >
-                      Cultos de {nombreMes}
-                    </span>
-                  </Link>
-                ) : (
-                  <span
-                    tabIndex={0}
-                    aria-disabled="true"
-                    aria-label={`${nombreMes}. Mes no disponible`}
-                    className="
+                      >
+                        Cultos de {nombreMes}
+                      </span>
+                    </Link>
+                  ) : (
+                    <span
+                      tabIndex={0}
+                      aria-disabled="true"
+                      aria-label={`${nombreMes}. Mes no disponible`}
+                      className="
                       group
                       relative
                       flex
@@ -152,12 +154,12 @@ export default function CultosPage() {
                       focus-visible:outline-black/30
                       md:text-2xl
                     "
-                  >
-                    {mes.nombre}
+                    >
+                      {mes.nombre}
 
-                    <span
-                      role="tooltip"
-                      className="
+                      <span
+                        role="tooltip"
+                        className="
                         pointer-events-none
                         absolute
                         -bottom-10
@@ -177,21 +179,21 @@ export default function CultosPage() {
                         group-hover:opacity-100
                         group-focus:opacity-100
                       "
-                    >
-                      Mes no disponible
+                      >
+                        Mes no disponible
+                      </span>
                     </span>
-                  </span>
-                )}
-              </li>
-            );
-          })}
-        </ul>
-      </nav>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
 
-      <div className="mt-15 flex justify-center">
-        <Link
-          to="/cultos/todos"
-          className="
+        <div className="mt-15 flex justify-center">
+          <Link
+            to="/cultos/todos"
+            className="
             inline-flex
             min-h-15
             items-center
@@ -210,9 +212,10 @@ export default function CultosPage() {
             focus-visible:outline-offset-4
             focus-visible:outline-black
           "
-        >
-          VER TODOS LOS CULTOS
-        </Link>
+          >
+            VER TODOS LOS CULTOS
+          </Link>
+        </div>
       </div>
     </main>
   );

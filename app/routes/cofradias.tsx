@@ -95,7 +95,7 @@ export default function CofradiasPage({ loaderData }: Route.ComponentProps) {
   const cofradiasOrdenadas = [...cofradias].sort(ordenarPorFechaDeCultos);
 
   return (
-    <main className="min-h-svh bg-[#F8F7F3] text-black">
+    <main className="min-h-svh bg-white text-black">
       <div className="mx-auto w-full max-w-360 px-6 pb-24 pt-50 md:px-10 md:pb-32 lg:px-30">
         {/* ==================================
             ENCABEZADO

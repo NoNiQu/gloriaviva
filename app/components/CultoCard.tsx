@@ -75,14 +75,32 @@ export function CultoCard({ card, prioridad = false }: CultoCardProps) {
 
   const tieneProcesion = procesiones.length > 0;
 
-  const gradient = `linear-gradient(
-    to bottom,
-    transparent 51%,
-    ${colorFondo}00 57%,
-    ${colorFondo}80 70%,
-    ${colorFondo} 80%,
-    ${colorFondo} 100%
-  )`;
+  // Si degradado: true, el color comienza más arriba y se funde
+  // progresivamente con la fotografía durante un tramo más largo.
+  // En las demás tarjetas se mantiene un degradado más discreto,
+  // ligeramente más alto y suave que el anterior.
+  const gradient = card.degradado
+    ? `linear-gradient(
+        to bottom,
+        transparent 27%,
+        ${colorFondo}00 36%,
+        ${colorFondo}26 45%,
+        ${colorFondo}66 56%,
+        ${colorFondo}AD 68%,
+        ${colorFondo}E6 79%,
+        ${colorFondo} 90%,
+        ${colorFondo} 100%
+      )`
+    : `linear-gradient(
+        to bottom,
+        transparent 43%,
+        ${colorFondo}00 50%,
+        ${colorFondo}33 59%,
+        ${colorFondo}80 69%,
+        ${colorFondo}CC 79%,
+        ${colorFondo} 89%,
+        ${colorFondo} 100%
+      )`;
 
   return (
     <article

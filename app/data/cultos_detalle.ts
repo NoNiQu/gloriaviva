@@ -621,10 +621,10 @@ export const cultosDetalle: CultoDetalle[] = [
     bloques: [
       {
         id: "esperanza-patrocinio-misa",
-        titulo: "Santa Misa y recibimiento de nuevos hermanos",
+        titulo: "Santa Misa",
         fecha: "8 de noviembre",
         lineas: [
-          "11:00 h — Santa Misa y recibimiento de los nuevos hermanos",
+          "11:00 h — Santa Misa",
           "Lugar — Iglesia de San Cipriano",
         ],
       },

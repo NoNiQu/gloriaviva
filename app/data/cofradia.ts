@@ -9,6 +9,10 @@ const alegriaPath = "/cofradias/gloria/alegria";
 const esperanzaPath = "/cofradias/gloria/esperanza";
 const pazPath = "/cofradias/gloria/paz";
 const carmenPathGloria = "/cofradias/gloria/carmen";
+const remediosPath = "/cofradias/gloria/remedios";
+const saludSanClementePath = "/cofradias/gloria/salud_clemente";
+const guadalupePath = "/cofradias/gloria/guadalupe";
+const alcazarPath = "/cofradias/gloria/alcazar";
 
 const doloresPath = "/cofradias/penitencia/dolores";
 const misericordiaPath = "/cofradias/penitencia/misericordia";
@@ -197,7 +201,7 @@ export const cofradias: CofradiaData[] = [
         esVirgen: true,
 
         anio: null,
-        siglo: null,
+        siglo: "XVI",
         autor: "Anónimo",
         tipoAndas: "Andas",
 
@@ -228,6 +232,7 @@ export const cofradias: CofradiaData[] = [
 
     fotosCedidas: true,
     fotoQuien: "la Hermandad de Nuestra Señora de la Estrella",
+    fotosSeccion: "todo",
     fotosLogo: `${estrellaPath}/fotoslogo.png`,
   },
 
@@ -516,7 +521,6 @@ export const cofradias: CofradiaData[] = [
 
     nombre: "Nuestra Señora de la Esperanza",
     nombreCorto: "Esperanza",
-    subnombre: "La Morenita de San Cipriano",
 
     sedeCanonica: "Iglesia de San Cipriano",
     tipo: "gloria",
@@ -578,6 +582,11 @@ export const cofradias: CofradiaData[] = [
       tiktok: null,
       youtube: null,
     },
+
+    fotosCedidas: true,
+    fotoQuien: "la Cofradía de Nuestra Señora de la Esperanza",
+    fotosSeccion: "todo",
+
   },
 
   
@@ -593,7 +602,6 @@ export const cofradias: CofradiaData[] = [
 
     nombre: "Nuestra Señora del Carmen",
     nombreCorto: "Carmen",
-    subnombre: "San Andrés",
 
     sedeCanonica: "Parroquia de San Andrés",
     tipo: "gloria",
@@ -665,7 +673,6 @@ export const cofradias: CofradiaData[] = [
 
     nombre: "Nuestra Señora de la Paz",
     nombreCorto: "Paz",
-    subnombre: "San Andrés",
 
     sedeCanonica: "Iglesia de San Andrés",
     tipo: "gloria",
@@ -722,6 +729,11 @@ export const cofradias: CofradiaData[] = [
       tiktok: null,
       youtube: null,
     },
+
+    fotosCedidas: true,
+    fotoQuien: "la Hermandad de Nuestra Señora de la Paz",
+    fotosSeccion: "galería",
+
   },
 
   
@@ -771,7 +783,7 @@ export const cofradias: CofradiaData[] = [
         tipoAndas: "Andas",
 
         datosTalla:
-          "Crucificado de autoría anónima, realizado en el siglo XVII y venerado históricamente bajo la advocación del Cristo de la Fe. Se distingue por el empleo de cabello natural y la pronunciada inclinación de su cuerpo sobre la cruz. Procesiona sobre una carroza de madera con decoración estofada en oro, acompañada por cuatro faroles de tradición toledana.",
+          "Crucificado de autoría anónima, realizado en el siglo XVII y venerado históricamente bajo la advocación del Cristo de la Fe. Se distingue por el empleo de cabello natural y la pronunciada inclinación de su cuerpo sobre la cruz. En Semana Santa procesiona sobre una carroza de madera con decoración estofada en oro, acompañada por cuatro faroles de tradición toledana.",
 
         fotoUrl: `${salvadorPath}/calvario/titular.avif`,
         galeria: [
@@ -794,7 +806,7 @@ export const cofradias: CofradiaData[] = [
         tipoAndas: "Andas",
 
         datosTalla:
-          "Dolorosa de vestir de autor desconocido, fechada en el siglo XVIII y restaurada durante el siglo XX. Entre sus elementos más característicos destacan el manto de color granate bordado en oro y los atributos dorados de la corona y el puñal. Procesiona sobre una carroza decorada con motivos estofados en plata.",
+          "Dolorosa de vestir de autor desconocido, fechada en el siglo XVIII y restaurada durante el siglo XX. Entre sus elementos más característicos destacan el manto de color granate bordado en oro y los atributos dorados de la corona y el puñal. En Semana Santa procesiona sobre una carroza decorada con motivos estofados en plata.",
 
         fotoUrl: `${salvadorPath}/rosario/titular.avif`,
         galeria: [
@@ -892,6 +904,294 @@ export const cofradias: CofradiaData[] = [
       tiktok: null,
       youtube: null,
     },
+  },
+
+
+  /* ==========================================
+     NUESTRA SEÑORA DE LOS REMEDIOS
+     HERMANDAD DE GLORIA — TOLEDO
+  ========================================== */
+
+  {
+    id: "remedios",
+    slug: "remedios",
+
+    nombre: "Nuestra Señora de los Remedios",
+    nombreCorto: "Remedios",
+
+    sedeCanonica: "Iglesia de San Miguel el Alto",
+    tipo: "gloria",
+
+    anioFundacion: 1744,
+    anioRefundacion: null,
+    referenciaHistorica: null,
+
+    historia:
+      "La Hermandad de Nuestra Señora de los Remedios tiene sus orígenes documentados en Toledo en 1744 y mantiene su vinculación con la iglesia de San Miguel Arcángel, perteneciente a la parroquia de los Santos Justo y Pastor. Sus constituciones históricas contemplaban diversos cultos marianos a lo largo del año. La corporación fue erigida canónicamente en 1900 y aprobó una reforma de sus estatutos en 2015. Actualmente continúa celebrando los cultos y la procesión de su titular durante el mes de septiembre.",
+
+    escudoUrl: "/escudos/desktop/gloria/remedios.png",
+    escudoMovilUrl: "/escudos/movil/gloria/remedios.png",
+    logoUrl: `${remediosPath}/logo.avif`,
+    logoDoradoUrl: `${remediosPath}/logodorado.avif`,
+
+    portadaDesktopUrl: `${remediosPath}/portada.avif`,
+    portada2kUrl: `${remediosPath}/portada_2k.avif`,
+    portadaMovilUrl: `${remediosPath}/portadamovil.avif`,
+
+    titulares: [
+      {
+        id: "remedios-titular",
+        nombre: "Nuestra Señora de los Remedios",
+        advocacion: "Virgen de los Remedios",
+        esVirgen: true,
+
+        anio: null,
+        siglo: null,
+        autor: null,
+        tipoAndas: "Andas",
+
+        datosTalla:
+          "Imagen mariana venerada en la iglesia de San Miguel Arcángel de Toledo. Es la titular de una hermandad documentada desde el siglo XVIII y protagoniza sus celebraciones y procesión del mes de septiembre. No se ha podido confirmar con suficiente seguridad la fecha de realización ni la autoría de la imagen.",
+
+        fotoUrl: `${remediosPath}/titular.avif`,
+        galeria: [
+          `${remediosPath}/galeria1.avif`,
+          `${remediosPath}/galeria2.avif`,
+          `${remediosPath}/galeria3.avif`,
+          `${remediosPath}/galeria4.avif`,
+        ],
+      },
+    ],
+
+    cultosId: "remedios",
+    procesionId: "remedios-principal",
+
+    redes: {
+      web: null,
+      instagram: null,
+      facebook: null,
+      X: null,
+      tiktok: null,
+      youtube: null,
+    },
+  },
+
+  /* ==========================================
+     NUESTRA SEÑORA DE LA SALUD DE SAN CLEMENTE
+     HERMANDAD DE GLORIA — TOLEDO
+  ========================================== */
+
+  {
+    id: "salud",
+    slug: "salud",
+
+    nombre: "Nuestra Señora de la Salud",
+    nombreCorto: "Salud",
+    subnombre: "San Clemente",
+
+    sedeCanonica: "Real Monasterio de San Clemente",
+    tipo: "gloria",
+
+    anioFundacion: null,
+    anioRefundacion: null,
+    referenciaHistorica: null,
+
+    historia:
+      "La devoción a Nuestra Señora de la Salud de San Clemente está vinculada al Real Monasterio de San Clemente de Toledo, una histórica fundación cisterciense cuyos orígenes se remontan a la Edad Media. Su hermandad mantiene el culto a la Virgen, especialmente en torno a la fiesta de la Natividad de María, el 8 de septiembre, y la celebración de la Candelaria en febrero. La imagen sale en procesión desde el convento, conservando una tradición mariana estrechamente relacionada con la comunidad religiosa y las calles del entorno.",
+
+    escudoUrl: "/escudos/desktop/gloria/salud_clemente.png",
+    escudoMovilUrl: "/escudos/movil/gloria/salud_clemente.png",
+    logoUrl: `${saludSanClementePath}/logo.avif`,
+    logoDoradoUrl: `${saludSanClementePath}/logodorado.avif`,
+
+    portadaDesktopUrl: `${saludSanClementePath}/portada.avif`,
+    portada2kUrl: `${saludSanClementePath}/portada_2k.avif`,
+    portadaMovilUrl: `${saludSanClementePath}/portadamovil.avif`,
+
+    titulares: [
+      {
+        id: "salud-titular",
+        nombre: "Nuestra Señora de la Salud",
+        advocacion: "Virgen de la Salud de San Clemente",
+        esVirgen: true,
+
+        anio: null,
+        siglo: null,
+        autor: null,
+        tipoAndas: "Andas",
+
+        datosTalla:
+          "Imagen de Nuestra Señora de la Salud con el Niño Jesús, venerada en la iglesia conventual de San Clemente de Toledo. Recibe culto en el monasterio y participa en las procesiones vinculadas a la Natividad de la Virgen y a la Candelaria. Su datación y autoría están pendientes de confirmación documental.",
+
+        fotoUrl: `${saludSanClementePath}/titular.avif`,
+        galeria: [
+          `${saludSanClementePath}/galeria1.avif`,
+          `${saludSanClementePath}/galeria2.avif`,
+          `${saludSanClementePath}/galeria3.avif`,
+          `${saludSanClementePath}/galeria4.avif`,
+        ],
+      },
+    ],
+
+    cultosId: "salud",
+    procesionId: "salud-principal",
+
+    redes: {
+      web: null,
+      instagram: null,
+      facebook: null,
+      X: null,
+      tiktok: null,
+      youtube: null,
+    },
+  },
+
+  /* ==========================================
+     NUESTRA SEÑORA SANTA MARÍA DEL ALCÁZAR
+     HERMANDAD DE GLORIA — TOLEDO
+  ========================================== */
+
+  {
+    id: "alcazar",
+    slug: "alcazar",
+
+    nombre: "Nuestra Señora Santa María del Alcázar",
+    nombreCorto: "Alcázar",
+
+    sedeCanonica: "Santa Iglesia Catedral Primada",
+    tipo: "gloria",
+
+    anioFundacion: 1936,
+    anioRefundacion: null,
+    referenciaHistorica: null,
+
+    historia:
+      "La Hermandad de Nuestra Señora Santa María del Alcázar surgió en agosto de 1936, durante los acontecimientos de la Guerra Civil relacionados con el Alcázar de Toledo. Fue erigida canónicamente el 7 de diciembre de ese mismo año en la Catedral Primada. La corporación nació con el propósito de mantener la unión entre sus integrantes, fomentar el culto a la Santísima Virgen bajo la advocación de Santa María del Alcázar y prestar ayuda a los hermanos y sus familias. Conserva sus celebraciones marianas y la tradicional procesión de septiembre.",
+
+    escudoUrl: "/escudos/desktop/gloria/alcazar.png",
+    escudoMovilUrl: "/escudos/movil/gloria/alcazar.png",
+    logoUrl: `${alcazarPath}/logo.avif`,
+    logoDoradoUrl: `${alcazarPath}/logodorado.avif`,
+
+    portadaDesktopUrl: `${alcazarPath}/portada.avif`,
+    portada2kUrl: `${alcazarPath}/portada_2k.avif`,
+    portadaMovilUrl: `${alcazarPath}/portadamovil.avif`,
+
+    titulares: [
+      {
+        id: "alcazar-titular",
+        nombre: "Nuestra Señora Santa María del Alcázar",
+        advocacion: "Santa María del Alcázar",
+        esVirgen: true,
+
+        anio: null,
+        siglo: null,
+        autor: null,
+        tipoAndas: "Andas",
+
+        datosTalla:
+          "Imagen de la Santísima Virgen bajo la advocación de Santa María del Alcázar, vinculada históricamente a la devoción mariana de la fortaleza toledana. La hermandad le rinde culto en la Catedral Primada y celebra su procesión durante el mes de septiembre. No se ha confirmado la autoría ni una datación precisa de la talla.",
+
+        fotoUrl: `${alcazarPath}/titular.avif`,
+        galeria: [
+          `${alcazarPath}/galeria1.avif`,
+          `${alcazarPath}/galeria2.avif`,
+          `${alcazarPath}/galeria3.avif`,
+          `${alcazarPath}/galeria4.avif`,
+        ],
+      },
+    ],
+
+    cultosId: "alcazar",
+    procesionId: "alcazar-principal",
+
+    redes: {
+      web: "https://www.hermandadsantamariadelalcazar.org/",
+      instagram: null,
+      facebook: null,
+      X: null,
+      tiktok: null,
+      youtube: null,
+    },
+
+    fotosCedidas: true,
+    fotoQuien: "Toledo Sacro",
+    fotosSeccion: "todo",
+    fotosLogo: "/colaboradores/toledo_sacro.webp",
+  },
+
+  /* ==========================================
+     NUESTRA SEÑORA DE GUADALUPE
+     HERMANDAD EXTREMEÑA — TOLEDO
+  ========================================== */
+
+  {
+    id: "guadalupe",
+    slug: "guadalupe",
+
+    nombre: "Nuestra Señora de Guadalupe",
+    nombreCorto: "Guadalupe",
+
+    sedeCanonica: "Iglesia parroquial de Santo Tomé",
+    tipo: "gloria",
+
+    anioFundacion: 1765,
+    anioRefundacion: null,
+    referenciaHistorica: null,
+
+    historia:
+      "La devoción organizada a Nuestra Señora de Guadalupe en Toledo se documenta desde 1765, año de establecimiento de una Esclavitud dedicada a la Virgen, cuyas constituciones fueron aprobadas en 1766. La hermandad extremeña mantiene esta advocación en la parroquia de Santo Tomé y reúne en torno a ella a extremeños residentes en Toledo y a otros devotos. Sus celebraciones comprenden los cultos de septiembre, la procesión de la Virgen y peregrinaciones al santuario de Guadalupe, en Extremadura.",
+
+    escudoUrl: "/escudos/desktop/gloria/guadalupe.png",
+    escudoMovilUrl: "/escudos/movil/gloria/guadalupe.png",
+    logoUrl: `${guadalupePath}/logo.avif`,
+    logoDoradoUrl: `${guadalupePath}/logodorado.avif`,
+
+    portadaDesktopUrl: `${guadalupePath}/portada.avif`,
+    portada2kUrl: `${guadalupePath}/portada_2k.avif`,
+    portadaMovilUrl: `${guadalupePath}/portadamovil.avif`,
+
+    titulares: [
+      {
+        id: "guadalupe-titular",
+        nombre: "Nuestra Señora de Guadalupe",
+        advocacion: "Virgen de Guadalupe",
+        esVirgen: true,
+
+        anio: null,
+        siglo: null,
+        autor: null,
+        tipoAndas: "Andas",
+
+        datosTalla:
+          "Imagen de Nuestra Señora de Guadalupe venerada en la iglesia de Santo Tomé de Toledo. Representa la advocación mariana de especial arraigo en Extremadura y recibe culto por parte de la Hermandad Extremeña de Toledo. La imagen participa en los actos y procesión de septiembre. Su autor y fecha de ejecución no han podido confirmarse con suficiente seguridad.",
+
+        fotoUrl: `${guadalupePath}/titular.avif`,
+        galeria: [
+          `${guadalupePath}/galeria1.avif`,
+          `${guadalupePath}/galeria2.avif`,
+          `${guadalupePath}/galeria3.avif`,
+          `${guadalupePath}/galeria4.avif`,
+        ],
+      },
+    ],
+
+    cultosId: "guadalupe",
+    procesionId: "guadalupe-principal",
+
+    redes: {
+      web: null,
+      instagram: null,
+      facebook: null,
+      X: null,
+      tiktok: null,
+      youtube: null,
+    },
+
+    fotosCedidas: true,
+    fotoQuien: "Toledo Sacro",
+    fotosSeccion: "todo",
+    fotosLogo: "/colaboradores/toledo_sacro.webp",
   },
 
 ];

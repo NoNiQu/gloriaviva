@@ -48,5 +48,7 @@ export type CultoCardData = {
   titleSizeMovil?: CultoCardTitleSize;
   imagePosition?: string;
 
+  degradado?: boolean;
+
   creditoFoto?: CreditoFoto | null;
 };

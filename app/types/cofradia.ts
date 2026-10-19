@@ -72,5 +72,6 @@ export interface CofradiaData {
 
   fotosCedidas?: boolean;
   fotoQuien?: string | null;
+  fotosSeccion?: string | null;
   fotosLogo?: string | null;
 }

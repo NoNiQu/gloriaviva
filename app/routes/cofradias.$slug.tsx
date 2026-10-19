@@ -587,8 +587,11 @@ export default function CofradiaPage({ loaderData }: Route.ComponentProps) {
             <div className="border-t border-black/15 py-10">
               <p className="text-center text-lg leading-relaxed text-black/80">
                 Gracias a {cofradia.fotoQuien || "quienes colaboraron"} por
-                ceder las fotografías. Estoy muy agradecido por su generosidad y
-                apoyo.
+                {" ceder las fotografías"}
+                {cofradia.fotosSeccion &&
+                  cofradia.fotosSeccion !== "todo" &&
+                  ` de la ${cofradia.fotosSeccion}`}
+                . Estoy muy agradecido por su generosidad y apoyo.
               </p>
             </div>
           </section>

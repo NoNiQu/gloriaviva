@@ -8,8 +8,8 @@ export const cultosCards: CultoCardData[] = [
     fecha: "18 al 20 de SEPTIEMBRE",
     mes: "SEPTIEMBRE",
     diaInicio: 18,
-    imagenUrl: "/cultos/septiembre/desktop/angustias.webp",
-    imagenMovilUrl: "/cultos/septiembre/movil/angustias.webp",
+    imagenUrl: "/cofradias/penitencia/angustias/angustias_CE.avif",
+    imagenMovilUrl: "/cofradias/penitencia/angustias/angustias_CM.avif",
     imagenAlt: "Nuestra Señora de las Angustias",
     colorFondo: "#0F172A",
     cultosHref: "/cultos/septiembre/desktop/angustias",
@@ -24,8 +24,8 @@ export const cultosCards: CultoCardData[] = [
     fecha: "18 al 20 de SEPTIEMBRE",
     mes: "SEPTIEMBRE",
     diaInicio: 18,
-    imagenUrl: "/cultos/septiembre/desktop/alegria.webp",
-    imagenMovilUrl: "/cultos/septiembre/movil/alegria.webp",
+    imagenUrl: "/cofradias/gloria/alegria/alegria_CE.avif",
+    imagenMovilUrl: "/cofradias/gloria/alegria/alegria_CM.avif",
     imagenAlt: "Virgen de la Alegría",
     colorFondo: "#0F6558",
     cultosHref: "/cultos/septiembre/desktop/alegria",
@@ -41,8 +41,8 @@ export const cultosCards: CultoCardData[] = [
     fecha: "11 al 13 de SEPTIEMBRE",
     mes: "SEPTIEMBRE",
     diaInicio: 11,
-    imagenUrl: "/cultos/septiembre/desktop/calvario.webp",
-    imagenMovilUrl: "/cultos/septiembre/movil/calvario.webp",
+    imagenUrl: "/cofradias/penitencia/salvador/calvario/calvario_CE.avif",
+    imagenMovilUrl: "/cofradias/penitencia/salvador/calvario/calvario_CM.avif",
     imagenAlt: "Cristo del Calvario",
     colorFondo: "#7B163F",
     cultosHref: "/cultos/septiembre/desktop/calvario",
@@ -76,8 +76,8 @@ export const cultosCards: CultoCardData[] = [
     fecha: "18 al 21 de SEPTIEMBRE",
     mes: "SEPTIEMBRE",
     diaInicio: 18,
-    imagenUrl: "/cultos/septiembre/desktop/dolores.webp",
-    imagenMovilUrl: "/cultos/septiembre/movil/dolores.webp",
+    imagenUrl: "/cofradias/penitencia/dolores/dolores_CE.avif",
+    imagenMovilUrl: "/cofradias/penitencia/dolores/dolores_CM.avif",
     imagenAlt: "Virgen de los Dolores",
     colorFondo: "#1B1A1A",
     cultosHref: "/cultos/septiembre/desktop/dolores",
@@ -92,8 +92,8 @@ export const cultosCards: CultoCardData[] = [
     fecha: "26 y 27 de SEPTIEMBRE",
     mes: "SEPTIEMBRE",
     diaInicio: 26,
-    imagenUrl: "/cultos/septiembre/desktop/misericordia.webp",
-    imagenMovilUrl: "/cultos/septiembre/movil/misericordia.webp",
+    imagenUrl: "/cofradias/penitencia/misericordia/misericordia_CE.avif",
+    imagenMovilUrl: "/cofradias/penitencia/misericordia/misericordia_CM.avif",
     imagenAlt: "Cristo de la Misericordia",
     colorFondo: "#5C1D1D",
     cultosHref: "/cultos/septiembre/desktop/misericordia",
@@ -127,8 +127,8 @@ export const cultosCards: CultoCardData[] = [
     fecha: "5 y 6 de SEPTIEMBRE",
     mes: "SEPTIEMBRE",
     diaInicio: 5,
-    imagenUrl: "/cultos/septiembre/desktop/remedios.webp",
-    imagenMovilUrl: "/cultos/septiembre/movil/remedios.webp",
+    imagenUrl: "/cofradias/gloria/remedios/remedios_CE.avif",
+    imagenMovilUrl: "/cofradias/gloria/remedios/remedios_CM.avif",
     imagenAlt: "Virgen de los Remedios",
     colorFondo: "#036B8F",
     cultosHref: "/cultos/septiembre/desktop/remedios",
@@ -143,8 +143,8 @@ export const cultosCards: CultoCardData[] = [
     fecha: "6 al 8 de SEPTIEMBRE",
     mes: "SEPTIEMBRE",
     diaInicio: 6,
-    imagenUrl: "/cultos/septiembre/desktop/salud.webp",
-    imagenMovilUrl: "/cultos/septiembre/movil/salud.webp",
+    imagenUrl: "/cofradias/gloria/salud_clemente/salud_clemente_CE.avif",
+    imagenMovilUrl: "/cofradias/gloria/salud_clemente/salud_clemente_CM.avif",
     imagenAlt: "Virgen de la Salud",
     colorFondo: "#7A6A52",
     cultosHref: "/cultos/septiembre/desktop/salud",
@@ -159,8 +159,8 @@ export const cultosCards: CultoCardData[] = [
     fecha: "6 al 9 de SEPTIEMBRE",
     mes: "SEPTIEMBRE",
     diaInicio: 6,
-    imagenUrl: "/cultos/septiembre/desktop/guadalupe.webp",
-    imagenMovilUrl: "/cultos/septiembre/movil/guadalupe.webp",
+    imagenUrl: "/cofradias/gloria/guadalupe/guadalupe_CE.avif",
+    imagenMovilUrl: "/cofradias/gloria/guadalupe/guadalupe_CM.avif",
     imagenAlt: "Nuestra Señora de Guadalupe",
     colorFondo: "#4E5B3D",
     titleSize: "medium",
@@ -178,11 +178,12 @@ export const cultosCards: CultoCardData[] = [
     fecha: "24 al 27 de SEPTIEMBRE",
     mes: "SEPTIEMBRE",
     diaInicio: 24,
-    imagenUrl: "/cultos/septiembre/desktop/alcazar.webp",
-    imagenMovilUrl: "/cultos/septiembre/movil/alcazar.webp",
+    imagenUrl: "/cofradias/gloria/alcazar/alcazar_CE.avif",
+    imagenMovilUrl: "/cofradias/gloria/alcazar/alcazar_CM.avif",
     imagenAlt: "Santa María del Alcázar",
     colorFondo: "#1F2B3C",
     titleSize: "large",
+    degradado: true,
     imagePosition: "50% 25%",
     creditoFoto: {
       nombre: "Toledo Sacro",
@@ -198,11 +199,12 @@ export const cultosCards: CultoCardData[] = [
     fecha: "7 al 15 de AGOSTO",
     mes: "AGOSTO",
     diaInicio: 7,
-    imagenUrl: "/cultos/agosto/desktop/sagrario.webp",
-    imagenMovilUrl: "/cultos/agosto/movil/sagrario.webp",
+    imagenUrl: "/cofradias/gloria/sagrario/sagrario_CE.avif",
+    imagenMovilUrl: "/cofradias/gloria/sagrario/sagrario_CM.avif",
     imagenAlt: "Nuestra Señora del Sagrario",
     colorFondo: "#8A6B2D",
     titleSize: "large",
+    degradado: true,
   },
 
   {
@@ -213,10 +215,11 @@ export const cultosCards: CultoCardData[] = [
     mes: "JULIO",
     diaInicio: 7,
     colorFondo: "#4A3427",
-    imagenUrl: "/cultos/julio/desktop/carmen_carmelitas.webp",
-    imagenMovilUrl: "/cultos/julio/movil/carmen_carmelitas.webp",
+    imagenUrl: "/cofradias/devocion/carmen_carmelitas/carmen_CE.avif",
+    imagenMovilUrl: "/cofradias/devocion/carmen_carmelitas/carmen_CM.avif",
     imagenAlt: "Virgen del Carmen de los Padres Carmelitas",
     titleSize: "large",
+    degradado: true,
   },
 
   {
@@ -227,10 +230,11 @@ export const cultosCards: CultoCardData[] = [
     mes: "JULIO",
     diaInicio: 9,
     colorFondo: "#4A3427",
-    imagenUrl: "/cultos/julio/desktop/carmen_sanAndres.webp",
-    imagenMovilUrl: "/cultos/julio/movil/carmen_sanAndres.webp",
+    imagenUrl: "/cofradias/gloria/carmen/carmen_CE.avif",
+    imagenMovilUrl: "/cofradias/gloria/carmen/carmen_CM.avif",
     imagenAlt: "Virgen del Carmen de San Andrés",
     titleSize: "large",
+    degradado: true,
   },
 
   /* ==========================================
@@ -245,9 +249,9 @@ export const cultosCards: CultoCardData[] = [
     mes: "OCTUBRE",
     diaInicio: 9,
 
-    // Imágenes pendientes de preparar.
-    imagenUrl: "/cultos/octubre/desktop/guia.webp",
-    imagenMovilUrl: "/cultos/octubre/movil/guia.webp",
+    // Imágenes de culto en la carpeta de la cofradía.
+    imagenUrl: "/cofradias/gloria/guia/guia_CE.avif",
+    imagenMovilUrl: "/cofradias/gloria/guia/guia_CM.avif",
     imagenAlt: "Nuestra Señora de la Guía de Toledo",
 
     colorFondo: "#590716",
@@ -267,9 +271,9 @@ export const cultosCards: CultoCardData[] = [
     mes: "JUNIO",
     diaInicio: 5,
 
-    // Imágenes pendientes de preparar.
-    imagenUrl: "/cultos/junio/desktop/estrella.webp",
-    imagenMovilUrl: "/cultos/junio/movil/estrella.webp",
+    // Imágenes de culto en la carpeta de la cofradía.
+    imagenUrl: "/cofradias/gloria/estrella/estrella_CE.avif",
+    imagenMovilUrl: "/cofradias/gloria/estrella/estrella_CM.avif",
     imagenAlt: "Nuestra Señora de la Estrella de Toledo",
 
     colorFondo: "#385A91",
@@ -301,8 +305,8 @@ export const cultosCards: CultoCardData[] = [
       JUNIO: ["esperanza-octava"],
     },
 
-    imagenUrl: "/cultos/mayo/desktop/esperanza.webp",
-    imagenMovilUrl: "/cultos/mayo/movil/esperanza.webp",
+    imagenUrl: "/cofradias/gloria/esperanza/esperanza_CE.avif",
+    imagenMovilUrl: "/cofradias/gloria/esperanza/esperanza_CM.avif",
     imagenAlt: "Nuestra Señora de la Esperanza de San Cipriano",
 
     colorFondo: "#305746",
@@ -329,9 +333,9 @@ export const cultosCards: CultoCardData[] = [
     // Solo hay Santa Misa, sin procesión.
     procesionesIds: [],
 
-    // Reutiliza las fotografías existentes de la Virgen.
-    imagenUrl: "/cultos/mayo/desktop/esperanza.webp",
-    imagenMovilUrl: "/cultos/mayo/movil/esperanza.webp",
+    // Reutiliza las imágenes de Cultos de la Novena de la Virgen.
+    imagenUrl: "/cofradias/gloria/esperanza/esperanza_CE.avif",
+    imagenMovilUrl: "/cofradias/gloria/esperanza/esperanza_CM.avif",
     imagenAlt: "Nuestra Señora de la Esperanza de San Cipriano",
 
     colorFondo: "#305746",
@@ -352,8 +356,8 @@ export const cultosCards: CultoCardData[] = [
     mes: "MAYO",
     diaInicio: 21,
 
-    imagenUrl: "/cultos/mayo/desktop/paz.webp",
-    imagenMovilUrl: "/cultos/mayo/movil/paz.webp",
+    imagenUrl: "/cofradias/gloria/paz/paz_CE.avif",
+    imagenMovilUrl: "/cofradias/gloria/paz/paz_CM.avif",
     imagenAlt: "Nuestra Señora de la Paz de San Andrés",
 
     colorFondo: "#6A573A",
@@ -375,8 +379,8 @@ export const cultosCards: CultoCardData[] = [
   mes: "OCTUBRE",
   diaInicio: 11,
 
-  imagenUrl: "/cultos/octubre/desktop/rosario.webp",
-  imagenMovilUrl: "/cultos/octubre/movil/rosario.webp",
+  imagenUrl: "/cofradias/penitencia/salvador/rosario/rosario_CE.avif",
+  imagenMovilUrl: "/cofradias/penitencia/salvador/rosario/rosario_CM.avif",
   imagenAlt: "Nuestra Señora del Rosario de Toledo",
 
   colorFondo: "#7B163F",
@@ -398,8 +402,8 @@ export const cultosCards: CultoCardData[] = [
     mes: "OCTUBRE",
     diaInicio: 22,
 
-    imagenUrl: "/cultos/octubre/desktop/amparo.webp",
-    imagenMovilUrl: "/cultos/octubre/movil/amparo.webp",
+    imagenUrl: "/cofradias/penitencia/amparo/amparo_CE.avif",
+    imagenMovilUrl: "/cofradias/penitencia/amparo/amparo_CM.avif",
     imagenAlt: "Nuestra Señora del Amparo de Toledo",
 
     colorFondo: "#36543C",

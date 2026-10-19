@@ -16,7 +16,9 @@ export function Header() {
   const { pathname } = useLocation();
 
   const isHomePage = pathname === "/";
-  const hasWhiteHeader = whiteHeaderRoutes.includes(pathname);
+  const hasWhiteHeader =
+    whiteHeaderRoutes.includes(pathname) ||
+    pathname.startsWith("/sedescanonicas/");
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);

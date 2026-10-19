@@ -129,7 +129,7 @@ function BotonMes({
             -translate-x-1/2
             whitespace-nowrap
             rounded-xl
-            bg-black
+            bg-[#263D63]
             px-3
             py-2
             text-sm
@@ -153,10 +153,12 @@ function BotonMes({
       className={`
         ${clasesBase}
         ${clasesTamano}
-        border-black
+        border-black/20
         transition-colors
-        hover:bg-black
+        hover:bg-[#263D63]
         hover:text-white
+        focus-visible:bg-[#263D63]
+        focus-visible:text-white
         focus-visible:outline-2
         focus-visible:outline-offset-4
         focus-visible:outline-black
@@ -256,16 +258,19 @@ export default function CultosMesPage() {
               items-center
               justify-center
               rounded-2xl
-              bg-black
+              bg-[#263D63]
               px-8
               py-4
               text-lg
               text-white
-              transition-opacity
-              hover:opacity-80
+              transition-colors
+              duration-300
+              ease-out
+              hover:bg-[#344F7A]
+              focus-visible:bg-[#344F7A]
               focus-visible:outline-2
               focus-visible:outline-offset-4
-              focus-visible:outline-black
+              focus-visible:outline-white
             "
           >
             Volver a Cultos
@@ -348,8 +353,10 @@ export default function CultosMesPage() {
               text-center
               text-lg
               transition-colors
-              hover:bg-black
+              hover:bg-[#263D63]
               hover:text-white
+              focus-visible:bg-[#263D63]
+              focus-visible:text-white
               focus-visible:outline-2
               focus-visible:outline-offset-4
               focus-visible:outline-black
@@ -408,18 +415,21 @@ export default function CultosMesPage() {
               items-center
               justify-center
               rounded-2xl
-              bg-black
+              bg-[#263D63]
               px-6
               py-4
               text-center
               text-base
               leading-none
               text-white
-              transition-opacity
-              hover:opacity-80
+              transition-colors
+              duration-300
+              ease-out
+              hover:bg-[#344F7A]
+              focus-visible:bg-[#344F7A]
               focus-visible:outline-2
               focus-visible:outline-offset-4
-              focus-visible:outline-black
+              focus-visible:outline-white
             "
           >
             VOLVER A CULTOS
@@ -453,17 +463,20 @@ export default function CultosMesPage() {
               items-center
               justify-center
               rounded-2xl
-              bg-black
+              bg-[#263D63]
               px-8
               py-4
               text-center
               text-lg
               text-white
-              transition-opacity
-              hover:opacity-80
+              transition-colors
+              duration-300
+              ease-out
+              hover:bg-[#344F7A]
+              focus-visible:bg-[#344F7A]
               focus-visible:outline-2
               focus-visible:outline-offset-4
-              focus-visible:outline-black
+              focus-visible:outline-white
             "
           >
             VOLVER A CULTOS

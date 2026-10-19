@@ -35,10 +35,16 @@ export function meta({ loaderData }: Route.MetaArgs) {
   ];
 }
 
-function tituloHorarios(usoActual: string) {
-  if (usoActual === "CULTO") return "Horarios de culto";
-  if (usoActual === "MUSEO") return "Horario de visita";
-  return "Culto y visitas";
+function getTituloHorarios(usoActual: string | null) {
+  switch (usoActual) {
+    case "CULTO":
+    case "CULTO_Y_MUSEO":
+      return "Horario de misa";
+    case "MUSEO":
+      return "Horario de visita";
+    default:
+      return "Horarios";
+  }
 }
 
 /* ==========================================
@@ -47,13 +53,16 @@ function tituloHorarios(usoActual: string) {
 
 export default function SedeCanonicaPage({ loaderData }: Route.ComponentProps) {
   const { sede, cofradiasVinculadas } = loaderData;
+  const cofradiasConEscudo = cofradiasVinculadas.filter((cofradia) =>
+    Boolean(cofradia.escudoUrl),
+  );
 
   return (
-    <main className="min-h-svh bg-white text-[#263D63]">
-      {/* Cabecera en el azul identitario de Gloria Viva */}
-      <header className="bg-[#263D63] px-6 pb-15 pt-36 text-white md:px-10 md:pb-20 md:pt-44 lg:px-30">
-        <div className="mx-auto max-w-300 text-center">
-          <h1 className="mx-auto mt-6 max-w-4xl text-4xl leading-[1.08] tracking-wide sm:text-5xl md:text-6xl lg:text-7xl">
+    <main className="min-h-svh bg-[#263D63] text-white">
+      {/* Cabecera centrada de la versión anterior de Gloria Viva */}
+      <header className="bg-[#263D63] px-6 pb-8 pt-36 text-white md:px-10 md:pb-10 md:pt-44 lg:px-30">
+        <div className="mx-auto w-full text-center">
+          <h1 className="mt-6 w-full text-4xl leading-[1.08] tracking-wide sm:text-5xl md:text-6xl lg:text-7xl">
             {sede.nombre}
           </h1>
           <p className="mt-7 text-sm leading-relaxed tracking-wider text-white/85 md:text-base">
@@ -62,27 +71,36 @@ export default function SedeCanonicaPage({ loaderData }: Route.ComponentProps) {
         </div>
       </header>
 
-      <div className="mx-auto w-full max-w-360 px-6 pb-24 pt-12 md:px-10 md:pb-32 md:pt-17 lg:px-30">
-        <div className="grid border-y border-[#263D63]/20 lg:grid-cols-2">
-          <section className="border-b border-[#263D63]/20 py-10 lg:border-b-0 lg:py-14 lg:pr-16">
-            <h2 className="text-sm uppercase tracking-[0.2em] text-[#263D63]/65">
+      <div className="mx-auto max-w-360 px-6 pb-10 md:px-10 md:pb-14 lg:px-30 lg:pb-27">
+        {/* Descripción + horarios: misma estructura que Entre Silencios */}
+        <div className="grid border-y border-white/15 lg:grid-cols-2">
+          <section className="relative min-h-64 border-b border-white/15 py-10 lg:min-h-72 lg:border-b-0 lg:pr-16 lg:after:absolute lg:after:bottom-8 lg:after:right-0 lg:after:top-8 lg:after:w-px lg:after:bg-white/15">
+            <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-white/75">
               Descripción
             </h2>
-            <p className="mt-7 max-w-2xl text-base leading-8 tracking-[0.02em] text-[#263D63]/85 md:text-lg md:leading-9">
-              {sede.descripcionBreve}
-            </p>
+
+            {sede.descripcionBreve ? (
+              <p className="mt-6 max-w-2xl text-sm leading-7 text-white/75 md:text-base md:leading-8">
+                {sede.descripcionBreve}
+              </p>
+            ) : (
+              <p className="mt-6 max-w-2xl text-sm leading-7 text-white/75">
+                Actualmente no hay una descripción disponible de esta sede
+                canónica.
+              </p>
+            )}
           </section>
 
-          <section className="py-10 lg:border-l lg:border-[#263D63]/20 lg:py-14 lg:pl-16">
-            <h2 className="text-sm uppercase tracking-[0.2em] text-[#263D63]/65">
-              {tituloHorarios(sede.usoActual)}
+          <section className="min-h-64 py-10 lg:min-h-72 lg:pl-16">
+            <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-white/75">
+              {getTituloHorarios(sede.usoActual)}
             </h2>
 
             {sede.horarios.length > 0 ? (
-              <div className="mt-7 space-y-6">
+              <div className="mt-6 space-y-7">
                 {sede.horarios.map((horario) => (
                   <div key={horario.id}>
-                    <p className="text-sm leading-6 text-[#263D63]/70">
+                    <p className="text-sm leading-6 text-white/75">
                       {horario.texto}
                     </p>
                     <p className="mt-2 text-xl tabular-nums md:text-2xl">
@@ -91,86 +109,66 @@ export default function SedeCanonicaPage({ loaderData }: Route.ComponentProps) {
                   </div>
                 ))}
               </div>
-            ) : (
-              <p className="mt-7 max-w-md text-base leading-8 text-[#263D63]/75">
-                Los horarios pueden cambiar según la época del año y las
-                celebraciones. Consulta la información actualizada antes de
-                acudir.
+            ) : !sede.horariosUrl ? (
+              <p className="mt-6 text-sm leading-7 text-white/75">
+                Actualmente no hay horarios disponibles.
               </p>
-            )}
+            ) : null}
 
             {sede.horariosUrl && (
               <a
                 href={sede.horariosUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-7 inline-flex min-h-11 items-center gap-3 border-b border-[#263D63] pb-1 text-sm tracking-[0.035em] transition-colors hover:text-[#263D63]/65 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#263D63] motion-reduce:transition-none md:text-base"
+                className="mt-8 inline-flex min-h-11 items-center gap-2 text-sm font-medium text-white/75 transition-colors duration-200 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white motion-reduce:transition-none"
               >
-                Consultar información oficial
+                Consultar horarios actualizados
                 <span aria-hidden="true">↗</span>
               </a>
             )}
           </section>
         </div>
 
-        <section className="border-b border-[#263D63]/20 py-12 md:py-16">
-          <h2 className="text-sm uppercase tracking-[0.2em] text-[#263D63]/65">
+        {/* Solo escudos: sin nombres visibles, tarjetas ni bordes */}
+        <section className="border-b border-white/15 py-10 md:py-12">
+          <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-white/75">
             Cofradías con sede canónica aquí
           </h2>
 
-          {cofradiasVinculadas.length > 0 ? (
-            <ul className="mt-9 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {cofradiasVinculadas.map((cofradia) => (
+          {cofradiasConEscudo.length > 0 ? (
+            <ul className="mt-8 flex flex-wrap gap-8">
+              {cofradiasConEscudo.map((cofradia) => (
                 <li key={cofradia.id}>
                   <Link
                     to={`/cofradias/${cofradia.slug}`}
-                    className="group flex min-h-35 items-center gap-5 rounded-2xl border border-[#263D63]/20 px-5 py-6 transition-colors duration-300 hover:border-[#263D63] hover:bg-[#263D63] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#263D63] motion-reduce:transition-none"
+                    title={cofradia.nombre}
+                    aria-label={`Ver cofradía: ${cofradia.nombre}`}
+                    className="flex min-h-24 min-w-24 items-center justify-center focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
                   >
-                    {cofradia.logoUrl ? (
-                      <img
-                        src={cofradia.logoUrl}
-                        alt=""
-                        loading="lazy"
-                        decoding="async"
-                        className="h-18 w-18 shrink-0 object-contain"
-                      />
-                    ) : cofradia.escudoUrl ? (
-                      <img
-                        src={cofradia.escudoUrl}
-                        alt=""
-                        loading="lazy"
-                        decoding="async"
-                        className="h-18 w-18 shrink-0 object-contain"
-                      />
-                    ) : null}
-                    <div className="min-w-0 flex-1">
-                      <h3 className="text-xl leading-tight tracking-tight md:text-2xl">
-                        {cofradia.nombreCorto || cofradia.nombre}
-                      </h3>
-                      {cofradia.subnombre && (
-                        <p className="mt-2 text-sm leading-relaxed tracking-[0.03em] text-[#263D63]/70 group-hover:text-white/75 group-focus-visible:text-white/75">
-                          {cofradia.subnombre}
-                        </p>
-                      )}
-                    </div>
-                    <span aria-hidden="true" className="text-xl">
-                      ↗
-                    </span>
+                    <img
+                      src={cofradia.escudoUrl!}
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                      className="max-h-20 max-w-20 object-contain"
+                    />
                   </Link>
                 </li>
               ))}
             </ul>
           ) : (
-            <p className="mt-7 text-base leading-8 text-[#263D63]/70">
-              Todavía no hay cofradías vinculadas a esta sede.
+            <p className="mt-6 text-sm leading-7 text-white/75">
+              {cofradiasVinculadas.length > 0
+                ? "Los escudos de estas cofradías todavía no están disponibles."
+                : "Actualmente no hay cofradías vinculadas a esta sede canónica."}
             </p>
           )}
         </section>
 
-        <nav aria-label="Navegación de sedes canónicas" className="mt-9">
+        <nav aria-label="Navegación de sedes canónicas" className="mt-6">
           <Link
             to="/sedescanonicas"
-            className="inline-flex min-h-11 items-center gap-3 text-sm tracking-[0.035em] transition-colors hover:text-[#263D63]/65 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#263D63] motion-reduce:transition-none md:text-base"
+            className="inline-flex min-h-11 items-center gap-3 text-sm font-medium text-white/75 transition-colors duration-200 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white motion-reduce:transition-none"
           >
             <span aria-hidden="true">←</span>
             Volver a sedes canónicas

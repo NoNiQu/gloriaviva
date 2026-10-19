@@ -4,9 +4,9 @@ import type { SedeCanonicaData } from "../types/sede_canonica";
    SEDES CANÓNICAS · GLORIA VIVA · TOLEDO
 
    Solo las siete sedes compartidas con Entre Silencios.
-   Los horarios se dejan vacíos mientras no haya datos
-   verificados para cada templo. No confundir horarios
-   de visita turística con horarios de misa.
+   Horarios de misa transcritos de las capturas aportadas.
+   Santiago el Mayor conserva el enlace a la información
+   oficial hasta disponer de horarios concretos.
 
    Los IDs enlazan con app/data/cofradia.ts.
 ========================================== */
@@ -20,7 +20,18 @@ export const sedesCanonicas: SedeCanonicaData[] = [
     descripcionBreve:
       "Templo histórico en el que conviven elementos mudéjares y góticos con transformaciones barrocas realizadas durante la remodelación del siglo XVII. Su arquitectura conserva la huella de las distintas etapas históricas que han configurado la iglesia a lo largo de los siglos.",
     usoActual: "CULTO",
-    horarios: [],
+    horarios: [
+      {
+        id: "san-andres-1",
+        texto: "Lunes a sábados y vísperas",
+        hora: "19:30",
+      },
+      {
+        id: "san-andres-2",
+        texto: "Domingos y solemnidades",
+        hora: "12:30",
+      },
+    ],
     horariosUrl: null,
     cofradiasIds: ["alegria", "carmen-san-andres", "paz"],
     existe: true,
@@ -33,7 +44,13 @@ export const sedesCanonicas: SedeCanonicaData[] = [
     descripcionBreve:
       "Templo de origen medieval documentado ya en 1125 como parroquia latina y uno de los más antiguos de Toledo. Destaca especialmente su torre mudéjar, que conserva parte de la estructura original del siglo XII. En su interior recibe culto durante todo el año la Virgen de la Esperanza.",
     usoActual: "CULTO",
-    horarios: [],
+    horarios: [
+      {
+        id: "san-cipriano-1",
+        texto: "Domingos",
+        hora: "11:00",
+      },
+    ],
     horariosUrl: null,
     cofradiasIds: ["esperanza"],
     existe: true,
@@ -46,7 +63,28 @@ export const sedesCanonicas: SedeCanonicaData[] = [
     descripcionBreve:
       "Templo de origen medieval documentado desde mediados del siglo XII. La tradición toledana lo sitúa sobre el solar de la casa donde nació Santa Leocadia y el edificio conserva importantes testimonios de la arquitectura histórica toledana.",
     usoActual: "CULTO",
-    horarios: [],
+    horarios: [
+      {
+        id: "santa-leocadia-1",
+        texto: "Laborables y vísperas · invierno",
+        hora: "19:00",
+      },
+      {
+        id: "santa-leocadia-2",
+        texto: "Domingos · invierno",
+        hora: "12:30",
+      },
+      {
+        id: "santa-leocadia-3",
+        texto: "Laborables y vísperas · verano",
+        hora: "20:00",
+      },
+      {
+        id: "santa-leocadia-4",
+        texto: "Domingos · verano",
+        hora: "12:30",
+      },
+    ],
     horariosUrl: null,
     cofradiasIds: ["misericordia"],
     existe: true,
@@ -59,7 +97,18 @@ export const sedesCanonicas: SedeCanonicaData[] = [
     descripcionBreve:
       "El Salvador es uno de los templos más singulares de Toledo por la superposición de restos romanos y visigodos, su pasado como mezquita y las transformaciones de época cristiana.",
     usoActual: "CULTO_Y_MUSEO",
-    horarios: [],
+    horarios: [
+      {
+        id: "el-salvador-1",
+        texto: "Lunes a sábado",
+        hora: "19:30",
+      },
+      {
+        id: "el-salvador-2",
+        texto: "Domingos",
+        hora: "10:00 · 19:30",
+      },
+    ],
     horariosUrl: null,
     cofradiasIds: ["calvario"],
     existe: true,
@@ -72,7 +121,18 @@ export const sedesCanonicas: SedeCanonicaData[] = [
     descripcionBreve:
       "Parroquia mozárabe documentada desde 1156, levantada sobre un espacio que conserva vestigios de una construcción islámica anterior. Destaca su ábside mudéjar, fechado entre finales del siglo XII y comienzos del XIII. El templo fue profundamente reformado desde 1530 bajo la dirección de Alonso de Covarrubias y conserva elementos de sus distintas etapas históricas.",
     usoActual: "CULTO",
-    horarios: [],
+    horarios: [
+      {
+        id: "santas-justa-y-rufina-1",
+        texto: "Laborables y vísperas de festivo",
+        hora: "19:00 h",
+      },
+      {
+        id: "santas-justa-y-rufina-2",
+        texto: "1.º, 3.º y 5.º domingo de mes y festivos",
+        hora: "12:00 h",
+      },
+    ],
     horariosUrl: null,
     cofradiasIds: ["angustias"],
     existe: true,
@@ -98,7 +158,28 @@ export const sedesCanonicas: SedeCanonicaData[] = [
     descripcionBreve:
       "Parroquia de San Ildefonso de Toledo, sede canónica de la Cofradía de Nuestra Señora del Amparo.",
     usoActual: "CULTO",
-    horarios: [],
+    horarios: [
+      {
+        id: "san-ildefonso-1",
+        texto: "Invierno · laborables y vísperas",
+        hora: "11:30 · 19:30",
+      },
+      {
+        id: "san-ildefonso-2",
+        texto: "Invierno · domingos y festivos",
+        hora: "12:30 · 19:30",
+      },
+      {
+        id: "san-ildefonso-3",
+        texto: "Verano · laborables y vísperas",
+        hora: "11:30 · 20:00",
+      },
+      {
+        id: "san-ildefonso-4",
+        texto: "Verano · domingos y festivos",
+        hora: "12:30 · 20:00",
+      },
+    ],
     horariosUrl: null,
     cofradiasIds: ["amparo"],
     existe: true,

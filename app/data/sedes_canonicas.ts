@@ -365,6 +365,30 @@ export const sedesCanonicas: SedeCanonicaData[] = [
     cofradiasIds: ["alcazar"],
     existe: false,
   },
+  /* ==========================================
+     ERMITA DE NUESTRA SEÑORA DE LA GUÍA
+     Cofradía de Nuestra Señora de la Guía
+  ========================================== */
+  {
+    id: "ermita-guia",
+    slug: "ermita-guia",
+    nombre: "Ermita de Nuestra Señora de la Guía",
+    direccion: "Academia de Infantería, 45006 Toledo",
+    descripcionBreve:
+      "Ermita situada en los terrenos de la Academia de Infantería, sobre un alto que domina el barrio de Santa Bárbara. Fundada en 1432 bajo la advocación de la Natividad, fue reconstruida en varias ocasiones tras incendios y deterioros. En ella se venera a Nuestra Señora de la Guía y se celebran los cultos y la romería organizados por su cofradía.",
+    usoActual: "CULTO",
+    // No hay un horario fijo: se celebran misas durante los actos de la cofradía.
+    horarios: [
+      {
+        id: "ermita-guia-1",
+        texto: "",
+        hora: "Durante actos de la Cofradía",
+      },
+    ],
+    horariosUrl: null,
+    cofradiasIds: ["guia"],
+    existe: false,
+  },
 ];
 
 export function getSedeCanonicaPorSlug(slug: string) {

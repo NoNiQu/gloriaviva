@@ -2,6 +2,8 @@
 import type { CofradiaData } from "../types/cofradia";
 
 const carmenPath = "/cofradias/devocion/carmen_carmelitas";
+const padrePioPath = "/cofradias/devocion/padre_pio";
+const consueloPath = "/cofradias/devocion/consuelo";
 
 const guiaPath = "/cofradias/gloria/guia";
 const estrellaPath = "/cofradias/gloria/estrella";
@@ -13,6 +15,7 @@ const remediosPath = "/cofradias/gloria/remedios";
 const saludSanClementePath = "/cofradias/gloria/salud_clemente";
 const guadalupePath = "/cofradias/gloria/guadalupe";
 const alcazarPath = "/cofradias/gloria/alcazar";
+const sagrarioPath = "/cofradias/gloria/sagrario";
 
 const doloresPath = "/cofradias/penitencia/dolores";
 const misericordiaPath = "/cofradias/penitencia/misericordia";
@@ -84,6 +87,159 @@ export const cofradias: CofradiaData[] = [
       web: null,
       instagram:
         "https://www.instagram.com/stma.virgendelcarmentoledo/",
+      facebook: null,
+      X: null,
+      tiktok: null,
+      youtube: null,
+    },
+  },
+
+  /* ==========================================
+     SAN PÍO DE PIETRELCINA (PADRE PÍO)
+     DEVOCIÓN POPULAR · IGLESIA DEL SALVADOR
+  ========================================== */
+
+  {
+    id: "padre-pio",
+    slug: "padre-pio",
+
+    nombre: "San Pío de Pietrelcina",
+    nombreCorto: "Padre Pío",
+
+    sedeCanonica: "Iglesia del Salvador",
+    tipo: "devocion-popular",
+
+    // La devoción es anterior a 2025; ese año se bendijo la nueva talla
+    // y se celebró su primera procesión pública en Toledo.
+    anioFundacion: null,
+    anioRefundacion: null,
+    referenciaHistorica: 2025,
+
+    historia:
+      "La devoción a san Pío de Pietrelcina tiene presencia en la iglesia del Salvador de Toledo, filial de la parroquia de Santo Tomé, desde antes de la llegada de la imagen actual. En 2025 recibió un nuevo impulso con la bendición, el 21 de septiembre, de una talla realizada por el imaginero Ramón Cuenca Santo. El 23 de septiembre de ese año, festividad del santo capuchino, la imagen salió por primera vez en procesión por las calles de la feligresía. Los cultos y la procesión continuaron celebrándose en 2026.",
+
+    // No se ha confirmado un escudo oficial propio de esta devoción.
+    escudoUrl:
+      "/escudos/desktop/devocion/padre-pio.png",
+
+    escudoMovilUrl:
+      "/escudos/movil/devocion/padre-pio.png",
+
+
+    // Rutas previstas: los archivos deberán existir en /public.
+    logoUrl: `${padrePioPath}/logo.avif`,
+    logoDoradoUrl: `${padrePioPath}/logodorado.avif`,
+
+    portadaDesktopUrl: `${padrePioPath}/portada.avif`,
+    portada2kUrl: `${padrePioPath}/portada_2k.avif`,
+    portadaMovilUrl: `${padrePioPath}/portadamovil.avif`,
+
+    titulares: [
+      {
+        id: "padre-pio-titular",
+        nombre: "San Pío de Pietrelcina",
+        advocacion: "Padre Pío",
+        esVirgen: false,
+
+        anio: 2025,
+        siglo: "XXI",
+        autor: "Ramón Cuenca Santo",
+        tipoAndas: "Andas",
+
+        datosTalla:
+          "Imagen de san Pío de Pietrelcina realizada en madera de cedro y policromada al óleo por el imaginero alicantino Ramón Cuenca Santo. Mide 140 centímetros de altura, presenta brazos articulados y puede revestirse con ornamentos litúrgicos. Su iconografía evoca al santo capuchino distribuyendo la comunión. Fue bendecida el 21 de septiembre de 2025 por el arzobispo Francisco Cerro Chaves y procesionó por primera vez dos días después sobre pequeñas andas.",
+
+        fotoUrl: `${padrePioPath}/titular.avif`,
+        galeria: [
+          `${padrePioPath}/galeria1.avif`,
+          `${padrePioPath}/galeria2.avif`,
+          `${padrePioPath}/galeria3.avif`,
+          `${padrePioPath}/galeria4.avif`,
+        ],
+      },
+    ],
+
+    cultosId: "padre-pio",
+    procesionId: "padre-pio-principal",
+
+    redes: {
+      web: null,
+      instagram: null,
+      facebook: null,
+      X: null,
+      tiktok: null,
+      youtube: null,
+    },
+  },
+
+  /* ==========================================
+     NUESTRA SEÑORA DEL CONSUELO
+     DEVOCIÓN POPULAR · SANTOS JUSTO Y PASTOR
+     ANTIGUA COFRADÍA EXTINGUIDA
+  ========================================== */
+
+  {
+    id: "consuelo",
+    slug: "consuelo",
+
+    nombre: "Nuestra Señora del Consuelo",
+    nombreCorto: "Consuelo",
+
+    sedeCanonica: "Iglesia de los Santos Justo y Pastor",
+    tipo: "devocion-popular",
+
+    anioFundacion: null,
+    anioRefundacion: null,
+    referenciaHistorica: null,
+
+    historia:
+      "La devoción a Nuestra Señora del Consuelo está vinculada a la parroquia de los Santos Justo y Pastor de Toledo. En ella existió una cofradía dedicada a esta advocación mariana, hoy desaparecida, cuya presencia queda recogida en estudios sobre los antiguos archivos parroquiales de la ciudad. La imagen original también desapareció y la talla venerada actualmente es una réplica de aquella. Aunque la antigua corporación ya no existe, la devoción se mantiene viva en la parroquia, donde en mayo de 2026 se celebraron cultos en honor de la Virgen.",
+
+    // No consta un escudo vigente de la antigua cofradía extinguida.
+    escudoUrl:
+      "/escudos/desktop/devocion/consuelo.png",
+
+    escudoMovilUrl:
+      "/escudos/movil/devocion/consuelo.png",
+
+    // Imágenes previstas dentro de la carpeta de esta devoción.
+    logoUrl: `${consueloPath}/logo.avif`,
+    logoDoradoUrl: `${consueloPath}/logodorado.avif`,
+    portadaDesktopUrl: `${consueloPath}/portada.avif`,
+    portada2kUrl: `${consueloPath}/portada_2k.avif`,
+    portadaMovilUrl: `${consueloPath}/portadamovil.avif`,
+
+    titulares: [
+      {
+        id: "consuelo-titular",
+        nombre: "Nuestra Señora del Consuelo",
+        advocacion: "Virgen del Consuelo",
+        esVirgen: true,
+
+        anio: null,
+        siglo: null,
+        autor: null,
+        tipoAndas: "No tiene",
+
+        datosTalla:
+          "La imagen que recibe culto en la iglesia de los Santos Justo y Pastor es una réplica de la antigua Virgen del Consuelo, cuya talla original desapareció. La advocación estuvo vinculada a una cofradía parroquial ya extinguida. No se ha confirmado documentalmente el autor ni la fecha de ejecución de la réplica actual.",
+
+        fotoUrl: `${consueloPath}/titular.avif`,
+        galeria: [
+          `${consueloPath}/galeria1.avif`,
+          `${consueloPath}/galeria2.avif`,
+          `${consueloPath}/galeria3.avif`,
+          `${consueloPath}/galeria4.avif`,
+        ],
+      },
+    ],
+
+    cultosId: "consuelo",
+    procesionId: null,
+
+    redes: {
+      web: null,
+      instagram: null,
       facebook: null,
       X: null,
       tiktok: null,
@@ -220,6 +376,9 @@ export const cofradias: CofradiaData[] = [
 
     cultosId: "estrella",
     procesionId: "estrella-principal",
+
+    // Novenario de junio y cultos del Mes del Rosario en octubre.
+    cultosIds: ["estrella", "estrella-octubre"],
 
     redes: {
       web: "https://www.hermandadestrella.es",
@@ -651,6 +810,10 @@ export const cofradias: CofradiaData[] = [
     cultosId: "carmen-san-andres",
     procesionId: "carmen-san-andres-principal",
 
+    // Mantener la procesión de julio y añadir la de noviembre.
+    cultosIds: ["carmen-san-andres", "carmen-san-andres-noviembre"],
+    procesionesIds: ["carmen-san-andres-principal", "carmen-san-andres-noviembre"],
+
     redes: {
       web: null,
       instagram: "https://www.instagram.com/carmen_san_andres_toledo/",
@@ -966,6 +1129,10 @@ export const cofradias: CofradiaData[] = [
     cultosId: "remedios",
     procesionId: "remedios-principal",
 
+    // Cultos de septiembre y Candelaria de enero/febrero.
+    cultosIds: ["remedios", "remedios-candelaria"],
+    procesionesIds: ["remedios-principal"],
+
     redes: {
       web: null,
       instagram: null,
@@ -1035,6 +1202,10 @@ export const cofradias: CofradiaData[] = [
 
     cultosId: "salud",
     procesionId: "salud-principal",
+
+    // Cultos y procesiones de febrero y septiembre de 2026.
+    cultosIds: ["salud", "salud-febrero"],
+    procesionesIds: ["salud-principal", "salud-febrero"],
 
     redes: {
       web: null,
@@ -1118,6 +1289,78 @@ export const cofradias: CofradiaData[] = [
     fotoQuien: "Toledo Sacro",
     fotosSeccion: "todo",
     fotosLogo: "/colaboradores/toledo_sacro.webp",
+  },
+
+
+
+  /* ==========================================
+     NUESTRA SEÑORA DEL SAGRARIO
+     PATRONA DE TOLEDO
+  ========================================== */
+
+  {
+    id: "sagrario",
+    slug: "sagrario",
+
+    nombre: "Nuestra Señora del Sagrario",
+    nombreCorto: "Sagrario",
+    subnombre: "Patrona de Toledo",
+
+    sedeCanonica: "Santa Iglesia Catedral Primada",
+    tipo: "gloria",
+
+    anioFundacion: 1924,
+    anioRefundacion: null,
+    referenciaHistorica: null,
+
+    historia:
+      "La devoción a Nuestra Señora del Sagrario está unida desde antiguo a la Catedral Primada y a la propia historia espiritual de Toledo. La imagen venerada en su capilla es la patrona de la ciudad y preside cada mes de agosto los cultos del Octavario y la solemnidad de la Asunción. La actual Esclavitud de la Virgen del Sagrario fue promovida en 1923, aprobó sus estatutos en 1924 y acompaña desde entonces esta arraigada devoción toledana. La imagen fue coronada canónicamente en 1926 y continúa siendo una de las advocaciones marianas más queridas de la ciudad.",
+
+    escudoUrl: "/escudos/desktop/gloria/sagrario.png",
+    escudoMovilUrl: "/escudos/movil/gloria/sagrario.png",
+    logoUrl: `${sagrarioPath}/logo.avif`,
+    logoDoradoUrl: `${sagrarioPath}/logodorado.avif`,
+
+    portadaDesktopUrl: `${sagrarioPath}/portada.avif`,
+    portada2kUrl: `${sagrarioPath}/portada_2k.avif`,
+    portadaMovilUrl: `${sagrarioPath}/portadamovil.avif`,
+
+    titulares: [
+      {
+        id: "sagrario-titular",
+        nombre: "Nuestra Señora del Sagrario",
+        advocacion: "Virgen del Sagrario",
+        esVirgen: true,
+
+        anio: null,
+        siglo: "XIII",
+        autor: "Anónimo",
+        tipoAndas: "Andas",
+
+        datosTalla:
+          "La imagen es una talla románica sedente, realizada en madera de níspero y fechada en el siglo XIII. Representa a la Virgen María con el Niño Jesús sobre su regazo. En el siglo XVI fue revestida de plata, excepto la cabeza y las manos, y se enriquece con mantos, joyas y coronas fruto de la devoción de generaciones de toledanos. Se venera en la capilla del Sagrario sobre un trono de plata sobredorada realizado por el orfebre florentino Virgilio Fanelli entre 1654 y 1674.",
+
+        fotoUrl: `${sagrarioPath}/titular.avif`,
+        galeria: [
+          `${sagrarioPath}/galeria1.avif`,
+          `${sagrarioPath}/galeria2.avif`,
+          `${sagrarioPath}/galeria3.avif`,
+          `${sagrarioPath}/galeria4.avif`,
+        ],
+      },
+    ],
+
+    cultosId: "sagrario",
+    procesionId: "sagrario-principal",
+
+    redes: {
+      web: "https://esclavitudvirgendelsagrario.es/",
+      instagram: null,
+      facebook: null,
+      X: null,
+      tiktok: null,
+      youtube: null,
+    },
   },
 
   /* ==========================================

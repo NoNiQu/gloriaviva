@@ -4,6 +4,7 @@ import type { CultoCardData } from "../types/culto_card";
 export const cultosCards: CultoCardData[] = [
   {
     id: "angustias",
+    procesionesIds: ["angustias-principal"],
     nombre: "Angustias",
     fecha: "18 al 20 de SEPTIEMBRE",
     mes: "SEPTIEMBRE",
@@ -20,6 +21,7 @@ export const cultosCards: CultoCardData[] = [
 
   {
     id: "alegria",
+    procesionesIds: ["alegria-infantil", "alegria-principal"],
     nombre: "Alegría",
     fecha: "18 al 20 de SEPTIEMBRE",
     mes: "SEPTIEMBRE",
@@ -36,6 +38,7 @@ export const cultosCards: CultoCardData[] = [
 
   {
     id: "calvario",
+    procesionesIds: ["calvario-principal"],
     cofradiaId: "calvario",
     nombre: "Calvario",
     fecha: "11 al 13 de SEPTIEMBRE",
@@ -51,9 +54,10 @@ export const cultosCards: CultoCardData[] = [
     imagePosition: "50% 25%",
   },
 
-  /*
+  
   {
     id: "descendimiento",
+    procesionesIds: ["descendimiento-ida-extraordinaria", "descendimiento-regreso-extraordinario"],
     nombre: "Descendimiento",
     fecha: "12 y 13 de SEPTIEMBRE",
     mes: "SEPTIEMBRE",
@@ -68,10 +72,11 @@ export const cultosCards: CultoCardData[] = [
     titleSize: "small",
     imagePosition: "50% 30%",
   },
-  */
+  
 
   {
     id: "dolores",
+    procesionesIds: ["dolores-rosario-matutino"],
     nombre: "Dolores",
     fecha: "18 al 21 de SEPTIEMBRE",
     mes: "SEPTIEMBRE",
@@ -88,6 +93,7 @@ export const cultosCards: CultoCardData[] = [
 
   {
     id: "misericordia",
+    procesionesIds: ["misericordia-principal"],
     nombre: "Misericordia",
     fecha: "26 y 27 de SEPTIEMBRE",
     mes: "SEPTIEMBRE",
@@ -103,15 +109,16 @@ export const cultosCards: CultoCardData[] = [
     imagePosition: "50% 20%",
   },
 
-  /*
+  
   {
     id: "padre-pio",
+    procesionesIds: ["padre-pio-principal"],
     nombre: "Padre Pío",
     fecha: "14 al 23 de SEPTIEMBRE",
     mes: "SEPTIEMBRE",
     diaInicio: 14,
-    imagenUrl: "/cultos/septiembre/desktop/padre_pio.webp",
-    imagenMovilUrl: "/cultos/septiembre/movil/padre_pio.webp",
+    imagenUrl: "/cofradias/devocion/padre-pio/padre-pio_CE.avif",
+    imagenMovilUrl: "/cofradias/devocion/devocion/padre-pio/padre-pio_CM.avif",
     imagenAlt: "Padre Pío",
     colorFondo: "#4D2E22",
     cultosHref: "/cultos/septiembre/desktop/padre-pio",
@@ -119,10 +126,11 @@ export const cultosCards: CultoCardData[] = [
     titleSize: "large",
     imagePosition: "50% 20%",
   },
-  */
+
 
   {
     id: "remedios",
+    procesionesIds: ["remedios-principal"],
     nombre: "Remedios",
     fecha: "5 y 6 de SEPTIEMBRE",
     mes: "SEPTIEMBRE",
@@ -137,8 +145,64 @@ export const cultosCards: CultoCardData[] = [
     imagePosition: "50% 25%",
   },
 
+  /* ==========================================
+     NUESTRA SEÑORA DE LOS REMEDIOS
+     CULTOS DE LA CANDELARIA · ENERO / FEBRERO 2026
+  ========================================== */
+
+  {
+    id: "remedios-candelaria",
+    cofradiaId: "remedios",
+    advocacionId: "remedios",
+    cultoId: "remedios-candelaria",
+    nombre: "Remedios",
+    fecha: "30 de ENERO al 1 de FEBRERO",
+    mes: "ENERO",
+    meses: ["ENERO", "FEBRERO"],
+    diaInicio: 30,
+    diaInicioPorMes: {
+      ENERO: 30,
+      FEBRERO: 1,
+    },
+    // Actos litúrgicos de la Candelaria, sin salida procesional de la imagen.
+    procesionesIds: [],
+
+    imagenUrl: "/cofradias/gloria/remedios/remedios_CE.avif",
+    imagenMovilUrl: "/cofradias/gloria/remedios/remedios_CM.avif",
+    imagenAlt: "Nuestra Señora de los Remedios de Toledo",
+    colorFondo: "#036B8F",
+    titleSize: "large",
+    imagePosition: "50% 25%",
+  },
+
+  /* ==========================================
+     NUESTRA SEÑORA DE LA SALUD DE SAN CLEMENTE
+     PROCESIÓN DEL 8 DE FEBRERO DE 2026
+  ========================================== */
+
+  {
+    id: "salud-febrero",
+    cofradiaId: "salud",
+    advocacionId: "salud",
+    cultoId: "salud-febrero",
+    nombre: "Salud",
+    subnombre: "San Clemente",
+    fecha: "8 de FEBRERO",
+    mes: "FEBRERO",
+    diaInicio: 8,
+
+    imagenUrl: "/cofradias/gloria/salud_clemente/salud_clemente_CE.avif",
+    imagenMovilUrl: "/cofradias/gloria/salud_clemente/salud_clemente_CM.avif",
+    imagenAlt: "Nuestra Señora de la Salud de San Clemente",
+    colorFondo: "#7A6A52",
+    titleSize: "large",
+    imagePosition: "50% 20%",
+    procesionesIds: ["salud-febrero"],
+  },
+
   {
     id: "salud",
+    procesionesIds: ["salud-principal"],
     nombre: "Salud",
     fecha: "6 al 8 de SEPTIEMBRE",
     mes: "SEPTIEMBRE",
@@ -155,6 +219,7 @@ export const cultosCards: CultoCardData[] = [
 
   {
     id: "guadalupe",
+    procesionesIds: ["guadalupe-principal"],
     nombre: "Guadalupe",
     fecha: "6 al 9 de SEPTIEMBRE",
     mes: "SEPTIEMBRE",
@@ -174,6 +239,7 @@ export const cultosCards: CultoCardData[] = [
 
   {
     id: "alcazar",
+    procesionesIds: ["alcazar-principal"],
     nombre: "Alcázar",
     fecha: "24 al 27 de SEPTIEMBRE",
     mes: "SEPTIEMBRE",
@@ -194,6 +260,7 @@ export const cultosCards: CultoCardData[] = [
 
   {
     id: "sagrario",
+    procesionesIds: ["sagrario-principal"],
     nombre: "Sagrario",
     subnombre: "Patrona de Toledo",
     fecha: "7 al 15 de AGOSTO",
@@ -209,6 +276,7 @@ export const cultosCards: CultoCardData[] = [
 
   {
     id: "carmen-carmelitas",
+    procesionesIds: ["carmen-carmelitas-principal"],
     nombre: "Carmen",
     subnombre: "Padres Carmelitas",
     fecha: "7 al 16 de JULIO",
@@ -224,6 +292,7 @@ export const cultosCards: CultoCardData[] = [
 
   {
     id: "carmen-san-andres",
+    procesionesIds: ["carmen-san-andres-principal"],
     nombre: "Carmen",
     subnombre: "San Andrés",
     fecha: "9 al 12 de JULIO",
@@ -238,12 +307,61 @@ export const cultosCards: CultoCardData[] = [
   },
 
   /* ==========================================
+     NUESTRA SEÑORA DEL CONSUELO
+     DEVOCIÓN POPULAR · MAYO DE 2026
+  ========================================== */
+
+  {
+    id: "consuelo",
+    nombre: "Consuelo",
+    fecha: "8 al 10 de MAYO",
+    mes: "MAYO",
+    diaInicio: 8,
+
+    imagenUrl: "/cofradias/devocion/consuelo/consuelo_CE.avif",
+    imagenMovilUrl: "/cofradias/devocion/consuelo/consuelo_CM.avif",
+    imagenAlt: "Nuestra Señora del Consuelo de Toledo",
+
+    colorFondo: "#D47F96",
+    titleSize: "large",
+    imagePosition: "50% 25%",
+    procesionesIds: [],
+  },
+
+  /* ==========================================
+     NUESTRA SEÑORA DEL CARMEN · SAN ANDRÉS
+     PROCESIÓN DE NOVIEMBRE DE 2026
+  ========================================== */
+
+  {
+    id: "carmen-san-andres-noviembre",
+    cofradiaId: "carmen-san-andres",
+    advocacionId: "carmen-san-andres",
+    cultoId: "carmen-san-andres-noviembre",
+    nombre: "Carmen",
+    subnombre: "San Andrés",
+    fecha: "14 de NOVIEMBRE",
+    mes: "NOVIEMBRE",
+    diaInicio: 14,
+
+    imagenUrl: "/cofradias/gloria/carmen/carmen_CE.avif",
+    imagenMovilUrl: "/cofradias/gloria/carmen/carmen_CM.avif",
+    imagenAlt: "Nuestra Señora del Carmen de San Andrés",
+
+    colorFondo: "#4A3427",
+    titleSize: "large",
+    degradado: true,
+    procesionesIds: ["carmen-san-andres-noviembre"],
+  },
+
+  /* ==========================================
      VIRGEN DE LA GUÍA
      HERMANDAD DE GLORIA
   ========================================== */
 
   {
     id: "guia",
+    procesionesIds: ["guia-principal"],
     nombre: "Guía",
     fecha: "9 al 12 de OCTUBRE",
     mes: "OCTUBRE",
@@ -266,6 +384,7 @@ export const cultosCards: CultoCardData[] = [
 
   {
     id: "estrella",
+    procesionesIds: ["estrella-principal"],
     nombre: "Estrella",
     fecha: "5 al 15 de JUNIO",
     mes: "JUNIO",
@@ -283,12 +402,38 @@ export const cultosCards: CultoCardData[] = [
 
   
   /* ==========================================
+     NUESTRA SEÑORA DE LA ESTRELLA
+     MES DEL ROSARIO · OCTUBRE 2026
+  ========================================== */
+
+  {
+    id: "estrella-octubre",
+    cofradiaId: "estrella",
+    advocacionId: "estrella",
+    cultoId: "estrella-octubre",
+    nombre: "Estrella",
+    fecha: "1 al 31 de OCTUBRE",
+    mes: "OCTUBRE",
+    diaInicio: 1,
+
+    imagenUrl: "/cofradias/gloria/estrella/estrella_CE.avif",
+    imagenMovilUrl: "/cofradias/gloria/estrella/estrella_CM.avif",
+    imagenAlt: "Nuestra Señora de la Estrella de Toledo",
+    colorFondo: "#385A91",
+    titleSize: "large",
+    imagePosition: "50% 25%",
+    // Octubre: cultos sin procesión.
+    procesionesIds: [],
+  },
+
+  /* ==========================================
      NUESTRA SEÑORA DE LA ESPERANZA
      COFRADÍA DE GLORIA
   ========================================== */
 
   {
     id: "esperanza",
+    procesionesIds: ["esperanza-voto"],
     cofradiaId: "esperanza",
     nombre: "Esperanza",
     fecha: "25 de MAYO al 2 de JUNIO",
@@ -350,6 +495,7 @@ export const cultosCards: CultoCardData[] = [
 
   {
     id: "paz",
+    procesionesIds: ["paz-principal"],
     nombre: "Paz",
 
     fecha: "21 al 24 de MAYO",
@@ -373,6 +519,7 @@ export const cultosCards: CultoCardData[] = [
 
 {
   id: "rosario",
+  procesionesIds: ["rosario-principal"],
   cofradiaId: "calvario",
   nombre: "Rosario",
   fecha: "11 de OCTUBRE",
@@ -396,6 +543,7 @@ export const cultosCards: CultoCardData[] = [
 
   {
     id: "amparo",
+    procesionesIds: ["amparo-principal"],
     cofradiaId: "amparo",
     nombre: "Amparo",
     fecha: "22 al 25 de OCTUBRE",

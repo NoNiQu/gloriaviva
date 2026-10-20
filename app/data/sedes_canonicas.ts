@@ -111,7 +111,7 @@ export const sedesCanonicas: SedeCanonicaData[] = [
       },
     ],
     horariosUrl: null,
-    cofradiasIds: ["calvario"],
+    cofradiasIds: ["calvario", "padre-pio"],
     existe: true,
   },
   {
@@ -315,7 +315,7 @@ export const sedesCanonicas: SedeCanonicaData[] = [
   /* ==========================================
      IGLESIA DE LOS SANTOS JUSTO Y PASTOR
      Cofradía pendiente de incorporar
-  ========================================== 
+  ==========================================   */
   {
     id: "santos-justo-y-pastor",
     slug: "santos-justo-y-pastor",
@@ -344,10 +344,10 @@ export const sedesCanonicas: SedeCanonicaData[] = [
       },
     ],
     horariosUrl: null,
-    cofradiasIds: [], // Se añadirá una cofradía posteriormente.
+    cofradiasIds: ["consuelo"], // Se añadirá una cofradía posteriormente.
     existe: false,
   },
-  */
+
   /* ==========================================
      SANTA IGLESIA CATEDRAL PRIMADA
      Nuestra Señora Santa María del Alcázar
@@ -363,7 +363,7 @@ export const sedesCanonicas: SedeCanonicaData[] = [
     // Fuente: calendario de cultos de la Catedral Primada.
     horarios: [],
     horariosUrl: "https://www.catedralprimada.es/culto/horarios-misas/",
-    cofradiasIds: ["alcazar"],
+    cofradiasIds: ["sagrario","alcazar"],
     existe: false,
   },
   /* ==========================================

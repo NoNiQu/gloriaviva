@@ -31,6 +31,34 @@ export const procesionesDetalle: ProcesionDetalle[] = [
     ],
   },
 
+  /* ==========================================
+     NUESTRA SEÑORA DE LA SALUD DE SAN CLEMENTE
+     PROCESIÓN DEL 8 DE FEBRERO DE 2026
+  ========================================== */
+
+  {
+    id: "salud-febrero",
+    advocacionId: "salud",
+    nombre: "Procesión de Nuestra Señora de la Salud",
+    tipo: "principal",
+    fecha: "8 de febrero",
+    hora: "11:00",
+    horaTexto: "Salida: 11:00 h",
+    salida: "Convento de San Clemente",
+    llegada: "Convento de San Clemente",
+    recorrido: [
+      "Convento de San Clemente",
+      "Calle San Román",
+      "Esteban Illán",
+      "Plaza de las Tendillas",
+      "Cardenal Lorenzana",
+      "Alfonso X el Sabio",
+      "Plaza de Juan de Mariana",
+      "Plaza de San Román",
+      "Convento de San Clemente",
+    ],
+  },
+
   {
     id: "salud-principal",
     advocacionId: "salud",
@@ -378,6 +406,61 @@ export const procesionesDetalle: ProcesionDetalle[] = [
       "Plaza de San Andrés",
       "Templo parroquial de San Andrés Apóstol",
     ],
+  },
+
+  /* ==========================================
+     VIRGEN DEL CARMEN DE SAN ANDRÉS
+     PROCESIÓN Y SANTA MISA · 14 DE NOVIEMBRE DE 2026
+  ========================================== */
+
+  {
+    id: "carmen-san-andres-noviembre",
+    advocacionId: "carmen-san-andres",
+    nombre: "Procesión de noviembre y Santa Misa",
+    tipo: "principal",
+    fecha: "14 de noviembre",
+    // 17:15 es la hora del cartel fechado para el día 8.
+    hora: null,
+    horaTexto: "Salida inicialmente anunciada a las 17:15 h; por confirmar para el 14 de noviembre",
+    salida: "Iglesia de San Andrés",
+    llegada: "Iglesia de San Andrés",
+    recorrido: [
+      "Iglesia de San Andrés",
+      "Plaza de San Andrés",
+      "Plaza de Santa Isabel",
+      "Travesía de Santa Isabel",
+      "Calle Santa Úrsula",
+      "Plaza del Salvador",
+      "Calle Rojas",
+      "Calle Aljibillos",
+      "Plaza de Valdecaleros",
+      "Calle de las Bulas",
+      "Plaza de la Cruz",
+      "Plaza del Colegio de Doncellas",
+      "Plaza Cardenal Silíceo",
+      "Cuesta del Cohete",
+      "Cuesta de Santa Leocadia",
+      "Plaza de Santa Teresa de Jesús",
+      "Iglesia del Convento de San José y de Cristo Crucificado (Santa Misa)",
+      // Regreso por el mismo camino, como indica el cartel previo.
+      "Plaza de Santa Teresa de Jesús",
+      "Cuesta de Santa Leocadia",
+      "Cuesta del Cohete",
+      "Plaza Cardenal Silíceo",
+      "Plaza del Colegio de Doncellas",
+      "Plaza de la Cruz",
+      "Calle de las Bulas",
+      "Plaza de Valdecaleros",
+      "Calle Aljibillos",
+      "Calle Rojas",
+      "Plaza del Salvador",
+      "Calle Santa Úrsula",
+      "Travesía de Santa Isabel",
+      "Plaza de Santa Isabel",
+      "Plaza de San Andrés",
+      "Iglesia de San Andrés",
+    ],
+    nota: "La Santa Misa se celebra en el convento de San José y de Cristo Crucificado, en la plaza de Santa Teresa de Jesús. Tras ella se regresa en procesión a San Andrés. Horario e itinerario tomados del cartel del día 8 y pendientes de confirmar para el día 14 de noviembre.",
   },
 
   /* ==========================================

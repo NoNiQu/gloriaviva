@@ -26,6 +26,74 @@ export const cultosDetalle: CultoDetalle[] = [
     ],
   },
 
+  /* ==========================================
+     NUESTRA SEÑORA DE LOS REMEDIOS
+     CULTOS DE LA CANDELARIA · ENERO / FEBRERO 2026
+  ========================================== */
+
+  {
+    id: "remedios-candelaria",
+    advocacionId: "remedios",
+    titulo: "Cultos de la Candelaria",
+    subtitulo: "Cultos en honor de Nuestra Señora de los Remedios",
+    bloques: [
+      {
+        id: "remedios-candelaria-30-enero",
+        meses: ["ENERO"],
+        fecha: "Viernes 30 de enero",
+        lineas: [
+          "18:30 h — Rezo del Santo Rosario",
+          "19:00 h — Celebración de la Santa Misa, presidida por el Rvdo. Sr. D. Gustavo Adolfo Conde",
+        ],
+      },
+      {
+        id: "remedios-candelaria-31-enero",
+        meses: ["ENERO"],
+        fecha: "Sábado 31 de enero",
+        lineas: [
+          "18:30 h — Rezo del Santo Rosario",
+          "19:00 h — Celebración de la Santa Misa, presidida por el Rvdo. Sr. D. Gustavo Adolfo Conde",
+          "Al finalizar — Concierto de música sacra de la Coral de Arroyomolinos",
+        ],
+      },
+      {
+        id: "remedios-candelaria-1-febrero",
+        meses: ["FEBRERO"],
+        titulo: "Procesión de Candelas y Santa Misa",
+        fecha: "Domingo 1 de febrero",
+        lineas: [
+          "11:00 h — Procesión de Candelas desde la plaza del Seco",
+          "A continuación — Santa Misa, presidida por el Rvdo. Sr. D. Juan Ignacio López Serrano, delegado de Hermandades y Religiosidad Popular de la Archidiócesis de Toledo",
+          "Tras la Misa — Refresco y ajonjolíes en el patio",
+        ],
+      },
+    ],
+  },
+
+  /* ==========================================
+     NUESTRA SEÑORA DE LA SALUD DE SAN CLEMENTE
+     PROCESIÓN DEL 8 DE FEBRERO DE 2026
+  ========================================== */
+
+  {
+    id: "salud-febrero",
+    advocacionId: "salud",
+    titulo: "Solemne Procesión",
+    subtitulo: "Nuestra Señora de la Salud de San Clemente",
+    bloques: [
+      {
+        id: "salud-febrero-8",
+        titulo: "Procesión de febrero",
+        fecha: "Domingo 8 de febrero",
+        lineas: [
+          "11:00 h — Salida procesional desde el Convento de San Clemente",
+          "Recorrido — Calle San Román, Esteban Illán, plaza de las Tendillas, Cardenal Lorenzana, Alfonso X el Sabio, plaza de Juan de Mariana y plaza de San Román",
+          "Regreso — Convento de San Clemente",
+        ],
+      },
+    ],
+  },
+
   {
     advocacionId: "salud",
     titulo: "Cultos",
@@ -433,6 +501,77 @@ export const cultosDetalle: CultoDetalle[] = [
   },
 
   /* ==========================================
+     NUESTRA SEÑORA DEL CONSUELO
+     CULTOS DE MAYO DE 2026 · SANTOS JUSTO Y PASTOR
+  ========================================== */
+
+  {
+    advocacionId: "consuelo",
+    titulo: "Solemnes Cultos",
+    subtitulo: "Cultos en honor de Nuestra Señora del Consuelo",
+    bloques: [
+      {
+        id: "consuelo-8-mayo",
+        fecha: "8 de mayo",
+        lineas: [
+          "18:30 h — Rosario y Solemne Eucaristía",
+          "Al término — Canto de la Salve",
+        ],
+      },
+      {
+        id: "consuelo-9-mayo",
+        fecha: "9 de mayo",
+        lineas: [
+          "18:30 h — Rosario y Solemne Eucaristía",
+          "Al finalizar — Ofrenda floral y Salve",
+        ],
+      },
+      {
+        id: "consuelo-10-mayo",
+        titulo: "Solemne Función Principal",
+        fecha: "10 de mayo",
+        lineas: [
+          "12:30 h — Solemne Función Principal",
+          "A continuación — Salve y Besaescapulario",
+        ],
+      },
+    ],
+  },
+
+  /* ==========================================
+     VIRGEN DEL CARMEN DE SAN ANDRÉS
+     PROCESIÓN DE NOVIEMBRE · 2026
+  ========================================== */
+
+  {
+    id: "carmen-san-andres-noviembre",
+    advocacionId: "carmen-san-andres",
+    titulo: "Procesión y Santa Misa",
+    subtitulo: "Cultos en honor de Nuestra Señora del Carmen de San Andrés",
+    bloques: [
+      {
+        id: "carmen-san-andres-14-noviembre-ida",
+        titulo: "Procesión de ida",
+        fecha: "14 de noviembre",
+        lineas: [
+          "17:15 h — Salida desde la iglesia de San Andrés (hora del cartel anterior, pendiente de confirmar para el día 14)",
+          "Itinerario anunciado inicialmente: plaza de San Andrés, plaza de Santa Isabel, travesía de Santa Isabel, calle Santa Úrsula, plaza del Salvador, calle Rojas, calle Aljibillos, plaza de Valdecaleros, calle de las Bulas, plaza de la Cruz, plaza del Colegio de Doncellas, plaza Cardenal Silíceo, cuesta del Cohete, cuesta de Santa Leocadia y plaza de Santa Teresa de Jesús",
+        ],
+      },
+      {
+        id: "carmen-san-andres-14-noviembre-misa",
+        titulo: "Santa Misa en el templo de destino",
+        fecha: "14 de noviembre",
+        lineas: [
+          "Al llegar — Santa Misa en la iglesia del Convento de San José y de Cristo Crucificado (Carmelitas Descalzas), plaza de Santa Teresa de Jesús",
+          "Al finalizar la Santa Misa — Procesión de regreso a San Andrés por el mismo itinerario",
+          "Recorrido y hora de salida pendientes de confirmar para la nueva fecha del 14 de noviembre",
+        ],
+      },
+    ],
+  },
+
+  /* ==========================================
      VIRGEN DE LA GUÍA
   ========================================== */
 
@@ -526,6 +665,45 @@ export const cultosDetalle: CultoDetalle[] = [
   },
 
   
+  /* ==========================================
+     NUESTRA SEÑORA DE LA ESTRELLA
+     MES DEL ROSARIO · OCTUBRE 2026
+  ========================================== */
+
+  {
+    id: "estrella-octubre",
+    advocacionId: "estrella",
+    titulo: "Mes del Rosario",
+    subtitulo: "Cultos de octubre junto a Nuestra Señora de la Estrella",
+    bloques: [
+      {
+        id: "estrella-octubre-diario",
+        titulo: "Cultos de lunes a sábado",
+        fecha: "Durante el mes de octubre",
+        lineas: [
+          "19:00 h — Rezo del Santo Rosario",
+          "19:30 h — Santa Misa",
+        ],
+      },
+      {
+        id: "estrella-octubre-jueves",
+        titulo: "Exposición del Santísimo",
+        fecha: "Todos los jueves de octubre",
+        lineas: [
+          "18:30 h — Exposición del Santísimo Sacramento",
+        ],
+      },
+      {
+        id: "estrella-octubre-3",
+        titulo: "XI aniversario de la Coronación Canónica",
+        fecha: "Sábado 3 de octubre",
+        lineas: [
+          "11:00 h — Misa de acción de gracias por el XI aniversario de la Coronación Canónica",
+        ],
+      },
+    ],
+  },
+
   /* ==========================================
      NUESTRA SEÑORA DE LA ESPERANZA
      CULTOS DE 2026

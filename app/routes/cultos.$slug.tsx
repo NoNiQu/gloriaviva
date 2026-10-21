@@ -59,7 +59,10 @@ function obtenerCardsDelMes(nombreMes: string, soloMesDeInicio = false) {
 
       return {
         ...card,
-        mesVista: nombreMes,
+        // «Todos los Cultos» muestra íntegros los actos del culto,
+        // aunque algunos tengan lugar en el mes siguiente.
+        // La vista de cada mes continúa mostrando solo sus propios actos.
+        mesVista: soloMesDeInicio ? "TODOS" : nombreMes,
         // Una novena que va del 25 de mayo al 2 de junio conserva
         // su fecha completa en mayo, junio y «Todos los Cultos».
         // Las fechas particulares siguen disponibles para otros casos.

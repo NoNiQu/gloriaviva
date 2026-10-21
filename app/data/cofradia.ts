@@ -466,7 +466,10 @@ export const cofradias: CofradiaData[] = [
       youtube: null,
     },
 
-      fotosGaleria: false,
+    fotosCedidas: true,
+    fotoQuien: "al Consejo de hermandades y cofradías de Gloria de Toledo",
+    fotosSeccion: "todo",
+    fotosGaleria: false,
 
   },
 

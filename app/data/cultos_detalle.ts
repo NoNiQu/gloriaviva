@@ -649,7 +649,6 @@ export const cultosDetalle: CultoDetalle[] = [
         ],
       },
     ],
-    nota: "Todos los cultos se celebran en la iglesia parroquial de Santiago el Mayor del Arrabal.",
   },
 
   /* ==========================================

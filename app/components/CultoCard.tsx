@@ -49,24 +49,34 @@ export function CultoCard({ card, prioridad = false }: CultoCardProps) {
   // No recuperar procesiones por advocación: mezclaría las de otros meses.
   const cultoId = card.cultoId ?? String(id);
   const mesVista = (card.mesVista ?? card.mes).toUpperCase();
+  const enTodosLosCultos = mesVista === "TODOS";
 
   const culto = cultosDetalle.find(
     (item) =>
       item.id === cultoId || (!item.id && item.advocacionId === cultoId),
   );
 
-  // En cultos que abarcan varios meses, enseñar solo los bloques del mes.
+  // En «Todos los Cultos» se ve el programa completo (incluso si
+  // acaba en otro mes). En cada mes individual, solo sus actos.
   const bloquesVisibles =
     culto?.bloques.filter(
       (bloque) =>
+        enTodosLosCultos ||
         !bloque.meses?.length ||
         bloque.meses.some((mes) => mes.toUpperCase() === mesVista),
     ) ?? [];
 
-  // Una lista vacía significa que esta celebración no tiene procesión.
-  // Si faltan IDs, no se muestran procesiones de otra celebración.
-  const idsProcesion =
-    card.procesionesIdsPorMes?.[mesVista] ?? card.procesionesIds ?? [];
+  // Cada tarjeta mantiene exclusivamente SUS procesiones.
+  // En «Todos» se incluyen las de los meses que abarca ese mismo culto;
+  // en una vista mensual se muestran solo las de ese mes.
+  const idsProcesion = enTodosLosCultos
+    ? Array.from(
+        new Set([
+          ...(card.procesionesIds ?? []),
+          ...Object.values(card.procesionesIdsPorMes ?? {}).flat(),
+        ]),
+      )
+    : (card.procesionesIdsPorMes?.[mesVista] ?? card.procesionesIds ?? []);
 
   const procesiones = procesionesDetalle.filter((item) =>
     idsProcesion.includes(item.id),

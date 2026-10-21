@@ -355,7 +355,7 @@ export const procesionesDetalle: ProcesionDetalle[] = [
     fecha: "16 de julio",
     hora: "20:45",
     horaTexto: "Salida aproximada: 20:45 h",
-    salida: "Convento del Espíritu Santo (Padres Carmelitas)",
+    salida: "Convento del Espíritu Santo",
     recorrido: [
       "Plaza de los Carmelitas",
       "Calle Carmelitas",
@@ -500,15 +500,14 @@ export const procesionesDetalle: ProcesionDetalle[] = [
     fecha: "20 de junio",
     hora: "21:00",
     horaTexto: "Salida: 21:00 h",
-    salida: "Iglesia parroquial de Santiago el Mayor (Arrabal)",
-    llegada: "Iglesia parroquial de Santiago el Mayor (Arrabal)",
+    salida: "Iglesia parroquial de Santiago el Mayor",
+    llegada: "Iglesia parroquial de Santiago el Mayor",
     recorrido: [
-      "Iglesia de Santiago el Mayor (Arrabal)",
+      "Iglesia de Santiago el Mayor",
       "Entorno de la Puerta de Bisagra",
       "Ermita de Nuestra Señora de la Estrella",
-      "Iglesia de Santiago el Mayor (Arrabal)",
+      "Iglesia de Santiago el Mayor",
     ],
-    nota: "Itinerario aproximado según la descripción facilitada. Falta confirmar el detalle de las calles de paso.",
   },
 
   /* ==========================================
@@ -622,7 +621,6 @@ export const procesionesDetalle: ProcesionDetalle[] = [
       "Descalzos",
       "Iglesia de San Cipriano",
     ],
-    nota: "Itinerario pendiente de confirmación oficial para 2026.",
   },
 
 

@@ -488,6 +488,30 @@ export const procesionesDetalle: ProcesionDetalle[] = [
   },
 
   /* ==========================================
+      NUESTRA SEÑORA DE LOS DESAMPARADOS
+      PROCESIÓN DEL 20 DE JUNIO DE 2026
+  ========================================== */
+
+  {
+    id: "desamparados-principal",
+    advocacionId: "desamparados",
+    nombre: "Tradicional Procesión de Nuestra Señora de los Desamparados",
+    tipo: "principal",
+    fecha: "20 de junio",
+    hora: "21:00",
+    horaTexto: "Salida: 21:00 h",
+    salida: "Iglesia parroquial de Santiago el Mayor (Arrabal)",
+    llegada: "Iglesia parroquial de Santiago el Mayor (Arrabal)",
+    recorrido: [
+      "Iglesia de Santiago el Mayor (Arrabal)",
+      "Entorno de la Puerta de Bisagra",
+      "Ermita de Nuestra Señora de la Estrella",
+      "Iglesia de Santiago el Mayor (Arrabal)",
+    ],
+    nota: "Itinerario aproximado según la descripción facilitada. Falta confirmar el detalle de las calles de paso.",
+  },
+
+  /* ==========================================
      PROCESIÓN DE NUESTRA SEÑORA DE LA ESTRELLA
      14 DE JUNIO DE 2026
   ========================================== */

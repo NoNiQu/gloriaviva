@@ -117,8 +117,8 @@ export const cultosCards: CultoCardData[] = [
     fecha: "14 al 23 de SEPTIEMBRE",
     mes: "SEPTIEMBRE",
     diaInicio: 14,
-    imagenUrl: "/cofradias/devocion/padre-pio/padre-pio_CE.avif",
-    imagenMovilUrl: "/cofradias/devocion/devocion/padre-pio/padre-pio_CM.avif",
+    imagenUrl: "/cofradias/devocion/padre_pio/padre-pio_CE.avif",
+    imagenMovilUrl: "/cofradias/devocion/padre_pio/padre-pio_CM.avif",
     imagenAlt: "Padre Pío",
     colorFondo: "#4D2E22",
     cultosHref: "/cultos/septiembre/desktop/padre-pio",
@@ -159,6 +159,10 @@ export const cultosCards: CultoCardData[] = [
     fecha: "30 de ENERO al 1 de FEBRERO",
     mes: "ENERO",
     meses: ["ENERO", "FEBRERO"],
+    fechaPorMes: {
+      ENERO: "30 y 31 de ENERO",
+      FEBRERO: "1 de FEBRERO",
+    },
     diaInicio: 30,
     diaInicioPorMes: {
       ENERO: 30,
@@ -322,7 +326,7 @@ export const cultosCards: CultoCardData[] = [
     imagenMovilUrl: "/cofradias/devocion/consuelo/consuelo_CM.avif",
     imagenAlt: "Nuestra Señora del Consuelo de Toledo",
 
-    colorFondo: "#D47F96",
+    colorFondo: "#8C7158",
     titleSize: "large",
     imagePosition: "50% 25%",
     procesionesIds: [],
@@ -375,6 +379,59 @@ export const cultosCards: CultoCardData[] = [
     colorFondo: "#590716",
     titleSize: "large",
     imagePosition: "50% 30%",
+  },
+
+  /* ==========================================
+     NUESTRA SEÑORA DE LOS DESAMPARADOS
+     TRIDUO Y PROCESIÓN · JUNIO 2026
+  ========================================== */
+
+  {
+    id: "desamparados",
+    cofradiaId: "desamparados",
+    advocacionId: "desamparados",
+    cultoId: "desamparados",
+    procesionesIds: ["desamparados-principal"],
+
+    nombre: "Desamparados",
+    fecha: "18 al 20 de JUNIO",
+    mes: "JUNIO",
+    diaInicio: 18,
+
+    imagenUrl: "/cofradias/gloria/desamparados/desamparados_CE.avif",
+    imagenMovilUrl: "/cofradias/gloria/desamparados/desamparados_CM.avif",
+    imagenAlt: "Nuestra Señora de los Desamparados, Toledo",
+
+    colorFondo: "#7B163F",
+    titleSize: "small",
+    imagePosition: "50% 25%",
+  },
+
+  /* ==========================================
+     SAN JERÓNIMO
+     CULTOS DEL 3 Y 4 DE OCTUBRE DE 2026
+  ========================================== */
+
+  {
+    id: "jeronimo",
+    cofradiaId: "jeronimo",
+    advocacionId: "jeronimo",
+    cultoId: "jeronimo",
+    procesionesIds: [],
+
+    nombre: "San Jerónimo",
+    fecha: "3 y 4 de OCTUBRE",
+    mes: "OCTUBRE",
+    diaInicio: 3,
+
+    imagenUrl: "/cofradias/gloria/jeronimo/jeronimo_CE.avif",
+    imagenMovilUrl: "/cofradias/gloria/jeronimo/jeronimo_CM.avif",
+    imagenAlt: "Imagen de San Jerónimo venerada en su ermita de Toledo",
+
+    colorFondo: "#7B302F",
+    titleSize: "medium",
+    imagePosition: "50% 30%",
+    degradado: true,
   },
 
   /* ==========================================
@@ -439,6 +496,10 @@ export const cultosCards: CultoCardData[] = [
     fecha: "25 de MAYO al 2 de JUNIO",
     mes: "MAYO",
     meses: ["MAYO", "JUNIO"],
+    fechaPorMes: {
+      MAYO: "25 al 31 de MAYO",
+      JUNIO: "1 y 2 de JUNIO",
+    },
     diaInicio: 25,
 
     diaInicioPorMes: {

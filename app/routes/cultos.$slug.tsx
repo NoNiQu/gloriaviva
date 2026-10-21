@@ -42,21 +42,36 @@ function cardPerteneceAlMes(
   );
 }
 
-function obtenerCardsDelMes(nombreMes: string) {
+function obtenerCardsDelMes(nombreMes: string, soloMesDeInicio = false) {
   return cultosCards
-    .filter((card) => cardPerteneceAlMes(card, nombreMes))
+    .filter((card) =>
+      soloMesDeInicio
+        ? // En «Todos los Cultos» cada celebración aparece una sola vez,
+          // bajo el mes en que comienza, aunque termine en otro.
+          card.mes.toUpperCase() === nombreMes.toUpperCase()
+        : // Al consultar un mes concreto, también aparecen los cultos
+          // que empezaron en otro mes y siguen celebrándose en este.
+          cardPerteneceAlMes(card, nombreMes),
+    )
     .map((card) => {
-      const mesPrincipal = card.mes.toLowerCase() === nombreMes.toLowerCase();
+      const mesPrincipal = card.mes.toUpperCase() === nombreMes.toUpperCase();
+      const abarcaVariosMeses = (card.meses?.length ?? 0) > 1;
 
       return {
         ...card,
         mesVista: nombreMes,
-        fecha: card.fechaPorMes?.[nombreMes] ?? card.fecha,
+        // Una novena que va del 25 de mayo al 2 de junio conserva
+        // su fecha completa en mayo, junio y «Todos los Cultos».
+        // Las fechas particulares siguen disponibles para otros casos.
+        fecha: abarcaVariosMeses
+          ? card.fecha
+          : (card.fechaPorMes?.[nombreMes] ?? card.fecha),
         diaInicio:
           card.diaInicioPorMes?.[nombreMes] ??
           (mesPrincipal ? card.diaInicio : 1),
       };
-    });
+    })
+    .sort((a, b) => a.diaInicio - b.diaInicio);
 }
 
 function mesTieneCultos(mes?: Mes) {
@@ -243,15 +258,15 @@ export default function CultosMesPage() {
       <main className="min-h-screen bg-white text-black">
         <div className="mx-auto max-w-7xl px-5 pb-20 pt-48 lg:pt-50">
           <div className="text-center">
-          <h1 className="text-5xl leading-none md:text-7xl">
-            Mes no encontrado
-          </h1>
+            <h1 className="text-5xl leading-none md:text-7xl">
+              Mes no encontrado
+            </h1>
 
-          <p className="mt-6">El mes seleccionado no existe.</p>
+            <p className="mt-6">El mes seleccionado no existe.</p>
 
-          <Link
-            to="/cultos"
-            className="
+            <Link
+              to="/cultos"
+              className="
               mt-10
               inline-flex
               min-h-14
@@ -272,9 +287,9 @@ export default function CultosMesPage() {
               focus-visible:outline-offset-4
               focus-visible:outline-white
             "
-          >
-            Volver a Cultos
-          </Link>
+            >
+              Volver a Cultos
+            </Link>
           </div>
         </div>
       </main>
@@ -287,60 +302,60 @@ export default function CultosMesPage() {
     return (
       <main className="min-h-screen bg-white text-black">
         <div className="mx-auto max-w-7xl px-5 pb-20 pt-48 lg:pt-50">
-        <header className="mb-16 text-center lg:mb-20">
-          <h1
-            className="
+          <header className="mb-16 text-center lg:mb-20">
+            <h1
+              className="
               text-4xl
               leading-none
               md:text-5xl
               lg:text-7xl
             "
-          >
-            Todos los Cultos
-          </h1>
-        </header>
+            >
+              Todos los Cultos
+            </h1>
+          </header>
 
-        <div className="space-y-24">
-          {meses.map((mes) => {
-            const cardsDelMes = cultosCards.filter(
-              (card) => card.mes.toLowerCase() === mes.nombre.toLowerCase(),
-            );
+          <div className="space-y-24">
+            {meses.map((mes) => {
+              // Aquí los cultos multimes aparecen únicamente cuando empiezan.
+              // Las vistas de cada mes mantienen sus propias tarjetas.
+              const cardsDelMes = obtenerCardsDelMes(mes.nombre, true);
 
-            if (cardsDelMes.length === 0) {
-              return null;
-            }
+              if (cardsDelMes.length === 0) {
+                return null;
+              }
 
-            return (
-              <section key={mes.slug} aria-labelledby={`cultos-${mes.slug}`}>
-                <h2
-                  id={`cultos-${mes.slug}`}
-                  className="
+              return (
+                <section key={mes.slug} aria-labelledby={`cultos-${mes.slug}`}>
+                  <h2
+                    id={`cultos-${mes.slug}`}
+                    className="
                     mb-15
                     text-center
                     text-4xl
                     leading-none
                     md:text-5xl
                   "
-                >
-                  {mes.nombre}
-                </h2>
+                  >
+                    {mes.nombre}
+                  </h2>
 
-                <CultosGrid
-                  cards={cardsDelMes}
-                  priorizarPrimera={mes.slug === primerMesConCultos}
-                />
-              </section>
-            );
-          })}
-        </div>
+                  <CultosGrid
+                    cards={cardsDelMes}
+                    priorizarPrimera={mes.slug === primerMesConCultos}
+                  />
+                </section>
+              );
+            })}
+          </div>
 
-        <nav
-          aria-label="Volver al listado de cultos"
-          className="mt-20 flex justify-center"
-        >
-          <Link
-            to="/cultos"
-            className="
+          <nav
+            aria-label="Volver al listado de cultos"
+            className="mt-20 flex justify-center"
+          >
+            <Link
+              to="/cultos"
+              className="
               inline-flex
               min-h-16
               items-center
@@ -361,10 +376,10 @@ export default function CultosMesPage() {
               focus-visible:outline-offset-4
               focus-visible:outline-black
             "
-          >
-            VOLVER A CULTOS
-          </Link>
-        </nav>
+            >
+              VOLVER A CULTOS
+            </Link>
+          </nav>
         </div>
       </main>
     );
@@ -375,39 +390,39 @@ export default function CultosMesPage() {
   return (
     <main className="min-h-screen bg-white text-black">
       <div className="mx-auto max-w-7xl px-5 pb-20 pt-48 lg:pt-50">
-      <header className="mb-12 text-center lg:mb-20">
-        <h1 className="text-3xl leading-none lg:text-5xl">Cultos</h1>
+        <header className="mb-12 text-center lg:mb-20">
+          <h1 className="text-3xl leading-none lg:text-5xl">Cultos</h1>
 
-        <h2 className="mt-2 text-4xl leading-none lg:mt-4 lg:text-7xl">
-          {mesActual!.nombre}
-        </h2>
-      </header>
+          <h2 className="mt-2 text-4xl leading-none lg:mt-4 lg:text-7xl">
+            {mesActual!.nombre}
+          </h2>
+        </header>
 
-      {cardsDelMes.length > 0 ? (
-        <CultosGrid cards={cardsDelMes} priorizarPrimera />
-      ) : (
-        <div className="py-20 text-center">
-          <p className="text-lg">No hay cultos publicados para este mes.</p>
-        </div>
-      )}
+        {cardsDelMes.length > 0 ? (
+          <CultosGrid cards={cardsDelMes} priorizarPrimera />
+        ) : (
+          <div className="py-20 text-center">
+            <p className="text-lg">No hay cultos publicados para este mes.</p>
+          </div>
+        )}
 
-      <nav aria-label="Navegación entre meses" className="mt-16 lg:mt-20">
-        <div className="grid grid-cols-2 gap-3 lg:hidden">
-          <BotonMes
-            mes={mesAnterior}
-            direccion="anterior"
-            disponible={anteriorDisponible}
-          />
+        <nav aria-label="Navegación entre meses" className="mt-16 lg:mt-20">
+          <div className="grid grid-cols-2 gap-3 lg:hidden">
+            <BotonMes
+              mes={mesAnterior}
+              direccion="anterior"
+              disponible={anteriorDisponible}
+            />
 
-          <BotonMes
-            mes={mesSiguiente}
-            direccion="siguiente"
-            disponible={siguienteDisponible}
-          />
+            <BotonMes
+              mes={mesSiguiente}
+              direccion="siguiente"
+              disponible={siguienteDisponible}
+            />
 
-          <Link
-            to="/cultos"
-            className="
+            <Link
+              to="/cultos"
+              className="
               col-span-2
               flex
               min-h-16
@@ -431,32 +446,32 @@ export default function CultosMesPage() {
               focus-visible:outline-offset-4
               focus-visible:outline-white
             "
-          >
-            VOLVER A CULTOS
-          </Link>
-        </div>
+            >
+              VOLVER A CULTOS
+            </Link>
+          </div>
 
-        <div
-          className="
+          <div
+            className="
             hidden
             grid-cols-[1fr_auto_1fr]
             items-center
             gap-8
             lg:grid
           "
-        >
-          <div className="flex justify-start">
-            <BotonMes
-              mes={mesAnterior}
-              direccion="anterior"
-              disponible={anteriorDisponible}
-              escritorio
-            />
-          </div>
+          >
+            <div className="flex justify-start">
+              <BotonMes
+                mes={mesAnterior}
+                direccion="anterior"
+                disponible={anteriorDisponible}
+                escritorio
+              />
+            </div>
 
-          <Link
-            to="/cultos"
-            className="
+            <Link
+              to="/cultos"
+              className="
               inline-flex
               min-h-16
               min-w-52
@@ -478,20 +493,20 @@ export default function CultosMesPage() {
               focus-visible:outline-offset-4
               focus-visible:outline-white
             "
-          >
-            VOLVER A CULTOS
-          </Link>
+            >
+              VOLVER A CULTOS
+            </Link>
 
-          <div className="flex justify-end">
-            <BotonMes
-              mes={mesSiguiente}
-              direccion="siguiente"
-              disponible={siguienteDisponible}
-              escritorio
-            />
+            <div className="flex justify-end">
+              <BotonMes
+                mes={mesSiguiente}
+                direccion="siguiente"
+                disponible={siguienteDisponible}
+                escritorio
+              />
+            </div>
           </div>
-        </div>
-      </nav>
+        </nav>
       </div>
     </main>
   );

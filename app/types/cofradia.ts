@@ -74,4 +74,5 @@ export interface CofradiaData {
   fotoQuien?: string | null;
   fotosSeccion?: string | null;
   fotosLogo?: string | null;
+  fotosGaleria?: boolean;
 }

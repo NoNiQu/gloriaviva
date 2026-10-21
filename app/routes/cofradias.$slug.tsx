@@ -407,7 +407,8 @@ export default function CofradiaPage({ loaderData }: Route.ComponentProps) {
     });
   }
 
-  const mostrarGalerias = cofradia.titulares.length < 3;
+  const mostrarGalerias =
+    cofradia.fotosGaleria !== false && cofradia.titulares.length < 3;
 
   return (
     <main>

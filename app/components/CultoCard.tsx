@@ -1,5 +1,7 @@
 import { useState } from "react";
+import { Link } from "react-router";
 
+import { cofradias } from "../data/cofradia";
 import { cultosDetalle } from "../data/cultos_detalle";
 import { procesionesDetalle } from "../data/procesiones_detalle";
 
@@ -43,37 +45,44 @@ export function CultoCard({ card, prioridad = false }: CultoCardProps) {
     creditoFoto,
   } = card;
 
-  // Cada celebracion tiene su propia tarjeta; varias tarjetas
-  // pueden pertenecer a una misma advocacion o cofradia.
-  const advocacionId = card.advocacionId ?? String(id);
+  // Cada tarjeta representa una celebración concreta y su mes.
+  // No recuperar procesiones por advocación: mezclaría las de otros meses.
   const cultoId = card.cultoId ?? String(id);
-  const mesVista = card.mesVista?.toUpperCase();
+  const mesVista = (card.mesVista ?? card.mes).toUpperCase();
 
   const culto = cultosDetalle.find(
     (item) =>
       item.id === cultoId || (!item.id && item.advocacionId === cultoId),
   );
 
+  // En cultos que abarcan varios meses, enseñar solo los bloques del mes.
   const bloquesVisibles =
     culto?.bloques.filter(
       (bloque) =>
-        !mesVista ||
         !bloque.meses?.length ||
         bloque.meses.some((mes) => mes.toUpperCase() === mesVista),
     ) ?? [];
 
+  // Una lista vacía significa que esta celebración no tiene procesión.
+  // Si faltan IDs, no se muestran procesiones de otra celebración.
   const idsProcesion =
-    mesVista && card.procesionesIdsPorMes?.[mesVista] !== undefined
-      ? card.procesionesIdsPorMes[mesVista]
-      : card.procesionesIds;
+    card.procesionesIdsPorMes?.[mesVista] ?? card.procesionesIds ?? [];
 
   const procesiones = procesionesDetalle.filter((item) =>
-    idsProcesion !== undefined
-      ? idsProcesion.includes(item.id)
-      : item.advocacionId === advocacionId,
+    idsProcesion.includes(item.id),
   );
 
   const tieneProcesion = procesiones.length > 0;
+
+  // Algunas tarjetas (Rosario, Salud de febrero, Carmen de noviembre...)
+  // pertenecen a una cofradía distinta del ID de la celebración.
+  // Solo enlazamos fichas que realmente existan.
+  const cofradiaId = card.cofradiaId ?? card.advocacionId ?? String(id);
+  const cofradia = cofradias.find((item) => item.id === cofradiaId);
+  const textoBotonCofradia =
+    cofradia?.tipo === "devocion-popular"
+      ? "CONOCER LA DEVOCIÓN"
+      : "CONOCER LA COFRADÍA";
 
   // Si degradado: true, el color comienza más arriba y se funde
   // progresivamente con la fotografía durante un tramo más largo.
@@ -710,6 +719,42 @@ export function CultoCard({ card, prioridad = false }: CultoCardProps) {
               </div>
             ) : null}
           </div>
+
+          {/* Enlace fijo abajo: no ocupa espacio en la cara de la fotografía.
+              Visible tanto en Cultos como en Procesión, pero no en créditos. */}
+          {cofradia && (vista === "cultos" || vista === "procesion") && (
+            <Link
+              to={`/cofradias/${cofradia.slug}`}
+              aria-label={`Ver información de ${cofradia.nombre}`}
+              className="
+                mt-[5%]
+                flex
+                min-h-12
+                shrink-0
+                items-center
+                justify-center
+                rounded-2xl
+                bg-white
+                px-3
+                py-3
+                text-center
+                text-[clamp(0.85rem,4.3cqw,1.4rem)]
+                leading-tight
+                tracking-widest
+                transition-opacity
+                hover:opacity-85
+                focus-visible:outline-2
+                focus-visible:outline-offset-4
+                focus-visible:outline-white
+              "
+              style={{
+                color: colorFondo,
+                fontFamily: '"Gloock", Georgia, serif',
+              }}
+            >
+              {textoBotonCofradia}
+            </Link>
+          )}
         </div>
       )}
     </article>

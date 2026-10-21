@@ -7,6 +7,8 @@ const consueloPath = "/cofradias/devocion/consuelo";
 
 const guiaPath = "/cofradias/gloria/guia";
 const estrellaPath = "/cofradias/gloria/estrella";
+const desamparadosPath = "/cofradias/gloria/desamparados";
+const jeronimoPath = "/cofradias/gloria/jeronimo";
 const alegriaPath = "/cofradias/gloria/alegria";
 const esperanzaPath = "/cofradias/gloria/esperanza";
 const pazPath = "/cofradias/gloria/paz";
@@ -315,6 +317,157 @@ export const cofradias: CofradiaData[] = [
       tiktok: null,
       youtube: null,
     },
+  },
+
+  /* ==========================================
+     NUESTRA SEÑORA DE LOS DESAMPARADOS
+     HERMANDAD ESCLAVITUD · SANTIAGO DEL ARRABAL
+  ========================================== */
+
+  {
+    id: "desamparados",
+    slug: "desamparados",
+
+    nombre: "Nuestra Señora de los Desamparados",
+    nombreCorto: "Desamparados",
+
+    sedeCanonica: "Parroquia de Santiago el Mayor",
+    tipo: "gloria",
+
+    // 1392 corresponde a una tradición recogida siglos después,
+    // no a una fundación documentalmente acreditada.
+    anioFundacion: null,
+    anioRefundacion: null,
+    referenciaHistorica: 1392,
+
+    historia:
+      "La Hermandad Esclavitud de Nuestra Señora de los Desamparados pertenece a las antiguas corporaciones marianas del Arrabal de Toledo. Una tradición recogida en el siglo XVII sitúa sus orígenes en una aparición de la Virgen junto al Hospital de San Leonardo en 1392, aunque no existe confirmación documental contemporánea de ese relato. La cofradía aparece citada en el siglo XVI y estuvo vinculada a una ermita reconstruida en 1554 y nuevamente en 1587. En 1746 se aprobaron nuevas constituciones tras su unión con la Hermandad de Socorro de las Benditas Ánimas del Purgatorio. La antigua ermita sufrió graves daños y desapareció durante la Guerra Civil. Actualmente tiene su sede canónica en Santiago el Mayor, donde mantiene el culto a Nuestra Señora de los Desamparados.",
+
+    // Rutas previstas para las imágenes que se incorporen a /public.
+    escudoUrl: "/escudos/desktop/gloria/desamparados.png",
+    escudoMovilUrl: "/escudos/movil/gloria/desamparados.png",
+    logoUrl: `${desamparadosPath}/logo.avif`,
+    logoDoradoUrl: `${desamparadosPath}/logodorado.avif`,
+
+    portadaDesktopUrl: `${desamparadosPath}/portada.avif`,
+    portada2kUrl: `${desamparadosPath}/portada_2k.avif`,
+    portadaMovilUrl: `${desamparadosPath}/portadamovil.avif`,
+
+    titulares: [
+      {
+        id: "desamparados-titular",
+        nombre: "Nuestra Señora de los Desamparados",
+        advocacion: "Virgen de los Desamparados",
+        esVirgen: true,
+
+        // No confundir la imagen actual con la talla histórica
+        // documentada en la antigua ermita.
+        anio: null,
+        siglo: null,
+        autor: null,
+        tipoAndas: "Andas",
+
+        datosTalla:
+          "Imagen de Nuestra Señora de los Desamparados venerada por su Hermandad Esclavitud en la parroquia de Santiago el Mayor del Arrabal. La antigua cofradía poseyó una imagen de gran devoción en su ermita histórica, desaparecida tras los daños de 1936. No se dispone de una atribución o fecha de ejecución suficientemente contrastadas para la imagen que recibe culto actualmente.",
+
+        fotoUrl: `${desamparadosPath}/titular.avif`,
+        galeria: [
+          `${desamparadosPath}/galeria1.avif`,
+          `${desamparadosPath}/galeria2.avif`,
+          `${desamparadosPath}/galeria3.avif`,
+          `${desamparadosPath}/galeria4.avif`,
+        ],
+      },
+    ],
+
+    // Triduo y procesión del 18 al 20 de junio de 2026.
+    cultosId: "desamparados",
+    procesionId: "desamparados-principal",
+
+    redes: {
+      web: "https://santiagoelmayor.org/desamparados/",
+      instagram: null,
+      facebook: null,
+      X: null,
+      tiktok: null,
+      youtube: null,
+    },
+  },
+
+  /* ==========================================
+     SAN JERÓNIMO
+     HERMANDAD DE GLORIA · CIGARRALES DE TOLEDO
+  ========================================== */
+
+  {
+    id: "jeronimo",
+    slug: "jeronimo",
+
+    nombre: "San Jerónimo",
+    nombreCorto: "San Jerónimo",
+
+    sedeCanonica: "Ermita de San Jerónimo",
+    tipo: "gloria",
+
+    // Hermandad Esclavitud de 1751, reorganizada en 1899.
+    // No confundir la fecha de la ermita (1611) con la de la hermandad.
+    anioFundacion: null,
+    anioRefundacion: 1899,
+    referenciaHistorica: null,
+
+    historia:
+      "La devoción a San Jerónimo en Toledo está ligada a la ermita de los Cigarrales, edificada por iniciativa del canónigo Jerónimo de Miranda en 1611 y consagrada al año siguiente para atender a los vecinos de la zona. En 1751 se fundó la Hermandad Esclavitud de San Jerónimo, reorganizada el 13 de marzo de 1899 como Cofradía de San Jerónimo, Confesor y Doctor, con una importante labor de asistencia a los hermanos. La ermita sufrió diversos daños a lo largo de su historia y fue rehabilitada en 2005 y 2006. La Hermandad mantiene la tradicional romería y los cultos en honor de su titular, celebrados en torno a su festividad de finales de septiembre y comienzos de octubre.",
+
+    // Preparar las imágenes dentro de public/cofradias/gloria/jeronimo/.
+    escudoUrl: "/escudos/desktop/gloria/jeronimo.png",
+    escudoMovilUrl: "/escudos/movil/gloria/jeronimo.png",
+    logoUrl: `${jeronimoPath}/logo.avif`,
+    logoDoradoUrl: `${jeronimoPath}/logodorado.avif`,
+
+    portadaDesktopUrl: `${jeronimoPath}/portada.avif`,
+    portada2kUrl: `${jeronimoPath}/portada_2k.avif`,
+    portadaMovilUrl: `${jeronimoPath}/portadamovil.avif`,
+
+    titulares: [
+      {
+        id: "jeronimo-titular",
+        nombre: "San Jerónimo",
+        advocacion: "San Jerónimo",
+        esVirgen: false,
+
+        anio: null,
+        siglo: null,
+        autor: null,
+        tipoAndas: "No tiene",
+
+        datosTalla:
+          "Imagen de San Jerónimo venerada en su ermita de los Cigarrales. Representa al santo penitente, arrodillado, con una cruz y una piedra, acompañado del león que tradicionalmente constituye uno de sus atributos iconográficos. La documentación histórica recoge la destrucción o desaparición de varias imágenes anteriores, incluida la perdida durante la Guerra Civil. No se ha confirmado documentalmente la autoría ni la fecha exacta de ejecución de la talla actual.",
+
+        fotoUrl: `${jeronimoPath}/titular.avif`,
+        galeria: [
+          `${jeronimoPath}/galeria1.avif`,
+          `${jeronimoPath}/galeria2.avif`,
+          `${jeronimoPath}/galeria3.avif`,
+          `${jeronimoPath}/galeria4.avif`,
+        ],
+      },
+    ],
+
+    cultosId: "jeronimo",
+    // El cartel de 2026 no anuncia salida procesional.
+    procesionId: null,
+
+    redes: {
+      web: null,
+      instagram: null,
+      facebook: null,
+      X: null,
+      tiktok: null,
+      youtube: null,
+    },
+
+      fotosGaleria: false,
+
   },
 
   /* ==========================================
@@ -1335,7 +1488,7 @@ export const cofradias: CofradiaData[] = [
         anio: null,
         siglo: "XIII",
         autor: "Anónimo",
-        tipoAndas: "Andas",
+        tipoAndas: "Carroza",
 
         datosTalla:
           "La imagen es una talla románica sedente, realizada en madera de níspero y fechada en el siglo XIII. Representa a la Virgen María con el Niño Jesús sobre su regazo. En el siglo XVI fue revestida de plata, excepto la cabeza y las manos, y se enriquece con mantos, joyas y coronas fruto de la devoción de generaciones de toledanos. Se venera en la capilla del Sagrario sobre un trono de plata sobredorada realizado por el orfebre florentino Virgilio Fanelli entre 1654 y 1674.",
@@ -1361,6 +1514,12 @@ export const cofradias: CofradiaData[] = [
       tiktok: null,
       youtube: null,
     },
+
+    fotosCedidas: true,
+    fotoQuien: "Toledo Sacro",
+    fotosSeccion: "galería",
+    fotosLogo: "/colaboradores/toledo_sacro.webp",
+
   },
 
   /* ==========================================

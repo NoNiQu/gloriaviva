@@ -148,7 +148,7 @@ export const sedesCanonicas: SedeCanonicaData[] = [
     usoActual: "CULTO",
     horarios: [],
     horariosUrl: "https://santiagoelmayor.org/misas/",
-    cofradiasIds: ["dolores"],
+    cofradiasIds: ["desamparados", "dolores"],
     existe: true,
   },
   {
@@ -388,6 +388,29 @@ export const sedesCanonicas: SedeCanonicaData[] = [
     ],
     horariosUrl: null,
     cofradiasIds: ["guia"],
+    existe: false,
+  },
+  /* ==========================================
+     ERMITA DE SAN JERÓNIMO
+     HERMANDAD DE SAN JERÓNIMO · CIGARRALES
+  ========================================== */
+  {
+    id: "ermita-san-jeronimo",
+    slug: "ermita-san-jeronimo",
+    nombre: "Ermita de San Jerónimo",
+    direccion: "Subida de San Jerónimo · Toledo",
+    descripcionBreve:
+      "Pequeña ermita situada en el antiguo barrio de la Solanilla, entre los cigarrales próximos al puente de San Martín. Se levantó en 1611 por iniciativa del canónigo Jerónimo de Miranda y fue consagrada en 1612. De una sola nave, presenta bóveda de medio cañón con lunetos, portada sencilla y espadaña. Fue restaurada en 1845 y rehabilitada entre 2005 y 2006. En ella se celebran los cultos y la tradicional romería de San Jerónimo.",
+    usoActual: "CULTO",
+    horarios: [
+      {
+        id: "ermita-san-jeronimo-1",
+        texto: "",
+        hora: "Durante actos de la Hermandad",
+      },
+    ],
+    horariosUrl: null,
+    cofradiasIds: ["jeronimo"],
     existe: false,
   },
 ];

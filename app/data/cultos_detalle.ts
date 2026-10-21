@@ -43,7 +43,7 @@ export const cultosDetalle: CultoDetalle[] = [
         fecha: "Viernes 30 de enero",
         lineas: [
           "18:30 h — Rezo del Santo Rosario",
-          "19:00 h — Celebración de la Santa Misa, presidida por el Rvdo. Sr. D. Gustavo Adolfo Conde",
+          "19:00 h — Celebración de la Santa Misa",
         ],
       },
       {
@@ -52,8 +52,7 @@ export const cultosDetalle: CultoDetalle[] = [
         fecha: "Sábado 31 de enero",
         lineas: [
           "18:30 h — Rezo del Santo Rosario",
-          "19:00 h — Celebración de la Santa Misa, presidida por el Rvdo. Sr. D. Gustavo Adolfo Conde",
-          "Al finalizar — Concierto de música sacra de la Coral de Arroyomolinos",
+          "19:00 h — Celebración de la Santa Misa",
         ],
       },
       {
@@ -63,7 +62,7 @@ export const cultosDetalle: CultoDetalle[] = [
         fecha: "Domingo 1 de febrero",
         lineas: [
           "11:00 h — Procesión de Candelas desde la plaza del Seco",
-          "A continuación — Santa Misa, presidida por el Rvdo. Sr. D. Juan Ignacio López Serrano, delegado de Hermandades y Religiosidad Popular de la Archidiócesis de Toledo",
+          "A continuación — Santa Misa",
           "Tras la Misa — Refresco y ajonjolíes en el patio",
         ],
       },
@@ -86,9 +85,7 @@ export const cultosDetalle: CultoDetalle[] = [
         titulo: "Procesión de febrero",
         fecha: "Domingo 8 de febrero",
         lineas: [
-          "11:00 h — Salida procesional desde el Convento de San Clemente",
-          "Recorrido — Calle San Román, Esteban Illán, plaza de las Tendillas, Cardenal Lorenzana, Alfonso X el Sabio, plaza de Juan de Mariana y plaza de San Román",
-          "Regreso — Convento de San Clemente",
+          "11:00 h — Salida procesional desde el Convento de San Clemente"
         ],
       },
     ],
@@ -621,6 +618,65 @@ export const cultosDetalle: CultoDetalle[] = [
         ],
       },
     ],
+  },
+
+  /* ==========================================
+     NUESTRA SEÑORA DE LOS DESAMPARADOS
+     SOLEMNE TRIDUO · 18-20 JUNIO 2026
+  ========================================== */
+
+  {
+    id: "desamparados",
+    advocacionId: "desamparados",
+    titulo: "Solemne Triduo",
+    subtitulo: "Cultos en honor de Nuestra Señora de los Desamparados",
+    bloques: [
+      {
+        id: "desamparados-triduo-18-19-junio",
+        fecha: "18 y 19 de junio",
+        lineas: [
+          "19:30 h — Santo Rosario y Oración",
+          "20:00 h — Celebración Eucarística",
+        ],
+      },
+      {
+        id: "desamparados-fiesta-20-junio",
+        titulo: "Solemne Función Principal",
+        fecha: "20 de junio",
+        lineas: [
+          "20:00 h — Solemne Función Principal",
+          "21:00 h — Tradicional Procesión",
+        ],
+      },
+    ],
+    nota: "Todos los cultos se celebran en la iglesia parroquial de Santiago el Mayor del Arrabal.",
+  },
+
+  /* ==========================================
+     SAN JERÓNIMO
+     ROMERÍA Y CULTOS · 3 Y 4 DE OCTUBRE DE 2026
+  ========================================== */
+
+  {
+    id: "jeronimo",
+    advocacionId: "jeronimo",
+    titulo: "Solemnes Cultos",
+    subtitulo: "Cultos en honor de San Jerónimo",
+    bloques: [
+      {
+        id: "jeronimo-visperas-3-octubre",
+        titulo: "Vísperas al Santo",
+        fecha: "Sábado 3 de octubre",
+        lineas: ["17:45 h — Rezo de Vísperas a San Jerónimo"],
+      },
+      {
+        id: "jeronimo-misa-4-octubre",
+        titulo: "Santa Misa",
+        fecha: "Domingo 4 de octubre",
+        lineas: ["12:00 h — Santa Misa en honor de San Jerónimo"],
+      },
+    ],
+    nota: "Todos los cultos se celebran en la Ermita de San Jerónimo de Toledo.",
   },
 
   /* ==========================================

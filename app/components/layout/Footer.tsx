@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router";
+import { Link, useLocation, useMatches } from "react-router";
 import type { FooterColumnProps } from "~/types/footer";
 import type { NavigationLink } from "~/types/navigation";
 
@@ -16,6 +16,20 @@ const informationLinks = [
 
 export function Footer() {
   const { pathname } = useLocation();
+  const matches = useMatches();
+  const rutaActual = matches[matches.length - 1];
+  const datos = rutaActual?.loaderData;
+
+  // Solo las fichas individuales de cofradías cambian el color del Footer.
+  // El color procede de su loader: evita cargar datos de cofradías en el layout.
+  const colorCofradia =
+    /^\/cofradias\/[^/]+\/?$/.test(pathname) &&
+    datos !== null &&
+    typeof datos === "object" &&
+    "colorCofradia" in datos &&
+    typeof datos.colorCofradia === "string"
+      ? datos.colorCofradia
+      : null;
 
   const isHomePage = pathname === "/";
   const currentYear = new Date().getFullYear();
@@ -32,7 +46,10 @@ export function Footer() {
   );
 
   return (
-    <footer className="bg-[#263D63] text-white">
+    <footer
+      className="bg-[#263D63] text-white transition-colors duration-300 motion-reduce:transition-none"
+      style={colorCofradia ? { backgroundColor: colorCofradia } : undefined}
+    >
       <div className="mx-auto max-w-360 px-8 pb-8 pt-16">
         <div className="grid grid-cols-1 items-start gap-16 md:grid-cols-[1.5fr_0.75fr_0.75fr]">
           {/* Marca y descripción */}

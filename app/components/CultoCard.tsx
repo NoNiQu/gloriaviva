@@ -715,7 +715,7 @@ export function CultoCard({
                 text-[clamp(0.85rem,4.3cqw,1.4rem)]
                 leading-tight
                 tracking-wider
-                font-medium
+                font-semibold
                 text-black
                 transition-opacity
                 hover:opacity-85

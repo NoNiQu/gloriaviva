@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { useLocation, useMatches } from "react-router";
 
 function isTransparent(color: string) {
   return (
@@ -57,6 +58,22 @@ function getBackgroundUnderButton(button: HTMLButtonElement) {
 }
 
 export function ScrollToTop() {
+  const { pathname } = useLocation();
+  const matches = useMatches();
+  const rutaActual = matches[matches.length - 1];
+  const datos = rutaActual?.loaderData;
+
+  // La flecha adopta el color de la cofradía solo en su ficha individual.
+  // En el resto de Gloria Viva conserva el azul original.
+  const colorCofradia =
+    /^\/cofradias\/[^/]+\/?$/.test(pathname) &&
+    datos !== null &&
+    typeof datos === "object" &&
+    "colorCofradia" in datos &&
+    typeof datos.colorCofradia === "string"
+      ? datos.colorCofradia
+      : null;
+
   const [isVisible, setIsVisible] = useState(false);
   const [isOnDarkBackground, setIsOnDarkBackground] = useState(true);
 
@@ -129,7 +146,7 @@ export function ScrollToTop() {
       window.removeEventListener("scroll", updateButton);
       window.removeEventListener("resize", updateButton);
     };
-  }, []);
+  }, [pathname]);
 
   const scrollToTop = () => {
     const reduceMotion = window.matchMedia(
@@ -169,6 +186,11 @@ export function ScrollToTop() {
           ? "pointer-events-auto opacity-100"
           : "pointer-events-none opacity-0",
       ].join(" ")}
+      style={
+        colorCofradia && !isOnDarkBackground
+          ? { outlineColor: colorCofradia }
+          : undefined
+      }
     >
       {/* Variante para fondos oscuros */}
       <span
@@ -188,6 +210,11 @@ export function ScrollToTop() {
           "transition-opacity duration-300 motion-reduce:transition-none",
           isOnDarkBackground ? "opacity-0" : "opacity-100",
         ].join(" ")}
+        style={
+          colorCofradia
+            ? { backgroundColor: colorCofradia, borderColor: colorCofradia }
+            : undefined
+        }
       />
 
       {/* Flecha azul */}
@@ -199,6 +226,7 @@ export function ScrollToTop() {
           "transition-opacity duration-300 motion-reduce:transition-none",
           isOnDarkBackground ? "opacity-100" : "opacity-0",
         ].join(" ")}
+        style={colorCofradia ? { color: colorCofradia } : undefined}
       >
         <path d="M12 7 5.5 15h13L12 7Z" fill="currentColor" />
       </svg>

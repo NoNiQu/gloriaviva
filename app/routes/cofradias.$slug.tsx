@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { Link } from "react-router";
 import type { Route } from "./+types/cofradias.$slug";
 
@@ -695,6 +695,7 @@ export default function CofradiaPage({ loaderData }: Route.ComponentProps) {
               </header>
 
               <ul
+                style={{ "--cultos-hover": colorCofradia } as CSSProperties}
                 className={`mx-auto mt-10 grid gap-5 md:mt-14 md:gap-6 ${
                   cultosDeCofradia.length === 1
                     ? "max-w-xl"
@@ -706,21 +707,21 @@ export default function CofradiaPage({ loaderData }: Route.ComponentProps) {
                     <Link
                       to={`/cultos/${culto.mes.toLowerCase()}#culto-${encodeURIComponent(culto.id)}`}
                       aria-label={`Ver ${culto.festividad}, ${culto.fecha}`}
-                      className="group flex h-full min-h-52 flex-col justify-between rounded-2xl border border-black/15 px-7 py-8 text-black transition-colors duration-200 hover:border-[#263D63] hover:bg-[#263D63] hover:text-white focus-visible:border-[#263D63] focus-visible:bg-[#263D63] focus-visible:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#263D63] md:px-9 md:py-9"
+                      className="group flex h-full min-h-56 flex-col justify-between rounded-2xl border border-black/15 px-7 py-8 text-black transition-colors duration-200 hover:border-(--cultos-hover) hover:bg-(--cultos-hover) hover:text-white focus-visible:border-(--cultos-hover) focus-visible:bg-(--cultos-hover) focus-visible:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--cultos-hover) md:min-h-60 md:px-9 md:py-9"
                     >
                       <div>
-                        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-black/75 group-hover:text-white/75 group-focus-visible:text-white/75">
+                        <p className="text-sm font-semibold uppercase tracking-[0.18em] text-black/75 md:text-base group-hover:text-white/75 group-focus-visible:text-white/75">
                           {culto.mes}
                         </p>
-                        <h3 className="mt-5 text-2xl leading-[1.15] tracking-tight md:text-3xl">
+                        <h3 className="mt-6 text-3xl leading-[1.15] tracking-tight md:text-4xl">
                           {culto.festividad}
                         </h3>
-                        <p className="mt-4 text-sm leading-relaxed text-black/75 group-hover:text-white/85 group-focus-visible:text-white/85 md:text-base">
+                        <p className="mt-5 text-base leading-relaxed text-black/75 group-hover:text-white/85 group-focus-visible:text-white/85 md:text-lg">
                           {culto.fecha}
                         </p>
                       </div>
-                      <span className="mt-9 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.12em]">
-                        Ver cultos <span aria-hidden="true">↗</span>
+                      <span className="mt-10 inline-flex items-center gap-2 text-base font-semibold uppercase tracking-widest md:text-lg">
+                        Ver cultos
                       </span>
                     </Link>
                   </li>

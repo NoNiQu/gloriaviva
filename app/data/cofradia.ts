@@ -241,7 +241,7 @@ export const cofradias: CofradiaData[] = [
 
     redes: {
       web: null,
-      instagram: null,
+      instagram: "https://www.instagram.com/ntra_sra_del_consuelo/",
       facebook: null,
       X: null,
       tiktok: null,
@@ -1043,8 +1043,8 @@ export const cofradias: CofradiaData[] = [
     redes: {
       web: null,
       instagram: "https://www.instagram.com/hermandadpaztoledo/",
-      facebook: "https://www.facebook.com/virgendelapaztoledo/?ref=NONE_xav_ig_profile_page_web",
-      X: null,
+      facebook: "https://www.facebook.com/virgendelapaztoledo",
+      X: "https://x.com/Hdad_Paz",
       tiktok: null,
       youtube: null,
     },
@@ -1291,7 +1291,7 @@ export const cofradias: CofradiaData[] = [
 
     redes: {
       web: null,
-      instagram: null,
+      instagram: "https://www.instagram.com/hermandad.losremedios/",
       facebook: null,
       X: null,
       tiktok: null,
@@ -1433,8 +1433,8 @@ export const cofradias: CofradiaData[] = [
     procesionId: "alcazar-principal",
 
     redes: {
-      web: "https://www.hermandadsantamariadelalcazar.org/",
-      instagram: null,
+      web: null,
+      instagram: "https://www.instagram.com/hdad_santa_maria_del_alcazar/",
       facebook: null,
       X: null,
       tiktok: null,
@@ -1511,8 +1511,8 @@ export const cofradias: CofradiaData[] = [
 
     redes: {
       web: "https://esclavitudvirgendelsagrario.es/",
-      instagram: null,
-      facebook: null,
+      instagram: "https://www.instagram.com/sagrariovirgen/",
+      facebook: "https://www.facebook.com/VirgenSagrarioToledo",
       X: null,
       tiktok: null,
       youtube: null,

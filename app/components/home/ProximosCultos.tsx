@@ -1,266 +1,531 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router";
 
-type CarouselImage = {
-  desktopSrc: string;
-  mobileSrc: string;
-};
+import { cultosCards } from "~/data/cultos_cards";
+import { cofradias } from "~/data/cofradia";
+import type { CultoCardData } from "~/types/culto_card";
 
-const septemberDesktopModules = import.meta.glob(
-  "/app/assets/carrusel/septiembre/desktop/*.webp",
-  {
-    eager: true,
-    query: "?url",
-    import: "default",
-  },
-) as Record<string, string>;
+/* ==========================================
+   CARRUSEL DE CULTOS · DINÁMICO
 
-const septemberMobileModules = import.meta.glob(
-  "/app/assets/carrusel/septiembre/movil/*.webp",
-  {
-    eager: true,
-    query: "?url",
-    import: "default",
-  },
-) as Record<string, string>;
+   Fotografías (AVIF):
+   app/assets/carrusel/desktop/<id>.avif
+   app/assets/carrusel/movil/<id>.avif
 
-const getFileName = (path: string) => {
-  return path.split("/").pop() ?? path;
-};
+   Por ejemplo: remedios.avif
 
-const mobileImagesByFileName = new Map(
-  Object.entries(septemberMobileModules).map(([path, src]) => [
-    getFileName(path),
-    src,
+   También se admite el ID de la cofradía cuando tiene
+   varios cultos: estrella-octubre.avif tiene preferencia
+   sobre estrella.avif. Si no existe una foto del carrusel,
+   se mantiene el color de la cofradía, sin cargar imágenes
+   de las tarjetas de Cultos.
+
+   Los meses y las fechas se obtienen de cultos_cards.ts.
+   Para un nuevo año, hay que actualizar allí los cultos
+   variables; este componente no inventa sus fechas.
+========================================== */
+
+const desktopModules = import.meta.glob("/app/assets/carrusel/desktop/*.avif", {
+  eager: true,
+  query: "?url",
+  import: "default",
+}) as Record<string, string>;
+
+const mobileModules = import.meta.glob("/app/assets/carrusel/movil/*.avif", {
+  eager: true,
+  query: "?url",
+  import: "default",
+}) as Record<string, string>;
+
+const MESES = [
+  { nombre: "ENERO", slug: "enero" },
+  { nombre: "FEBRERO", slug: "febrero" },
+  { nombre: "MARZO", slug: "marzo" },
+  { nombre: "ABRIL", slug: "abril" },
+  { nombre: "MAYO", slug: "mayo" },
+  { nombre: "JUNIO", slug: "junio" },
+  { nombre: "JULIO", slug: "julio" },
+  { nombre: "AGOSTO", slug: "agosto" },
+  { nombre: "SEPTIEMBRE", slug: "septiembre" },
+  { nombre: "OCTUBRE", slug: "octubre" },
+  { nombre: "NOVIEMBRE", slug: "noviembre" },
+  { nombre: "DICIEMBRE", slug: "diciembre" },
+] as const;
+
+const SLIDE_DURATION = 6000;
+const FADE_DURATION = 1000;
+
+function extraerIdArchivo(path: string): string {
+  return (path.split("/").pop() ?? "").replace(/\.avif$/i, "").toLowerCase();
+}
+
+const imagenesDesktop = new Map(
+  Object.entries(desktopModules).map(([path, url]) => [
+    extraerIdArchivo(path),
+    url,
   ]),
 );
 
-const SEPTEMBER_IMAGES: CarouselImage[] = Object.entries(
-  septemberDesktopModules,
-)
-  .sort(([pathA], [pathB]) =>
-    pathA.localeCompare(pathB, undefined, {
-      numeric: true,
-      sensitivity: "base",
-    }),
-  )
-  .map(([path, desktopSrc]) => {
-    const fileName = getFileName(path);
+const imagenesMovil = new Map(
+  Object.entries(mobileModules).map(([path, url]) => [
+    extraerIdArchivo(path),
+    url,
+  ]),
+);
 
-    return {
-      desktopSrc,
-      mobileSrc: mobileImagesByFileName.get(fileName) ?? desktopSrc,
-    };
-  });
+function buscarImagen(
+  imagenes: Map<string, string>,
+  card: CultoCardData,
+): string | undefined {
+  // Primero una foto exclusiva del culto; si no existe, la de su cofradía.
+  const ids = [String(card.id), card.cofradiaId, card.advocacionId];
 
-const SLIDE_DURATION = 6500;
+  for (const id of ids) {
+    if (!id) continue;
+    const encontrada = imagenes.get(id.toLowerCase());
+    if (encontrada) return encontrada;
+  }
+
+  return undefined;
+}
+
+function perteneceAlMes(card: CultoCardData, nombreMes: string): boolean {
+  const buscado = nombreMes.toUpperCase();
+  return (
+    card.mes.toUpperCase() === buscado ||
+    card.meses?.some((mes) => mes.toUpperCase() === buscado) === true
+  );
+}
+
+function indiceMesEnToledo(): number {
+  // Intl permite que la elección del mes siga el calendario de Toledo,
+  // aunque una persona consulte la web desde otro huso horario.
+  const mes = new Intl.DateTimeFormat("es-ES", {
+    timeZone: "Europe/Madrid",
+    month: "long",
+  })
+    .format(new Date())
+    .toUpperCase();
+
+  return Math.max(
+    0,
+    MESES.findIndex((item) => item.nombre === mes),
+  );
+}
+
+function mesQueMostrar(indiceActual: number): number | null {
+  // Mes actual si tiene cultos. Si no, siguiente mes con cultos.
+  // La búsqueda es circular, para no dejar la Home sin carrusel.
+  for (
+    let desplazamiento = 0;
+    desplazamiento < MESES.length;
+    desplazamiento++
+  ) {
+    const indice = (indiceActual + desplazamiento) % MESES.length;
+    if (
+      cultosCards.some((card) => perteneceAlMes(card, MESES[indice].nombre))
+    ) {
+      return indice;
+    }
+  }
+
+  return null;
+}
+
+type Diapositiva = {
+  id: string;
+  nombre: string;
+  tipoCofradia: string;
+  subnombre?: string;
+  fecha: string;
+  colorFondo: string;
+  posicionFoto: string;
+  desktopSrc?: string;
+  mobileSrc?: string;
+};
+
+function obtenerTipoCofradia(card: CultoCardData): string {
+  // Los cultos adicionales pueden tener un ID distinto del de su cofradía.
+  const idCofradia = card.cofradiaId ?? card.advocacionId ?? String(card.id);
+  const tipo = cofradias.find((item) => item.id === idCofradia)?.tipo;
+
+  switch (tipo) {
+    case "devocion-popular":
+      return "Devoción popular";
+    case "gloria":
+      return "Gloria";
+    case "penitencia":
+      return "Penitencia";
+    case "dos-tipos":
+      return "Penitencia y Gloria";
+    default:
+      // Una celebración extraordinaria puede no tener ficha propia.
+      return card.etiquetaSuperior ?? "Celebración";
+  }
+}
+
+function obtenerDiapositivas(nombreMes: string): Diapositiva[] {
+  return cultosCards
+    .filter((card) => perteneceAlMes(card, nombreMes))
+    .map((card, ordenOriginal) => ({ card, ordenOriginal }))
+    .sort(
+      (a, b) =>
+        (a.card.diaInicioPorMes?.[nombreMes] ?? a.card.diaInicio) -
+          (b.card.diaInicioPorMes?.[nombreMes] ?? b.card.diaInicio) ||
+        a.ordenOriginal - b.ordenOriginal,
+    )
+    .map(({ card }) => {
+      // Las dos resoluciones deben salir exclusivamente de app/assets/carrusel/.
+      // Si solo hay una variante AVIF, se aprovecha en ambos tamaños.
+      const desktopSrc =
+        buscarImagen(imagenesDesktop, card) ??
+        buscarImagen(imagenesMovil, card);
+      const mobileSrc = buscarImagen(imagenesMovil, card) ?? desktopSrc;
+
+      return {
+        id: String(card.id),
+        nombre: card.nombre,
+        tipoCofradia: obtenerTipoCofradia(card),
+        subnombre: card.subnombre ?? undefined,
+        fecha: card.fecha,
+        colorFondo: card.colorFondo,
+        posicionFoto: card.imagePosition ?? "50% 50%",
+        desktopSrc,
+        mobileSrc,
+      };
+    });
+}
+
+// Selecciona la resolución que realmente necesita el dispositivo.
+// Solo se llama desde efectos en el navegador (no durante SSR).
+function fuenteParaPantalla(diapositiva: Diapositiva): string | undefined {
+  const esMovil = window.matchMedia("(max-width: 1023px)").matches;
+  return esMovil
+    ? (diapositiva.mobileSrc ?? diapositiva.desktopSrc)
+    : (diapositiva.desktopSrc ?? diapositiva.mobileSrc);
+}
 
 export function ProximosCultos() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const [mesActual, setMesActual] = useState(indiceMesEnToledo);
+  const [indiceActivo, setIndiceActivo] = useState(0);
+  const [indiceAnterior, setIndiceAnterior] = useState<number | null>(null);
+  const [movimientoReducido, setMovimientoReducido] = useState(false);
+  const [pausado, setPausado] = useState(false);
+  // La primera foto aparece con un fundido al terminar de cargarse.
+  // No mostramos una fotografía a medio decodificar.
+  const [fotosCargadas, setFotosCargadas] = useState<Set<string>>(
+    () => new Set(),
+  );
 
+  // El mes se actualiza sin necesidad de recargar la página si permanece
+  // abierta durante un cambio de mes.
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const actualizarMes = () => setMesActual(indiceMesEnToledo());
+    actualizarMes();
 
-    const updateMotionPreference = () => {
-      setPrefersReducedMotion(mediaQuery.matches);
-    };
-
-    updateMotionPreference();
-
-    mediaQuery.addEventListener("change", updateMotionPreference);
-
-    return () => {
-      mediaQuery.removeEventListener("change", updateMotionPreference);
-    };
+    const intervalo = window.setInterval(actualizarMes, 60_000);
+    return () => window.clearInterval(intervalo);
   }, []);
 
   useEffect(() => {
-    if (prefersReducedMotion || SEPTEMBER_IMAGES.length <= 1) {
-      return;
-    }
+    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const actualizarPreferencia = () => setMovimientoReducido(media.matches);
+    actualizarPreferencia();
+    media.addEventListener("change", actualizarPreferencia);
+    return () => media.removeEventListener("change", actualizarPreferencia);
+  }, []);
 
-    const interval = window.setInterval(() => {
-      setCurrentIndex((current) => (current + 1) % SEPTEMBER_IMAGES.length);
+  const indiceMesVisible = useMemo(() => mesQueMostrar(mesActual), [mesActual]);
+  const mesVisible = indiceMesVisible === null ? null : MESES[indiceMesVisible];
+
+  const diapositivas = useMemo(
+    () => (mesVisible ? obtenerDiapositivas(mesVisible.nombre) : []),
+    [mesVisible],
+  );
+
+  // Al pasar a otro mes, empezar por la primera celebración.
+  useEffect(() => {
+    setIndiceActivo(0);
+    setIndiceAnterior(null);
+  }, [indiceMesVisible]);
+
+  // La primera imagen puede haberse cargado ANTES de que React hidrate el HTML
+  // del servidor. En ese caso se pierde onLoad y el <picture> queda oculto.
+  // Comprobamos también las imágenes ya cargadas: sirve para la primera foto
+  // y para las siguientes, si llegan desde la caché o la precarga.
+  useEffect(() => {
+    if (!mesVisible || diapositivas.length === 0) return;
+
+    const indice = Math.min(indiceActivo, diapositivas.length - 1);
+    const idFoto = `${mesVisible.slug}-${diapositivas[indice].id}`;
+    const imagen = document.getElementById(`imagen-carrusel-${idFoto}`);
+
+    if (!(imagen instanceof HTMLImageElement)) return;
+    if (!imagen.complete || imagen.naturalWidth === 0) return;
+
+    let cancelado = false;
+    const mostrarImagen = () => {
+      if (cancelado) return;
+      setFotosCargadas((anteriores) => {
+        if (anteriores.has(idFoto)) return anteriores;
+        const siguientes = new Set(anteriores);
+        siguientes.add(idFoto);
+        return siguientes;
+      });
+    };
+
+    // Una imagen descargada puede seguir pendiente de decodificación.
+    // El fundido arranca al terminarla, evitando un salto en pantalla.
+    void imagen.decode().then(mostrarImagen, mostrarImagen);
+
+    return () => {
+      cancelado = true;
+    };
+  }, [indiceActivo, diapositivas, mesVisible]);
+
+  // Precargamos la PRÓXIMA diapositiva en segundo plano mientras el visitante
+  // contempla la actual. Solo se solicita la variante necesaria (móvil/desktop).
+  useEffect(() => {
+    if (diapositivas.length < 2 || movimientoReducido) return;
+
+    const siguiente = diapositivas[(indiceActivo + 1) % diapositivas.length];
+    const src = fuenteParaPantalla(siguiente);
+    if (!src) return;
+
+    const imagen = new Image();
+    imagen.decoding = "async";
+    imagen.src = src;
+    // Decodificar con antelación evita un salto al pasar a la siguiente foto.
+    void imagen.decode().catch(() => {});
+  }, [indiceActivo, diapositivas, movimientoReducido]);
+
+  useEffect(() => {
+    if (movimientoReducido || pausado || diapositivas.length < 2) return;
+
+    let cancelado = false;
+    const temporizador = window.setTimeout(() => {
+      const siguiente = diapositivas[(indiceActivo + 1) % diapositivas.length];
+      const src = fuenteParaPantalla(siguiente);
+
+      const avanzar = () => {
+        if (cancelado) return;
+        setIndiceAnterior(indiceActivo);
+        setIndiceActivo((indiceActivo + 1) % diapositivas.length);
+      };
+
+      if (!src) {
+        avanzar(); // Sin fotografía: mostrar únicamente el color de la cofradía.
+        return;
+      }
+
+      const imagen = new Image();
+      imagen.decoding = "async";
+      imagen.src = src;
+      if (imagen.complete && imagen.naturalWidth > 0) {
+        avanzar();
+      } else {
+        // Si la descarga tarda, esperamos antes de cambiar el texto y el color.
+        // Si falla, no bloqueamos el carrusel: permanece el fondo de color.
+        void imagen.decode().then(avanzar, avanzar);
+      }
     }, SLIDE_DURATION);
 
     return () => {
-      window.clearInterval(interval);
+      cancelado = true;
+      window.clearTimeout(temporizador);
     };
-  }, [prefersReducedMotion]);
+  }, [indiceActivo, diapositivas, movimientoReducido, pausado]);
+
+  useEffect(() => {
+    if (indiceAnterior === null) return;
+
+    const temporizador = window.setTimeout(
+      () => setIndiceAnterior(null),
+      FADE_DURATION + 80,
+    );
+    return () => window.clearTimeout(temporizador);
+  }, [indiceAnterior, indiceActivo]);
+
+  if (!mesVisible || diapositivas.length === 0) return null;
+
+  const indiceSeguro = Math.min(indiceActivo, diapositivas.length - 1);
+  const actual = diapositivas[indiceSeguro];
+  const indicesFotografia = [indiceAnterior, indiceSeguro].filter(
+    (indice): indice is number =>
+      indice !== null && indice < diapositivas.length,
+  );
+  const indicesUnicos = [...new Set(indicesFotografia)];
 
   return (
     <section
-      aria-labelledby="cultos-septiembre-title"
-      className="relative h-svh min-h-190 overflow-hidden bg-black text-white"
+      aria-labelledby="proximos-cultos-titulo"
+      aria-roledescription="carrusel"
+      aria-label={`Cultos de ${mesVisible.nombre.toLowerCase()}`}
+      onMouseEnter={() => setPausado(true)}
+      onMouseLeave={() => setPausado(false)}
+      onFocusCapture={() => setPausado(true)}
+      onBlurCapture={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget))
+          setPausado(false);
+      }}
+      className="relative isolate h-svh min-h-175 overflow-hidden text-white lg:min-h-190"
+      style={{ backgroundColor: actual.colorFondo }}
     >
-      {/* Fotografías */}
-      <div className="absolute inset-0" aria-hidden="true">
-        {SEPTEMBER_IMAGES.map(({ desktopSrc, mobileSrc }, index) => (
-          <picture
-            key={desktopSrc}
-            className={[
-              "absolute inset-0 block h-full w-full",
-              "transition-opacity duration-1000 ease-in-out",
-              "motion-reduce:transition-none",
-              index === currentIndex ? "opacity-100" : "opacity-0",
-            ].join(" ")}
-          >
-            <source media="(max-width: 767px)" srcSet={mobileSrc} />
+      {/* Cada diapositiva tiene SU propio color, foto y degradado.
+          Así, al cambiar de hermandad, la transición funde el conjunto
+          y no cambia bruscamente la tonalidad sobre una foto anterior. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 overflow-hidden"
+      >
+        {indicesUnicos.map((indice) => {
+          const diapositiva = diapositivas[indice];
+          const idFoto = `${mesVisible.slug}-${diapositiva.id}`;
 
-            <img
-              src={desktopSrc}
-              alt=""
-              loading={index === 0 ? "eager" : "lazy"}
-              decoding="async"
-              className="h-full w-full object-cover"
-            />
-          </picture>
-        ))}
+          // Color sólido hasta el 40 % (zona del texto).
+          // El degradado se extiende suavemente hasta el 72 % para evitar
+          // que se perciba la transición entre color y fotografía.
+          // La foto sigue comenzando por debajo del color (22 %).
+          const gradienteEscritorio = `linear-gradient(to right,
+            ${diapositiva.colorFondo} 0%,
+            ${diapositiva.colorFondo} 40%,
+            ${diapositiva.colorFondo}F5 44%,
+            ${diapositiva.colorFondo}D9 48%,
+            ${diapositiva.colorFondo}AD 52%,
+            ${diapositiva.colorFondo}7A 56%,
+            ${diapositiva.colorFondo}46 60%,
+            ${diapositiva.colorFondo}18 65%,
+            ${diapositiva.colorFondo}00 72%)`;
+
+          return (
+            <div
+              key={`${mesVisible.slug}-${diapositiva.id}`}
+              className={[
+                "absolute inset-0",
+                "transition-opacity duration-1000 ease-in-out",
+                "motion-reduce:transition-none",
+                indice === indiceAnterior
+                  ? "z-10 opacity-0"
+                  : "z-0 opacity-100",
+              ].join(" ")}
+              style={{ backgroundColor: diapositiva.colorFondo }}
+            >
+              {/* Fotografía a pantalla completa en móvil. En escritorio
+                  invade la columna de color por debajo del degradado, para
+                  que nunca aparezca una línea vertical de separación. */}
+              {diapositiva.desktopSrc && (
+                <picture
+                  className={[
+                    "absolute inset-0 block lg:left-[22%]",
+                    "transition-opacity duration-700 ease-out motion-reduce:transition-none",
+                    fotosCargadas.has(idFoto) ? "opacity-100" : "opacity-0",
+                  ].join(" ")}
+                >
+                  {diapositiva.mobileSrc && (
+                    <source
+                      media="(max-width: 1023px)"
+                      srcSet={diapositiva.mobileSrc}
+                    />
+                  )}
+                  <img
+                    id={`imagen-carrusel-${idFoto}`}
+                    src={diapositiva.desktopSrc}
+                    alt=""
+                    loading="eager"
+                    fetchPriority={indice === indiceSeguro ? "high" : "auto"}
+                    decoding="async"
+                    onLoad={() => {
+                      setFotosCargadas((anteriores) => {
+                        if (anteriores.has(idFoto)) return anteriores;
+                        const siguientes = new Set(anteriores);
+                        siguientes.add(idFoto);
+                        return siguientes;
+                      });
+                    }}
+                    className="h-full w-full object-cover"
+                    style={{ objectPosition: diapositiva.posicionFoto }}
+                  />
+                </picture>
+              )}
+
+              {/* Escritorio: color sólido hasta el 40 %, fundido hasta el 72 %. */}
+              <div
+                className="absolute inset-0 hidden lg:block"
+                style={{ background: gradienteEscritorio }}
+              />
+            </div>
+          );
+        })}
       </div>
 
-      {/* Oscurecimiento general */}
+      {/* Móvil: oscurecimiento original para leer el título sobre la foto. */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-black/20"
+        className="pointer-events-none absolute inset-0 bg-black/20 lg:hidden"
       />
-
-      {/* Gradiente */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-linear-to-b from-black/35 via-black/5 to-black/80"
+        className="pointer-events-none absolute inset-0 bg-linear-to-b from-black/35 via-black/5 to-black/80 lg:hidden"
       />
 
-      {/* Título */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-10 flex justify-center px-5 pt-20 text-center sm:px-6 sm:pt-24 md:pt-30 lg:pt-28 xl:pt-30">
-        <h2 id="cultos-septiembre-title" className="flex flex-col items-center">
-          <span className="text-[2.5rem] leading-none tracking-[-0.03em] sm:text-[2.8rem] md:text-[3.2rem] lg:text-[2.9rem] xl:text-[3.15rem]">
+      {/* Diseño escritorio: los tres bloques en la columna de color. */}
+      <div className="relative z-20 hidden h-full w-[47%] flex-col justify-between px-[5.6vw] pb-22 pt-28 lg:flex">
+        <h2 id="proximos-cultos-titulo" className="flex flex-col items-start">
+          <span className="text-[clamp(2.3rem,3.4vw,4rem)] leading-none tracking-tight">
+            Cultos de
+          </span>
+          <span className="mt-4 text-[clamp(3.1rem,5.2vw,7.5rem)] leading-[0.95] tracking-[-0.055em]">
+            {mesVisible.nombre}
+          </span>
+        </h2>
+
+        <div className="max-w-full py-12">
+          <p className="mb-6 text-sm font-semibold uppercase tracking-[0.22em] text-white/80">
+            {actual.tipoCofradia}
+          </p>
+          <h3 className="max-w-full text-[clamp(3.2rem,4.6vw,6.7rem)] leading-[1.05] tracking-[-0.045em] wrap-anywhere">
+            {actual.nombre}
+          </h3>
+          {actual.subnombre && (
+            <p className="mt-3 text-[clamp(1.2rem,2vw,2rem)] leading-tight tracking-[0.02em]">
+              {actual.subnombre}
+            </p>
+          )}
+          <p className="mt-7 text-[clamp(1.2rem,1.75vw,1.9rem)] leading-snug tracking-[0.015em]">
+            {actual.fecha}
+          </p>
+        </div>
+
+        <Link
+          to={`/cultos/${mesVisible.slug}`}
+          className="inline-flex min-h-16 w-full max-w-105 items-center justify-center self-start rounded-2xl border border-[#eee9dc] bg-[#eee9dc] px-6 py-4 text-center text-[1.12rem] leading-tight tracking-wide text-[#141414] transition-colors duration-200 hover:border-white hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white motion-reduce:transition-none"
+        >
+          VER CULTOS DE {mesVisible.nombre}
+        </Link>
+      </div>
+
+      {/* Diseño móvil anterior: título centrado arriba y CTA en la zona inferior. */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-20 flex justify-center px-5 pt-20 text-center sm:pt-24 md:pt-30 lg:hidden">
+        <h2
+          id="proximos-cultos-titulo-movil"
+          className="flex flex-col items-center"
+        >
+          <span className="text-[2.5rem] leading-none tracking-[-0.03em] sm:text-[2.8rem] md:text-[3.2rem]">
             Cultos
           </span>
-
-          <span
-            className="
-              mt-2
-              text-[3.4rem]
-              leading-[0.88]
-              tracking-[-0.045em]
-              sm:mt-3
-              sm:text-[4.75rem]
-              md:text-[5.8rem]
-              lg:mt-2
-              lg:text-[5.75rem]
-              lg:leading-[0.9]
-              lg:tracking-[-0.04em]
-              xl:text-[6.5rem]
-              2xl:text-[7rem]
-            "
-          >
-            SEPTIEMBRE
+          <span className="mt-2 text-[clamp(3rem,11vw,6rem)] leading-[0.88] tracking-[-0.045em] sm:mt-3">
+            {mesVisible.nombre}
           </span>
         </h2>
       </div>
 
-      {/* Botones inferiores */}
-      <div className="absolute inset-x-0 bottom-24 z-10 flex justify-center px-6 sm:bottom-14 md:bottom-16">
-        <div className="flex w-full max-w-2xl flex-col items-center justify-center gap-3 sm:w-auto sm:flex-row sm:gap-8 lg:gap-10">
-          <Link
-            to="/cultos/septiembre"
-            className="
-              inline-flex
-              min-h-14
-              w-full
-              items-center
-              justify-center
-              rounded-2xl
-              border
-              border-white
-              bg-white
-              px-7
-              py-3
-              text-base
-              tracking-[0.08em]
-              text-black
-              transition-colors
-              duration-200
-              hover:bg-white
-              hover:text-black
-              focus-visible:outline-2
-              focus-visible:outline-offset-4
-              focus-visible:outline-white
-              motion-reduce:transition-none
-              sm:w-auto
-              sm:px-8
-              sm:text-base
-              sm:tracking-[0.04em]
-              lg:min-h-16
-              lg:min-w-74
-              lg:border-[#eee9dc]
-              lg:bg-[#eee9dc]
-              lg:px-10
-              lg:py-4
-              lg:text-[1.18rem]
-              lg:leading-none
-              lg:tracking-wide
-              lg:text-[#080807]
-              lg:hover:border-[#d8d2c4]
-              lg:hover:bg-[#d8d2c4]
-              lg:hover:text-[#080807]
-              xl:min-w-76
-              xl:text-[1.22rem]
-            "
-          >
-            CULTOS DE SEPTIEMBRE
-          </Link>
-
-          <Link
-            to="/cultos/todos"
-            className="
-              hidden
-              sm:inline-flex
-              min-h-14
-              w-full
-              items-center
-              justify-center
-              rounded-2xl
-              border
-              border-white
-              bg-white
-              px-7
-              py-3
-              text-sm
-              tracking-[0.04em]
-              text-black
-              transition-colors
-              duration-200
-              hover:bg-white
-              hover:text-black
-              focus-visible:outline-2
-              focus-visible:outline-offset-4
-              focus-visible:outline-white
-              motion-reduce:transition-none
-              sm:w-auto
-              sm:px-8
-              sm:text-base
-              lg:min-h-16
-              lg:min-w-74
-              lg:border-[#eee9dc]
-              lg:bg-[#eee9dc]
-              lg:px-10
-              lg:py-4
-              lg:text-[1.18rem]
-              lg:leading-none
-              lg:tracking-wide
-              lg:text-[#080807]
-              lg:hover:border-[#d8d2c4]
-              lg:hover:bg-[#d8d2c4]
-              lg:hover:text-[#080807]
-              xl:min-w-76
-              xl:text-[1.22rem]
-            "
-          >
-            TODOS LOS CULTOS
-          </Link>
-        </div>
+      <div className="absolute inset-x-0 bottom-24 z-20 flex justify-center px-6 sm:bottom-14 md:bottom-16 lg:hidden">
+        <Link
+          to={`/cultos/${mesVisible.slug}`}
+          className="inline-flex min-h-14 w-full max-w-md items-center justify-center rounded-2xl border border-[#eee9dc] bg-[#eee9dc] px-8 py-3 text-center text-base tracking-[0.04em] text-[#080807] transition-colors duration-200 hover:border-white hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white motion-reduce:transition-none sm:min-h-16 sm:text-lg"
+        >
+          CULTOS DE {mesVisible.nombre}
+        </Link>
       </div>
     </section>
   );

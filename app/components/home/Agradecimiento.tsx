@@ -43,12 +43,43 @@ export function Agradecimientos() {
           </div>
         </div>
 
+        {/* Beneplácito del Consejo Mayor: integrado en Agradecimientos */}
+        <div className="mx-auto mt-16 w-full max-w-5xl border-y border-white/20 py-10 md:mt-20 md:py-14 lg:mt-24">
+          <div className="flex flex-col items-center gap-8 sm:flex-row sm:items-center sm:gap-10 lg:gap-14">
+            {/* Escudo */}
+            <div className="flex w-full shrink-0 items-center justify-center sm:w-40 lg:w-48">
+              <img
+                src="/gloria.png"
+                alt="Escudo del Consejo Mayor de Hermandades y Cofradías de Gloria de Toledo"
+                width={180}
+                height={200}
+                loading="lazy"
+                decoding="async"
+                className="block h-auto max-h-40 w-auto max-w-36 object-contain md:max-h-48 md:max-w-44"
+              />
+            </div>
+
+            {/* Texto */}
+            <div className="min-w-0 flex-1 text-center sm:text-left">
+              <h3 className="text-[clamp(1.6rem,3vw,2.5rem)] leading-[1.2] tracking-tight">
+                Con el beneplácito del Consejo Rector
+              </h3>
+
+              <p className="mt-5 text-base leading-8 tracking-[0.02em] text-white/85 md:text-lg">
+                Gloria Viva cuenta con el beneplácito del Consejo Rector del
+                Consejo Mayor de Hermandades y Cofradías de Gloria de la ciudad
+                de Toledo.
+              </p>
+            </div>
+          </div>
+        </div>
+
         {/* Ayuda y enlaces */}
-        <div className="mt-16 md:mt-20 lg:mt-24">
+        <div className="mt-12 md:mt-16 lg:mt-20">
           <div className="mx-auto grid max-w-5xl gap-5 md:grid-cols-[1.15fr_0.85fr] md:gap-8">
             {/* Texto */}
             <div className="flex min-h-64 flex-col justify-center px-2 py-7 md:min-h-72 md:px-4 md:py-9 lg:px-6">
-              <h3 className="text-3xl font-normal leading-[1.05] tracking-[-0.03em] md:text-5xl">
+              <h3 className="text-3xl font-normal leading-[1.05] tracking-tight md:text-5xl">
                 ¿Tienes alguna duda?
               </h3>
 

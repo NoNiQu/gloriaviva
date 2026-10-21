@@ -4,11 +4,13 @@ import type { CultoCardData } from "../types/culto_card";
 type CultosGridProps = {
   cards: CultoCardData[];
   priorizarPrimera?: boolean;
+  cultoAbiertoId?: string | null;
 };
 
 export function CultosGrid({
   cards,
   priorizarPrimera = true,
+  cultoAbiertoId = null,
 }: CultosGridProps) {
   /*
    * Ordenamos primero por día.
@@ -61,6 +63,8 @@ export function CultosGrid({
         return (
           <div
             key={card.id}
+            id={`culto-${card.id}`}
+            tabIndex={-1}
             className={[
               "sm:col-span-1 xl:col-span-2",
 
@@ -100,6 +104,7 @@ export function CultosGrid({
             <CultoCard
               card={card}
               prioridad={priorizarPrimera && index === 0}
+              abrirCultosInicialmente={cultoAbiertoId === String(card.id)}
             />
           </div>
         );

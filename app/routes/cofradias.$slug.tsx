@@ -5,6 +5,7 @@ import type { Route } from "./+types/cofradias.$slug";
 import { CofradiaHero } from "~/components/CofradiaHero";
 import { cofradias } from "~/data/cofradia";
 import { cultosCards } from "~/data/cultos_cards";
+import { cultosDetalle } from "~/data/cultos_detalle";
 
 import type {
   RedesSociales,
@@ -46,6 +47,25 @@ function nombreTipo(tipo: TipoCofradia) {
       return "Cofradía";
   }
 }
+
+/* ==========================================
+   NOMBRES DE LAS CELEBRACIONES
+   La mayoría proceden de cultos_detalle.ts.
+   Estos nombres concretan los títulos genéricos
+   como «Cultos» y «Solemnes Cultos».
+========================================== */
+
+const nombresCelebraciones: Record<string, string> = {
+  angustias: "Cultos y Función Principal",
+  misericordia: "Cultos y Función Solemne",
+  remedios: "Fiesta Principal",
+  salud: "Natividad de la Virgen",
+  alcazar: "Triduo y Fiesta Principal",
+  consuelo: "Cultos y Función Principal",
+  guia: "Triduo y Festividad de la Guía",
+  amparo: "Cultos y Función Principal",
+  jeronimo: "Vísperas y Santa Misa",
+};
 
 /* ==========================================
    ICONOS REDES SOCIALES
@@ -144,9 +164,63 @@ export function loader({ params }: Route.LoaderArgs) {
         (cofradia.cultosIds?.[0] ?? cofradia.cultosId ?? cofradia.id),
     )?.colorFondo ?? "#263D63";
 
+  // Una cofradía puede tener varios cultos en meses distintos.
+  // Relacionamos las tarjetas por cofradía y por los IDs explícitos del culto,
+  // sin recuperar celebraciones de otras advocaciones.
+  const idsCultos = new Set<string>([
+    cofradia.cultosId ?? "",
+    ...(cofradia.cultosIds ?? []),
+  ]);
+
+  const ordenMeses = [
+    "ENERO",
+    "FEBRERO",
+    "MARZO",
+    "ABRIL",
+    "MAYO",
+    "JUNIO",
+    "JULIO",
+    "AGOSTO",
+    "SEPTIEMBRE",
+    "OCTUBRE",
+    "NOVIEMBRE",
+    "DICIEMBRE",
+  ];
+
+  const cultosDeCofradia = cultosCards
+    .filter(
+      (card) =>
+        card.cofradiaId === cofradia.id ||
+        idsCultos.has(card.cultoId ?? String(card.id)) ||
+        idsCultos.has(String(card.id)),
+    )
+    .sort(
+      (a, b) =>
+        ordenMeses.indexOf(a.mes.toUpperCase()) -
+          ordenMeses.indexOf(b.mes.toUpperCase()) || a.diaInicio - b.diaInicio,
+    )
+    .map((card) => {
+      const idCulto = card.cultoId ?? String(card.id);
+      const detalle = cultosDetalle.find(
+        (item) =>
+          item.id === idCulto || (!item.id && item.advocacionId === idCulto),
+      );
+
+      return {
+        id: String(card.id),
+        festividad:
+          nombresCelebraciones[String(card.id)] ??
+          detalle?.titulo ??
+          `Cultos de ${card.mes.toLowerCase()}`,
+        fecha: card.fecha,
+        mes: card.mes,
+      };
+    });
+
   return {
     cofradia,
     colorCofradia,
+    cultosDeCofradia,
   };
 }
 
@@ -322,7 +396,7 @@ function SeccionTitular({
 ========================================== */
 
 export default function CofradiaPage({ loaderData }: Route.ComponentProps) {
-  const { cofradia, colorCofradia } = loaderData;
+  const { cofradia, colorCofradia, cultosDeCofradia } = loaderData;
 
   const [imagenAmpliada, setImagenAmpliada] = useState<ImagenAmpliada | null>(
     null,
@@ -594,6 +668,64 @@ export default function CofradiaPage({ loaderData }: Route.ComponentProps) {
                   ` de la ${cofradia.fotosSeccion}`}
                 . Estoy muy agradecido por su generosidad y apoyo.
               </p>
+            </div>
+          </section>
+        )}
+
+        {/* ==========================================
+            CULTOS DE LA COFRADÍA
+            Cada celebración enlaza a su tarjeta por la cara principal.
+        ========================================== */}
+        {cultosDeCofradia.length > 0 && (
+          <section
+            aria-labelledby="cultos-cofradia-titulo"
+            className="mx-auto max-w-360 px-6 pb-14 pt-3 md:px-10 md:pb-20 md:pt-5 lg:px-30"
+          >
+            <div className="border-t border-black/15 pt-12 md:pt-16">
+              <header className="mx-auto max-w-3xl text-center">
+                <h2
+                  id="cultos-cofradia-titulo"
+                  className="text-4xl leading-none tracking-[-0.03em] md:text-5xl lg:text-6xl"
+                >
+                  Cultos
+                </h2>
+                <p className="mt-5 text-base leading-relaxed text-black/65 md:mt-6 md:text-lg">
+                  Celebraciones de {cofradia.nombre}
+                </p>
+              </header>
+
+              <ul
+                className={`mx-auto mt-10 grid gap-5 md:mt-14 md:gap-6 ${
+                  cultosDeCofradia.length === 1
+                    ? "max-w-xl"
+                    : "max-w-5xl md:grid-cols-2"
+                }`}
+              >
+                {cultosDeCofradia.map((culto) => (
+                  <li key={culto.id} className="min-w-0">
+                    <Link
+                      to={`/cultos/${culto.mes.toLowerCase()}#culto-${encodeURIComponent(culto.id)}`}
+                      aria-label={`Ver ${culto.festividad}, ${culto.fecha}`}
+                      className="group flex h-full min-h-52 flex-col justify-between rounded-2xl border border-black/15 px-7 py-8 text-black transition-colors duration-200 hover:border-[#263D63] hover:bg-[#263D63] hover:text-white focus-visible:border-[#263D63] focus-visible:bg-[#263D63] focus-visible:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#263D63] md:px-9 md:py-9"
+                    >
+                      <div>
+                        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-black/75 group-hover:text-white/75 group-focus-visible:text-white/75">
+                          {culto.mes}
+                        </p>
+                        <h3 className="mt-5 text-2xl leading-[1.15] tracking-tight md:text-3xl">
+                          {culto.festividad}
+                        </h3>
+                        <p className="mt-4 text-sm leading-relaxed text-black/75 group-hover:text-white/85 group-focus-visible:text-white/85 md:text-base">
+                          {culto.fecha}
+                        </p>
+                      </div>
+                      <span className="mt-9 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.12em]">
+                        Ver cultos <span aria-hidden="true">↗</span>
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
           </section>
         )}

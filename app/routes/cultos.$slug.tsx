@@ -1,4 +1,5 @@
-import { Link, useParams } from "react-router";
+import { useEffect } from "react";
+import { Link, useLocation, useParams } from "react-router";
 
 import { CultosGrid } from "../components/CultosGrid";
 import { cultosCards } from "../data/cultos_cards";
@@ -238,6 +239,23 @@ export function meta({
 
 export default function CultosMesPage() {
   const { slug } = useParams();
+  const { hash } = useLocation();
+
+  // Al entrar desde una cofradía, situamos en pantalla su tarjeta.
+  // Conservamos la cara fotográfica: el visitante decide si abre Cultos.
+  useEffect(() => {
+    if (!hash.startsWith("#culto-")) return;
+
+    const frame = window.requestAnimationFrame(() => {
+      const tarjeta = document.getElementById(hash.slice(1));
+      if (!tarjeta) return;
+
+      tarjeta.scrollIntoView({ block: "center", behavior: "auto" });
+      tarjeta.focus({ preventScroll: true });
+    });
+
+    return () => window.cancelAnimationFrame(frame);
+  }, [hash, slug]);
 
   const mostrarTodos = slug === "todos";
 

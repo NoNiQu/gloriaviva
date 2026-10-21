@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router";
 
 import { cofradias } from "../data/cofradia";
@@ -10,6 +10,7 @@ import type { CultoCardData } from "../types/culto_card";
 type CultoCardProps = {
   card: CultoCardData;
   prioridad?: boolean;
+  abrirCultosInicialmente?: boolean;
 };
 
 type VistaCard = "principal" | "cultos" | "procesion" | "credito";
@@ -26,8 +27,20 @@ const titleSizeMovilClasses = {
   large: "[@media(max-width:767px)]:text-[clamp(4.8rem,20cqw,9rem)]",
 };
 
-export function CultoCard({ card, prioridad = false }: CultoCardProps) {
-  const [vista, setVista] = useState<VistaCard>("principal");
+export function CultoCard({
+  card,
+  prioridad = false,
+  abrirCultosInicialmente = false,
+}: CultoCardProps) {
+  const [vista, setVista] = useState<VistaCard>(
+    abrirCultosInicialmente ? "cultos" : "principal",
+  );
+
+  // Permite abrir directamente la ficha de un culto desde su cofradía.
+  // Los cambios de tarjeta seleccionada restablecen las demás tarjetas.
+  useEffect(() => {
+    setVista(abrirCultosInicialmente ? "cultos" : "principal");
+  }, [abrirCultosInicialmente]);
 
   const {
     id,
@@ -228,9 +241,6 @@ export function CultoCard({ card, prioridad = false }: CultoCardProps) {
                 leading-none
                 text-white
               "
-              style={{
-                fontFamily: '"Gloock", Georgia, serif',
-              }}
             >
               {etiquetaSuperior}
             </p>
@@ -258,9 +268,6 @@ export function CultoCard({ card, prioridad = false }: CultoCardProps) {
                 tracking-[-0.055em]
                 text-white
               `}
-              style={{
-                fontFamily: '"Gloock", Georgia, serif',
-              }}
             >
               {nombre}{" "}
               {subnombre && (
@@ -284,9 +291,6 @@ export function CultoCard({ card, prioridad = false }: CultoCardProps) {
                 leading-none
                 text-white
               "
-              style={{
-                fontFamily: '"Gloock", Georgia, serif',
-              }}
             >
               {fecha}
             </p>
@@ -322,9 +326,6 @@ export function CultoCard({ card, prioridad = false }: CultoCardProps) {
                   focus-visible:outline-offset-4
                   focus-visible:outline-white
                 "
-                style={{
-                  fontFamily: '"Gloock", Georgia, serif',
-                }}
                 aria-label={`Ver cultos de ${nombre}`}
               >
                 CULTOS
@@ -356,9 +357,6 @@ export function CultoCard({ card, prioridad = false }: CultoCardProps) {
                     focus-visible:outline-offset-4
                     focus-visible:outline-white
                   "
-                  style={{
-                    fontFamily: '"Gloock", Georgia, serif',
-                  }}
                   aria-label={`Ver procesión de ${nombre}`}
                 >
                   PROCESIÓN
@@ -395,9 +393,6 @@ export function CultoCard({ card, prioridad = false }: CultoCardProps) {
               uppercase
               tracking-widest
             "
-            style={{
-              fontFamily: '"Gloock", Georgia, serif',
-            }}
           >
             {nombre}
           </p>
@@ -508,9 +503,6 @@ export function CultoCard({ card, prioridad = false }: CultoCardProps) {
                         leading-none
                         tracking-[-0.035em]
                       "
-                      style={{
-                        fontFamily: '"Gloock", Georgia, serif',
-                      }}
                     >
                       {creditoFoto.nombre}
                     </p>
@@ -527,9 +519,6 @@ export function CultoCard({ card, prioridad = false }: CultoCardProps) {
                     leading-relaxed
                     text-white/82
                   "
-                  style={{
-                    fontFamily: '"Gloock", Georgia, serif',
-                  }}
                 >
                   Muchas gracias por colaborar en el proyecto
                 </p>
@@ -542,9 +531,6 @@ export function CultoCard({ card, prioridad = false }: CultoCardProps) {
                       text-[clamp(2.6rem,11cqw,4.8rem)]
                       leading-none
                     "
-                    style={{
-                      fontFamily: '"Gloock", Georgia, serif',
-                    }}
                   >
                     {culto.titulo}
                   </h3>
@@ -565,9 +551,6 @@ export function CultoCard({ card, prioridad = false }: CultoCardProps) {
                             text-[clamp(1.35rem,5.5cqw,2rem)]
                             leading-tight
                           "
-                          style={{
-                            fontFamily: '"Gloock", Georgia, serif',
-                          }}
                         >
                           {bloque.titulo}
                         </h4>
@@ -579,9 +562,6 @@ export function CultoCard({ card, prioridad = false }: CultoCardProps) {
                           leading-snug
                           ${bloque.titulo ? "mt-2" : ""}
                         `}
-                        style={{
-                          fontFamily: '"Gloock", Georgia, serif',
-                        }}
                       >
                         {bloque.fecha}
                       </p>
@@ -626,9 +606,6 @@ export function CultoCard({ card, prioridad = false }: CultoCardProps) {
                       text-[clamp(2.6rem,11cqw,4.8rem)]
                       leading-none
                     "
-                    style={{
-                      fontFamily: '"Gloock", Georgia, serif',
-                    }}
                   >
                     Procesión
                   </h3>
@@ -651,9 +628,6 @@ export function CultoCard({ card, prioridad = false }: CultoCardProps) {
                           text-[clamp(1.5rem,6cqw,2.2rem)]
                           leading-tight
                         "
-                        style={{
-                          fontFamily: '"Gloock", Georgia, serif',
-                        }}
                       >
                         {procesion.nombre}
                       </h4>
@@ -675,14 +649,7 @@ export function CultoCard({ card, prioridad = false }: CultoCardProps) {
 
                         {procesion.salida && (
                           <p className="text-[clamp(0.95rem,3.8cqw,1.25rem)] leading-relaxed">
-                            <span
-                              style={{
-                                fontFamily: '"Gloock", Georgia, serif',
-                              }}
-                            >
-                              Salida:
-                            </span>{" "}
-                            {procesion.salida}
+                            <span>Salida:</span> {procesion.salida}
                           </p>
                         )}
                       </div>
@@ -693,9 +660,6 @@ export function CultoCard({ card, prioridad = false }: CultoCardProps) {
                             className="
                               text-[clamp(1.1rem,4.5cqw,1.5rem)]
                             "
-                            style={{
-                              fontFamily: '"Gloock", Georgia, serif',
-                            }}
                           >
                             Recorrido
                           </h5>
@@ -750,17 +714,15 @@ export function CultoCard({ card, prioridad = false }: CultoCardProps) {
                 text-center
                 text-[clamp(0.85rem,4.3cqw,1.4rem)]
                 leading-tight
-                tracking-widest
+                tracking-wider
+                font-medium
+                text-black
                 transition-opacity
                 hover:opacity-85
                 focus-visible:outline-2
                 focus-visible:outline-offset-4
                 focus-visible:outline-white
               "
-              style={{
-                color: colorFondo,
-                fontFamily: '"Gloock", Georgia, serif',
-              }}
             >
               {textoBotonCofradia}
             </Link>

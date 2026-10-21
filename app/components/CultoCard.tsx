@@ -239,7 +239,7 @@ export function CultoCard({
                 text-[clamp(1.3rem,6cqw,2.2rem)]
                 uppercase
                 leading-none
-                text-white
+                text-black
               "
             >
               {etiquetaSuperior}

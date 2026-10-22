@@ -291,7 +291,7 @@ export const sedesCanonicas: SedeCanonicaData[] = [
       },
     ],
     horariosUrl: null,
-    cofradiasIds: ["salud"],
+    cofradiasIds: ["salud-clemente"],
     existe: false,
   },
   /* ==========================================

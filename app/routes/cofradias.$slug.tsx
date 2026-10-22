@@ -261,7 +261,7 @@ interface SeccionTitularProps {
   mostrarGaleria: boolean;
   esPrimero: boolean;
   esUltimo: boolean;
-  onAmpliar: (imagen: ImagenAmpliada) => void;
+  onAmpliar: (galeria: ImagenAmpliada[], indice: number) => void;
 }
 
 function SeccionTitular({
@@ -273,6 +273,10 @@ function SeccionTitular({
 }: SeccionTitularProps) {
   // Solo se utiliza la fotografía propia del titular.
   const foto = titular.fotoUrl;
+  const imagenesGaleria = titular.galeria.map((src, index) => ({
+    src,
+    alt: `Fotografía ${index + 1} de ${titular.nombre}`,
+  }));
 
   return (
     <section
@@ -363,13 +367,13 @@ function SeccionTitular({
           <div className="mt-12 border-t border-black/15 pt-10">
             <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
               {titular.galeria.map((src, index) => {
-                const alt = `Fotografía ${index + 1} de ${titular.nombre}`;
+                const alt = imagenesGaleria[index].alt;
 
                 return (
                   <button
                     key={`${titular.id}-${src}`}
                     type="button"
-                    onClick={() => onAmpliar({ src, alt })}
+                    onClick={() => onAmpliar(imagenesGaleria, index)}
                     aria-label={`Ampliar ${alt}`}
                     className="relative aspect-2/3 cursor-pointer overflow-hidden bg-black/5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black"
                   >
@@ -398,18 +402,22 @@ function SeccionTitular({
 export default function CofradiaPage({ loaderData }: Route.ComponentProps) {
   const { cofradia, colorCofradia, cultosDeCofradia } = loaderData;
 
-  const [imagenAmpliada, setImagenAmpliada] = useState<ImagenAmpliada | null>(
-    null,
-  );
+  const [galeriaAmpliada, setGaleriaAmpliada] = useState<{
+    imagenes: ImagenAmpliada[];
+    indice: number;
+  } | null>(null);
 
   const dialogRef = useRef<HTMLDialogElement>(null);
+  const touchStartRef = useRef<{ x: number; y: number } | null>(null);
+  const imagenAmpliada = galeriaAmpliada?.imagenes[galeriaAmpliada.indice];
+  const visorAbierto = galeriaAmpliada !== null;
 
   /* ==========================================
      VISOR DE IMÁGENES
   ========================================== */
 
   useEffect(() => {
-    if (!imagenAmpliada) return;
+    if (!visorAbierto) return;
 
     const dialog = dialogRef.current;
 
@@ -430,7 +438,20 @@ export default function CofradiaPage({ loaderData }: Route.ComponentProps) {
         dialog.close();
       }
     };
-  }, [imagenAmpliada]);
+  }, [visorAbierto]);
+
+  function cambiarImagen(direccion: -1 | 1) {
+    setGaleriaAmpliada((actual) => {
+      if (!actual) return actual;
+
+      return {
+        ...actual,
+        indice:
+          (actual.indice + direccion + actual.imagenes.length) %
+          actual.imagenes.length,
+      };
+    });
+  }
 
   /* ==========================================
      PORTADAS
@@ -540,6 +561,12 @@ export default function CofradiaPage({ loaderData }: Route.ComponentProps) {
               {cofradia.nombre}
             </h1>
 
+            {cofradia.coronada === true && (
+              <p className="mt-3 max-w-5xl text-4xl leading-[1.07] tracking-[-0.03em] md:text-5xl lg:text-6xl">
+                Coronada
+              </p>
+            )}
+
             {/* Clasificación */}
             <p className="mt-4 text-xs font-semibold uppercase tracking-[0.24em] text-white/85 md:text-sm">
               {nombreTipo(cofradia.tipo)}
@@ -586,6 +613,18 @@ export default function CofradiaPage({ loaderData }: Route.ComponentProps) {
                     {cofradia.sedeCanonica}
                   </dd>
                 </div>
+
+                {cofradia.coronada === true && cofradia.coronadaFecha && (
+                  <div>
+                    <dt className="text-xs font-semibold uppercase tracking-[0.2em] text-white/70">
+                      Fecha de coronación
+                    </dt>
+
+                    <dd className="mt-3 text-xl leading-snug md:text-2xl">
+                      {cofradia.coronadaFecha}
+                    </dd>
+                  </div>
+                )}
               </dl>
 
               {/* Redes sociales */}
@@ -650,7 +689,9 @@ export default function CofradiaPage({ loaderData }: Route.ComponentProps) {
             mostrarGaleria={mostrarGalerias}
             esPrimero={index === 0}
             esUltimo={index === cofradia.titulares.length - 1}
-            onAmpliar={setImagenAmpliada}
+            onAmpliar={(imagenes, indice) =>
+              setGaleriaAmpliada({ imagenes, indice })
+            }
           />
         ))}
 
@@ -752,22 +793,28 @@ export default function CofradiaPage({ loaderData }: Route.ComponentProps) {
           VISOR DE IMÁGENES
       ========================================== */}
 
-      {imagenAmpliada && (
+      {imagenAmpliada && galeriaAmpliada && (
         <dialog
           ref={dialogRef}
-          onClose={() => setImagenAmpliada(null)}
+          onClose={() => setGaleriaAmpliada(null)}
           onClick={(event) => {
             if (event.target === event.currentTarget) {
               event.currentTarget.close();
             }
           }}
+          onKeyDown={(event) => {
+            if (event.key === "ArrowLeft") {
+              event.preventDefault();
+              cambiarImagen(-1);
+            } else if (event.key === "ArrowRight") {
+              event.preventDefault();
+              cambiarImagen(1);
+            }
+          }}
           aria-label="Imagen ampliada"
           className="fixed inset-0 m-auto h-svh max-h-none w-screen max-w-none border-0 bg-black/95 p-4 text-white backdrop:bg-black/95 md:p-8"
         >
-          <div
-            className="relative flex h-full items-center justify-center"
-            onClick={() => dialogRef.current?.close()}
-          >
+          <div className="relative flex h-full flex-col items-center justify-center">
             <button
               type="button"
               autoFocus
@@ -778,12 +825,76 @@ export default function CofradiaPage({ loaderData }: Route.ComponentProps) {
               ×
             </button>
 
-            <img
-              src={imagenAmpliada.src}
-              alt={imagenAmpliada.alt}
-              onClick={(event) => event.stopPropagation()}
-              className="max-h-full max-w-full object-contain"
-            />
+            <div className="flex min-h-0 max-h-full max-w-full items-center justify-center gap-3 md:gap-5">
+              {galeriaAmpliada.imagenes.length > 1 && (
+                <button
+                  type="button"
+                  onClick={() => cambiarImagen(-1)}
+                  aria-label="Ver imagen anterior"
+                  className="hidden h-11 w-11 shrink-0 cursor-pointer items-center justify-center rounded-full border border-white/40 bg-black text-2xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white md:flex"
+                >
+                  ‹
+                </button>
+              )}
+
+              <img
+                src={imagenAmpliada.src}
+                alt={imagenAmpliada.alt}
+                onTouchStart={(event) => {
+                  const touch = event.touches[0];
+                  touchStartRef.current = { x: touch.clientX, y: touch.clientY };
+                }}
+                onTouchEnd={(event) => {
+                  const inicio = touchStartRef.current;
+                  touchStartRef.current = null;
+                  if (!inicio || galeriaAmpliada.imagenes.length < 2) return;
+
+                  const touch = event.changedTouches[0];
+                  const diferenciaX = touch.clientX - inicio.x;
+                  const diferenciaY = touch.clientY - inicio.y;
+
+                  if (
+                    Math.abs(diferenciaX) > 50 &&
+                    Math.abs(diferenciaX) > Math.abs(diferenciaY)
+                  ) {
+                    cambiarImagen(diferenciaX < 0 ? 1 : -1);
+                  }
+                }}
+                className="min-h-0 max-h-[calc(100%-3.5rem)] max-w-full touch-pan-y object-contain md:max-h-full md:max-w-[calc(100vw-14rem)]"
+              />
+
+              {galeriaAmpliada.imagenes.length > 1 && (
+                <button
+                  type="button"
+                  onClick={() => cambiarImagen(1)}
+                  aria-label="Ver imagen siguiente"
+                  className="hidden h-11 w-11 shrink-0 cursor-pointer items-center justify-center rounded-full border border-white/40 bg-black text-2xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white md:flex"
+                >
+                  ›
+                </button>
+              )}
+            </div>
+
+            {galeriaAmpliada.imagenes.length > 1 && (
+              <div className="flex w-full max-w-full shrink-0 items-center justify-between px-3 pt-3 md:hidden">
+                <button
+                  type="button"
+                  onClick={() => cambiarImagen(-1)}
+                  aria-label="Ver imagen anterior"
+                  className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-white/40 bg-black text-2xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+                >
+                  ‹
+                </button>
+                <button
+                  type="button"
+                  onClick={() => cambiarImagen(1)}
+                  aria-label="Ver imagen siguiente"
+                  className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-white/40 bg-black text-2xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+                >
+                  ›
+                </button>
+              </div>
+            )}
           </div>
         </dialog>
       )}

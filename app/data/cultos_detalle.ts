@@ -76,7 +76,7 @@ export const cultosDetalle: CultoDetalle[] = [
 
   {
     id: "salud-febrero",
-    advocacionId: "salud",
+    advocacionId: "salud-clemente",
     titulo: "Solemne Procesión",
     subtitulo: "Nuestra Señora de la Salud de San Clemente",
     bloques: [
@@ -92,7 +92,7 @@ export const cultosDetalle: CultoDetalle[] = [
   },
 
   {
-    advocacionId: "salud",
+    advocacionId: "salud-clemente",
     titulo: "Cultos",
     subtitulo: "Cultos en honor de Ntra. Sra. de la Salud",
     bloques: [

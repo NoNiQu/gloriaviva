@@ -38,7 +38,7 @@ export const procesionesDetalle: ProcesionDetalle[] = [
 
   {
     id: "salud-febrero",
-    advocacionId: "salud",
+    advocacionId: "salud-clemente",
     nombre: "Procesión de Nuestra Señora de la Salud",
     tipo: "principal",
     fecha: "8 de febrero",
@@ -61,7 +61,7 @@ export const procesionesDetalle: ProcesionDetalle[] = [
 
   {
     id: "salud-principal",
-    advocacionId: "salud",
+    advocacionId: "salud-clemente",
     nombre: "Procesión de Nuestra Señora de la Salud",
     tipo: "principal",
     fecha: "8 de septiembre",

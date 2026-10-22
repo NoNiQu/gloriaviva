@@ -186,8 +186,8 @@ export const cultosCards: CultoCardData[] = [
 
   {
     id: "salud-febrero",
-    cofradiaId: "salud",
-    advocacionId: "salud",
+    cofradiaId: "salud-clemente",
+    advocacionId: "salud-clemente",
     cultoId: "salud-febrero",
     nombre: "Salud",
     subnombre: "San Clemente",
@@ -202,12 +202,14 @@ export const cultosCards: CultoCardData[] = [
     titleSize: "large",
     imagePosition: "50% 20%",
     procesionesIds: ["salud-febrero"],
+    degradado: true,
   },
 
   {
-    id: "salud",
+    id: "salud-clemente",
     procesionesIds: ["salud-principal"],
     nombre: "Salud",
+    subnombre: "San Clemente",
     fecha: "6 al 8 de SEPTIEMBRE",
     mes: "SEPTIEMBRE",
     diaInicio: 6,
@@ -215,10 +217,11 @@ export const cultosCards: CultoCardData[] = [
     imagenMovilUrl: "/cofradias/gloria/salud_clemente/salud_clemente_CM.avif",
     imagenAlt: "Virgen de la Salud",
     colorFondo: "#7A6A52",
-    cultosHref: "/cultos/septiembre/desktop/salud",
-    procesionHref: "/procesiones/salud",
+    cultosHref: "/cultos/septiembre/desktop/salud-clemente",
+    procesionHref: "/procesiones/salud-clemente",
     titleSize: "large",
     imagePosition: "50% 20%",
+    degradado: true,
   },
 
   {

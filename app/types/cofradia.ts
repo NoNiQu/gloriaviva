@@ -46,6 +46,8 @@ export interface CofradiaData {
   anioFundacion: number | null;
   anioRefundacion: number | null;
   referenciaHistorica: number | null;
+  coronada?: boolean;
+  coronadaFecha?: string | null;
 
   historia: string;
 

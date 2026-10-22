@@ -491,6 +491,8 @@ export const cofradias: CofradiaData[] = [
     anioFundacion: null,
     anioRefundacion: null,
     referenciaHistorica: 1498,
+    coronada: true,
+    coronadaFecha: "3 de Octubre de 2015",
 
     historia:
       "La hermandad, vinculada al barrio toledano de Santiago del Arrabal, cuenta con referencias documentales desde 1498; sus constituciones fueron aprobadas en 1555. La ermita actual se construyó en 1611 según trazas de Juan Bautista Monegro, y la corporación recibió el título de Real en 1868. En 2015, Nuestra Señora de la Estrella fue coronada canónicamente en la Catedral Primada.",
@@ -843,6 +845,8 @@ export const cofradias: CofradiaData[] = [
     anioFundacion: null,
     anioRefundacion: null,
     referenciaHistorica: 1200,
+    coronada: true,
+    coronadaFecha: "8 de junio de 1952",
 
     historia:
       "La Cofradía de Nuestra Señora de la Esperanza, constituida en el siglo XVII, custodia una antigua talla románica venerada anteriormente como Nuestra Señora del Destierro. Según la tradición, la Procesión del Voto recuerda el final de una epidemia hacia el año 1200. En 1676 aparece documentada la advocación de la Esperanza. Desde San Cipriano mantiene las procesiones del Voto y de la Octava. La Virgen recibió la coronación canónica el 8 de junio de 1952 en la plaza de Zocodover.",
@@ -1305,8 +1309,8 @@ export const cofradias: CofradiaData[] = [
   ========================================== */
 
   {
-    id: "salud",
-    slug: "salud",
+    id: "salud-clemente",
+    slug: "salud-clemente",
 
     nombre: "Nuestra Señora de la Salud",
     nombreCorto: "Salud",
@@ -1356,11 +1360,11 @@ export const cofradias: CofradiaData[] = [
       },
     ],
 
-    cultosId: "salud",
+    cultosId: "salud-clemente",
     procesionId: "salud-principal",
 
     // Cultos y procesiones de febrero y septiembre de 2026.
-    cultosIds: ["salud", "salud-febrero"],
+    cultosIds: ["salud-clemente", "salud-febrero"],
     procesionesIds: ["salud-principal", "salud-febrero"],
 
     redes: {
@@ -1468,6 +1472,8 @@ export const cofradias: CofradiaData[] = [
     anioFundacion: 1924,
     anioRefundacion: null,
     referenciaHistorica: null,
+    coronada: true,
+    coronadaFecha: "30 de mayo de 1926",
 
     historia:
       "La devoción a Nuestra Señora del Sagrario está unida desde antiguo a la Catedral Primada y a la propia historia espiritual de Toledo. La imagen venerada en su capilla es la patrona de la ciudad y preside cada mes de agosto los cultos del Octavario y la solemnidad de la Asunción. La actual Esclavitud de la Virgen del Sagrario fue promovida en 1923, aprobó sus estatutos en 1924 y acompaña desde entonces esta arraigada devoción toledana. La imagen fue coronada canónicamente en 1926 y continúa siendo una de las advocaciones marianas más queridas de la ciudad.",

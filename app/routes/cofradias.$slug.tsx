@@ -702,7 +702,7 @@ export default function CofradiaPage({ loaderData }: Route.ComponentProps) {
           >
             <div className="border-t border-black/15 py-10">
               <p className="text-center text-lg leading-relaxed text-black/80">
-                Gracias a {cofradia.fotoQuien || "quienes colaboraron"} por
+                Gracias {cofradia.fotoQuien || "quienes colaboraron"} por
                 {" ceder las fotografías"}
                 {cofradia.fotosSeccion &&
                   cofradia.fotosSeccion !== "todo" &&
@@ -842,7 +842,10 @@ export default function CofradiaPage({ loaderData }: Route.ComponentProps) {
                 alt={imagenAmpliada.alt}
                 onTouchStart={(event) => {
                   const touch = event.touches[0];
-                  touchStartRef.current = { x: touch.clientX, y: touch.clientY };
+                  touchStartRef.current = {
+                    x: touch.clientX,
+                    y: touch.clientY,
+                  };
                 }}
                 onTouchEnd={(event) => {
                   const inicio = touchStartRef.current;

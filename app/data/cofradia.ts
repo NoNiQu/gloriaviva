@@ -548,7 +548,7 @@ export const cofradias: CofradiaData[] = [
     },
 
     fotosCedidas: true,
-    fotoQuien: "la Hermandad de Nuestra Señora de la Estrella",
+    fotoQuien: "a la Hermandad de Nuestra Señora de la Estrella",
     fotosSeccion: "todo",
     fotosLogo: `${estrellaPath}/fotoslogo.png`,
   },
@@ -903,7 +903,7 @@ export const cofradias: CofradiaData[] = [
     },
 
     fotosCedidas: true,
-    fotoQuien: "la Cofradía de Nuestra Señora de la Esperanza",
+    fotoQuien: "a la Cofradía de Nuestra Señora de la Esperanza",
     fotosSeccion: "todo",
 
   },
@@ -1054,7 +1054,7 @@ export const cofradias: CofradiaData[] = [
     },
 
     fotosCedidas: true,
-    fotoQuien: "la Hermandad de Nuestra Señora de la Paz",
+    fotoQuien: "a la Hermandad de Nuestra Señora de la Paz",
     fotosSeccion: "galería",
 
   },
@@ -1446,7 +1446,7 @@ export const cofradias: CofradiaData[] = [
     },
 
     fotosCedidas: true,
-    fotoQuien: "Toledo Sacro",
+    fotoQuien: "a Toledo Sacro",
     fotosSeccion: "todo",
     fotosLogo: "/colaboradores/toledo_sacro.webp",
   },
@@ -1525,7 +1525,7 @@ export const cofradias: CofradiaData[] = [
     },
 
     fotosCedidas: true,
-    fotoQuien: "Toledo Sacro",
+    fotoQuien: "a Toledo Sacro",
     fotosSeccion: "galería",
     fotosLogo: "/colaboradores/toledo_sacro.webp",
 
@@ -1600,7 +1600,7 @@ export const cofradias: CofradiaData[] = [
     },
 
     fotosCedidas: true,
-    fotoQuien: "Toledo Sacro",
+    fotoQuien: "a Toledo Sacro",
     fotosSeccion: "todo",
     fotosLogo: "/colaboradores/toledo_sacro.webp",
   },

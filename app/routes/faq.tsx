@@ -28,7 +28,7 @@ const questions = [
   {
     question: "¿Cómo se calculan las fechas de los cultos y festividades?",
     answer:
-      "Depende de cada celebración. Algunas tienen una fecha fija y otras se determinan mediante reglas relativas a una festividad, un día de la semana o un periodo concreto. Gloria Viva calcula esas fechas según la información definida para cada culto o celebración.",
+      "Depende de cada celebración. Algunas tienen una fecha fija y otras se determinan mediante reglas relativas a una festividad, un día de la semana o un periodo concreto. Actualmente, las fechas se revisan y se incorporan manualmente para cada culto o celebración. El cálculo automático se implementará en una fase posterior, cuando el proyecto cuente con aprobación.",
   },
   {
     question: "¿Puedo comunicar un error?",
@@ -67,7 +67,7 @@ export default function FaqPage() {
         <div className="border-b border-black/15 pb-14 lg:pb-20">
           <h2
             id="about-faq"
-            className="text-center text-5xl font-normal tracking-tight text-black lg:text-10xl"
+            className="text-center text-5xl font-normal tracking-tight text-black"
           >
             ¿Qué es Gloria Viva?
           </h2>

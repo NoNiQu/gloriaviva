@@ -1,18 +1,28 @@
-# Welcome to React Router!
+# Gloria Viva
 
-A modern, production-ready template for building full-stack React applications using React Router.
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+An independent, unofficial guide to the cofradías, hermandades and devotions of glory in Toledo, built with React Router.
 
 ## Features
 
 - 🚀 Server-side rendering
 - ⚡️ Hot Module Replacement (HMR)
 - 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
+- 🔄 Data loading from local TypeScript files
 - 🔒 TypeScript by default
 - 🎉 TailwindCSS for styling
 - 📖 [React Router docs](https://reactrouter.com/)
+
+## Content and dates
+
+Cultos and processions are managed in local TypeScript files:
+
+- `app/data/cultos_cards.ts`: celebration cards and their associated months.
+- `app/data/cultos_detalle.ts`: detailed celebration programmes.
+- `app/data/procesiones_detalle.ts`: procession dates, times and routes.
+
+Dates are maintained manually in these files. Automatic calculation of celebration dates is planned for a later phase, subject to project approval; it is not currently implemented.
+
+The application does not currently use an active Supabase connection.
 
 ## Getting Started
 
@@ -80,7 +90,7 @@ Make sure to deploy the output of `npm run build`
 
 ## Styling
 
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
+Gloria Viva uses [Tailwind CSS](https://tailwindcss.com/) for styling and the Gloock font, loaded locally from `public/fonts/Gloock.woff2`.
 
 ---
 

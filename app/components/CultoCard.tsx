@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router";
 
 import { cofradias } from "../data/cofradia";
@@ -35,12 +35,34 @@ export function CultoCard({
   const [vista, setVista] = useState<VistaCard>(
     abrirCultosInicialmente ? "cultos" : "principal",
   );
+  const botonesVistaRef = useRef<
+    Partial<Record<VistaCard, HTMLButtonElement | null>>
+  >({});
+  const focoPendienteRef = useRef<VistaCard | null>(null);
 
   // Permite abrir directamente la ficha de un culto desde su cofradía.
   // Los cambios de tarjeta seleccionada restablecen las demás tarjetas.
   useEffect(() => {
+    focoPendienteRef.current = null;
     setVista(abrirCultosInicialmente ? "cultos" : "principal");
   }, [abrirCultosInicialmente]);
+
+  useEffect(() => {
+    const destino = focoPendienteRef.current;
+    focoPendienteRef.current = null;
+
+    if (destino !== null) {
+      const boton =
+        botonesVistaRef.current[destino] ?? botonesVistaRef.current.cultos;
+      boton?.focus({ preventScroll: true });
+    }
+  }, [vista]);
+
+  function cambiarVista(siguienteVista: VistaCard) {
+    // Al cerrar, buscamos el botón de apertura de la cara que abandonamos.
+    focoPendienteRef.current = siguienteVista === "principal" ? vista : "principal";
+    setVista(siguienteVista);
+  }
 
   const {
     id,
@@ -182,8 +204,11 @@ export function CultoCard({
 
           {creditoFoto && (
             <button
+              ref={(element) => {
+                botonesVistaRef.current.credito = element;
+              }}
               type="button"
-              onClick={() => setVista("credito")}
+              onClick={() => cambiarVista("credito")}
               aria-label={`Ver crédito de la fotografía de ${nombre}`}
               className="
                 absolute
@@ -302,8 +327,11 @@ export function CultoCard({
               ].join(" ")}
             >
               <button
+                ref={(element) => {
+                  botonesVistaRef.current.cultos = element;
+                }}
                 type="button"
-                onClick={() => setVista("cultos")}
+                onClick={() => cambiarVista("cultos")}
                 className="
                   flex
                   min-h-13
@@ -333,8 +361,11 @@ export function CultoCard({
 
               {tieneProcesion && (
                 <button
+                  ref={(element) => {
+                    botonesVistaRef.current.procesion = element;
+                  }}
                   type="button"
-                  onClick={() => setVista("procesion")}
+                  onClick={() => cambiarVista("procesion")}
                   className="
                     flex
                     min-h-13
@@ -398,8 +429,11 @@ export function CultoCard({
           </p>
 
           <button
+            ref={(element) => {
+              botonesVistaRef.current.principal = element;
+            }}
             type="button"
-            onClick={() => setVista("principal")}
+            onClick={() => cambiarVista("principal")}
             aria-label={`Cerrar información de ${nombre}`}
             className="
               absolute
@@ -650,6 +684,18 @@ export function CultoCard({
                         {procesion.salida && (
                           <p className="text-[clamp(0.95rem,3.8cqw,1.25rem)] leading-relaxed">
                             <span>Salida:</span> {procesion.salida}
+                          </p>
+                        )}
+
+                        {procesion.llegada && (
+                          <p className="text-[clamp(0.95rem,3.8cqw,1.25rem)] leading-relaxed">
+                            <span>Llegada:</span> {procesion.llegada}
+                          </p>
+                        )}
+
+                        {procesion.llegadaTexto && (
+                          <p className="text-[clamp(0.95rem,3.8cqw,1.25rem)]">
+                            {procesion.llegadaTexto}
                           </p>
                         )}
                       </div>

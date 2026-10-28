@@ -8,19 +8,10 @@
   font-display: swap;
 }
 
-@font-face {
-  font-family: "Manrope";
-  src: url("/fonts/Manrope.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
 :root {
   --color-white: #eee9dc;
   --color-black: #080807;
   --font-serif: "Gloock", serif;
-  --font-sans: "Manrope", sans-serif;
 }
 
 html,
@@ -95,10 +86,6 @@ body {
       rgba(255, 255, 255, 0.08) 0%,
       transparent 62%
     );
-}
-
-.font-ui {
-  font-family: var(--font-sans);
 }
 
 @media (prefers-reduced-motion: reduce) {

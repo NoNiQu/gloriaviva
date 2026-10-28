@@ -210,7 +210,10 @@ export function ProximosCultos() {
   const [indiceActivo, setIndiceActivo] = useState(0);
   const [indiceAnterior, setIndiceAnterior] = useState<number | null>(null);
   const [movimientoReducido, setMovimientoReducido] = useState(false);
-  const [pausado, setPausado] = useState(false);
+  const [pausaManual, setPausaManual] = useState(false);
+  const [pausaPorRaton, setPausaPorRaton] = useState(false);
+  const [pausaPorFoco, setPausaPorFoco] = useState(false);
+  const pausado = pausaManual || pausaPorRaton || pausaPorFoco;
   // La primera foto aparece con un fundido al terminar de cargarse.
   // No mostramos una fotografía a medio decodificar.
   const [fotosCargadas, setFotosCargadas] = useState<Set<string>>(
@@ -350,6 +353,17 @@ export function ProximosCultos() {
 
   const indiceSeguro = Math.min(indiceActivo, diapositivas.length - 1);
   const actual = diapositivas[indiceSeguro];
+  const enlaceMes = `/cultos/${mesVisible.slug}`;
+  const enlaceCulto = `${enlaceMes}#culto-${encodeURIComponent(actual.id)}`;
+  const etiquetaCulto = `Saber más sobre ${actual.nombre}${actual.subnombre ? `, ${actual.subnombre}` : ""}`;
+  const enlaceSecundario = (
+    <Link
+      to={enlaceMes}
+      className="absolute inset-x-0 top-full mt-2 inline-flex min-h-8 items-center justify-center text-center text-sm leading-6 text-white/85 underline decoration-white/50 underline-offset-4 transition-colors hover:text-white hover:decoration-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+    >
+      Ver todos los cultos de {mesVisible.nombre.toLowerCase()}
+    </Link>
+  );
   const indicesFotografia = [indiceAnterior, indiceSeguro].filter(
     (indice): indice is number =>
       indice !== null && indice < diapositivas.length,
@@ -361,16 +375,51 @@ export function ProximosCultos() {
       aria-labelledby="proximos-cultos-titulo"
       aria-roledescription="carrusel"
       aria-label={`Cultos de ${mesVisible.nombre.toLowerCase()}`}
-      onMouseEnter={() => setPausado(true)}
-      onMouseLeave={() => setPausado(false)}
-      onFocusCapture={() => setPausado(true)}
+      onMouseEnter={() => setPausaPorRaton(true)}
+      onMouseLeave={() => setPausaPorRaton(false)}
+      onFocusCapture={() => setPausaPorFoco(true)}
       onBlurCapture={(event) => {
         if (!event.currentTarget.contains(event.relatedTarget))
-          setPausado(false);
+          setPausaPorFoco(false);
       }}
       className="relative isolate h-svh min-h-175 overflow-hidden text-white lg:min-h-190"
       style={{ backgroundColor: actual.colorFondo }}
     >
+      {diapositivas.length > 1 && (
+        <button
+          type="button"
+          disabled={movimientoReducido}
+          onClick={() => setPausaManual((anterior) => !anterior)}
+          aria-label={
+            movimientoReducido
+              ? "Avance automático desactivado por tu preferencia de movimiento reducido"
+              : pausaManual
+                ? "Reanudar el avance automático del carrusel"
+                : "Pausar el avance automático del carrusel"
+          }
+          title={
+            movimientoReducido
+              ? "El avance automático está desactivado por tu preferencia de movimiento reducido"
+              : undefined
+          }
+          className="absolute right-6 top-6 z-30 inline-flex min-h-11 cursor-pointer items-center gap-2 rounded-full border border-white/40 bg-black/70 px-4 py-2 text-sm text-white transition-colors hover:bg-black/90 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white disabled:cursor-default sm:right-8 sm:top-8"
+        >
+          <svg
+            aria-hidden="true"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            className="h-4 w-4"
+          >
+            {pausaManual && !movimientoReducido ? (
+              <path d="m8 5 11 7-11 7V5Z" />
+            ) : (
+              <path d="M6 5h4v14H6V5Zm8 0h4v14h-4V5Z" />
+            )}
+          </svg>
+          {movimientoReducido ? "Pausado" : pausaManual ? "Reanudar" : "Pausar"}
+        </button>
+      )}
+
       {/* Cada diapositiva tiene SU propio color, foto y degradado.
           Así, al cambiar de hermandad, la transición funde el conjunto
           y no cambia bruscamente la tonalidad sobre una foto anterior. */}
@@ -469,39 +518,43 @@ export function ProximosCultos() {
       />
 
       {/* Diseño escritorio: los tres bloques en la columna de color. */}
-      <div className="relative z-20 hidden h-full w-[47%] flex-col justify-between px-[5.6vw] pb-22 pt-28 lg:flex">
+      <div className="relative z-20 hidden h-full w-[55%] flex-col justify-between px-10 pb-22 pt-28 lg:flex xl:w-[47%] xl:px-[5.6vw]">
         <h2 id="proximos-cultos-titulo" className="flex flex-col items-start">
-          <span className="text-[clamp(2.3rem,3.4vw,4rem)] leading-none tracking-tight">
+          <span className="text-[clamp(2.3rem,3.4vw,4rem)] leading-none tracking-tight lg:max-xl:text-[clamp(2.5rem,3.7vw,4.35rem)]">
             Cultos de
           </span>
-          <span className="mt-4 text-[clamp(3.1rem,5.2vw,7.5rem)] leading-[0.95] tracking-[-0.055em]">
+          <span className="mt-4 text-[clamp(3.1rem,5.2vw,7.5rem)] leading-[0.95] tracking-[-0.055em] lg:max-xl:text-[clamp(3.35rem,5.65vw,8.15rem)]">
             {mesVisible.nombre}
           </span>
         </h2>
 
-        <div className="max-w-full py-12">
-          <p className="mb-6 text-sm font-semibold uppercase tracking-[0.22em] text-white/80">
+        <div className="max-w-full py-12 [--escala-info:1.11]">
+          <p className="mb-[calc(1.5rem*var(--escala-info))] text-sm font-semibold uppercase tracking-[0.22em] text-white/80 md:text-[calc(0.875rem*var(--escala-info))] lg:max-xl:text-[calc(0.95rem*var(--escala-info)*1.25)]">
             {actual.tipoCofradia}
           </p>
-          <h3 className="max-w-full text-[clamp(3.2rem,4.6vw,6.7rem)] leading-[1.05] tracking-[-0.045em] wrap-anywhere">
+          <h3 className="max-w-full text-[calc(clamp(3.2rem,4.6vw,6.7rem)*var(--escala-info))] leading-[1.05] tracking-[-0.045em] wrap-anywhere lg:max-xl:text-[calc(clamp(3.5rem,5vw,7.3rem)*var(--escala-info)*1.25)]">
             {actual.nombre}
           </h3>
           {actual.subnombre && (
-            <p className="mt-3 text-[clamp(1.2rem,2vw,2rem)] leading-tight tracking-[0.02em]">
+            <p className="mt-[calc(0.75rem*var(--escala-info))] text-[calc(clamp(1.2rem,2vw,2rem)*var(--escala-info))] leading-tight tracking-[0.02em] lg:max-xl:text-[calc(clamp(1.3rem,2.15vw,2.2rem)*var(--escala-info))]">
               {actual.subnombre}
             </p>
           )}
-          <p className="mt-7 text-[clamp(1.2rem,1.75vw,1.9rem)] leading-snug tracking-[0.015em]">
+          <p className="mt-[calc(1.75rem*var(--escala-info))] text-[calc(clamp(1.2rem,1.75vw,1.9rem)*var(--escala-info))] leading-snug tracking-[0.015em] lg:max-xl:text-[calc(clamp(1.3rem,1.9vw,2.1rem)*var(--escala-info)*1.25)]">
             {actual.fecha}
           </p>
         </div>
 
-        <Link
-          to={`/cultos/${mesVisible.slug}`}
-          className="inline-flex min-h-16 w-full max-w-105 items-center justify-center self-start rounded-2xl border border-[#eee9dc] bg-[#eee9dc] px-6 py-4 text-center text-[1.12rem] leading-tight tracking-wide text-[#141414] transition-colors duration-200 hover:border-white hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white motion-reduce:transition-none"
-        >
-          VER CULTOS DE {mesVisible.nombre}
-        </Link>
+        <div className="relative flex w-full max-w-105 flex-col self-start">
+          <Link
+            to={enlaceCulto}
+            aria-label={etiquetaCulto}
+            className="inline-flex min-h-16 w-full max-w-105 items-center justify-center self-start rounded-2xl border border-[#eee9dc] bg-[#eee9dc] px-6 py-4 text-center text-[1.12rem] leading-tight tracking-wide text-[#141414] transition-colors duration-200 hover:border-white hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white motion-reduce:transition-none"
+          >
+            Saber más
+          </Link>
+          {enlaceSecundario}
+        </div>
       </div>
 
       {/* Diseño móvil anterior: título centrado arriba y CTA en la zona inferior. */}
@@ -510,22 +563,26 @@ export function ProximosCultos() {
           id="proximos-cultos-titulo-movil"
           className="flex flex-col items-center"
         >
-          <span className="text-[2.5rem] leading-none tracking-[-0.03em] sm:text-[2.8rem] md:text-[3.2rem]">
+          <span className="text-[2.5rem] leading-none tracking-[-0.03em] sm:text-[2.8rem] md:text-[3.2rem] md:max-lg:text-[3.5rem]">
             Cultos
           </span>
-          <span className="mt-2 text-[clamp(3rem,11vw,6rem)] leading-[0.88] tracking-[-0.045em] sm:mt-3">
+          <span className="mt-2 text-[clamp(3rem,11vw,6rem)] leading-[0.88] tracking-[-0.045em] sm:mt-3 md:max-lg:text-[clamp(3.25rem,12vw,6.5rem)]">
             {mesVisible.nombre}
           </span>
         </h2>
       </div>
 
       <div className="absolute inset-x-0 bottom-24 z-20 flex justify-center px-6 sm:bottom-14 md:bottom-16 lg:hidden">
-        <Link
-          to={`/cultos/${mesVisible.slug}`}
-          className="inline-flex min-h-14 w-full max-w-md items-center justify-center rounded-2xl border border-[#eee9dc] bg-[#eee9dc] px-8 py-3 text-center text-base tracking-[0.04em] text-[#080807] transition-colors duration-200 hover:border-white hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white motion-reduce:transition-none sm:min-h-16 sm:text-lg"
-        >
-          CULTOS DE {mesVisible.nombre}
-        </Link>
+        <div className="relative flex w-full max-w-md flex-col">
+          <Link
+            to={enlaceCulto}
+            aria-label={etiquetaCulto}
+            className="inline-flex min-h-14 w-full max-w-md items-center justify-center rounded-2xl border border-[#eee9dc] bg-[#eee9dc] px-8 py-3 text-center text-base tracking-[0.04em] text-[#080807] transition-colors duration-200 hover:border-white hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white motion-reduce:transition-none sm:min-h-16 sm:text-lg"
+          >
+            Saber más
+          </Link>
+          {enlaceSecundario}
+        </div>
       </div>
     </section>
   );

@@ -20,6 +20,7 @@ export function meta({}: Route.MetaArgs) {
 export default function Home() {
   return (
     <main className="relative min-h-screen">
+      <h1 className="sr-only">Gloria Viva: guía de las glorias de Toledo</h1>
       <HomeHero />
 
       <ProximosCultos />

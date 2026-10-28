@@ -1,5 +1,6 @@
 import { useEffect } from "react";
-import { Link, useLocation, useParams } from "react-router";
+import { isRouteErrorResponse, Link, useLocation, useParams } from "react-router";
+import type { Route } from "./+types/cultos.$slug";
 
 import { CultosGrid } from "../components/CultosGrid";
 import { cultosCards } from "../data/cultos_cards";
@@ -30,6 +31,14 @@ const meses: Mes[] = [
   { nombre: "NOVIEMBRE", slug: "noviembre" },
   { nombre: "DICIEMBRE", slug: "diciembre" },
 ];
+
+export function loader({ params }: Route.LoaderArgs) {
+  if (params.slug !== "todos" && !meses.some((mes) => mes.slug === params.slug)) {
+    throw new Response("Mes no encontrado", { status: 404 });
+  }
+
+  return null;
+}
 
 function cardPerteneceAlMes(
   card: (typeof cultosCards)[number],
@@ -274,49 +283,6 @@ export default function CultosMesPage() {
   const anteriorDisponible = mesTieneCultos(mesAnterior);
   const siguienteDisponible = mesTieneCultos(mesSiguiente);
 
-  if (!mostrarTodos && !mesActual) {
-    return (
-      <main className="min-h-screen bg-white text-black">
-        <div className="mx-auto max-w-7xl px-5 pb-20 pt-48 lg:pt-50">
-          <div className="text-center">
-            <h1 className="text-5xl leading-none md:text-7xl">
-              Mes no encontrado
-            </h1>
-
-            <p className="mt-6">El mes seleccionado no existe.</p>
-
-            <Link
-              to="/cultos"
-              className="
-              mt-10
-              inline-flex
-              min-h-14
-              items-center
-              justify-center
-              rounded-2xl
-              bg-[#263D63]
-              px-8
-              py-4
-              text-lg
-              text-white
-              transition-colors
-              duration-300
-              ease-out
-              hover:bg-[#344F7A]
-              focus-visible:bg-[#344F7A]
-              focus-visible:outline-2
-              focus-visible:outline-offset-4
-              focus-visible:outline-white
-            "
-            >
-              Volver a Cultos
-            </Link>
-          </div>
-        </div>
-      </main>
-    );
-  }
-
   if (mostrarTodos) {
     const primerMesConCultos = meses.find((mes) => mesTieneCultos(mes))?.slug;
 
@@ -528,6 +494,53 @@ export default function CultosMesPage() {
             </div>
           </div>
         </nav>
+      </div>
+    </main>
+  );
+}
+
+export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
+  if (!isRouteErrorResponse(error) || error.status !== 404) {
+    throw error;
+  }
+
+  return (
+    <main className="min-h-screen bg-white text-black">
+      <div className="mx-auto max-w-7xl px-5 pb-20 pt-48 lg:pt-50">
+        <div className="text-center">
+          <h1 className="text-5xl leading-none md:text-7xl">
+            Mes no encontrado
+          </h1>
+
+          <p className="mt-6">El mes seleccionado no existe.</p>
+
+          <Link
+            to="/cultos"
+            className="
+              mt-10
+              inline-flex
+              min-h-14
+              items-center
+              justify-center
+              rounded-2xl
+              bg-[#263D63]
+              px-8
+              py-4
+              text-lg
+              text-white
+              transition-colors
+              duration-300
+              ease-out
+              hover:bg-[#344F7A]
+              focus-visible:bg-[#344F7A]
+              focus-visible:outline-2
+              focus-visible:outline-offset-4
+              focus-visible:outline-white
+            "
+          >
+            Volver a Cultos
+          </Link>
+        </div>
       </div>
     </main>
   );

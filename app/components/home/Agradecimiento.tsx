@@ -76,7 +76,7 @@ export function Agradecimientos() {
 
         {/* Ayuda y enlaces */}
         <div className="mt-12 md:mt-16 lg:mt-20">
-          <div className="mx-auto grid max-w-5xl gap-5 md:grid-cols-[1.15fr_0.85fr] md:gap-8">
+          <div className="mx-auto grid max-w-5xl gap-5 md:gap-8 xl:grid-cols-[1.15fr_0.85fr]">
             {/* Texto */}
             <div className="flex min-h-64 flex-col justify-center px-2 py-7 md:min-h-72 md:px-4 md:py-9 lg:px-6">
               <h3 className="text-3xl font-normal leading-[1.05] tracking-tight md:text-5xl">

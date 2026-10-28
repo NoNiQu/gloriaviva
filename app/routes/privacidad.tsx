@@ -193,9 +193,9 @@ export default function PrivacidadPage() {
 
         <p>
           Para alojar y hacer funcionar la web se utilizan servicios
-          tecnológicos como Vercel y Supabase. Estos proveedores pueden tener
-          acceso a determinados datos técnicos cuando resulte necesario para
-          prestar sus servicios.
+          tecnológicos de Vercel. Este proveedor puede tener acceso a
+          determinados datos técnicos cuando resulte necesario para prestar sus
+          servicios.
         </p>
 
         <p>

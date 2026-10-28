@@ -28,6 +28,22 @@ export function Header() {
   }, [pathname]);
 
   useEffect(() => {
+    const desktopMedia = window.matchMedia("(min-width: 80rem)");
+    const closeMenuOnDesktop = () => {
+      if (desktopMedia.matches) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    closeMenuOnDesktop();
+    desktopMedia.addEventListener("change", closeMenuOnDesktop);
+
+    return () => {
+      desktopMedia.removeEventListener("change", closeMenuOnDesktop);
+    };
+  }, []);
+
+  useEffect(() => {
     if (!isMenuOpen) {
       return;
     }
@@ -116,12 +132,12 @@ export function Header() {
           "absolute inset-x-0 top-0 z-50",
           "transition-colors duration-300",
           isMenuOpen ? "bg-white" : "bg-transparent",
-          "lg:bg-transparent",
+          "xl:bg-transparent",
         ].join(" ")}
       >
         {/* CABECERA DE ESCRITORIO */}
-        <div className="hidden lg:block">
-          <div className="mx-auto flex h-45 max-w-1440px items-center justify-between px-45">
+        <div className="hidden xl:block">
+          <div className="mx-auto flex h-45 items-center justify-between px-45">
             {isHomePage ? (
               <div>{desktopLogo}</div>
             ) : (
@@ -185,7 +201,7 @@ export function Header() {
         </div>
 
         {/* CABECERA MÓVIL */}
-        <div className="grid h-45 grid-cols-[48px_1fr_48px] items-center px-5 lg:hidden">
+        <div className="grid h-45 grid-cols-[48px_1fr_48px] items-center px-5 xl:hidden">
           <button
             ref={menuButtonRef}
             type="button"
@@ -276,7 +292,7 @@ export function Header() {
           "bg-white text-black",
           "overflow-y-auto",
           "transition-all duration-300",
-          "lg:hidden",
+          "xl:hidden",
           isMenuOpen
             ? "visible translate-y-0 opacity-100"
             : "invisible -translate-y-4 opacity-0",
@@ -288,7 +304,7 @@ export function Header() {
               <li key={item.to} className="border-b border-black/15">
                 <NavLink
                   to={item.to}
-                  className={({ isActive }) =>
+                  className={() =>
                     [
                       "group flex min-h-20 items-center justify-between gap-6",
                       "text-xl font-semibold tracking-[0.06em] text-black",

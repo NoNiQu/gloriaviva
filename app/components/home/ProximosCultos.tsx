@@ -520,7 +520,7 @@ export function ProximosCultos() {
       />
 
       {/* Diseño escritorio: los tres bloques en la columna de color. */}
-      <div className="relative z-20 hidden h-full w-[55%] flex-col justify-between px-10 pb-22 pt-28 lg:flex xl:w-[47%] xl:px-[5.6vw]">
+      <div className="relative z-20 hidden h-full w-[55%] flex-col justify-between px-10 pb-22 pt-28 lg:flex xl:w-[47%] xl:px-[5.6vw] xl:pb-30 xl:pt-20">
         <h2 id="proximos-cultos-titulo" className="flex flex-col items-start">
           <span className="text-[clamp(2.3rem,3.4vw,4rem)] leading-none tracking-tight lg:max-xl:text-[clamp(2.5rem,3.7vw,4.35rem)]">
             Cultos de

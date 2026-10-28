@@ -359,9 +359,10 @@ export function ProximosCultos() {
   const enlaceSecundario = (
     <Link
       to={enlaceMes}
-      className="absolute inset-x-0 top-full mt-2 inline-flex min-h-8 items-center justify-center text-center text-sm leading-6 text-white/85 underline decoration-white/50 underline-offset-4 transition-colors hover:text-white hover:decoration-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+      className="absolute inset-x-0 top-full mt-2 inline-flex min-h-8 items-center justify-center gap-1 text-center text-sm leading-6 text-white/85 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
     >
-      Ver todos los cultos de {mesVisible.nombre.toLowerCase()}
+      <span>Ver todos los cultos de {mesVisible.nombre.toLowerCase()}</span>
+      <span aria-hidden="true">→</span>
     </Link>
   );
   const indicesFotografia = [indiceAnterior, indiceSeguro].filter(
@@ -400,9 +401,11 @@ export function ProximosCultos() {
           title={
             movimientoReducido
               ? "El avance automático está desactivado por tu preferencia de movimiento reducido"
-              : undefined
+              : pausaManual
+                ? "Reanudar"
+                : "Pausar"
           }
-          className="absolute right-6 top-6 z-30 inline-flex min-h-11 cursor-pointer items-center gap-2 rounded-full border border-white/40 bg-black/70 px-4 py-2 text-sm text-white transition-colors hover:bg-black/90 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white disabled:cursor-default sm:right-8 sm:top-8"
+          className="absolute right-6 top-6 z-30 inline-flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-white/40 bg-black/70 text-white transition-colors hover:bg-black/90 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white disabled:cursor-default sm:right-8 sm:top-8"
         >
           <svg
             aria-hidden="true"
@@ -416,7 +419,6 @@ export function ProximosCultos() {
               <path d="M6 5h4v14H6V5Zm8 0h4v14h-4V5Z" />
             )}
           </svg>
-          {movimientoReducido ? "Pausado" : pausaManual ? "Reanudar" : "Pausar"}
         </button>
       )}
 
@@ -551,7 +553,7 @@ export function ProximosCultos() {
             aria-label={etiquetaCulto}
             className="inline-flex min-h-16 w-full max-w-105 items-center justify-center self-start rounded-2xl border border-[#eee9dc] bg-[#eee9dc] px-6 py-4 text-center text-[1.12rem] leading-tight tracking-wide text-[#141414] transition-colors duration-200 hover:border-white hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white motion-reduce:transition-none"
           >
-            Saber más
+            SABER MÁS...
           </Link>
           {enlaceSecundario}
         </div>
@@ -579,7 +581,7 @@ export function ProximosCultos() {
             aria-label={etiquetaCulto}
             className="inline-flex min-h-14 w-full max-w-md items-center justify-center rounded-2xl border border-[#eee9dc] bg-[#eee9dc] px-8 py-3 text-center text-base tracking-[0.04em] text-[#080807] transition-colors duration-200 hover:border-white hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white motion-reduce:transition-none sm:min-h-16 sm:text-lg"
           >
-            Saber más
+            SABER MÁS...
           </Link>
           {enlaceSecundario}
         </div>
